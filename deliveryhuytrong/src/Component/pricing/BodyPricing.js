@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PricingTitle from './pricing-component/PricingTitle';
 
 class BodyPricing extends Component {
     render() {
@@ -6,26 +7,7 @@ class BodyPricing extends Component {
             <div>
                 <section className="order_us_area" id="pricing">
                     <div className="container">
-                        <div className="row page-title">
-                            <div className="col-md-5 col-sm-6">
-                                <div className="pricing-desc section-padding-two">
-                                    <div className="pricing-desc-title">
-                                        <div className="title">
-                                            <h2>Pricing &amp; plans</h2>
-                                            <p>Free shipping is a method used by many businesses to attract and keep customers</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-sm-6 col-xs-6 text-right">
-                                <div className="shipper_content_title">
-                                    <ul className="breadcrumbs">
-                                        <li><a href="/">home</a></li>
-                                        <li><a href="/pricing">pricing</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <PricingTitle />
                         <div className="row">
                             <div className="col-md-4 col-lg-4 col-sm-4 col-xs-12 text-center">
                                 <div className="single-pricing-table">
@@ -83,7 +65,7 @@ class BodyPricing extends Component {
                             </div>
                         </div>
                     </div>
-                </section><br/><br/>
+                </section><br /><br />
             </div>
         );
     }

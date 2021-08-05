@@ -6,7 +6,7 @@ import BodyIndex from './Component/index/BodyIndex';
 import Footer from './Component/item-base/Footer';
 import Header from './Component/item-base/Header';
 import BodyOrder from './Component/list-orders/BodyOrder';
-import BodyAuction from './Component/order-auction/BodyAuction';
+import BodyOrderAuction from './Component/order-auction/BodyOrderAuction';
 import BodyPricing from './Component/pricing/BodyPricing';
 import BodyShipperDetail from './Component/shipper-detail/BodyShipperDetail';
 import BodyShipper from './Component/shipper/BodyShipper';
@@ -21,7 +21,7 @@ class App extends Component {
             <Route exact path="/" component={BodyIndex} />
             <Route path="/about" component={BodyAbout} />
             <Route path="/list-orders" component={BodyOrder} />
-            <Route path="/order-auction" component={BodyAuction} />
+            <Route path="/order-auction" component={BodyOrderAuction} />
             <Route path="/shipper" component={BodyShipper} />
             <Route path="/shipper-detail" component={BodyShipperDetail} />
             <Route path="/pricing" component={BodyPricing} />

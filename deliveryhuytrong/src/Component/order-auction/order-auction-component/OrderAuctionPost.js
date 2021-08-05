@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class BodyAuction extends Component {
+class OrderAuctionPost extends Component {
     render() {
 
         function see_more_auction_info() {
@@ -15,26 +15,6 @@ class BodyAuction extends Component {
 
         return (
             <div>
-                <section className="order_us_area" id="about">
-                    <div className="container">
-                        <div className="row page-title">
-                            <div className="col-md-6 col-sm-6 col-xs-6 text-left">
-                                <div className="order_us_content_title">
-                                    <h2>order auction</h2>
-                                    <h5>Auction compete for orders</h5>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-sm-6 col-xs-6 text-right">
-                                <div className="order_us_content_title">
-                                    <ul className="breadcrumbs">
-                                        <li><a href="/">home</a></li>
-                                        <li><a href="/order-auction">auction</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
                 <section className="order-bottom-area">
                     <div className="container">
                         <div className="row">
@@ -63,25 +43,25 @@ class BodyAuction extends Component {
                                     <img src="img/visa.png" alt="img" />
                                 </div>
                                 <div className="auction-area-comment">
-                                <hr />
-                                <div className="auction-area-comment-flex auction-space">
-                                    <div className="auction-area-comment-flex-left">
-                                        <img src="img/client.jpg" alt="img" />
-                                    </div>
-                                    <div className="auction-area-comment-flex-center">
-                                        <div className="auction-area-comment-info">
-                                            <strong>Shipper's Name</strong><br />
-                                            <span>20.000 VNĐ - 0775398511</span>
+                                    <hr />
+                                    <div className="auction-area-comment-flex auction-space">
+                                        <div className="auction-area-comment-flex-left">
+                                            <img src="img/client.jpg" alt="img" />
                                         </div>
-                                        <div className="auction-area-comment-date">
-                                            <p>July 31 at 9:41 PM</p>
+                                        <div className="auction-area-comment-flex-center">
+                                            <div className="auction-area-comment-info">
+                                                <strong>Shipper's Name</strong><br />
+                                                <span>20.000 VNĐ - 0775398511</span>
+                                            </div>
+                                            <div className="auction-area-comment-date">
+                                                <p>July 31 at 9:41 PM</p>
+                                            </div>
+                                        </div>
+                                        <div className="auction-area-comment-flex-right">
                                         </div>
                                     </div>
-                                    <div className="auction-area-comment-flex-right">
-                                    </div>
-                                </div>
-                                <div className="auction-area-comment-flex auction-space">
-                                    <div className="auction-area-comment-flex-left">
+                                    <div className="auction-area-comment-flex auction-space">
+                                        <div className="auction-area-comment-flex-left">
                                             <img src="img/client.jpg" alt="img" />
                                         </div>
                                         <div className="auction-area-comment-flex-center">
@@ -134,4 +114,4 @@ class BodyAuction extends Component {
     }
 }
 
-export default BodyAuction;
+export default OrderAuctionPost;
