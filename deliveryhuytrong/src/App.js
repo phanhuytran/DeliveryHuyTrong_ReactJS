@@ -27,7 +27,7 @@ class App extends Component {
             <Route path="/shipper-detail" component={BodyShipperDetail} />
             <Route path="/pricing" component={BodyPricing} />
             <Route path="/contact" component={BodyContact} />
-            {/* <Route path="/signin-signup" component={SignInSignUp} /> */}
+            <Route path="/signin-signup" component={SignInSignUp} />
           </Switch>
           <Footer />
         </Router>

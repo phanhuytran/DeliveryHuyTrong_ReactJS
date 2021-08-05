@@ -1,10 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-
-* {
-    box-sizing: border-box;
-}
-
-body {
+.body-s {
     background: #f6f5f7;
     display: flex;
     justify-content: center;
@@ -15,16 +9,21 @@ body {
     margin: -5px auto;
 }
 
-h1 {
+.h1-s {
     font-weight: bold;
+    font-size: 36px;
     margin: 0;
 }
 
-h2 {
-    text-align: center;
+.h1-title-s {
+    font-weight: bold;
+    font-size: 36px;
+    font-family: cursive;
+    margin: 0;
+    color: black;
 }
 
-p {
+.p-s {
     font-size: 14px;
     font-weight: 100;
     line-height: 20px;
@@ -32,23 +31,21 @@ p {
     margin: 20px 0 30px;
 }
 
-span {
-    font-size: 12px;
-}
 
-a {
+.a-s {
     color: #333;
     font-size: 14px;
     text-decoration: none;
     margin: 15px 0;
+    cursor: pointer;
 }
 
-img {
+.img-s {
     width: 100%;
     margin-bottom: 8%;
 }
 
-button {
+.btn-s {
     border-radius: 20px;
     border: 1px solid #22313f;
     background-color: #22313f;
@@ -62,15 +59,15 @@ button {
     transition: background-color 0.5s,border-color 0.5s, color 0.5s;
     cursor: pointer;
 }
-button:hover {
+.btn-s:hover {
     background-color: #f9bf3b;
     border-color: #f9bf3b;
     color: #fff;
 }
-button:active {
+.btn-s:active {
     transform: scale(0.95);
 }
-button:focus {
+.btn-s:focus {
     outline: none;
 }
 
@@ -86,7 +83,7 @@ button.ghost:hover {
     color: #f9bf3b;
 }
 
-form {
+.form-s {
     background-color: #FFFFFF;
     display: flex;
     align-items: center;
@@ -102,12 +99,12 @@ div.sign-up-container input, div.sign-up-container select {
     border: none;
     border-radius: 20px;
     padding: 12px 15px;
-    margin: 8px 0;
+    margin: 6px 0;
     width: 49.4%;
 }
 
 div.sign-up-container input.profile-picture {
-    margin-left: -50%;
+    margin-left: 25%;
 }
 
 div.radio-role {
@@ -142,14 +139,13 @@ div.sign-in-container input {
     width: 80%;
 }
 
-.container {
+.container-s {
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-        0 10px 10px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
     overflow: hidden;
-    width: 70%;
+    width: 68%;
     max-width: 90%;
     min-height: 95%;
 }
@@ -167,7 +163,7 @@ div.sign-in-container input {
     z-index: 2;
 }
 
-.container.right-panel-active .sign-in-container {
+.container-s.right-panel-active .sign-in-container {
     transform: translateX(100%);
 }
 
@@ -178,7 +174,7 @@ div.sign-in-container input {
     z-index: 1;
 }
 
-.container.right-panel-active .sign-up-container {
+.container-s.right-panel-active .sign-up-container {
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
@@ -211,17 +207,11 @@ div.sign-in-container input {
     z-index: 100;
 }
 
-.container.right-panel-active .overlay-container {
+.container-s.right-panel-active .overlay-container {
     transform: translateX(-100%);
 }
 
 .overlay {
-    /*background: #22313f;
-    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-    background: linear-gradient(to right, #FF4B2B, #FF416C);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0 0;*/
     background-color: #22313f;
     color: #FFFFFF;
     position: relative;
@@ -232,7 +222,7 @@ div.sign-in-container input {
     transition: transform 0.6s ease-in-out;
 }
 
-.container.right-panel-active .overlay {
+.container-s.right-panel-active .overlay {
     transform: translateX(50%);
 }
 
@@ -255,7 +245,7 @@ div.sign-in-container input {
     transform: translateX(-20%);
 }
 
-.container.right-panel-active .overlay-left {
+.container-s.right-panel-active .overlay-left {
     transform: translateX(0);
 }
 
@@ -264,7 +254,7 @@ div.sign-in-container input {
     transform: translateX(0);
 }
 
-.container.right-panel-active .overlay-right {
+.container-s.right-panel-active .overlay-right {
     transform: translateX(20%);
 }
 
@@ -273,7 +263,7 @@ div.sign-in-container input {
 }
 
 .social-container a {
-    border: 1px solid #DDDDDD;
+    border: 1px solid #ccc;
     border-radius: 50%;
     display: inline-flex;
     justify-content: center;
@@ -292,29 +282,4 @@ div.sign-in-container input {
 span.error {
     color: red;
     font-size: 16px;
-}
-
-footer {
-    background-color: #222;
-    color: #fff;
-    font-size: 14px;
-    bottom: 0;
-    position: fixed;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 999;
-}
-
-footer p {
-    margin: 10px 0;
-}
-
-footer i {
-    color: red;
-}
-
-footer a {
-    color: #3c97bf;
-    text-decoration: none;
 }
