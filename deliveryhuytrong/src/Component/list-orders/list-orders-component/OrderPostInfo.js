@@ -11,7 +11,7 @@ class OrderPostInfo extends Component {
                 x.style.display = "none";
             }
         }
-        
+
         return (
             <div>
                 <h2>List of orders waiting to be auctioned</h2>
@@ -48,7 +48,8 @@ class OrderPostInfo extends Component {
                                             <button>POST</button>
                                         </td>
                                     </tr>
-                                </tbody></table>
+                                </tbody>
+                            </table>
                         </form>
                     </div>
                 </div>
