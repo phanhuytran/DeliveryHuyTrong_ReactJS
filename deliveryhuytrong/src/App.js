@@ -10,6 +10,7 @@ import BodyOrderAuction from './Component/order-auction/BodyOrderAuction';
 import BodyPricing from './Component/pricing/BodyPricing';
 import BodyShipperDetail from './Component/shipper-detail/BodyShipperDetail';
 import BodyShipper from './Component/shipper/BodyShipper';
+import SignInSignUp from './Component/signIn-signUp/SignInSignUp';
 
 class App extends Component {
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
             <Route path="/shipper-detail" component={BodyShipperDetail} />
             <Route path="/pricing" component={BodyPricing} />
             <Route path="/contact" component={BodyContact} />
+            {/* <Route path="/signin-signup" component={SignInSignUp} /> */}
           </Switch>
           <Footer />
         </Router>

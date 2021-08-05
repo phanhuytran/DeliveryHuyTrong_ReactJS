@@ -29,7 +29,6 @@ class BodyContact extends Component {
                         </div>
                     </div>
                 </section>
-                <script src="http://maps.googleapis.com/maps/api/js"></script>
             </div>
         );
     }
