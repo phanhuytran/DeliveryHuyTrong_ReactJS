@@ -1,0 +1,22 @@
+.navlink_color {
+    color: #fff;
+    transition: 0.5s;
+}
+
+.navlink_color:hover {
+    color: #f9bf3b;
+}
+
+.current-menu-item {
+    color: #f9bf3b !important;
+}
+
+.current-menu-item::before {
+    background: #f9bf3b;
+    position: absolute;
+    width: 65%;
+    left: 13px;
+    bottom: 0;
+    content: "";
+    height: 3px;
+}
