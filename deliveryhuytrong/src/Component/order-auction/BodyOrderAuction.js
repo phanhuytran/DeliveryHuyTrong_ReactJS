@@ -6,8 +6,8 @@ class BodyAuction extends Component {
     render() {
         return (
             <div>
-                <OrderAuctionTitle/>
-                <OrderAuctionPost/>
+                <OrderAuctionTitle />
+                <OrderAuctionPost />
             </div>
         );
     }

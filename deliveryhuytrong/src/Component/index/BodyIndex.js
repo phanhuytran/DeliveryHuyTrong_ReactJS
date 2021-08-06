@@ -7,9 +7,9 @@ class BodyIndex extends Component {
     render() {
         return (
             <div>
-                <IndexIntro/>
-                <IndexAbout/>
-                <IndexStatistic/>
+                <IndexIntro />
+                <IndexAbout />
+                <IndexStatistic />
             </div>
         );
     }

@@ -6,8 +6,8 @@ class BodyShipper extends Component {
     render() {
         return (
             <div>
-                <ShipperList/>
-                <ShipperCustomerOpinion/>
+                <ShipperList />
+                <ShipperCustomerOpinion />
             </div>
         );
     }

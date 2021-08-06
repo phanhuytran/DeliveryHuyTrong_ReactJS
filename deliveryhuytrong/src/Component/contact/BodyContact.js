@@ -7,7 +7,7 @@ class BodyContact extends Component {
             <div>
                 <section className="contact-page-area">
                     <div className="container">
-                        <ContactTitle/>
+                        <ContactTitle />
                         <div className="row">
                             <div className="col-md-6 col-sm-6">
                                 <div className="contact-form">

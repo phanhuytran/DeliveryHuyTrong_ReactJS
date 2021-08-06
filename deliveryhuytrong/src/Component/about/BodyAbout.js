@@ -6,8 +6,8 @@ class BodyAbout extends Component {
     render() {
         return (
             <div>
-                <AboutDetail/>
-                <AboutIntro/>
+                <AboutDetail />
+                <AboutIntro />
             </div>
         );
     }
