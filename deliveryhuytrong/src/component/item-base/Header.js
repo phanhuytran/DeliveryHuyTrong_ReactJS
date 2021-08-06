@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Menu from './Menu';
 
 class Header extends React.Component {
@@ -12,7 +13,7 @@ class Header extends React.Component {
                             <div className="row">
                                 <div className="col-md-2 col-lg-2 col-sm-2 col-xs-6">
                                     <div className="logo wow bounceIn">
-                                        <a href="/"><img src="img/logo.png" alt="logo" /></a>
+                                        <Link to="/"><img src="img/logo.png" alt="logo" /></Link>
                                     </div>
                                 </div>
                                 <Menu/>
