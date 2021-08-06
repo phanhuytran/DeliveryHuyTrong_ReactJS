@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class OrderAuctionPost extends Component {
     render() {
@@ -7,7 +8,7 @@ class OrderAuctionPost extends Component {
             document.getElementById("see-more-auction-order-info-2").style.display = "block";
             document.getElementById("see-more-auction-order-info-1").style.display = "none";
         }
-        
+
         function see_less_auction_info() {
             document.getElementById("see-more-auction-order-info-2").style.display = "none";
             document.getElementById("see-more-auction-order-info-1").style.display = "inline-block";
@@ -106,7 +107,8 @@ class OrderAuctionPost extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div><br />
+                        <a className="new-page-tab"><Link to="/list-orders">SEE LIST OF ORDERS</Link></a>
                     </div>
                 </section>
             </div>

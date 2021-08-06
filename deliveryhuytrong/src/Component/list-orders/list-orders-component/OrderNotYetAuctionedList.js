@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class OrderNotYetAuctionedList extends Component {
     render() {
@@ -25,7 +26,7 @@ class OrderNotYetAuctionedList extends Component {
                                 <td>0.5</td>
                                 <td>TPHCM</td>
                                 <td>Long Xuyên</td>
-                                <td><a href="/order-auction" target="_blank">Click to auction <span className="fas fa-info-circle" /></a></td>
+                                <td><Link to="/order-auction">Click to auction <span className="fas fa-info-circle" /></Link></td>
                             </tr>
                             <tr>
                                 <td>2</td>
@@ -34,7 +35,7 @@ class OrderNotYetAuctionedList extends Component {
                                 <td>1.0</td>
                                 <td>Thừa Thiên Huế</td>
                                 <td>Cà Mau</td>
-                                <td><a href="/order-auction" target="_blank">Click to auction <span className="fas fa-info-circle" /></a></td>
+                                <td><Link to="/order-auction">Click to auction <span className="fas fa-info-circle" /></Link></td>
                             </tr>
                         </tbody>
                     </table>

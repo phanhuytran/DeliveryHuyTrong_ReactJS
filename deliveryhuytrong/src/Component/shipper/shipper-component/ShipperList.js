@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import ShipperTitle from './ShipperTitle';
 
 class ShipperList extends Component {
@@ -18,7 +19,7 @@ class ShipperList extends Component {
                                     <div className="about_single_item_content">
                                         <h4>Shipper's Name</h4>
                                         <p>Shipper's Information</p>
-                                        <a href="/shipper-detail" target="_blank">Read more <span className="fas fa-expand-alt" /></a>
+                                        <Link to="/shipper-detail">Read more <span className="fas fa-expand-alt" /></Link>
                                     </div>
                                 </div>
                             </div>
@@ -30,7 +31,7 @@ class ShipperList extends Component {
                                     <div className="about_single_item_content">
                                         <h4>Shipper's Name</h4>
                                         <p>Shipper's Information</p>
-                                        <a href="/shipper-detail" target="_blank">Read more <span className="fas fa-expand-alt" /></a>
+                                        <Link to="/shipper-detail">Read more <span className="fas fa-expand-alt" /></Link>
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +43,7 @@ class ShipperList extends Component {
                                     <div className="about_single_item_content">
                                         <h4>Shipper's Name</h4>
                                         <p>Shipper's Information</p>
-                                        <a href="/shipper-detail" target="_blank">Read more <span className="fas fa-expand-alt" /></a>
+                                        <Link to="/shipper-detail">Read more <span className="fas fa-expand-alt" /></Link>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +55,7 @@ class ShipperList extends Component {
                                     <div className="about_single_item_content">
                                         <h4>Shipper's Name</h4>
                                         <p>Shipper's Information</p>
-                                        <a href="/shipper-detail" target="_blank">Read more <span className="fas fa-expand-alt" /></a>
+                                        <Link to="/shipper-detail">Read more <span className="fas fa-expand-alt" /></Link>
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +67,7 @@ class ShipperList extends Component {
                                     <div className="about_single_item_content">
                                         <h4>Shipper's Name</h4>
                                         <p>Shipper's Information</p>
-                                        <a href="/shipper-detail" target="_blank">Read more <span className="fas fa-expand-alt" /></a>
+                                        <Link to="/shipper-detail">Read more <span className="fas fa-expand-alt" /></Link>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +79,7 @@ class ShipperList extends Component {
                                     <div className="about_single_item_content">
                                         <h4>Shipper's Name</h4>
                                         <p>Shipper's Information</p>
-                                        <a href="/shipper-detail" target="_blank">Read more <span className="fas fa-expand-alt" /></a>
+                                        <Link to="/shipper-detail">Read more <span className="fas fa-expand-alt" /></Link>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +91,7 @@ class ShipperList extends Component {
                                     <div className="about_single_item_content">
                                         <h4>Shipper's Name</h4>
                                         <p>Shipper's Information</p>
-                                        <a href="/shipper-detail" target="_blank">Read more <span className="fas fa-expand-alt" /></a>
+                                        <Link to="/shipper-detail">Read more <span className="fas fa-expand-alt" /></Link>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +103,7 @@ class ShipperList extends Component {
                                     <div className="about_single_item_content">
                                         <h4>Shipper's Name</h4>
                                         <p>Shipper's Information</p>
-                                        <a href="/shipper-detail" target="_blank">Read more <span className="fas fa-expand-alt" /></a>
+                                        <Link to="/shipper-detail">Read more <span className="fas fa-expand-alt" /></Link>
                                     </div>
                                 </div>
                             </div>
@@ -114,11 +115,11 @@ class ShipperList extends Component {
                                     <div className="about_single_item_content">
                                         <h4>Shipper's Name</h4>
                                         <p>Shipper's Information</p>
-                                        <a href="/shipper-detail" target="_blank">Read more <span className="fas fa-expand-alt" /></a>
+                                        <Link to="/shipper-detail">Read more <span className="fas fa-expand-alt" /></Link>
                                     </div>
                                 </div>
                             </div>
-                            <a className="new-page-tab" href="/list-orders" target="_blank">SEE LIST OF ORDERS</a>
+                            <a className="new-page-tab"><Link to="/list-orders">SEE LIST OF ORDERS</Link></a>
                         </div>
                     </div>
                 </section>
