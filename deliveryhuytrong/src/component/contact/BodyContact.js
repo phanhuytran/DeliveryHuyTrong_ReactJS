@@ -17,7 +17,8 @@ class BodyContact extends React.Component {
                                         <input type="email" name="email_address" placeholder="Email address" required />
                                         <input type="text" name="subject" placeholder="Subject" />
                                         <textarea name="messages" placeholder="Your message..." required defaultValue={""} />
-                                        <input type="submit" name="submit" defaultValue="send" />
+                                        {/* <input type="submit" name="submit" defaultValue="send" /> */}
+                                        <button>SEND</button>
                                     </form>
                                 </div>
                             </div>

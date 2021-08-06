@@ -1209,7 +1209,9 @@ ul.breadcrumbs li {
     font-family: 'montserratsemi_bold';
 }
 
-.contact-form input[type="submit"] {
+.contact-form button {
+    padding: 8px;
+    border: 2px solid #eee;
     background: #f9bf3b none repeat scroll 0 0;
     color: #fff;
     font-size: 20px;
@@ -1218,7 +1220,7 @@ ul.breadcrumbs li {
     transition: 0.5s
 }
 
-.contact-form input[type="submit"]:hover {
+.contact-form button:hover {
     background: #fff;
     color: #f9bf3b
 }
