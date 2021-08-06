@@ -108,7 +108,7 @@ class OrderAuctionPost extends React.Component {
                                 </div>
                             </div>
                         </div><br />
-                        <a className="new-page-tab"><Link to="/list-orders">SEE LIST OF ORDERS</Link></a>
+                        <Link to="/list-orders">SEE LIST OF ORDERS</Link>
                     </div>
                 </section>
             </div>

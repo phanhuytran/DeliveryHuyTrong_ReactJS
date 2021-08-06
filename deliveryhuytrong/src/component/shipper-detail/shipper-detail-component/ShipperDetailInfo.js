@@ -26,7 +26,7 @@ class ShipperDetailInfo extends React.Component {
                                 </form>
                             </div>
                         </div>
-                        <a className="new-page-tab"><Link to="/shipper">SEE LIST OF SHIPPERS</Link></a>
+                        <Link to="/shipper">SEE LIST OF SHIPPERS</Link>
                     </div>
                 </section>
             </div>

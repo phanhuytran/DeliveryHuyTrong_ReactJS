@@ -37,7 +37,7 @@ class Footer extends React.Component {
                             <div className="single-footer clearfix">
                             <h2>news latters</h2>
                             <input type="text" className="form-control" />
-                            <input type="submit" className="submt-button" defaultValue="submit" />
+                            <button className="submt-button">SEND</button>
                             </div>
                         </div>
                         </div>
