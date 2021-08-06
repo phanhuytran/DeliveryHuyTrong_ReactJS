@@ -60,7 +60,7 @@ div.shipper-info-right button {
 	border: 2px solid #eee;
 	background-color: #f9bf3b;
 	color: #fff;
-	transition: 0.5s;
+	transition: 0.4s;
 }
 
 div.shipper-info-right button:hover {
@@ -80,7 +80,7 @@ td.col-confirm-rating a {
 	color: #5d5d5d;
 	border: none;
 	cursor: pointer;
-	transition: 0.5s;
+	transition: 0.4s;
 }
 
 td.col-confirm-rating a:hover {

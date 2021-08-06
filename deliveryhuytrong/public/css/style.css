@@ -284,7 +284,24 @@ nav.navbar {
 }
 
 .about_single_item {
-  margin-bottom: 50px;
+    color: #5d5d5d;
+    margin-bottom: 50px;
+    padding: 20px;
+    border: 1px solid rgb(218, 218, 218);
+    transition: 0.4s;
+}
+
+.about_single_item_1 {
+    height: 165px;
+    color: #5d5d5d;
+    margin-bottom: 50px;
+    padding: 20px;
+    border: 1px solid rgb(218, 218, 218);
+    transition: 0.4s;
+}
+
+.about_single_item:hover, .about_single_item_1:hover {
+    box-shadow: 0 0 5px rgba(33,33,33,.2);
 }
 
 .item_icon {
@@ -298,7 +315,12 @@ nav.navbar {
 }
 
 .about_single_item_content {
-    padding-left: 85px;
+    padding-left: 32%;
+}
+
+.about_single_item_content span {
+    font-size: 18px;
+    float: right;
 }
 
 .about_single_item_content h4 {
@@ -941,7 +963,7 @@ video#bgvid {
     color: #fff;
     line-height: 25px;
     text-transform: capitalize;
-    transition: 0.5s;
+    transition: 0.4s;
     cursor: pointer;
 }
 
@@ -1048,9 +1070,14 @@ video#bgvid {
 }
 
 .single-about-us-bottom, .single-order-us-bottom {
-    border: 1px solid #eee;
+    border: 1px solid rgb(218, 218, 218);
     padding: 20px;
     position: relative;
+    transition: 0.4s;
+}
+
+.single-about-us-bottom:hover, .single-order-us-bottom:hover {
+    box-shadow: 0 0 5px rgba(33,33,33,.2);
 }
 
 .single-order-us-bottom {
@@ -1094,7 +1121,6 @@ ul.breadcrumbs li {
 
 .about_us_content_title, .contact_us_content_title, .order_us_content_title {
     margin-bottom: 50px;
-    text-transform: capitalize;
 }
 
 .shipper_content_title {
@@ -1171,7 +1197,7 @@ ul.breadcrumbs li {
     margin-top: 20px;
     padding: 10px 40px;
     text-transform: uppercase;
-    transition: 0.5s;
+    transition: 0.4s;
     cursor: pointer;
 }
 
@@ -1217,7 +1243,7 @@ ul.breadcrumbs li {
     font-size: 20px;
     text-transform: uppercase;
     width: 40%;
-    transition: 0.5s
+    transition: 0.4s
 }
 
 .contact-form button:hover {
@@ -1273,7 +1299,7 @@ div.create-post-right button {
     background-color: #f9bf3b;
     color: #fff;
     cursor: pointer;
-    transition: 0.5s;
+    transition: 0.4s;
 }
 
 div.create-post-right button:hover {
@@ -1296,7 +1322,7 @@ div.new-page-tab {
     background-color: #f9bf3b;
     width: 80%;
     cursor: pointer;
-    transition: 0.5s;
+    transition: 0.4s;
 }
 
 div.new-page-tab:hover {
@@ -1459,4 +1485,11 @@ div.auction-area-comment-date {
 }
 .single-footer .form-control:focus {
     box-shadow: none;
+}
+
+.avatar-shipper {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50%;
+    margin-right: 50px;
 }

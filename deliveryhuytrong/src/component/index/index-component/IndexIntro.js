@@ -8,7 +8,7 @@ class IndexIntro extends React.Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-4 col-sm-4 col-xs-12">
-                                <div className="about_single_item">
+                                <div className="about_single_item_1">
                                     <div className="item_icon">
                                         <img src="img/speed.png" alt="item" />
                                     </div>
@@ -19,7 +19,7 @@ class IndexIntro extends React.Component {
                                 </div>
                             </div>
                             <div className="col-md-4 col-sm-4 col-xs-12">
-                                <div className="about_single_item">
+                                <div className="about_single_item_1">
                                     <div className="item_icon">
                                         <img src="img/safe.png" alt="item" />
                                     </div>
@@ -30,7 +30,7 @@ class IndexIntro extends React.Component {
                                 </div>
                             </div>
                             <div className="col-md-4 col-sm-4 col-xs-12">
-                                <div className="about_single_item">
+                                <div className="about_single_item_1">
                                     <div className="item_icon">
                                         <img src="img/moto.png" alt="item" />
                                     </div>
