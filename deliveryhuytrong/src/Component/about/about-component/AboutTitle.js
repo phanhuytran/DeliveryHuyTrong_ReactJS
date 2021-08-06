@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-class AboutTitle extends Component {
+class AboutTitle extends React.Component {
     render() {
         return (
             <div>
@@ -14,8 +15,8 @@ class AboutTitle extends Component {
                     <div className="col-md-6 col-sm-6 col-xs-6 text-right">
                         <div className="about_us_content_title">
                             <ul className="breadcrumbs">
-                                <li><a href="/">home</a></li>
-                                <li><a href="/about">about</a></li>
+                                <li><Link to="/">home</Link></li>
+                                <li><Link to="/list-orders">order</Link></li>
                             </ul>
                         </div>
                     </div>

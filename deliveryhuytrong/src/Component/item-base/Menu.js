@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from "react-router-dom";
 import "./Menu.css";
 
-class Menu extends Component {
+class Menu extends React.Component {
     render() {
         return (
             <div>

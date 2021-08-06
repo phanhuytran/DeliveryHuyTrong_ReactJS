@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SignInForm from './signIn-signUp-component/SignInForm';
 import SignInOverlay from './signIn-signUp-component/SignInOverlay';
 import SignUpForm from './signIn-signUp-component/SignUpForm';
 import SignUpOverlay from './signIn-signUp-component/SignUpOverlay';
 
-class SignInSignUp extends Component {
+class SignInSignUp extends React.Component {
     render() {
 
         window.onload = function () {

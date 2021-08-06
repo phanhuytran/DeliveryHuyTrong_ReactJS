@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class OrderPostInfo extends Component {
+class OrderPostInfo extends React.Component {
     render() {
 
         function show_info_post() {

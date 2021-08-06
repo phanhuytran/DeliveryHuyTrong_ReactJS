@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ShipperCustomerOpinion from './shipper-component/ShipperCustomerOpinion';
 import ShipperList from './shipper-component/ShipperList';
 
-class BodyShipper extends Component {
+class BodyShipper extends React.Component {
     render() {
         return (
             <div>

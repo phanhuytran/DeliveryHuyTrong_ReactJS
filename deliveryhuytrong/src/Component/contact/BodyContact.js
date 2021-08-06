@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ContactTitle from './contact-component/ContactTitle';
 
-class BodyContact extends Component {
+class BodyContact extends React.Component {
     render() {
         return (
             <div>

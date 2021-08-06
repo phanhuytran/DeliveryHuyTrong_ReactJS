@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ShipperDetailCustomerOpinion from './shipper-detail-component/ShipperDetailCustomerOpinion';
-import ShipperDetailRating from './shipper-detail-component/ShipperDetailRating';
+import ShipperDetailInfo from './shipper-detail-component/ShipperDetailInfo';
 
-class BodyShipperDetail extends Component {
+class BodyShipperDetail extends React.Component {
     render() {
         return (
             <div>
-                <ShipperDetailRating />
+                <ShipperDetailInfo />
                 <ShipperDetailCustomerOpinion />
             </div>
         );

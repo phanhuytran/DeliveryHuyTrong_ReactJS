@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ShipperDetailPersonalInfo extends Component {
+class ShipperDetailPersonalInfo extends React.Component {
     render() {
         return (
             <React.Fragment>

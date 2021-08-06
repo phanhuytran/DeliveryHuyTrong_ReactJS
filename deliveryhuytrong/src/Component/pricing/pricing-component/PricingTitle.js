@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-class PricingTitle extends Component {
+class PricingTitle extends React.Component {
     render() {
         return (
             <div>
@@ -18,8 +19,8 @@ class PricingTitle extends Component {
                     <div className="col-md-6 col-sm-6 col-xs-6 text-right">
                         <div className="shipper_content_title">
                             <ul className="breadcrumbs">
-                                <li><a href="/">home</a></li>
-                                <li><a href="/pricing">pricing</a></li>
+                                <li><Link to="/shipper">shipper</Link></li>
+                                <li><Link to="/contact">contact</Link></li>
                             </ul>
                         </div>
                     </div>

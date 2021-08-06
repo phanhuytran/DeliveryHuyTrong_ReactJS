@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PricingTitle from './pricing-component/PricingTitle';
 
-class BodyPricing extends Component {
+class BodyPricing extends React.Component {
     render() {
         return (
             <div>

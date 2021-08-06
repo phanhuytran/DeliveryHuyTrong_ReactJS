@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import AboutDetail from './about-component/AboutDetail';
 import AboutIntro from './about-component/AboutIntro';
 
-class BodyAbout extends Component {
+class BodyAbout extends React.Component {
     render() {
         return (
             <div>

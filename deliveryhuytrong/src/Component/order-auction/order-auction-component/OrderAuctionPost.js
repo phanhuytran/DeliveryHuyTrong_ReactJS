@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-class OrderAuctionPost extends Component {
+class OrderAuctionPost extends React.Component {
     render() {
 
         function see_more_auction_info() {

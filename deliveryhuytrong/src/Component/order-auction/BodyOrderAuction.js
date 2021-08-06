@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import OrderAuctionPost from './order-auction-component/OrderAuctionPost';
 import OrderAuctionTitle from './order-auction-component/OrderAuctionTitle';
 
-class BodyAuction extends Component {
+class BodyAuction extends React.Component {
     render() {
         return (
             <div>

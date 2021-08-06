@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import OrderNotYetAuctionedList from './OrderNotYetAuctionedList';
 import OrderPostInfo from './OrderPostInfo';
 
-class OrderNotYetAuctioned extends Component {
+class OrderNotYetAuctioned extends React.Component {
     render() {
         return (
             <div>

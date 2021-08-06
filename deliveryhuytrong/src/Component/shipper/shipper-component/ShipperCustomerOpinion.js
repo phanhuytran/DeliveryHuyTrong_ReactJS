@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ShipperCustomerOpinion extends Component {
+class ShipperCustomerOpinion extends React.Component {
     render() {
         return (
             <div>

@@ -1,18 +1,18 @@
-import { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import BodyAbout from './Component/about/BodyAbout';
-import BodyContact from './Component/contact/BodyContact';
-import BodyIndex from './Component/index/BodyIndex';
-import Footer from './Component/item-base/Footer';
-import Header from './Component/item-base/Header';
-import BodyOrder from './Component/list-orders/BodyOrder';
-import BodyOrderAuction from './Component/order-auction/BodyOrderAuction';
-import BodyPricing from './Component/pricing/BodyPricing';
-import BodyShipperDetail from './Component/shipper-detail/BodyShipperDetail';
-import BodyShipper from './Component/shipper/BodyShipper';
-import SignInSignUp from './Component/signIn-signUp/SignInSignUp';
+import BodyAbout from './component/about/BodyAbout';
+import BodyContact from './component/contact/BodyContact';
+import BodyIndex from './component/index/BodyIndex';
+import Footer from './component/item-base/Footer';
+import Header from './component/item-base/Header';
+import BodyOrder from './component/list-orders/BodyOrder';
+import BodyOrderAuction from './component/order-auction/BodyOrderAuction';
+import BodyPricing from './component/pricing/BodyPricing';
+import BodyShipperDetail from './component/shipper-detail/BodyShipperDetail';
+import BodyShipper from './component/shipper/BodyShipper';
+import SignInSignUp from './component/signIn-signUp/SignInSignUp';
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <div>

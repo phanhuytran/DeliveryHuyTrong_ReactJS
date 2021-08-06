@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class IndexIntro extends Component {
+class IndexIntro extends React.Component {
     render() {
         return (
             <div>

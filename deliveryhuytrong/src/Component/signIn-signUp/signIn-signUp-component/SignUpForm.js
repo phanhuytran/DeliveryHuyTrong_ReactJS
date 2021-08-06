@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class SignUpForm extends Component {
+class SignUpForm extends React.Component {
     render() {
         return (
             <div className="form-container sign-up-container">

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import AboutTitle from './AboutTitle';
 
-class AboutDetail extends Component {
+class AboutDetail extends React.Component {
     render() {
          
         function show_about_content() {

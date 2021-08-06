@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class SignInOverlay extends Component {
+class SignInOverlay extends React.Component {
     render() {
         return (
             <div className="overlay-panel overlay-left">
