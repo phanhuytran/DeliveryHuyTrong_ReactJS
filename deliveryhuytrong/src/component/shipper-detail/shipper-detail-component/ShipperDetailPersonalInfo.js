@@ -3,7 +3,7 @@ import React from 'react';
 class ShipperDetailPersonalInfo extends React.Component {
     render() {
         return (
-            <React.Fragment>
+            <>
                 <tr>
                     <td>Full name:</td>
                     <td colSpan={2} className="text-right shipper-highlight-info">Do Trong Nguyen</td>
@@ -28,7 +28,7 @@ class ShipperDetailPersonalInfo extends React.Component {
                     <td>Phone:</td>
                     <td colSpan={2} className="text-right shipper-highlight-info">(+84) 77 5398 511</td>
                 </tr>
-            </React.Fragment>
+            </>
         );
     }
 }

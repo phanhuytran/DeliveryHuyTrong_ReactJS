@@ -24,7 +24,9 @@ class BodyContact extends React.Component {
                             </div>
                             <div className="col-md-5 col-md-offset-1 col-sm-6  wow bounceIn">
                                 <div className="google-map">
-                                    <div id="googleMap" />
+                                    <div id="googleMap">
+                                        <img src="img/map.jpg" alt="" />
+                                    </div>
                                 </div>
                             </div>
                         </div>

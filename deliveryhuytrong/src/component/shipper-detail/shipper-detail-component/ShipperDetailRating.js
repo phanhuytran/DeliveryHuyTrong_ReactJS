@@ -14,7 +14,7 @@ class ShipperDetailRating extends React.Component {
         }
 
         return (
-            <React.Fragment>
+            <>
                 <tr>
                     <th rowSpan={2}>
                         <h3>RATING:</h3>
@@ -45,7 +45,7 @@ class ShipperDetailRating extends React.Component {
                         <button>SEND</button>
                     </td>
                 </tr>
-            </React.Fragment>
+            </>
         );
     }
 }

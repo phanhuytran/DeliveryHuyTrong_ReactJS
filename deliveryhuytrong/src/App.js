@@ -10,7 +10,6 @@ import BodyOrderAuction from './component/order-auction/BodyOrderAuction';
 import BodyPricing from './component/pricing/BodyPricing';
 import BodyShipperDetail from './component/shipper-detail/BodyShipperDetail';
 import BodyShipper from './component/shipper/BodyShipper';
-import SignInSignUp from './component/signIn-signUp/SignInSignUp';
 
 class App extends React.Component {
   render() {
@@ -20,14 +19,13 @@ class App extends React.Component {
           <Header />
           <Switch>
             <Route exact path="/" component={BodyIndex} />
-            <Route path="/about" component={BodyAbout} />
-            <Route path="/list-orders" component={BodyOrder} />
-            <Route path="/order-auction" component={BodyOrderAuction} />
-            <Route path="/shipper" component={BodyShipper} />
-            <Route path="/shipper-detail" component={BodyShipperDetail} />
-            <Route path="/pricing" component={BodyPricing} />
-            <Route path="/contact" component={BodyContact} />
-            <Route path="/signin-signup" component={SignInSignUp} />
+            <Route exact path="/about" component={BodyAbout} />
+            <Route exact path="/list-orders" component={BodyOrder} />
+            <Route exact path="/order-auction" component={BodyOrderAuction} />
+            <Route exact path="/shipper" component={BodyShipper} />
+            <Route exact path="/shipper-detail" component={BodyShipperDetail} />
+            <Route exact path="/pricing" component={BodyPricing} />
+            <Route exact path="/contact" component={BodyContact} />
           </Switch>
           <Footer />
         </Router>

@@ -89,7 +89,7 @@ button.ghost:hover {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 50px;
+    padding: 0 30px;
     height: 100%;
     text-align: center;
 }
@@ -99,12 +99,12 @@ div.sign-up-container input, div.sign-up-container select {
     border: none;
     border-radius: 20px;
     padding: 12px 15px;
-    margin: 6px 0;
-    width: 49.4%;
+    margin: 6px 5px;
+    width: 46.9%;
 }
 
 div.sign-up-container input.profile-picture {
-    margin-left: 25%;
+    margin-left: 26%;
 }
 
 div.radio-role {
@@ -134,8 +134,8 @@ div.sign-in-container input {
     background-color: #eee;
     border: none;
     border-radius: 20px;
-    padding: 12px 15px;
-    margin: 8px 0;
+    margin: 6px 5px;
+    padding: 12px;
     width: 80%;
 }
 
@@ -145,9 +145,9 @@ div.sign-in-container input {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
     overflow: hidden;
-    width: 68%;
-    max-width: 90%;
-    min-height: 95%;
+    width: 100%;
+    max-width: 100%;
+    min-height: 92%;
 }
 
 .form-container {
