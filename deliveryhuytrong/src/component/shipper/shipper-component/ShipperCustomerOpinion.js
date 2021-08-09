@@ -2,6 +2,25 @@ import React from 'react';
 import ReactOwlCarousel from 'react-owl-carousel';
 
 class ShipperCustomerOpinion extends React.Component {
+    state = {
+        responsive: {
+            0: {
+                items: 1,
+            },
+            400: {
+                items: 1,
+            },
+            600: {
+                items: 1,
+            },
+            700: {
+                items: 2,
+            },
+            1000: {
+                items: 4,
+            }
+        }
+    }
     render() {
         return (
             <div>
@@ -17,6 +36,7 @@ class ShipperCustomerOpinion extends React.Component {
                         dotsSpeed="500"
                         smartSpeed="1000"
                         slideBy="2"
+                        responsive={this.state.responsive}
                     >
                         <div className="owl-customer-comment-detail">
                             <img src="img/item_icon.png" alt="img" />

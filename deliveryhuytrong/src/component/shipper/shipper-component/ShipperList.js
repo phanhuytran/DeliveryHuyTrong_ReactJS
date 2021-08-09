@@ -54,7 +54,7 @@ class ShipperList extends React.Component {
                     <div className="container">
                         <ShipperTitle />
                         <br /><br />
-                        <div className="row">
+                        <div className="row scroll-shipper-list">
                             {elements}
                         </div>
                         <Link to="/list-orders">SEE LIST OF ORDERS</Link>

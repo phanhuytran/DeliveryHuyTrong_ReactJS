@@ -1,16 +1,10 @@
 /* Medium Layout: 1280px. */
 
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
-    /* .menu li a, */
-    /* .signup li a {
-        padding: 15px 25px 15px 0;
-    } */
+    
     .carousel-caption {
         left: 15%;
     }
-    /* .menu li:last-child a {
-        padding-right: 3px;
-    } */
     div.slider-navs {
         left: 25%;
     }
@@ -38,9 +32,6 @@
     .logo {
         padding: 4px 6px;
     }
-    /* .menu li:last-child a {
-        padding-right: 4px;
-    } */
     .is-sticky #sticker {
         padding: 5px 0;
     }
@@ -116,23 +107,6 @@
         height: 500px;
         position: static;
     }
-    /* .signup ul li:first-child a {
-        line-height: 32px;
-        padding: 0 15px 0 0;
-    }
-    .signup ul li:last-child a {
-        background: #f9bf3b none repeat scroll 0 0;
-        border-radius: 5px;
-        color: #fff;
-        padding: 6px 15px;
-        margin-top: 0;
-    }
-    .menu li a,
-    .signup li a {
-        font-size: 12px;
-        padding: 6px 15px 6px 0;
-        transition: all 0.4s ease 0s;
-    } */
     .item_icon {
         float: none;
         margin-bottom: 20px;
@@ -182,19 +156,9 @@
         height: 45px;
         width: 290px;
     }
-    /* .nav.navbar-nav.navbar-right.menu {
-        text-align: left;
-    } */
-    /* .logo_menu {
-        top: 0;
-        z-index: 30;
-    } */
     .mean-container .mean-bar {
         position: fixed;
     }
-    /* .version2-hero .logo_menu {
-        top: 0;
-    } */
     .mean-container .mean-nav ul li a.mean-expand {
         height: auto;
         line-height: 1;
@@ -243,9 +207,9 @@
         font-size: 12px;
         line-height: normal;
     }
-    .signup {
+    /* .signup {
         display: none;
-    }
+    } */
     .signup ul li {
         float: left;
         width: 50%;
@@ -383,14 +347,6 @@
     .footer-text {
         text-align: center;
     }
-    /* .mobMenuCol {
-        position: absolute;
-        right: 0;
-        text-align: center;
-        top: 0;
-        width: 100%;
-        padding: 0 */
-    }
     .logo {
         padding: 11px 0;
         position: relative;
@@ -413,9 +369,6 @@
     .welcome_form .form-control::-moz-placeholder {
         font-size: 9px;
     }
-    /* .menu li a::before {
-        display: none;
-    } */
     .navbar-collapse a:hover {
         color: #f9bf3b !important;
     }
@@ -521,8 +474,7 @@
     .about_us_area {
         padding: 50px 0 30px;
     }
-
-
+}
 
 /* Wide Mobile Layout: 480px. */
 

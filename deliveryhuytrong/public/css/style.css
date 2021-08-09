@@ -11,8 +11,6 @@
 
 .logo_menu {
     position: absolute !important;
-    /* left: 0;
-    top: 6%; */
     width: 100%;
     z-index: 0;
     transition: .4s
@@ -39,6 +37,10 @@ nav.navbar {
     border: 0;
     margin: 0 12px;
 }
+
+/* .container {
+    z-index: 1000;
+} */
 
 .mean-container .mean-bar {
   background: transparent none repeat scroll 0 0;
@@ -658,7 +660,7 @@ video#bgvid {
     text-transform: uppercase;
     width: 50%;
     float: right;
-    transition: background 0.5s, color 0.5s;
+    transition: 0.4s;
 }
 
 .submt-button:hover {
@@ -879,6 +881,10 @@ ul.breadcrumbs li {
     text-transform: uppercase;
     color: #111;
     font-weight: 700;
+}
+
+.about_us_content_title h5 {
+    font-size: 14px !important;
 }
 
 .about-us .is-sticky .logo {

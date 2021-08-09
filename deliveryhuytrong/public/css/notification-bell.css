@@ -16,12 +16,9 @@
     position: absolute;
     overflow-y: scroll;
     padding: 0px;
-    left: -300px;
+    left: -290px;
     margin-top: 5px;
     background-color: #eee;
-    -webkit-box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.2);
-    -moz-box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.1);
-    box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.1);
     cursor: context-menu;
     transition: 0.4s;
 }
@@ -62,7 +59,8 @@
     border-radius: 20px;
     text-align: center;
     position: absolute;
-    left: 60px;
+    left: 25px;
+    top: 25px;
     border-style: solid;
     border-width: 2px;
 }
@@ -72,16 +70,16 @@
 }
   
 .notBtn-bell {
-    transition: 0.5s;
     cursor: pointer;
+    transition: 0.5s;
 }
   
 .fas-bell {
-    font-size: 25pt;
+    font-size: 20pt;
     padding-bottom: 10px;
     color: #5d5d5d;
     margin-right: 40px;
-    margin-left: 40px;
+    margin-left: 10px;
     transition: 0.4s;
 }
   

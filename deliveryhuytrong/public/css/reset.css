@@ -7,6 +7,7 @@ body {
     font-family: 'montserratlight' !important;
     font-size: 14px;
     color: #5d5d5d;
+    z-index: -1 !important;
 }
 
 ul {
@@ -35,7 +36,7 @@ h4 {
 }
 
 h2 {
-    font-size: 28px;
+    font-size: 28px !important;
 }
 
 .nav > li > a:focus, .nav > li > a:hover {

@@ -20,7 +20,7 @@ class ShipperDetailRating extends React.Component {
                         <h3>RATING:</h3>
                         <p className="community-rating">Community's rating: ?</p>
                     </th>
-                    <td className="text-right">
+                    <td className="text-right txt-right-rating">
                         <div id="rating">
                             <input type="radio" id="star5" name="rating" defaultValue={5} />
                             <label className="full" htmlFor="star5" title="5 stars" />
