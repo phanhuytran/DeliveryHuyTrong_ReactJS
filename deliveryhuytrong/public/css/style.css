@@ -18,6 +18,10 @@
     transition: .4s
 }
 
+.row-impacted {
+    margin-top: 32px;
+}
+
 .is-sticky #sticker {
     background: #22313f none repeat scroll 0 0;
     -webkit-transition: all 0.4s ease 0s;
@@ -121,56 +125,9 @@ nav.navbar {
     color: #f9bf3b;
 }
 
-
-.dropdownMenu {
-    background: #22313f none repeat scroll 0 0;
-    left: 0;
-    min-width: 220px;
-    opacity: 0;
-    padding-left: 10px;
-    position: absolute;
-    text-align: left;
-    top: 150%;
-    transition: all 0.4s ease 0s;
-    visibility: hidden;
-    z-index: 555;
-}
-
-.dropdownMenu a::before {
-    display: none;
-}
-
-.menu li:hover ul.dropdownMenu {
-    display: block;
-    top: 100%;
-    opacity: 1;
-    visibility: visible;
-}
-
-.dropdownMenu li:first-child {
-    margin-top: 15px;
-}
-
-.dropdownMenu li {
-    margin-bottom: 15px;
-}
-
-.dropdownMenu li a {
-    padding: 0px 0px;
-    color: #f9bf3b
-}
-
-.dropdownMenu li a:hover {
-    color: #fff !important;
-}
-
-.dropdownMenu li:last-child a {
-    padding-right: 0;
-}
-
 .welcome_text {
     position: relative;
-    z-index: 5;
+    z-index: 0;
     margin-top: 10%
 }
 
@@ -373,148 +330,6 @@ nav.navbar {
     width: 5px;
 }
 
-.calculate_title > h2 {
-    color: #000000;
-    text-transform: uppercase;
-    font-family: "montserratbold";
-    margin-bottom: 30px;
-}
-
-.calculate_title {
-    margin-bottom: 50px;
-}
-
-.single_calculate {
-    height: 50px;
-    margin-bottom: 7px;
-    width: 100%;
-    border: 1px solid #eee
-}
-
-.single_calculate label {
-    background: #22313f none repeat scroll 0 0;
-    color: #fff;
-    display: inline-block;
-    float: left;
-    height: 100%;
-    line-height: 49px;
-    text-align: center;
-    text-transform: uppercase;
-    width: 165px;
-}
-
-.calculate_option {
-    display: inline-block;
-    float: right;
-    height: 100%;
-    width: 78px;
-    position: relative;
-}
-
-.single_calculate select {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    background: transparent none repeat scroll 0 0;
-    border: none;
-    color: #22313f;
-    display: inline-block;
-    font-family: "montserratsemi_bold";
-    height: 100%;
-    width: 100%;
-    padding-left: 10px;
-}
-
-.single_calculate > input {
-    border: none;
-    display: inline-block;
-    height: 100%;
-    margin-left: 0;
-    padding-left: 15px;
-    padding-right: 5px;
-    position: relative;
-    width: 207px;
-}
-
-.single_calculate input:focus + label {
-    background-color: #f9bf3b;
-}
-
-.addcolor {
-    border-color: #f9bf3b;
-}
-
-.calculate_option:before {
-    color: #000;
-    content: "\f0d7";
-    font-family: fontawesome;
-    font-size: 15px;
-    font-weight: 700;
-    position: absolute;
-    right: 12%;
-    top: 32%;
-    z-index: -1;
-}
-
-.calculate_option:after {
-    background: #e1e1e1 none repeat scroll 0 0;
-    content: "";
-    height: 60%;
-    left: 0;
-    margin-top: -15px;
-    position: absolute;
-    top: 50%;
-    width: 1px;
-}
-
-.single_calculate option {
-    padding-left: 10px;
-}
-
-.calculate_option.padding-riht:after {
-    display: none;
-}
-
-.calculate_option.padding-riht {
-    margin-right: 80px;
-}
-
-.calculate_option.selectpadding:after {
-    left: -50%;
-}
-
-.single_calculate.addcolor > label {
-    background: #f9bf3b none repeat scroll 0 0;
-}
-
-.calculat-image {
-    bottom: 0;
-    position: absolute;
-    right: 0;
-}
-
-.totla-cost {
-    border: 3px solid #22313f;
-    height: 80px;
-    margin-left: 10px;
-    margin-top: 40px;
-    outline: 1px solid #e0e2e4;
-    outline-offset: 5px;
-    padding: 10px 24px;
-    width: calc(100% - 20px);
-    font-family: "montserratbold";
-    color: #22313f
-}
-
-.totla-cost > h5 {
-    line-height: 25px;
-}
-
-.totla-cost > h5 span {
-    text-transform: uppercase;
-    padding-left: 25px;
-    color: #f9bf3b
-}
-
 .pricing-area {
     padding-bottom: 57px;
     position: relative;
@@ -595,8 +410,7 @@ span.pricing-status {
     position: relative;
 }
 
-.price:after,
-.price:before {
+.price:after, .price:before {
     background: #f9690e none repeat scroll 0 0;
     content: "";
     height: 100%;
@@ -624,11 +438,13 @@ span.pricing-status {
 .main-pos .single-pricing-table .price-btn {
     background-color: #f9690e;
 }
+
 .price-btn:hover {
   background: white none repeat scroll 0 0 !important;
   border: 1px solid #eee;
   color: #f9690e !important;
 }
+
 .pricing-area .main-pos {
     background: #fff none repeat scroll 0 0;
     box-shadow: 0 0 24px 2px rgba(0, 0, 0, 0.14);
@@ -638,7 +454,7 @@ span.pricing-status {
     -ms-transform: scale(1.1);
     transform: scale(1.1);
     width: 320px !important;
-    z-index: 5;
+    z-index: 0;
 }
 
 .single-pricing-table {
@@ -682,46 +498,7 @@ li.slides {
     position: absolute;
 }
 
-.main-pos {
-    margin-left: 2em !important;
-    z-index: 3000;
-    box-shadow: 0 0 24px 2px rgba(0, 0, 0, 0.14);
-    opacity: 1;
-    filter: alpha(opacity=100);
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-    width: 320px !important;
-}
 
-.left-pos {
-    opacity: .3;
-    filter: alpha(opacity=30);
-    margin-left: -17em !important;
-    z-index: 1000;
-    -webkit-transform: scale(.75);
-    -ms-transform: scale(.75);
-    transform: scale(.75);
-}
-
-.back-pos {
-    margin-left: 2em !important;
-    opacity: .05;
-    filter: alpha(opacity=5);
-    -webkit-transform: scale(.5);
-    -ms-transform: scale(.5);
-    transform: scale(.5);
-}
-
-.right-pos {
-    opacity: .3;
-    filter: alpha(opacity=30);
-    margin-left: 21em !important;
-    z-index: 1000;
-    -webkit-transform: scale(.75);
-    -ms-transform: scale(.75);
-    transform: scale(.75);
-}
 
 div.slider-navs {
     left: 50%;
@@ -730,9 +507,10 @@ div.slider-navs {
     top: 33%;
     width: 650px;
 }
-.carousel{
+.carousel {
     position: static;
 }
+
 div.slider-navs div {
     background: #000 none repeat scroll 0 0;
     border-radius: 50%;
@@ -746,7 +524,7 @@ div.slider-navs div {
     text-align: center;
     top: 10px;
     width: 31px;
-    z-index: 14;
+    z-index: 0;
 }
 
 div.slider-navs div.next-nav {
@@ -836,7 +614,7 @@ video#bgvid {
 }
 
 .third.header_area:before {
-    z-index: 2;
+    z-index: 0;
 }
 
 .singlebgslider img {
@@ -1227,7 +1005,7 @@ ul.breadcrumbs li {
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 999;
+    z-index: 0;
     width: 100%;
     height: 100%;
     overflow: visible;

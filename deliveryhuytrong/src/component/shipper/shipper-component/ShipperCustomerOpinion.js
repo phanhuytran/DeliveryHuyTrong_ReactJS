@@ -9,14 +9,14 @@ class ShipperCustomerOpinion extends React.Component {
                     <h3>CUSTOMER'S OPINION ABOUT SHIPPERS</h3><br /><br />
                     <ReactOwlCarousel
                         className="owl-theme"
-                        items={4}
-                        loop={true}
-                        autoplay={true}
-                        autoplayHoverPaus={true}
-                        autoPlayTime={3000}
-                        dotsSpeed={500}
-                        smartSpeed={1000}
-                        slideBy={2}
+                        items="4"
+                        loop="true"
+                        autoplay="true"
+                        autoplayhoverpaus="true"
+                        autoplaytime="3000"
+                        dotsSpeed="500"
+                        smartSpeed="1000"
+                        slideBy="2"
                     >
                         <div className="owl-customer-comment-detail">
                             <img src="img/item_icon.png" alt="img" />

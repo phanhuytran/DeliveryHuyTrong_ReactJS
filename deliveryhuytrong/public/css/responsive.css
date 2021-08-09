@@ -1,22 +1,16 @@
 /* Medium Layout: 1280px. */
 
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
-    .menu li a,
-    .signup li a {
+    /* .menu li a, */
+    /* .signup li a {
         padding: 15px 25px 15px 0;
-    }
+    } */
     .carousel-caption {
         left: 15%;
     }
-    .menu li:last-child a {
+    /* .menu li:last-child a {
         padding-right: 3px;
-    }
-    .single_calculate label {
-        width: 100px;
-    }
-    .single_calculate > input {
-        width: 186px;
-    }
+    } */
     div.slider-navs {
         left: 25%;
     }
@@ -41,16 +35,12 @@
     .navbar {
         min-height: 30px;
     }
-    .dropdownMenu li:last-child a {
-        left: -5px;
-        position: relative;
-    }
     .logo {
         padding: 4px 6px;
     }
-    .menu li:last-child a {
+    /* .menu li:last-child a {
         padding-right: 4px;
-    }
+    } */
     .is-sticky #sticker {
         padding: 5px 0;
     }
@@ -126,22 +116,7 @@
         height: 500px;
         position: static;
     }
-    .calculat-image {
-        max-width: 50%;
-    }
-    .single_calculate > input {
-        width: 152px;
-    }
-    .single_calculate label {
-        width: 115px;
-    }
-    .calculate_option {
-        width: 65px;
-    }
-    .calculate_option.padding-riht {
-        margin-right: 63px;
-    }
-    .signup ul li:first-child a {
+    /* .signup ul li:first-child a {
         line-height: 32px;
         padding: 0 15px 0 0;
     }
@@ -157,7 +132,7 @@
         font-size: 12px;
         padding: 6px 15px 6px 0;
         transition: all 0.4s ease 0s;
-    }
+    } */
     .item_icon {
         float: none;
         margin-bottom: 20px;
@@ -207,42 +182,19 @@
         height: 45px;
         width: 290px;
     }
-    .dropdown li a:hover {
-        color: #fff !important;
-    }
-    .dropdownMenu {
-        opacity: 1;
-        position: static;
-        visibility: visible;
-        width: 100%;
-        background: transparent;
-    }
-    .dropdownMenu li {
-        margin-bottom: 9px;
-    }
-    .dropdownMenu li a {
-        color: #f9bf3b !important
-    }
-    .dropdownMenu li:first-child {
-        margin-top: 5px;
-    }
-    .nav.navbar-nav.navbar-right.menu {
+    /* .nav.navbar-nav.navbar-right.menu {
         text-align: left;
-    }
-    .dropdownMenu {
-        margin-left: 15%;
-        text-align: left;
-    }
-    .logo_menu {
+    } */
+    /* .logo_menu {
         top: 0;
         z-index: 30;
-    }
+    } */
     .mean-container .mean-bar {
         position: fixed;
     }
-    .version2-hero .logo_menu {
+    /* .version2-hero .logo_menu {
         top: 0;
-    }
+    } */
     .mean-container .mean-nav ul li a.mean-expand {
         height: auto;
         line-height: 1;
@@ -327,48 +279,6 @@
     }
     .single_count::before {
         display: none;
-    }
-    .calculat-image {
-        display: none;
-    }
-    .single_calculate > input {
-        width: 118px;
-    }
-    .single_calculate label {
-        font-size: 12px;
-        width: 90px;
-    }
-    .calculate_option.padding-riht {
-        margin-right: 15px;
-    }
-    .calculate_option.selectpadding::after {
-        left: 0;
-    }
-    .calculate_area {
-        padding: 30px 0;
-    }
-    .calculate_title > h2 {
-        font-size: 23px;
-        margin-bottom: 15px;
-    }
-    .calculate_title {
-        margin-bottom: 25px;
-    }
-    .client-area {
-        padding: 30px 0 0;
-    }
-    .slients-title > h2 {
-        font-size: 22px;
-        margin-bottom: 15px;
-    }
-    .slients-title {
-        padding-bottom: 20px;
-    }
-    .client-details {
-        font-size: 12px;
-    }
-    .single-clients:first-child {
-        margin-bottom: 30px;
     }
     .pricing-plan-area {
         height: auto;
@@ -473,13 +383,13 @@
     .footer-text {
         text-align: center;
     }
-    .mobMenuCol {
+    /* .mobMenuCol {
         position: absolute;
         right: 0;
         text-align: center;
         top: 0;
         width: 100%;
-        padding: 0
+        padding: 0 */
     }
     .logo {
         padding: 11px 0;
@@ -497,21 +407,15 @@
     .navbar-collapse.collapse.in a:hover {
         color: #fff;
     }
-    .navbar-collapse.collapse.in li.current-menu-item a {
-        color: #fff;
-    }
     .submt-button {
         float: none;
     }
     .welcome_form .form-control::-moz-placeholder {
         font-size: 9px;
     }
-    .menu li a::before {
+    /* .menu li a::before {
         display: none;
-    }
-    .menu li.current-menu-item a::before {
-        display: none;
-    }
+    } */
     .navbar-collapse a:hover {
         color: #f9bf3b !important;
     }
@@ -617,7 +521,7 @@
     .about_us_area {
         padding: 50px 0 30px;
     }
-}
+
 
 
 /* Wide Mobile Layout: 480px. */
@@ -627,8 +531,5 @@
         left: 53px;
         transform: scale(1);
         z-index: 5;
-    }
-    .single_calculate > input {
-        width: 258px;
     }
 }

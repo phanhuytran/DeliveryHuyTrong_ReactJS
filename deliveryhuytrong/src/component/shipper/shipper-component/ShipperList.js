@@ -29,14 +29,12 @@ class ShipperList extends React.Component {
                 image: "https://scontent.fsgn3-1.fna.fbcdn.net/v/t1.6435-9/191204214_1100237067172312_1261997553801896319_n.jpg?_nc_cat=107&ccb=1-4&_nc_sid=174925&_nc_ohc=uiusfrd9l5EAX9JpjdS&_nc_ht=scontent.fsgn3-1.fna&oh=3af4694752362864dd88df51e38aa1c0&oe=6134561E",
                 isActive: true
             }
-
         ];
 
         let elements = shippers.map((shipper, index) => {
             return <Shipper
                 key={index}
                 info={shipper}
-                
                 id={shipper.id}
                 firstName={shipper.firstName}
                 lastName={shipper.lastName}

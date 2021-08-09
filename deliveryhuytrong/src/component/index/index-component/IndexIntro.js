@@ -6,7 +6,7 @@ class IndexIntro extends React.Component {
             <div>
                 <section className="about_top">
                     <div className="container">
-                        <div className="row">
+                        <div className="row row-impacted">
                             <div className="col-md-4 col-sm-4 col-xs-12">
                                 <div className="about_single_item_1">
                                     <div className="item_icon">

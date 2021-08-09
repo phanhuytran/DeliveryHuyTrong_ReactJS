@@ -1,10 +1,12 @@
 import React from 'react';
 import ContactTitle from './contact-component/ContactTitle';
+import NotificationBell from '../item-base/NotificationBell';
 
 class BodyContact extends React.Component {
     render() {
         return (
             <div>
+                <NotificationBell />
                 <section className="contact-page-area">
                     <div className="container">
                         <ContactTitle />
@@ -17,7 +19,6 @@ class BodyContact extends React.Component {
                                         <input type="email" name="email_address" placeholder="Email address" required />
                                         <input type="text" name="subject" placeholder="Subject" />
                                         <textarea name="messages" placeholder="Your message..." required defaultValue={""} />
-                                        {/* <input type="submit" name="submit" defaultValue="send" /> */}
                                         <button>SEND</button>
                                     </form>
                                 </div>

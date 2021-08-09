@@ -1,10 +1,12 @@
 import React from 'react';
 import PricingTitle from './pricing-component/PricingTitle';
+import NotificationBell from '../item-base/NotificationBell';
 
 class BodyPricing extends React.Component {
     render() {
         return (
             <div>
+                <NotificationBell />
                 <section className="order_us_area" id="pricing">
                     <div className="container">
                         <PricingTitle />

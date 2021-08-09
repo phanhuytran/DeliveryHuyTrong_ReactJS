@@ -1,0 +1,54 @@
+@media screen and (max-width: 600px) {
+
+    .about_us_content_title > h2, .order_us_content_title > h2, .contact_us_content_title > h2 {
+        font-size: 20px;
+    }
+
+    ul {
+        margin-top: 10%;
+    }
+
+    .res-header-menu-img {
+        margin-left: 18%;
+    }
+    
+
+    div.about_car img, .google-map img {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .icons-bell {
+        display: inline;
+        float: right;
+        margin: 0% 4% 5% 1%;
+    }
+    .box-bell {
+        width: 275px;
+        padding: 0px;
+        left: -225%;
+        margin-top: 5px;
+    }
+    .fas-bell {
+        font-size: 20pt;
+        margin-right: 0px;
+    }
+    .txt-bell {
+        font-size: 1.55rem;
+        padding: 5px 0px 0px 115px;
+    }
+    .profile-bell {
+        padding-top: 10px;
+    }
+    .sec-bell {
+        padding: 10px 5px;
+    }
+
+
+    div.goToTop a > img {
+        width: 40px;
+    }
+    div.goToTop a > img:hover {
+        width: 40px;
+    }
+}
