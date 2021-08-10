@@ -32,6 +32,9 @@
     .pricing-desc.section-padding-two.item2 {
         margin-top: 12%;
     }
+    .single-pricing-table {
+        margin: 1% auto;
+    }
     .about-us-bottom-area, .order-bottom-area, .order-us-bottom-area {
         padding: 0 12px 70px 12px;
     }
@@ -166,7 +169,7 @@
     }
     div.shipper-info-left {
         width: 80%;
-        margin: 0 0 4% 18.5%;
+        margin: 0 0 4% 18%;
     }
     div.shipper-info-right {
         width: auto;
@@ -202,6 +205,28 @@
     }
 
 
+    /* Page Not Found */
+    .page-not-found {
+        background: url(../img/shipper.jpg) no-repeat center !important;
+        width: 100% !important;
+        margin: 1% auto 0.8% auto !important;
+    }
+    
+    /* .page-not-found::before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgba(34, 47, 60, 0.93);
+        content: "";
+        width: 100%;
+        height: 100%;
+    } */
+    
+    .page-not-found h1 {
+        font-size: 40px !important;
+        margin: 21% auto !important;
+        padding-left: 16%;
+    }
 
     /* Footer */
     div.goToTop a > img {

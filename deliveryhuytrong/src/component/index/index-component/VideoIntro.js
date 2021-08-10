@@ -1,5 +1,5 @@
 import React from 'react';
-import NotificationBell from '../item-base/NotificationBell';
+import NotificationBell from '../../item-base/NotificationBell';
 
 class VideoIntro extends React.Component {
     render() {

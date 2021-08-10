@@ -34,7 +34,6 @@ class ShipperList extends React.Component {
         let elements = shippers.map((shipper, index) => {
             return <Shipper
                 key={index}
-                info={shipper}
                 id={shipper.id}
                 firstName={shipper.firstName}
                 lastName={shipper.lastName}
