@@ -140,10 +140,10 @@
 }
   
 .profile-bell {
-    -webkit-clip-path: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
     width: 75px;
     float: left;
+    padding-top: 10px;
 }
   
 .txt-bell {

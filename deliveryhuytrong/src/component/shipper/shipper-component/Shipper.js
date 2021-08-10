@@ -5,7 +5,7 @@ class Shipper extends React.Component {
     render() {
         return (
             <div className="col-md-4 col-sm-4 col-xs-12">
-                <Link to="shipper-detail">
+                <Link to={"shipper-detail/" + this.props.id}>
                     <div className="about_single_item">
                         <div className="item_icon">
                             <img className="avatar-shipper" src={this.props.image} alt="item" />

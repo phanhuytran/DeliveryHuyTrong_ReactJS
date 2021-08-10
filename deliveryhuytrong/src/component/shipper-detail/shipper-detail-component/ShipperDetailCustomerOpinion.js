@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactOwlCarousel from 'react-owl-carousel';
+import itemIconIMG from '../image/item_icon.png'
 
 class ShipperDetailCustomerOpinion extends React.Component {
     state = {
@@ -39,27 +40,27 @@ class ShipperDetailCustomerOpinion extends React.Component {
                         responsive={this.state.responsive}
                     >
                         <div className="owl-customer-comment-detail">
-                            <img src="img/item_icon.png" alt="img" />
+                            <img src={itemIconIMG} alt="img" />
                             <h4>Customer's Name</h4>
                             <p>Great job. Thank you so much, Mr. Shipper is very handsome &lt;3!!!</p>
                         </div>
                         <div className="owl-customer-comment-detail">
-                            <img src="img/item_icon.png" alt="img" />
+                            <img src={itemIconIMG} alt="img" />
                             <h4>Customer's Name</h4>
                             <p>Great job. Thank you so much, Mr. Shipper is very handsome &lt;3!!!</p>
                         </div>
                         <div className="owl-customer-comment-detail">
-                            <img src="img/item_icon.png" alt="img" />
+                            <img src={itemIconIMG} alt="img" />
                             <h4>Customer's Name</h4>
                             <p>Great job. Thank you so much, Mr. Shipper is very handsome &lt;3!!!</p>
                         </div>
                         <div className="owl-customer-comment-detail">
-                            <img src="img/item_icon.png" alt="img" />
+                            <img src={itemIconIMG} alt="img" />
                             <h4>Customer's Name</h4>
                             <p>Great job. Thank you so much, Mr. Shipper is very handsome &lt;3!!!</p>
                         </div>
                         <div className="owl-customer-comment-detail">
-                            <img src="img/item_icon.png" alt="img" />
+                            <img src={itemIconIMG} alt="img" />
                             <h4>Customer's Name</h4>
                             <p>Great job. Thank you so much, Mr. Shipper is very handsome &lt;3!!!</p>
                         </div>

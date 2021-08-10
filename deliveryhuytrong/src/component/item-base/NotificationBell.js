@@ -1,4 +1,5 @@
 import React from 'react';
+import shipperIMG from './image/shipper.jpg'
 
 class NotificationBell extends React.Component {
     render() {
@@ -23,7 +24,7 @@ class NotificationBell extends React.Component {
                                     <div className="sec-bell">
                                         <a href="#">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src="img/shipper.jpg" />
+                                                <img className="profile-bell" src={shipperIMG} />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
@@ -32,7 +33,7 @@ class NotificationBell extends React.Component {
                                     <div className="sec-bell">
                                         <a href="#">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src="img/shipper.jpg" />
+                                                <img className="profile-bell" src={shipperIMG} />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
@@ -41,7 +42,7 @@ class NotificationBell extends React.Component {
                                     <div className="sec-bell">
                                         <a href="#">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src="img/shipper.jpg" />
+                                                <img className="profile-bell" src={shipperIMG} />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
@@ -50,7 +51,7 @@ class NotificationBell extends React.Component {
                                     <div className="sec-bell">
                                         <a href="#">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src="img/shipper.jpg" />
+                                                <img className="profile-bell" src={shipperIMG} />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
@@ -59,7 +60,7 @@ class NotificationBell extends React.Component {
                                     <div className="sec-bell">
                                         <a href="#">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src="img/shipper.jpg" />
+                                                <img className="profile-bell" src={shipperIMG} />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
@@ -68,7 +69,7 @@ class NotificationBell extends React.Component {
                                     <div className="sec-bell">
                                         <a href="#">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src="img/shipper.jpg" />
+                                                <img className="profile-bell" src={shipperIMG} />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
@@ -77,7 +78,7 @@ class NotificationBell extends React.Component {
                                     <div className="sec-bell">
                                         <a href="#">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src="img/shipper.jpg" />
+                                                <img className="profile-bell" src={shipperIMG} />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
@@ -86,7 +87,7 @@ class NotificationBell extends React.Component {
                                     <div className="sec-bell">
                                         <a href="#">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src="img/shipper.jpg" />
+                                                <img className="profile-bell" src={shipperIMG} />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
@@ -95,7 +96,7 @@ class NotificationBell extends React.Component {
                                     <div className="sec-bell">
                                         <a href="#">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src="img/shipper.jpg" />
+                                                <img className="profile-bell" src={shipperIMG} />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
@@ -104,7 +105,7 @@ class NotificationBell extends React.Component {
                                     <div className="sec-bell">
                                         <a href="#">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src="img/shipper.jpg" />
+                                                <img className="profile-bell" src={shipperIMG} />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
@@ -113,7 +114,7 @@ class NotificationBell extends React.Component {
                                     <div className="sec-bell">
                                         <a href="#">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src="img/shipper.jpg" />
+                                                <img className="profile-bell" src={shipperIMG} />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>

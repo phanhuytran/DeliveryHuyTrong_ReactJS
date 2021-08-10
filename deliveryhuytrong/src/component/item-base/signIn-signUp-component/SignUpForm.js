@@ -15,6 +15,7 @@ class SignUpForm extends React.Component {
                     <div>
                         <input type="text" placeholder="First name" required />
                         <input type="text" placeholder="Last name" required />
+                        <input type="date" placeholder="Date of birth" required />
                         <select>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
@@ -27,7 +28,7 @@ class SignUpForm extends React.Component {
                         <input type="text" placeholder="Username" required />
                         <input type="password" placeholder="Password" required />
                         <input type="password" placeholder="Confirm password" required />
-                        <input className="profile-picture" type="file" placeholder="Profile picture" required />
+                        <input type="file" placeholder="Profile picture" required />
                         <div className="radio-role">
                             <span />
                             <input type="radio" name="role" defaultValue="customer" title="Customer" required />Customer

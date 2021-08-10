@@ -8,7 +8,7 @@ class BodyShipperDetail extends React.Component {
         return (
             <div>
                 <NotificationBell />
-                <ShipperDetailInfo />
+                <ShipperDetailInfo props={this.props.props}/>
                 <ShipperDetailCustomerOpinion />
             </div>
         );

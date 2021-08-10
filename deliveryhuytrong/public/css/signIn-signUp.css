@@ -64,9 +64,11 @@
     border-color: #f9bf3b;
     color: #fff;
 }
+
 .btn-s:active {
     transform: scale(0.95);
 }
+
 .btn-s:focus {
     outline: none;
 }
@@ -77,6 +79,7 @@ button.ghost {
     color: #fff;
     cursor: pointer;
 }
+
 button.ghost:hover {
     background-color: #fff;
     border-color: #fff;
@@ -101,10 +104,6 @@ div.sign-up-container input, div.sign-up-container select {
     padding: 12px 15px;
     margin: 6px 5px;
     width: 46.9%;
-}
-
-div.sign-up-container input.profile-picture {
-    margin-left: 26%;
 }
 
 div.radio-role {
@@ -139,6 +138,9 @@ div.sign-in-container input {
     width: 80%;
 }
 
+input[type=file] {
+    display: inline;
+}
 .container-s {
     background-color: #fff;
     border-radius: 10px;

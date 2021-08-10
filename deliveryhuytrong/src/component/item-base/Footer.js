@@ -1,4 +1,6 @@
 import React from 'react';
+import logoIMG from './image/logo.png'
+import goToTopIMG from './image/go-to-top.png'
 
 class Footer extends React.Component {
     render() {
@@ -30,7 +32,7 @@ class Footer extends React.Component {
                         <div className="col-md-3 col-sm-3 col-xs-12 col-lg-3">
                             <div className="single-footer">
                             <h2>we accepts</h2>
-                            <a href="/"><img src="img/logo.png" alt="logo" /></a>
+                            <a href="/"><img src={logoIMG} alt="logo" /></a>
                             </div>
                         </div>
                         <div className="col-md-3 col-sm-3 col-xs-12 col-lg-3">
@@ -62,7 +64,7 @@ class Footer extends React.Component {
                     </div>
                     </div>
                     <div className="goToTop">
-                    <a href="#top"><img src="img/gototop.png" alt="top" /></a>
+                    <a href="#top"><img src={goToTopIMG} alt="top" /></a>
                     </div>
             </div>
         );
