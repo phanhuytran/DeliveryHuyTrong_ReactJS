@@ -25,8 +25,7 @@ const menu = [
         label: "Pricing",
         to: "/pricing",
         exact: false
-    },
-    {
+    }, {
         label: "Contact",
         to: "/contact",
         exact: false

@@ -33,7 +33,7 @@ const routes = [
     }, {
         path: "/shipper-detail/:id",
         exact: false,
-        main: (props) => <BodyShipperDetail props={props}/>
+        main: (props) => <BodyShipperDetail props={props} />
     }, {
         path: "/pricing",
         exact: false,
