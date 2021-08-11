@@ -28,7 +28,7 @@ class OrderPostInfo extends React.Component {
                                 </tr>
                                     <tr>
                                         <td>Image:</td>
-                                        <td><input type="file" defaultValue="" placeholder="Other information..." required /></td>
+                                        <td><input type="file" defaultValue="" placeholder="Other information..." required multiple /></td>
                                     </tr>
                                     <tr>
                                         <td>Weight:</td>

@@ -1088,6 +1088,11 @@ table.table-order-list {
     border: 1px solid #eee;
 }
 
+table.table-order-list img {
+    width: 50px;
+    height: 50px;
+}
+
 table.table-order-list th, table.table-order-list td {
     padding: 20px 10px;
 }
@@ -1163,6 +1168,14 @@ div#see-more-auction-order-info-2 {
     font-weight: bold;
     font-size: 13px;
     cursor: pointer;
+}
+
+#see-more-auction-order-info-1 {
+    margin-left: 20px;
+}
+
+#see-less-auction-order-info {
+    margin-top: 20px;
 }
 
 div.auction-area-comment {

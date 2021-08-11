@@ -23,9 +23,9 @@ const routes = [
         exact: false,
         main: () => <BodyOrder />
     }, {
-        path: "/order-auction",
+        path: "/order-auction/:id",
         exact: false,
-        main: () => <BodyOrderAuction />
+        main: (props) => <BodyOrderAuction props={props} />
     }, {
         path: "/shipper",
         exact: false,

@@ -9,7 +9,7 @@ class BodyAuction extends React.Component {
             <div>
                 <NotificationBell />
                 <OrderAuctionTitle />
-                <OrderAuctionPost />
+                <OrderAuctionPost props={this.props.props} />
             </div>
         );
     }
