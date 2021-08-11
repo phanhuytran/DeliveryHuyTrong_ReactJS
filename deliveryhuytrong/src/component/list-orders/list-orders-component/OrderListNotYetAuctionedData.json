@@ -1,0 +1,25 @@
+[
+    {
+        "id": 1,
+        "description": "Sex toy",
+        "image": "",
+        "weight": "2",
+        "receivingAddress": "District of Columbia",
+        "sendingAddress": "Miami, Florida",
+        "shipper": "",
+        "createdDate": "",
+        "updatedDate": "",
+        "isActive": true
+    }, {
+        "id": 2,
+        "description": "garden pomelo",
+        "image": "",
+        "weight": "15",
+        "receivingAddress": "Nevada",
+        "sendingAddress": "Texas",
+        "shipper": "",
+        "createdDate": "",
+        "updatedDate": "",
+        "isActive": true
+    }
+]
