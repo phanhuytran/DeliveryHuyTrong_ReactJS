@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import orderListNotYetAuctionedData from './OrderListNotYetAuctionedData.json';
 
 class OrderNotYetAuctionedList extends React.Component {
     render() {
@@ -18,7 +19,22 @@ class OrderNotYetAuctionedList extends React.Component {
                                 <th>Detailed information</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        {
+                            orderListNotYetAuctionedData.map((order, index) => {
+                                return <tbody key={index}>
+                                    <tr>
+                                        <td>{order.id}</td>
+                                        <td>{order.description}</td>
+                                        <td>...</td>
+                                        <td>{order.weight} kilograms</td>
+                                        <td>{order.receivingAddress}</td>
+                                        <td>{order.sendingAddress}</td>
+                                        <td><Link to="/order-auction">Click to auction <span className="fas fa-info-circle" /></Link></td>
+                                    </tr>
+                                </tbody>
+                            })
+                        }
+                        {/* <tbody>
                             <tr>
                                 <td>1</td>
                                 <td>Dĩa bánh cuốn nóng hổi</td>
@@ -37,7 +53,7 @@ class OrderNotYetAuctionedList extends React.Component {
                                 <td>Cà Mau</td>
                                 <td><Link to="/order-auction">Click to auction <span className="fas fa-info-circle" /></Link></td>
                             </tr>
-                        </tbody>
+                        </tbody> */}
                     </table>
                 </div>
             </div>
