@@ -1,4 +1,4 @@
-[
+let orderListNotYetAuctionedData = [
     {
         "id": 1,
         "description": "Duck seeds",
@@ -6,20 +6,22 @@
         "weight": 2,
         "receivingAddress": "District of Columbia",
         "sendingAddress": "Miami, Florida",
-        "shipper": "",
+        "customer": "",
         "createdDate": "11/08/2021",
         "updatedDate": "",
         "isActive": true
     }, {
         "id": 2,
         "description": "Garden pomelo",
-        "image": "https://lh3.googleusercontent.com/proxy/GXNng2C0a7R2HZEkj-8ToaQP9s9qFJRoCodFBn50cyI9_XYaEyVhKo9mmr_8GR3xOYXVXIUl5ROuP43LC4iN2POejnVZ6N0PsDLtxWEHyvRDR9K6YA_TVPrbKfShTJLbNVJ1PAdP-kSbLMYdDC4VpAyO4gulSU8nAZeOq9GU4JIAglff7xjO_99AReeGzqfs-jHMfAs",
+        "image": "https://info-imgs.vgcloud.vn/2021/01/25/10/can-tet-gia-buoi-da-xanh-giam-xuong-day-nha-vuon-van-vang-bong-thuong-lai.jpg",
         "weight": 15,
         "receivingAddress": "Nevada",
         "sendingAddress": "Texas",
-        "shipper": "",
+        "customer": "",
         "createdDate": "11/08/2021",
         "updatedDate": "",
         "isActive": true
     }
-]
+];
+
+export default orderListNotYetAuctionedData;

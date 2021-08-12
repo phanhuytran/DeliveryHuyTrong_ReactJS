@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ShipperDetailPersonalInfo from './ShipperDetailPersonalInfo';
 import ShipperDetailRating from './ShipperDetailRating';
 import ShipperDetailTitle from './ShipperDetailTitle';
-import shipperListData from '../../shipper/shipper-component/ShipperListData.json';
+import shipperListData from '../../shipper/shipper-component/ShipperListData';
 
 class ShipperDetailInfo extends React.Component {
     render() {

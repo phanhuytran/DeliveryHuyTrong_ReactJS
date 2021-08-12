@@ -1029,7 +1029,7 @@ div.create-post-left {
 }
 
 div.create-post-right {
-    display: none;
+    /* display: none; */
     width: 80%;
     padding: 2%;
 }
@@ -1093,8 +1093,12 @@ table.table-order-list img {
     height: 50px;
 }
 
-table.table-order-list th, table.table-order-list td {
-    padding: 20px 10px;
+table.table-order-list td {
+    padding: 5px;
+}
+
+table.table-order-list thead th {
+    padding: 10px;
 }
 
 table.table-order-list thead th, table.table-order-list tr td:first-child {
@@ -1106,6 +1110,21 @@ table.table-order-list tbody tr:hover {
     background-color: #eee;
     transition: 0.25s;
     cursor: pointer;
+}
+
+.order-list-filter input {
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 2px 4px;
+}
+
+.order-list-filter button {
+    font-weight: bold;
+    border: 1px solid #eee;
+    background-color: #f9bf3b;
+    color: #fff;
+    margin: 2px;
+    padding: 2px 4px;
 }
 
 div.auction-area {

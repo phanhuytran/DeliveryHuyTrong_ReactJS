@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import orderListNotYetAuctionedData from '../../list-orders/list-orders-component/OrderListNotYetAuctionedData.json';
+import orderListNotYetAuctionedData from '../../list-orders/list-orders-component/OrderListNotYetAuctionedData';
 import clientIMG from '../image/client.jpg';
 
 class OrderAuctionPost extends React.Component {

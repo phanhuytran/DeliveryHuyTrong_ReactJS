@@ -1,57 +1,77 @@
 import React from 'react';
+import OrderPostInfoForm from './OrderPostInfoForm';
+import orderListNotYetAuctionedData from './OrderListNotYetAuctionedData';
+const { v4: uuidv4 } = require('uuid');
 
 class OrderPostInfo extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isDisplayPostInfoForm: false,
+            orderNotYetAuctioned: orderListNotYetAuctionedData
+        }
+        localStorage.setItem('orderNotYetAuctioned', JSON.stringify(this.state.orderNotYetAuctioned))
+    }
+
+    // componentWillMount() {
+    //     if (localStorage && localStorage.getItem('orderNotYetAuctioned')) {
+    //         var od = JSON.parse(localStorage.getItem('orderNotYetAuctioned'));
+    //         this.setState({
+    //             orderNotYetAuctioned: od
+    //         });
+    //     }
+    // }
+
+    onTogglePostInfoForm = () => {
+        this.setState({
+            isDisplayPostInfoForm: !this.state.isDisplayPostInfoForm
+        });
+    }
+
+    onSubmit = (data) => {
+        let {orderNotYetAuctioned} = this.state;
+        orderNotYetAuctioned.push({
+            id: uuidv4(),
+            description: data.description,
+            image: data.image,
+            weight: data.weight,
+            receivingAddress: data.receivingAddress,
+            sendingAddress: data.sendingAddress,
+            customer: "",
+            createdDate: "",
+            updatedDate: "",
+            isActive: true,
+        });
+
+        this.setState({
+            isDisplayPostInfoForm: false,
+            orderNotYetAuctioned: orderListNotYetAuctionedData
+        });
+        console.log(this.state.orderNotYetAuctioned);
+        localStorage.setItem('orderNotYetAuctioned', JSON.stringify(orderNotYetAuctioned));
+
+    }
+
     render() {
 
-        function show_info_post() {
-            var x = document.getElementById("show-info-post");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
+        var { isDisplayPostInfoForm } = this.state;
+        var elementPostInfoForm = isDisplayPostInfoForm
+            ? <OrderPostInfoForm onSubmit={this.onSubmit} />
+            : '';
 
         return (
             <div>
                 <h2>List of orders waiting to be auctioned</h2>
                 <div className="create-post">
                     <div className="create-post-left">
-                        <div className="new-page-tab" onClick={show_info_post}>CREATE A NEW POST</div>
+                        <div className="new-page-tab" onClick={this.onTogglePostInfoForm}>
+                            {
+                                !isDisplayPostInfoForm ? <span>CREATE A NEW POST</span> : <span>CLOSE</span>
+                            }
+                        </div>
                     </div>
-                    <div className="create-post-right" id="show-info-post">
-                        <form>
-                            <table>
-                                <tbody><tr>
-                                    <td>Order description:</td>
-                                    <td><input type="text" defaultValue="" placeholder="Order description..." required /></td>
-                                </tr>
-                                    <tr>
-                                        <td>Image:</td>
-                                        <td><input type="file" defaultValue="" placeholder="Other information..." required multiple /></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Weight:</td>
-                                        <td><input type="number" defaultValue="" placeholder="Weight..." required /></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Receiving address:</td>
-                                        <td><input type="text" defaultValue="" placeholder="Receiving address..." required /></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Sending address:</td>
-                                        <td><input type="text" defaultValue="" placeholder="Sending address..." required /></td>
-                                    </tr>
-                                    <tr>
-                                    </tr><tr>
-                                        <td colSpan={2}>
-                                            <button>POST</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </form>
-                    </div>
+                    {elementPostInfoForm}
                 </div>
             </div>
         );

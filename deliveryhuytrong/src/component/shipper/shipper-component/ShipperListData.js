@@ -1,4 +1,4 @@
-[
+let shipperListData = [
     {
         "id": 1,
         "firstName": "Phan Huy",
@@ -108,4 +108,6 @@
         "image": "https://scontent-hkg4-1.xx.fbcdn.net/v/t1.6435-9/57314229_2340540585985673_2574507301071224832_n.jpg?_nc_cat=108&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=dBzPsnWAO44AX9qGLAY&_nc_ht=scontent-hkg4-1.xx&oh=92e5e5cd83211da2e5e9e2108f18fa1c&oe=61383B15",
         "isActive": true
     }
-]
+];
+
+export default shipperListData;

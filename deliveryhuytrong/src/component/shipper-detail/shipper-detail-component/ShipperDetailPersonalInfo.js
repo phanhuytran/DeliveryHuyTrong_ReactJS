@@ -1,5 +1,5 @@
 import React from 'react';
-import shipperListData from '../../shipper/shipper-component/ShipperListData.json';
+import shipperListData from '../../shipper/shipper-component/ShipperListData';
 
 class ShipperDetailPersonalInfo extends React.Component {
     render() {
