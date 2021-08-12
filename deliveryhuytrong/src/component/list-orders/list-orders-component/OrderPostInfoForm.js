@@ -74,6 +74,7 @@ class OrderPostInfoForm extends React.Component {
                                 <td>
                                     <input
                                         type="number"
+                                        min="0"
                                         defaultValue=""
                                         placeholder="Weight..."
                                         required

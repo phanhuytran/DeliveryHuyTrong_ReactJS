@@ -35,7 +35,6 @@ class OrderNotYetAuctionedList extends React.Component {
     }
 
     render() {
-
         var { isDisplayClearDescriptionFilter } = this.state;
         var { isDisplayClearReceivingAddressFilter } = this.state
         var { isDisplayClearSendingAddressFilter } = this.state

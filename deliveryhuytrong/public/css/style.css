@@ -1032,7 +1032,58 @@ div.create-post-right {
     /* display: none; */
     width: 80%;
     padding: 2%;
+    animation: fadeIn linear 0.3s;
+    animation: growth linear 0.3s;
+    --growth-from: 0;
+    --growth-to: 1;
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes growth {
+    from {
+        transform: scale(var(--growth-from));
+    }
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
+
+div.shipper-list-filter {
+    margin-bottom: 3%;
+}
+
+div.shipper-list-filter input {
+    width: 20.6%;
+    padding: 5px 10px;
+    margin-right: 1.5%;
+    border: 1px solid #eee;
+}
+
+div.shipper-list-filter button {
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 1px solid #eee;
+    background-color: #f9bf3b;
+    color: #fff;
+    transition: 0.4s;
+}
+
+div.shipper-list-filter button:hover {
+    color: #f9bf3b;
+    background-color: #fff;
+}
+
+/* div.shipper-list-filter input.ml-spf {
+    margin-left: 29px;
+} */
 
 div.create-post-right input {
     border: 2px solid #eee;

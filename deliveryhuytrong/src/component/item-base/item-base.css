@@ -2,7 +2,7 @@
     margin: 0 auto;
     width: 68%;
     max-height: 10%;
-    animation: fadeIn linear 0.4s;
+    animation: fadeIn linear 0.3s;
     animation: growth linear 0.3s;
     --growth-from: 0;
     --growth-to: 1;
