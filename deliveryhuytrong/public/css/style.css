@@ -977,6 +977,10 @@ ul.breadcrumbs li {
     width: 100%;
 }
 
+.contact-form input:focus-visible, .contact-form textarea:focus-visible {
+    outline: 1px auto #f9bf3b;
+}
+
 .contact_page_headings {
     color: #222;
     font-size: 20px;
@@ -1067,6 +1071,10 @@ div.shipper-list-filter input {
     border: 1px solid #eee;
 }
 
+div.shipper-list-filter input:focus-visible {
+    outline: 1px auto #f9bf3b;
+}
+
 div.shipper-list-filter button {
     font-weight: bold;
     padding: 5px 10px;
@@ -1090,6 +1098,10 @@ div.create-post-right input {
     margin: 2% 4% 2% 20%;
     padding: 2.5%;
     width: 150%;
+}
+
+div.create-post-right input:focus-visible {
+    outline: 1px auto #f9bf3b;
 }
 
 div.create-post-right button {
@@ -1167,6 +1179,10 @@ table.table-order-list tbody tr:hover {
     border: 1px solid #eee;
     border-radius: 5px;
     padding: 2px 4px;
+}
+
+.order-list-filter input:focus-visible {
+    outline: 1px auto #f9bf3b;
 }
 
 .order-list-filter button {
@@ -1279,6 +1295,10 @@ div.auction-area-comment-flex-center input {
     margin: 1% 2% 1% 1%;
     padding: 1.5% 3%;
     width: 97%;
+}
+
+div.auction-area-comment-flex-center input:focus-visible {
+    outline: 1px auto #f9bf3b;
 }
 
 div.auction-area-comment-flex-right {

@@ -53,6 +53,10 @@ div.shipper-info-right textarea {
 	border-color: #dddddd;
 }
 
+div.shipper-info-right textarea:focus-visible {
+	outline: 1px auto #f9bf3b;
+}
+
 div.shipper-info-right button {
 	font-weight: bold;
 	font-size: 14px;

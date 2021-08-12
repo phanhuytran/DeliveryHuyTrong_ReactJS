@@ -203,6 +203,12 @@
         height: 300px;
         overflow-y: scroll;
     }
+    div.shipper-list-filter input {
+        width: 39.8%;
+    }
+    div.shipper-list-filter input {
+        padding: 5px 7px;
+    }
 
 
     /* Page Not Found */

@@ -45,7 +45,6 @@ class ShipperDetailPersonalInfo extends React.Component {
                         }
                     })
                 }
-
             </>
         );
     }

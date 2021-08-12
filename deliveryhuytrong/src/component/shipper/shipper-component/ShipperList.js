@@ -59,7 +59,6 @@ class ShipperList extends React.Component {
                 });
             } else {
                 shiperData = itemsOrigin;
-                document.getElementsByTagName("phoneFilter").disabled = true;
             }
         }
 
