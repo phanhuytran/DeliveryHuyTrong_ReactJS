@@ -1,19 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import orderListNotYetAuctionedData from './OrderListNotYetAuctionedData';
+import orderNotYetAuctionedListData from './OrderNotYetAuctionedListData';
 
 class OrderNotYetAuctionedList extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            isDisplayClearDescriptionFilter: false,
-            isDisplayClearReceivingAddressFilter: false,
-            isDisplayClearSendingAddressFilter: false,
-            orderNotYetAuctionedData: orderListNotYetAuctionedData,
+            orderNotYetAuctionedData: orderNotYetAuctionedListData,
             descriptionFilter: '',
             receivingAddressFilter: '',
-            sendingAddressFilter: ''
+            sendingAddressFilter: '',
+            isDisplayClearDescriptionFilter: false,
+            isDisplayClearReceivingAddressFilter: false,
+            isDisplayClearSendingAddressFilter: false
         }
     }
 

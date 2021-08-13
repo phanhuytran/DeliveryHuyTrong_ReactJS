@@ -1,4 +1,4 @@
-let orderListNotYetAuctionedData = [
+let orderNotYetAuctionedListData = [
     {
         "id": 1,
         "description": "Duck seeds",
@@ -24,4 +24,4 @@ let orderListNotYetAuctionedData = [
     }
 ];
 
-export default orderListNotYetAuctionedData;
+export default orderNotYetAuctionedListData;

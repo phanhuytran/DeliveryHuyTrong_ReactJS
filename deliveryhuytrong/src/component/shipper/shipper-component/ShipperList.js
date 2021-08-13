@@ -9,10 +9,10 @@ class ShipperList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isDisplayClearFilter: false,
             shiperData: shipperListData,
             fullNameFilter: '',
-            phoneFilter: ''
+            phoneFilter: '',
+            isDisplayClearFilter: false
         }
     }
 
@@ -62,18 +62,16 @@ class ShipperList extends React.Component {
                         <div className="shipper-list-filter">
                             <input
                                 type="text"
-                                placeholder="Search by name"
+                                placeholder="Search by name..."
                                 name="fullNameFilter"
-                                id="fullNameFilter"
                                 value={this.state.fullNameFilter}
                                 onChange={this.onSearch}
                             />
                             <input
                                 className="ml-spf"
                                 type="text"
-                                placeholder="Search by phone"
+                                placeholder="Search by phone..."
                                 name="phoneFilter"
-                                id="phoneFilter"
                                 value={this.state.phoneFilter}
                                 onChange={this.onSearch}
                             />

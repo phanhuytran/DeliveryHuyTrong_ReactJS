@@ -1,6 +1,6 @@
 import React from 'react';
 import OrderPostInfoForm from './OrderPostInfoForm';
-import orderListNotYetAuctionedData from './OrderListNotYetAuctionedData';
+import orderNotYetAuctionedListData from './OrderNotYetAuctionedListData';
 const { v4: uuidv4 } = require('uuid');
 
 class OrderPostInfo extends React.Component {
@@ -8,8 +8,8 @@ class OrderPostInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isDisplayPostInfoForm: false,
-            orderNotYetAuctioned: orderListNotYetAuctionedData
+            orderNotYetAuctioned: orderNotYetAuctionedListData,
+            isDisplayPostInfoForm: false
         }
         localStorage.setItem('orderNotYetAuctioned', JSON.stringify(this.state.orderNotYetAuctioned))
     }
@@ -46,7 +46,7 @@ class OrderPostInfo extends React.Component {
 
         this.setState({
             isDisplayPostInfoForm: false,
-            orderNotYetAuctioned: orderListNotYetAuctionedData
+            orderNotYetAuctioned: orderNotYetAuctionedListData
         });
         console.log(this.state.orderNotYetAuctioned);
         localStorage.setItem('orderNotYetAuctioned', JSON.stringify(orderNotYetAuctioned));

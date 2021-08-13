@@ -1,0 +1,34 @@
+.order-auctioned-filter {
+    margin: 2.5% 0;
+}
+
+.order-us-bottom-area input {
+    width: 22%;
+    padding: 5px 10px;
+    margin: 0 1.5% 1.5% 0;
+    border: 1px solid #eee;
+    -webkit-transition: width .4s ease-in-out;
+    transition: width .4s ease-in-out;
+}
+
+.order-us-bottom-area input:focus {
+    width: 40.8%;
+}
+
+.order-us-bottom-area input:focus-visible {
+    outline: 1px auto #f9bf3b;
+}
+
+.order-us-bottom-area button {
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 1px solid #eee;
+    background-color: #f9bf3b;
+    color: #fff;
+    transition: 0.4s;
+}
+
+.order-us-bottom-area button:hover {
+    background-color: #fff;
+    color: #f9bf3b;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import OrdertAuctioned from './list-orders-component/OrderAuctioned';
+import OrderAuctionedList from './list-orders-component/OrderAuctionedList';
 import OrderNotYetAuctioned from './list-orders-component/OrderNotYetAuctioned';
 import OrderTitle from './list-orders-component/OrderTitle';
 import NotificationBell from '../item-base/NotificationBell';
@@ -11,7 +11,7 @@ class BodyOrder extends React.Component {
                 <NotificationBell />
                 <OrderTitle />
                 <OrderNotYetAuctioned />
-                <OrdertAuctioned />
+                <OrderAuctionedList />
             </div>
         );
     }

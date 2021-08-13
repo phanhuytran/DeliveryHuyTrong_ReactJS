@@ -197,14 +197,10 @@ nav.navbar {
     width: 260px;
 }
 
-/*.page-title{
-    padding-bottom: 50px;
-}
-*/
 .about_top {
     padding: 6% 0;
     border-bottom: 1px solid #dfdfdf;
-    padding-bottom:70px; 
+    padding-bottom: 40px; 
 }
 
 .about_single_item {
@@ -830,6 +826,11 @@ video#bgvid {
     margin-bottom: 10%;
 }
 
+.single-order-us-bottom span {
+    font-size: 16px;
+    float: right;
+}
+
 .single-about-us-bottom:before, .single-order-us-bottom:before {
     background: red none repeat scroll 0 0;
     content: "";
@@ -957,6 +958,10 @@ ul.breadcrumbs li {
     color: #f9bf3b;
 }
 
+.order-us-bottom-area {
+    margin-bottom: 5%;
+}
+
 .contact-page-area {
     padding: 6% 0 80px;
 }
@@ -1007,7 +1012,7 @@ ul.breadcrumbs li {
 
 .google-map > div {
     height: 400px;
-    margin-top: 60px;
+    margin-top: 69px;
     width: 100%;
 }
 
@@ -1069,6 +1074,12 @@ div.shipper-list-filter input {
     padding: 5px 10px;
     margin-right: 1.5%;
     border: 1px solid #eee;
+    -webkit-transition: width .4s ease-in-out;
+    transition: width .4s ease-in-out;
+}
+
+div.shipper-list-filter input:focus {
+    width: 37.25%;
 }
 
 div.shipper-list-filter input:focus-visible {

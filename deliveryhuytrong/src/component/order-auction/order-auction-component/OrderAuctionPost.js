@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import orderListNotYetAuctionedData from '../../list-orders/list-orders-component/OrderListNotYetAuctionedData';
+import orderNotYetAuctionedListData from '../../list-orders/list-orders-component/OrderNotYetAuctionedListData';
 import clientIMG from '../image/client.jpg';
 
 class OrderAuctionPost extends React.Component {
@@ -25,7 +25,7 @@ class OrderAuctionPost extends React.Component {
                         <div className="row">
                             <div className="auction-area">
                                 {
-                                    orderListNotYetAuctionedData.map((value, index) => {
+                                    orderNotYetAuctionedListData.map((value, index) => {
                                         if (value.id === orderID) {
                                             return <React.Fragment key={index}>
                                                 <div className="auction-customer-info">
