@@ -26,16 +26,26 @@ class OrderNotYetAuctionedList extends React.Component {
         });
     }
 
-    onClear = () => {
+    onClearDescriptionFilter = () => {
         this.setState({
-            descriptionFilter: '',
-            receivingAddressFilter: '',
+            descriptionFilter: ''
+        })
+    }
+
+    onClearReceivingAddressFilter = () => {
+        this.setState({
+            receivingAddressFilter: ''
+        })
+    }
+
+    onClearSendingAddressFilter = () => {
+        this.setState({
             sendingAddressFilter: ''
         })
     }
 
     render() {
-        
+
         var { isDisplayClearDescriptionFilter } = this.state;
         var { isDisplayClearReceivingAddressFilter } = this.state
         var { isDisplayClearSendingAddressFilter } = this.state
@@ -48,16 +58,27 @@ class OrderNotYetAuctionedList extends React.Component {
         const sendingAddressFilter = this.state.sendingAddressFilter;
 
         if (descriptionFilter.length > 0 || receivingAddressFilter.length > 0 || sendingAddressFilter.length > 0) {
-            isDisplayClearDescriptionFilter = true;
             itemsOrigin.forEach((item) => {
                 if (item.description.toLowerCase().indexOf(descriptionFilter) !== -1
-                && item.receivingAddress.toLowerCase().indexOf(receivingAddressFilter) !== -1
-                && item.sendingAddress.toLowerCase().indexOf(sendingAddressFilter) !== -1) {
+                    && item.receivingAddress.toLowerCase().indexOf(receivingAddressFilter) !== -1
+                    && item.sendingAddress.toLowerCase().indexOf(sendingAddressFilter) !== -1) {
                     orderNotYetAuctionedData.push(item);
                 }
             });
         } else {
             orderNotYetAuctionedData = itemsOrigin;
+        }
+
+        if (descriptionFilter.length > 0) {
+            isDisplayClearDescriptionFilter = true;
+        }
+
+        if (receivingAddressFilter.length > 0) {
+            isDisplayClearReceivingAddressFilter = true;
+        }
+
+        if (sendingAddressFilter.length > 0) {
+            isDisplayClearSendingAddressFilter = true;
         }
 
         return (
@@ -86,7 +107,7 @@ class OrderNotYetAuctionedList extends React.Component {
                                         onChange={this.onSearch}
                                     />
                                     {
-                                        isDisplayClearDescriptionFilter ? <button onClick={this.onClear}>Clear</button> : <></>
+                                        isDisplayClearDescriptionFilter ? <button onClick={this.onClearDescriptionFilter}>Clear</button> : <></>
                                     }
                                 </td>
                                 <td></td>
@@ -99,7 +120,7 @@ class OrderNotYetAuctionedList extends React.Component {
                                         onChange={this.onSearch}
                                     />
                                     {
-                                        isDisplayClearReceivingAddressFilter ? <button onClick={this.onClear}>Clear</button> : <></>
+                                        isDisplayClearReceivingAddressFilter ? <button onClick={this.onClearReceivingAddressFilter}>Clear</button> : <></>
                                     }
                                 </td>
                                 <td>
@@ -110,7 +131,7 @@ class OrderNotYetAuctionedList extends React.Component {
                                         onChange={this.onSearch}
                                     />
                                     {
-                                        isDisplayClearSendingAddressFilter ? <button onClick={this.onClear}>Clear</button> : <></>
+                                        isDisplayClearSendingAddressFilter ? <button onClick={this.onClearSendingAddressFilter}>Clear</button> : <></>
                                     }
                                 </td>
                                 <td></td>

@@ -16,35 +16,35 @@ const routes = [
         main: () => <BodyIndex />
     }, {
         path: "/about",
-        exact: false,
+        exact: true,
         main: () => <BodyAbout />
     }, {
         path: "/list-orders",
-        exact: false,
+        exact: true,
         main: () => <BodyOrder />
     }, {
         path: "/order-auction/:id",
-        exact: false,
+        exact: true,
         main: (props) => <BodyOrderAuction props={props} />
     }, {
         path: "/shipper",
-        exact: false,
+        exact: true,
         main: () => <BodyShipper />
     }, {
         path: "/shipper-detail/:id",
-        exact: false,
+        exact: true,
         main: (props) => <BodyShipperDetail props={props} />
     }, {
         path: "/pricing",
-        exact: false,
+        exact: true,
         main: () => <BodyPricing />
     }, {
         path: "/contact",
-        exact: false,
+        exact: true,
         main: () => <BodyContact />
     }, {
         path: "",
-        exact: false,
+        exact: true,
         main: () => <PageNotFound />
     }
 ];
