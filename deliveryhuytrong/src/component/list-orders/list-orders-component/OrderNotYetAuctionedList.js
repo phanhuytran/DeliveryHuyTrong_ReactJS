@@ -35,6 +35,7 @@ class OrderNotYetAuctionedList extends React.Component {
     }
 
     render() {
+        
         var { isDisplayClearDescriptionFilter } = this.state;
         var { isDisplayClearReceivingAddressFilter } = this.state
         var { isDisplayClearSendingAddressFilter } = this.state
@@ -46,33 +47,17 @@ class OrderNotYetAuctionedList extends React.Component {
         const receivingAddressFilter = this.state.receivingAddressFilter;
         const sendingAddressFilter = this.state.sendingAddressFilter;
 
-        if (descriptionFilter.length > 0) {
+        if (descriptionFilter.length > 0 || receivingAddressFilter.length > 0 || sendingAddressFilter.length > 0) {
             isDisplayClearDescriptionFilter = true;
             itemsOrigin.forEach((item) => {
-                if (item.description.toLowerCase().indexOf(descriptionFilter) !== -1) {
+                if (item.description.toLowerCase().indexOf(descriptionFilter) !== -1
+                && item.receivingAddress.toLowerCase().indexOf(receivingAddressFilter) !== -1
+                && item.sendingAddress.toLowerCase().indexOf(sendingAddressFilter) !== -1) {
                     orderNotYetAuctionedData.push(item);
                 }
             });
         } else {
-            if (receivingAddressFilter.length > 0) {
-                isDisplayClearReceivingAddressFilter = true;
-                itemsOrigin.forEach((item) => {
-                    if (item.receivingAddress.toLowerCase().indexOf(receivingAddressFilter) !== -1) {
-                        orderNotYetAuctionedData.push(item);
-                    }
-                });
-            } else {
-                if (sendingAddressFilter.length > 0) {
-                    isDisplayClearSendingAddressFilter = true;
-                    itemsOrigin.forEach((item) => {
-                        if (item.sendingAddress.toLowerCase().indexOf(sendingAddressFilter) !== -1) {
-                            orderNotYetAuctionedData.push(item);
-                        }
-                    });
-                } else {
-                    orderNotYetAuctionedData = itemsOrigin;
-                }
-            }
+            orderNotYetAuctionedData = itemsOrigin;
         }
 
         return (

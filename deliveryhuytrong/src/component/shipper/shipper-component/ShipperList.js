@@ -42,24 +42,16 @@ class ShipperList extends React.Component {
         const fullNameFilter = this.state.fullNameFilter;
         const phoneFilter = this.state.phoneFilter;
 
-        if (fullNameFilter.length > 0) {
+        if (fullNameFilter.length > 0 || phoneFilter.length > 0) {
             isDisplayClearFilter = true;
             itemsOrigin.forEach((item) => {
-                if ((item.firstName.toLowerCase() + " " + item.lastName.toLowerCase()).indexOf(fullNameFilter) !== -1) {
+                if (((item.firstName.toLowerCase() + " " + item.lastName.toLowerCase()).indexOf(fullNameFilter) !== -1
+                    && item.phone.indexOf(phoneFilter) !== -1)) {
                     shiperData.push(item);
                 }
             });
         } else {
-            if (phoneFilter.length > 0) {
-                isDisplayClearFilter = true;
-                itemsOrigin.forEach((item) => {
-                    if (item.phone.indexOf(phoneFilter) !== -1) {
-                        shiperData.push(item);
-                    }
-                });
-            } else {
-                shiperData = itemsOrigin;
-            }
+            shiperData = itemsOrigin;
         }
 
         return (
@@ -72,6 +64,7 @@ class ShipperList extends React.Component {
                                 type="text"
                                 placeholder="Search by name"
                                 name="fullNameFilter"
+                                id="fullNameFilter"
                                 value={this.state.fullNameFilter}
                                 onChange={this.onSearch}
                             />
