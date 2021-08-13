@@ -9,7 +9,7 @@ let orderListAuctionedData = [
         "customer": "",
         "createdDate": "13/08/2021",
         "updatedDate": "",
-        "status": -1
+        "status": "SHIPPED"
     }, {
         "id": 2,
         "description": "Tiger Beer",
@@ -20,7 +20,7 @@ let orderListAuctionedData = [
         "customer": "",
         "createdDate": "13/08/2021",
         "updatedDate": "",
-        "status": 0
+        "status": "SHIPPING"
     }, {
         "id": 3,
         "description": "Alcohol & Marijuana",
@@ -31,7 +31,7 @@ let orderListAuctionedData = [
         "customer": "",
         "createdDate": "13/08/2021",
         "updatedDate": "",
-        "status": 1
+        "status": "NOTYETSHIPPED"
     }
 ];
 

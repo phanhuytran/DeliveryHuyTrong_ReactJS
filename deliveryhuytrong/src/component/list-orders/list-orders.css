@@ -3,8 +3,8 @@
 }
 
 .order-us-bottom-area input {
-    width: 22%;
-    padding: 5px 10px;
+    width: 23.25%;
+    padding: 6px 10px;
     margin: 0 1.5% 1.5% 0;
     border: 1px solid #eee;
     -webkit-transition: width .4s ease-in-out;
@@ -12,7 +12,7 @@
 }
 
 .order-us-bottom-area input:focus {
-    width: 40.8%;
+    width: 44%;
 }
 
 .order-us-bottom-area input:focus-visible {
@@ -21,7 +21,7 @@
 
 .order-us-bottom-area button {
     font-weight: bold;
-    padding: 5px 10px;
+    padding: 6px 10px;
     border: 1px solid #eee;
     background-color: #f9bf3b;
     color: #fff;
@@ -31,4 +31,23 @@
 .order-us-bottom-area button:hover {
     background-color: #fff;
     color: #f9bf3b;
+}
+
+.order-auction-status-shipped, .order-auction-status-shipping, .order-auction-status-not-yet-shipped {
+    font-size: 13px !important;
+    border-radius: 5px;
+    padding: 5px 7px;
+    color: #fff;
+}
+
+.order-auction-status-shipped {
+    background-color: #28a745;
+}
+
+.order-auction-status-shipping {
+    background-color: #ffc107;
+}
+
+.order-auction-status-not-yet-shipped {
+    background-color: #dc3545;
 }

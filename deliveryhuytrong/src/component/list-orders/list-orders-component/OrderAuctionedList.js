@@ -11,9 +11,7 @@ class OrdertAuctionedList extends React.Component {
             orderNameFilter: '',
             receivingAddressFilter: '',
             sendingAddressFilter: '',
-            isDisplayClearOrderNameFilter: false,
-            isDisplayClearReceivingAddressFilter: false,
-            isDisplayClearSendingAddressFilter: false
+            isDisplayClear: false
         }
     }
 
@@ -26,29 +24,17 @@ class OrdertAuctionedList extends React.Component {
         });
     }
 
-    onClearOrderNameFilter = () => {
+    onClear = () => {
         this.setState({
-            orderNameFilter: ''
-        })
-    }
-
-    onClearReceivingAddressFilter = () => {
-        this.setState({
-            receivingAddressFilter: ''
-        })
-    }
-
-    onClearSendingAddressFilter = () => {
-        this.setState({
+            orderNameFilter: '',
+            receivingAddressFilter: '',
             sendingAddressFilter: ''
         })
     }
 
     render() {
 
-        var { isDisplayClearOrderNameFilter } = this.state;
-        var { isDisplayClearReceivingAddressFilter } = this.state;
-        var { isDisplayClearSendingAddressFilter } = this.state;
+        var { isDisplayClear } = this.state;
 
         let itemsOrigin = this.state.orderAuctionedData;
         let orderAuctionedData = [];
@@ -58,6 +44,7 @@ class OrdertAuctionedList extends React.Component {
         const sendingAddressFilter = this.state.sendingAddressFilter;
 
         if (orderNameFilter.length > 0 || receivingAddressFilter.length > 0 || sendingAddressFilter.length > 0) {
+            isDisplayClear = true
             itemsOrigin.forEach((item) => {
                 if (item.description.toLowerCase().indexOf(orderNameFilter) !== -1
                     && item.receivingAddress.toLowerCase().indexOf(receivingAddressFilter) !== -1
@@ -67,18 +54,6 @@ class OrdertAuctionedList extends React.Component {
             });
         } else {
             orderAuctionedData = itemsOrigin;
-        }
-
-        if (orderNameFilter.length > 0) {
-            isDisplayClearOrderNameFilter = true;
-        }
-
-        if (receivingAddressFilter.length > 0) {
-            isDisplayClearReceivingAddressFilter = true;
-        }
-
-        if (sendingAddressFilter.length > 0) {
-            isDisplayClearSendingAddressFilter = true;
         }
 
         return (
@@ -93,9 +68,6 @@ class OrdertAuctionedList extends React.Component {
                             value={this.state.orderNameFilter}
                             onChange={this.onSearch}
                         />
-                        {
-                            isDisplayClearOrderNameFilter ? <button onClick={this.onClearOrderNameFilter}>Clear</button> : <></>
-                        }<br />
                         <input
                             className="ml-spf"
                             type="text"
@@ -104,9 +76,6 @@ class OrdertAuctionedList extends React.Component {
                             value={this.state.receivingAddressFilter}
                             onChange={this.onSearch}
                         />
-                        {
-                            isDisplayClearReceivingAddressFilter ? <button onClick={this.onClearReceivingAddressFilter}>Clear</button> : <></>
-                        }<br />
                         <input
                             className="ml-spf"
                             type="text"
@@ -116,8 +85,8 @@ class OrdertAuctionedList extends React.Component {
                             onChange={this.onSearch}
                         />
                         {
-                            isDisplayClearSendingAddressFilter ? <button onClick={this.onClearSendingAddressFilter}>Clear</button> : <></>
-                        }<br />
+                            isDisplayClear ? <button onClick={this.onClear}>Clear</button> : <></>
+                        }
                     </div>
                     <div className="row scroll-order-list">
                         {
@@ -127,7 +96,20 @@ class OrdertAuctionedList extends React.Component {
                                         <h4>{order.description}</h4>
                                         <p>Receiving address:<span>{order.receivingAddress}</span></p>
                                         <p>Sending address:<span>{order.sendingAddress}</span></p>
-                                        <p>Status:<span>{order.status}</span></p>
+                                        <p>Status:
+                                            <span className={
+                                                order.status === 'SHIPPED' ? 'order-auction-status-shipped' : '' ||
+                                                    order.status === 'SHIPPING' ? 'order-auction-status-shipping' : '' ||
+                                                        order.status === 'NOTYETSHIPPED' ? 'order-auction-status-not-yet-shipped' : ''
+                                            }
+                                            >
+                                                {
+                                                    order.status === 'SHIPPED' ? 'Shipped' : '' ||
+                                                        order.status === 'SHIPPING' ? 'Shipping' : '' ||
+                                                            order.status === 'NOTYETSHIPPED' ? 'Not yet shipped' : ''
+                                                }
+                                            </span>
+                                        </p>
                                     </div>
                                 </div>
                             })
