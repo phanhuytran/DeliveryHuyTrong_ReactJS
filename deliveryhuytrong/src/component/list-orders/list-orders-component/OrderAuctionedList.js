@@ -94,6 +94,7 @@ class OrdertAuctionedList extends React.Component {
                                 return <div className="col-md-4 col-sm-4 col-xs-12 col-lg-4" key={index}>
                                     <div className="single-order-us-bottom">
                                         <h4>{order.description}</h4>
+                                        <p>Customer:<span>{order.customer}</span></p>
                                         <p>Receiving address:<span>{order.receivingAddress}</span></p>
                                         <p>Sending address:<span>{order.sendingAddress}</span></p>
                                         <p>Status:
@@ -101,8 +102,7 @@ class OrdertAuctionedList extends React.Component {
                                                 order.status === 'SHIPPED' ? 'order-auction-status-shipped' : '' ||
                                                     order.status === 'SHIPPING' ? 'order-auction-status-shipping' : '' ||
                                                         order.status === 'NOTYETSHIPPED' ? 'order-auction-status-not-yet-shipped' : ''
-                                            }
-                                            >
+                                            }>
                                                 {
                                                     order.status === 'SHIPPED' ? 'Shipped' : '' ||
                                                         order.status === 'SHIPPING' ? 'Shipping' : '' ||

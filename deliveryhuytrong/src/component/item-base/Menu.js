@@ -12,23 +12,23 @@ const menu = [
     }, {
         label: "About",
         to: "/about",
-        exact: false
+        exact: true
     }, {
         label: "Order",
         to: "/list-orders",
-        exact: false
+        exact: true
     }, {
         label: "Shipper",
         to: "/shipper",
-        exact: false
+        exact: true
     }, {
         label: "Pricing",
         to: "/pricing",
-        exact: false
+        exact: true
     }, {
         label: "Contact",
         to: "/contact",
-        exact: false
+        exact: true
     }
 ];
 

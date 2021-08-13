@@ -6,7 +6,7 @@ let orderListAuctionedData = [
         "weight": 202,
         "receivingAddress": "California",
         "sendingAddress": "Texas",
-        "customer": "",
+        "customer": "Thao Truong",
         "createdDate": "13/08/2021",
         "updatedDate": "",
         "status": "SHIPPED"
@@ -17,7 +17,7 @@ let orderListAuctionedData = [
         "weight": 125,
         "receivingAddress": "Nebraska",
         "sendingAddress": "Maryland",
-        "customer": "",
+        "customer": "Phan Hung Tran",
         "createdDate": "13/08/2021",
         "updatedDate": "",
         "status": "SHIPPING"
@@ -28,7 +28,7 @@ let orderListAuctionedData = [
         "weight": 218,
         "receivingAddress": "Virgina",
         "sendingAddress": "North Carolina",
-        "customer": "",
+        "customer": "Cu No Tran",
         "createdDate": "13/08/2021",
         "updatedDate": "",
         "status": "NOTYETSHIPPED"

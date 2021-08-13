@@ -818,12 +818,12 @@ video#bgvid {
     transition: 0.4s;
 }
 
-.single-about-us-bottom:hover, .single-order-us-bottom:hover {
-    box-shadow: 0 0 5px rgba(33,33,33,.2);
-}
-
 .single-order-us-bottom {
     margin-bottom: 10%;
+}
+
+.single-about-us-bottom:hover, .single-order-us-bottom:hover {
+    box-shadow: 0 0 5px rgba(33,33,33,.2);
 }
 
 .single-order-us-bottom span {

@@ -62,7 +62,7 @@ class ShipperList extends React.Component {
                         <div className="shipper-list-filter">
                             <input
                                 type="text"
-                                placeholder="Search by name..."
+                                placeholder="Search by full name..."
                                 name="fullNameFilter"
                                 value={this.state.fullNameFilter}
                                 onChange={this.onSearch}
@@ -70,7 +70,7 @@ class ShipperList extends React.Component {
                             <input
                                 className="ml-spf"
                                 type="text"
-                                placeholder="Search by phone..."
+                                placeholder="Search by phone number..."
                                 name="phoneFilter"
                                 value={this.state.phoneFilter}
                                 onChange={this.onSearch}
