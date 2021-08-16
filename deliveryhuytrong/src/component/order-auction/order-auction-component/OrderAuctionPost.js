@@ -1,7 +1,7 @@
 import React from 'react';
+import "../order-auction.css";
 import { Link } from 'react-router-dom';
 import orderNotYetAuctionedListData from '../../list-orders/list-orders-component/OrderNotYetAuctionedListData';
-import "../order-auction.css";
 import clientIMG from '../image/client.jpg';
 
 class OrderAuctionPost extends React.Component {
@@ -42,14 +42,14 @@ class OrderAuctionPost extends React.Component {
                                                 </div>
                                                 <div className="auction-order-info">
                                                     <p>Customer: <span className="info-comment">{value.customer}</span></p>
-                                                    <p><span id="see-more-auction-order-info-1" onClick={see_more_auction_info}> See more <span className="fas fa-arrow-down" /></span></p>
+                                                    <p><span id="see-more-auction-order-info-1" onClick={see_more_auction_info}> See More <span className="fas fa-arrow-down" /></span></p>
                                                     <div id="see-more-auction-order-info-2">
                                                         <p>Order description:</p>
                                                         <p className="info-comment-2">{value.description}</p>
                                                         <p>Weight: <span className="info-comment">{value.weight} kilograms</span></p>
                                                         <p>Receiving address: <span className="info-comment">{value.receivingAddress}</span></p>
                                                         <p>Sending address: <span className="info-comment">{value.sendingAddress}</span></p>
-                                                        <p id="see-less-auction-order-info" onClick={see_less_auction_info}>See less <span className="fas fa-arrow-up" /></p>
+                                                        <p id="see-less-auction-order-info" onClick={see_less_auction_info}>See Less <span className="fas fa-arrow-up" /></p>
                                                     </div>
                                                 </div>
                                                 <div className="order-image">
@@ -127,7 +127,7 @@ class OrderAuctionPost extends React.Component {
                                 </form>
                             </div>
                         </div><br />
-                        <Link to="/list-orders">SEE LIST OF ORDERS</Link>
+                        <Link to="/list-orders" className="see-another-page">SEE LIST OF ORDERS</Link>
                     </div>
                 </section>
             </div>

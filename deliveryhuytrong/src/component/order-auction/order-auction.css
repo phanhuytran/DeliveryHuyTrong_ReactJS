@@ -12,3 +12,42 @@
     text-align: justify;
     margin: -1% 0 4% 0;
 }
+
+#see-more-auction-order-info-2 {
+    animation: fadeIn linear 0.3s;
+    animation: growth linear 0.3s;
+    --growth-from: 0;
+    --growth-to: 1;
+    cursor: text;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes growth {
+    from {
+        transform: scale(var(--growth-from));
+    }
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
+
+#see-less-auction-order-info, #see-more-auction-order-info-1 {
+    color: #f9bf3b;
+}
+
+#see-less-auction-order-info span, #see-more-auction-order-info-1 span {
+    padding-left: 5px;
+}
+
+.see-another-page, .see-another-page:hover {
+    font-family: 'montserratsemi_bold';
+    color: #f9bf3b;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../shipper-detail.css';
 import { Link } from 'react-router-dom';
 import ShipperDetailPersonalInfo from './ShipperDetailPersonalInfo';
 import ShipperDetailRating from './ShipperDetailRating';
@@ -37,7 +38,7 @@ class ShipperDetailInfo extends React.Component {
                                 </form>
                             </div>
                         </div>
-                        <Link to="/shipper">SEE LIST OF SHIPPERS</Link>
+                        <Link to="/shipper" className="see-another-page">SEE LIST OF SHIPPERS</Link>
                     </div>
                 </section>
             </div>

@@ -1,0 +1,10 @@
+.index-show-item, .index-show-item:hover {
+    font-weight: bold;
+    font-family: 'montserratsemi_bold';
+    text-transform: uppercase;
+    color: #f9bf3b;
+}
+
+.index-show-item span {
+    padding-left: 10px;
+}

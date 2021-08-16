@@ -1,6 +1,6 @@
 import React from 'react';
-import orderAuctionedListData from './OrderAuctionedListData';
 import "../list-orders.css";
+import orderAuctionedListData from './OrderAuctionedListData';
 
 class OrdertAuctionedList extends React.Component {
 

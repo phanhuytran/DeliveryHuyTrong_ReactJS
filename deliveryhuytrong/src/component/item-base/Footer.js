@@ -1,6 +1,6 @@
 import React from 'react';
-import logoIMG from './image/logo.png'
-import goToTopIMG from './image/go-to-top.png'
+import logoIMG from './image/logo.png';
+import goToTopIMG from './image/go-to-top.png';
 
 class Footer extends React.Component {
     render() {

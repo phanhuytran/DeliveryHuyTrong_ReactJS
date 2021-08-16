@@ -8,6 +8,10 @@
     --growth-to: 1;
 }
 
+.modal-signin-signup:focus-visible {
+    outline: none;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;

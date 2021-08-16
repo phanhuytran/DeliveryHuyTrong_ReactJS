@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Modal from 'react-modal';
 import "./item-base.css";
+import Modal from 'react-modal';
 import SignInSignUp from './SignInSignUp';
 
 function ModalSignInSignUp() {

@@ -145,7 +145,7 @@ class OrderNotYetAuctionedList extends React.Component {
                                         <td>{order.weight}</td>
                                         <td>{order.receivingAddress}</td>
                                         <td>{order.sendingAddress}</td>
-                                        <td><Link to={"order-auction/" + order.id}>Click to auction <span className="fas fa-info-circle" /></Link></td>
+                                        <td><Link to={"order-auction/" + order.id} className="see-another-page-2">Click to auction <span className="fas fa-info-circle" /></Link></td>
                                     </tr>
                                 })
                             }

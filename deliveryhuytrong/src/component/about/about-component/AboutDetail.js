@@ -1,4 +1,5 @@
 import React from 'react';
+import "../about.css";
 import AboutTitle from './AboutTitle';
 
 class AboutDetail extends React.Component {

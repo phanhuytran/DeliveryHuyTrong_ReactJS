@@ -63,3 +63,16 @@
     margin-bottom: 10px !important;
     height: 100px;
 }
+
+.see-another-page-2 {
+    background-color: #f9bf3b;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.4s;
+}
+
+.see-another-page-2:hover {
+    background-color: #fff;
+    color: #f9bf3b;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../shipper.css';
 import { Link } from 'react-router-dom';
 import Shipper from './Shipper';
 import ShipperTitle from './ShipperTitle';
@@ -98,7 +99,7 @@ class ShipperList extends React.Component {
                                 })
                             }
                         </div>
-                        <Link to="/list-orders">SEE LIST OF ORDERS</Link>
+                        <Link to="/list-orders" className="see-another-page">SEE LIST OF ORDERS</Link>
                     </div>
                 </section>
             </div>
