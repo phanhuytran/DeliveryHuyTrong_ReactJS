@@ -1,10 +1,19 @@
 import React from 'react';
 import "../order-auction.css";
+import OwlCarousel from 'react-owl-carousel';
 import { Link } from 'react-router-dom';
 import orderNotYetAuctionedListData from '../../list-orders/list-orders-component/OrderNotYetAuctionedListData';
 import clientIMG from '../image/client.jpg';
+import OrderAuctionComment from './OrderAuctionComment';
 
 class OrderAuctionPost extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            image: orderNotYetAuctionedListData
+        }
+    }
+
     render() {
 
         function see_more_auction_info() {
@@ -53,78 +62,29 @@ class OrderAuctionPost extends React.Component {
                                                     </div>
                                                 </div>
                                                 <div className="order-image">
-                                                    <img src={value.image} alt="img" />
+                                                    <OwlCarousel
+                                                        className="owl-theme"
+                                                        items="1"
+                                                        loop
+                                                        dot="false"
+                                                        nav
+                                                        dotsSpeed="500"
+                                                        smartSpeed="1000"
+                                                        slideBy="1"
+                                                    >
+                                                        {
+                                                            value.image.map((i, ix) => {
+                                                                return <img key={ix} src={i} alt="img" />
+                                                            })
+                                                        }
+                                                    </OwlCarousel>
                                                 </div>
                                             </React.Fragment>
                                         }
                                         return '';
                                     })
                                 }
-                                <form>
-                                    <div className="auction-area-comment">
-                                        <hr />
-                                        <div className="auction-area-comment-flex auction-space">
-                                            <div className="auction-area-comment-flex-left">
-                                                <img src={clientIMG} alt="img" />
-                                            </div>
-                                            <div className="auction-area-comment-flex-center">
-                                                <div className="auction-area-comment-info">
-                                                    <strong>Shipper's Name</strong><br />
-                                                    <span>20.000 VNĐ - 0775398511</span>
-                                                </div>
-                                                <div className="auction-area-comment-date">
-                                                    <p>July 31 at 9:41 PM</p>
-                                                </div>
-                                            </div>
-                                            <div className="auction-area-comment-flex-right">
-                                            </div>
-                                        </div>
-                                        <div className="auction-area-comment-flex auction-space">
-                                            <div className="auction-area-comment-flex-left">
-                                                <img src={clientIMG} alt="img" />
-                                            </div>
-                                            <div className="auction-area-comment-flex-center">
-                                                <div className="auction-area-comment-info">
-                                                    <strong>Shipper's Name</strong><br />
-                                                    <span>20.000 VNĐ - 0775398511</span>
-                                                </div>
-                                                <div className="auction-area-comment-date">
-                                                    <p>July 31 at 9:41 PM</p>
-                                                </div>
-                                            </div>
-                                            <div className="auction-area-comment-flex-right">
-                                            </div>
-                                        </div>
-                                        <div className="auction-area-comment-flex auction-space">
-                                            <div className="auction-area-comment-flex-left">
-                                                <img src={clientIMG} alt="img" />
-                                            </div>
-                                            <div className="auction-area-comment-flex-center">
-                                                <div className="auction-area-comment-info">
-                                                    <strong>Shipper's Name</strong><br />
-                                                    <span>20.000 VNĐ - 0775398511</span>
-                                                </div>
-                                                <div className="auction-area-comment-date">
-                                                    <p>July 31 at 9:41 PM</p>
-                                                </div>
-                                            </div>
-                                            <div className="auction-area-comment-flex-right">
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div className="auction-area-comment-flex">
-                                            <div className="auction-area-comment-flex-left">
-                                                <img src={clientIMG} alt="img" />
-                                            </div>
-                                            <div className="auction-area-comment-flex-center">
-                                                <input type="text" name="" defaultValue="" placeholder="Write a auction information..." />
-                                            </div>
-                                            <div className="auction-area-comment-flex-right">
-                                                <button><i className="fas fa-location-arrow" /></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                                <OrderAuctionComment />
                             </div>
                         </div><br />
                         <Link to="/list-orders" className="see-another-page">SEE LIST OF ORDERS</Link>

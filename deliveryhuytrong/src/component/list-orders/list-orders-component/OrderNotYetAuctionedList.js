@@ -141,7 +141,7 @@ class OrderNotYetAuctionedList extends React.Component {
                                     return <tr key={index}>
                                         <td>{index + 1}</td>
                                         <td>{order.customer}</td>
-                                        <td><img src={order.image} alt="img" /></td>
+                                        <td><img src={order.image[0]} alt="img" /></td>
                                         <td>{order.weight}</td>
                                         <td>{order.receivingAddress}</td>
                                         <td>{order.sendingAddress}</td>
