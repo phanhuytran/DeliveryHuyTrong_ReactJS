@@ -50,7 +50,7 @@ nav.navbar {
     padding: 11px 20px;
 }
 
-.menu-main, .signup li a {
+.menu-main, .signup li p {
     font-size: 12px;
     font-family: 'montserratsemi_bold';
     color: #ffffff;
@@ -70,8 +70,7 @@ nav.navbar {
     width: 60%;
 }
 
-.menu-main:hover,
-.signup li a:hover {
+.menu-main:hover, .signup li a:hover {
     color: #f9bf3b !important;
 }
 
@@ -87,14 +86,8 @@ nav.navbar {
     transition: .4s
 }
 
-.menu li.current-menu-item a:before {
-    background: #f9bf3b;
-    position: absolute;
-    width: 60%;
-    left: 0;
-    bottom: 0;
-    content: "";
-    height: 3px;
+.signup {
+    padding-left: 10px;
 }
 
 .signup:before {
@@ -107,22 +100,28 @@ nav.navbar {
     width: 1px;
 }
 
-.signup ul li:last-child a {
+.signup ul li:last-child p {
     background: #f9bf3b none repeat scroll 0 0;
     border-radius: 3px;
     color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
     padding: 9px 20px;
     margin-left: 8px;
     margin-top: 6px;
     cursor: pointer;
+    transition: 0.4s;
 }
 
-.signup ul li:first-child a {
+.signup ul li:first-child p {
+    font-size: 12px;
+    text-transform: uppercase;
     padding-left: 15px;
     cursor: pointer;
+    transition: 0.4s;
 }
 
-.signup ul li:last-child a:hover {
+.signup ul li:last-child p:hover {
     background: #fff none repeat scroll 0 0;
     color: #f9bf3b;
 }
@@ -274,7 +273,7 @@ nav.navbar {
     padding: 6% 0 0 0;
 }
 
-.about_us_content > a {
+#show-read-more, #hide-away {
     color: #f9bf3b;
     display: inline-block;
     font-family: "montserratbold";
@@ -282,7 +281,7 @@ nav.navbar {
     text-transform: uppercase;
 }
 
-.about_us_content > a span {
+#show-read-more span, #hide-away span {
     padding-left: 10px;
 }
 
@@ -624,7 +623,6 @@ video#bgvid {
     width: 100%;
     background: #22313f none repeat scroll 0 0;
     padding: 40px 0;
-    /* margin: 0 -7.65%; */
 }
 
 .footer-area p {
@@ -690,9 +688,10 @@ video#bgvid {
     color: #fff;
     height: 30px;
     line-height: 30px;
+    padding: 5px 8px;
     text-align: center;
     width: 30px;
-    transition: background 0.5s, color 0.5s;
+    transition: 0.5s
 }
 
 .footer-text a:hover {
@@ -700,7 +699,7 @@ video#bgvid {
     color: #f9bf3b;
 }
 
-.list > li a {
+.list li, .list li > a {
     color: #fff;
     line-height: 25px;
     text-transform: capitalize;
@@ -708,7 +707,7 @@ video#bgvid {
     cursor: pointer;
 }
 
-.list a:hover {
+.list li:hover, .list li > a:hover {
     color: #F9BF3B;
 }
 
@@ -938,7 +937,7 @@ ul.breadcrumbs li {
     color: #222;
 }
 
-.order-buton > a {
+.order-buton > span {
     display: inline-block;
     background: #f9bf3b none repeat scroll 0 0;
     border: 2px solid #eee;
@@ -952,7 +951,7 @@ ul.breadcrumbs li {
     cursor: pointer;
 }
 
-.order-buton a:hover {
+.order-buton span:hover {
     border: 2px solid #eee;
     background-color: #fff;
     color: #f9bf3b;

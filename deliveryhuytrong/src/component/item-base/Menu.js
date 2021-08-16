@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink, Route } from "react-router-dom";
 import "./item-base.css";
 import ModalSignInSignUp from './ModalSignInSignUp';

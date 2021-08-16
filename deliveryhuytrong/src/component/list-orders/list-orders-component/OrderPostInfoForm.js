@@ -45,11 +45,9 @@ class OrderPostInfoForm extends React.Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue=""
                                         placeholder="Order description..."
                                         required
                                         name="description"
-                                        defaultValue={this.state.defaultValue}
                                         value={this.state.description}
                                         onChange={this.onChange}
                                     />
@@ -60,11 +58,9 @@ class OrderPostInfoForm extends React.Component {
                                 <td>
                                     <input
                                         type="file"
-                                        defaultValue=""
                                         placeholder="Other information..."
                                         multiple
                                         name="image"
-                                        defaultValue={this.state.defaultValue}
                                         onChange={this.onChange}
                                     />
                                 </td>
@@ -75,11 +71,9 @@ class OrderPostInfoForm extends React.Component {
                                     <input
                                         type="number"
                                         min="0"
-                                        defaultValue=""
                                         placeholder="Weight..."
                                         required
                                         name="weight"
-                                        defaultValue={this.state.defaultValue}
                                         value={this.state.weight}
                                         onChange={this.onChange}
                                     />
@@ -90,11 +84,9 @@ class OrderPostInfoForm extends React.Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue=""
                                         placeholder="Receiving address..."
                                         required
                                         name="receivingAddress"
-                                        defaultValue={this.state.defaultValue}
                                         value={this.state.receivingAddress}
                                         onChange={this.onChange}
                                     />
@@ -105,11 +97,9 @@ class OrderPostInfoForm extends React.Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue=""
                                         placeholder="Sending address..."
                                         required
                                         name="sendingAddress"
-                                        defaultValue={this.state.defaultValue}
                                         value={this.state.sendingAddress}
                                         onChange={this.onChange}
                                     />

@@ -76,7 +76,7 @@ td.col-confirm-rating {
 	width: 0.2% !important;
 }
 
-td.col-confirm-rating a {
+td.col-confirm-rating span {
 	width: 200%;
 	font-size: 150%;
 	text-align: left;
@@ -87,7 +87,7 @@ td.col-confirm-rating a {
 	transition: 0.4s;
 }
 
-td.col-confirm-rating a:hover {
+td.col-confirm-rating span:hover {
 	color: #1cb33c;
 }
 

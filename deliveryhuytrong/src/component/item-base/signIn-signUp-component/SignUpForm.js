@@ -7,9 +7,9 @@ class SignUpForm extends React.Component {
                 <form className="form-s" method="POST">
                     <h1 className="h1-title-s">Create Account</h1>
                     <div className="social-container">
-                        <a className="a-s" target="_blank" href="https://www.facebook.com/thephanhuytran/"><i className="fab fa-facebook-f" /></a>
-                        <a className="a-s social"><i className="fab fa-google-plus-g" /></a>
-                        <a className="a-s social"><i className="fab fa-linkedin-in" /></a>
+                        <a className="a-s" href="https://www.facebook.com/thephanhuytran/"><i className="fab fa-facebook-f" /></a>
+                        <a className="a-s social" href="/"><i className="fab fa-google-plus-g" /></a>
+                        <a className="a-s social" href="/"><i className="fab fa-linkedin-in" /></a>
                     </div>
                     <span className="error">error</span>
                     <div>

@@ -2,7 +2,7 @@ import React from 'react';
 
 class ShipperDetailRating extends React.Component {
     render() {
-        
+
         function cofirm_rating() {
             var checkbox = document.getElementsByName("rating");
             for (var i = 0; i < checkbox.length; i++) {
@@ -35,7 +35,7 @@ class ShipperDetailRating extends React.Component {
                         </div>
                     </td>
                     <td className="text-right col-confirm-rating">
-                        <a onClick={cofirm_rating} id="btn-confirm-rating" className="fas fa-check-circle" />
+                        <span onClick={cofirm_rating} id="btn-confirm-rating" className="fas fa-check-circle" />
                     </td>
                 </tr>
                 <tr>

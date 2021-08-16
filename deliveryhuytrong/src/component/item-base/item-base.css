@@ -35,12 +35,12 @@
     cursor: pointer;
 }
 
-.navlink_color {
+.navlink_color, .menu-sign-in-sign-up li:first-child p {
     color: #fff;
     transition: 0.5s;
 }
 
-.navlink_color:hover {
+.navlink_color:hover, .menu-sign-in-sign-up li:first-child p:hover {
     color: #f9bf3b;
 }
 
@@ -56,6 +56,11 @@
     bottom: 0;
     content: "";
     height: 3px;
+}
+
+.navbar-nav > li > p {
+    padding: 15px 15px 15px 0;
+    line-height: 20px;
 }
 
 .page-not-found {

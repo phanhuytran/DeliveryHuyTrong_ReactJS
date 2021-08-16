@@ -25,7 +25,7 @@ class BodyPricing extends React.Component {
                                         <li>24/7 Customer shipper</li>
                                     </ul>
                                     <div className="order-buton">
-                                        <a>order now</a>
+                                        <span>order now</span>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@ class BodyPricing extends React.Component {
                                         <li>24/7 Customer shipper</li>
                                     </ul>
                                     <div className="order-buton">
-                                        <a>order now</a>
+                                        <span>order now</span>
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@ class BodyPricing extends React.Component {
                                         <li>24/7 Customer shipper</li>
                                     </ul>
                                     <div className="order-buton">
-                                        <a>order now</a>
+                                        <span>order now</span>
                                     </div>
                                 </div>
                             </div>

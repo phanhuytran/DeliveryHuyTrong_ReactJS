@@ -5,16 +5,16 @@ class NotificationBell extends React.Component {
     render() {
         return (
             <div className="icons-bell">
-                <a href="#"><i className="fas fa-archive fas-bell" /></a>
+                <span><i className="fas fa-archive fas-bell" /></span>
                 <div className="notification-bell">
-                    <div className="notBtn-bell" href="#">
-                        <a href="#">
+                    <div className="notBtn-bell">
+                        <a href="/">
                             <div className="number-bell">2</div>
                             <i className="fas fa-bell fas-bell" />
                         </a>
                         <div className="box-bell">
                             <div className="display-bell">
-                                <a href="#">
+                                <a href="/">
                                     <div className="nothing-bell">
                                         <i className="fas fa-child  fas-bell stick-bell" />
                                         <div className="cent-bell">Looks Like your all caught up!</div>
@@ -22,99 +22,99 @@ class NotificationBell extends React.Component {
                                 </a>
                                 <div className="cont-bell">
                                     <div className="sec-bell">
-                                        <a href="#">
+                                        <a href="/">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src={shipperIMG} />
+                                                <img className="profile-bell" src={shipperIMG} alt="notification-img" />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
                                         </a>
                                     </div>
                                     <div className="sec-bell">
-                                        <a href="#">
+                                        <a href="/">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src={shipperIMG} />
+                                                <img className="profile-bell" src={shipperIMG} alt="notification-img" />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
                                         </a>
                                     </div>
                                     <div className="sec-bell">
-                                        <a href="#">
+                                        <a href="/">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src={shipperIMG} />
+                                                <img className="profile-bell" src={shipperIMG} alt="notification-img" />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
                                         </a>
                                     </div>
                                     <div className="sec-bell">
-                                        <a href="#">
+                                        <a href="/">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src={shipperIMG} />
+                                                <img className="profile-bell" src={shipperIMG} alt="notification-img" />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
                                         </a>
                                     </div>
                                     <div className="sec-bell">
-                                        <a href="#">
+                                        <a href="/">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src={shipperIMG} />
+                                                <img className="profile-bell" src={shipperIMG} alt="notification-img" />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
                                         </a>
                                     </div>
                                     <div className="sec-bell">
-                                        <a href="#">
+                                        <a href="/">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src={shipperIMG} />
+                                                <img className="profile-bell" src={shipperIMG} alt="notification-img" />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
                                         </a>
                                     </div>
                                     <div className="sec-bell">
-                                        <a href="#">
+                                        <a href="/">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src={shipperIMG} />
+                                                <img className="profile-bell" src={shipperIMG} alt="notification-img" />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
                                         </a>
                                     </div>
                                     <div className="sec-bell">
-                                        <a href="#">
+                                        <a href="/">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src={shipperIMG} />
+                                                <img className="profile-bell" src={shipperIMG} alt="notification-img" />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
                                         </a>
                                     </div>
                                     <div className="sec-bell">
-                                        <a href="#">
+                                        <a href="/">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src={shipperIMG} />
+                                                <img className="profile-bell" src={shipperIMG} alt="notification-img" />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
                                         </a>
                                     </div>
                                     <div className="sec-bell">
-                                        <a href="#">
+                                        <a href="/">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src={shipperIMG} />
+                                                <img className="profile-bell" src={shipperIMG} alt="notification-img" />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>
                                         </a>
                                     </div>
                                     <div className="sec-bell">
-                                        <a href="#">
+                                        <a href="/">
                                             <div className="profCont-bell">
-                                                <img className="profile-bell" src={shipperIMG} />
+                                                <img className="profile-bell" src={shipperIMG} alt="notification-img" />
                                             </div>
                                             <div className="txt-bell">Brie liked your post: "Pure css notification box"</div>
                                             <div className="txt-bell sub-bell">11/6 - 9:35 pm</div>

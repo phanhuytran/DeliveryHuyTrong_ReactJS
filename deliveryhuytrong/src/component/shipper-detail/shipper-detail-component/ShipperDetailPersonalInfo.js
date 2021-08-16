@@ -41,8 +41,8 @@ class ShipperDetailPersonalInfo extends React.Component {
                                     <td colSpan={2} className="text-right shipper-highlight-info">{value.phone}</td>
                                 </tr>
                             </React.Fragment>
-                            return '';
                         }
+                        return <React.Fragment key={index}></React.Fragment>;
                     })
                 }
             </>

@@ -171,6 +171,24 @@
     .order-us-bottom-area input:focus {
         width: 100% !important;
     }
+    .title-info-order-auction {
+        margin-bottom: 10px !important;
+        height: auto !important;
+    }
+    .info-comment, .info-comment-2 {
+        font-size: 18px !important;
+    }
+    .auction-order-info p {
+        font-size: 20px !important;
+        margin: 25px 0 0;
+    }
+    .auction-order-info p:last-child {
+        font-size: 13px !important;
+        margin-bottom: 1.5%;
+    }
+    div.auction-order-info {
+        width: 80%;
+    }
 
 
     /* Shipper */
