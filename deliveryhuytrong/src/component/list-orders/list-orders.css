@@ -51,3 +51,15 @@
 .order-auction-status-not-yet-shipped {
     background-color: #dc3545;
 }
+
+.single-order-us-bottom p {
+    margin: 0 0 3px ;
+}
+
+.title-info-order-auction {
+    font-size: 17px;
+    font-style: oblique;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 10px !important;
+    height: 100px;
+}

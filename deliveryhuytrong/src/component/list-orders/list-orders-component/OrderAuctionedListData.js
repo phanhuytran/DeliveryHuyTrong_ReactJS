@@ -1,7 +1,7 @@
 let orderListAuctionedData = [
     {
         "id": 1,
-        "description": "Vaccine Covid 19",
+        "description": "Vaccine Covid 19 (Please transport to hospitals all over Vietnam. Shipping request arrives before September 2021).",
         "image": "",
         "weight": 202,
         "receivingAddress": "California",
@@ -12,7 +12,7 @@ let orderListAuctionedData = [
         "status": "SHIPPED"
     }, {
         "id": 2,
-        "description": "Tiger Beer",
+        "description": "Tiger Beer (12 boxes, 24 cans each. Delivery is required on August 16, 2021).",
         "image": "",
         "weight": 125,
         "receivingAddress": "Nebraska",
@@ -23,7 +23,7 @@ let orderListAuctionedData = [
         "status": "SHIPPING"
     }, {
         "id": 3,
-        "description": "Alcohol & Marijuana",
+        "description": "Alcohol & Marijuana (This is a medical ingredient, so there is no need to be afraid to transport it. For any problems, please call 0775398511).",
         "image": "",
         "weight": 218,
         "receivingAddress": "Virgina",

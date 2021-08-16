@@ -8,10 +8,10 @@ class OrderNotYetAuctionedList extends React.Component {
         super(props);
         this.state = {
             orderNotYetAuctionedData: orderNotYetAuctionedListData,
-            descriptionFilter: '',
+            customerFilter: '',
             receivingAddressFilter: '',
             sendingAddressFilter: '',
-            isDisplayClearDescriptionFilter: false,
+            isDisplayClearCustomerFilter: false,
             isDisplayClearReceivingAddressFilter: false,
             isDisplayClearSendingAddressFilter: false
         }
@@ -26,9 +26,9 @@ class OrderNotYetAuctionedList extends React.Component {
         });
     }
 
-    onClearDescriptionFilter = () => {
+    onClearCustomerFilter = () => {
         this.setState({
-            descriptionFilter: ''
+            customerFilter: ''
         })
     }
 
@@ -46,20 +46,20 @@ class OrderNotYetAuctionedList extends React.Component {
 
     render() {
 
-        var { isDisplayClearDescriptionFilter } = this.state;
+        var { isDisplayClearCustomerFilter } = this.state;
         var { isDisplayClearReceivingAddressFilter } = this.state
         var { isDisplayClearSendingAddressFilter } = this.state
 
         let itemsOrigin = this.state.orderNotYetAuctionedData;
         let orderNotYetAuctionedData = [];
 
-        const descriptionFilter = this.state.descriptionFilter;
+        const customerFilter = this.state.customerFilter;
         const receivingAddressFilter = this.state.receivingAddressFilter;
         const sendingAddressFilter = this.state.sendingAddressFilter;
 
-        if (descriptionFilter.length > 0 || receivingAddressFilter.length > 0 || sendingAddressFilter.length > 0) {
+        if (customerFilter.length > 0 || receivingAddressFilter.length > 0 || sendingAddressFilter.length > 0) {
             itemsOrigin.forEach((item) => {
-                if (item.description.toLowerCase().indexOf(descriptionFilter) !== -1
+                if (item.customer.toLowerCase().indexOf(customerFilter) !== -1
                     && item.receivingAddress.toLowerCase().indexOf(receivingAddressFilter) !== -1
                     && item.sendingAddress.toLowerCase().indexOf(sendingAddressFilter) !== -1) {
                     orderNotYetAuctionedData.push(item);
@@ -69,8 +69,8 @@ class OrderNotYetAuctionedList extends React.Component {
             orderNotYetAuctionedData = itemsOrigin;
         }
 
-        if (descriptionFilter.length > 0) {
-            isDisplayClearDescriptionFilter = true;
+        if (customerFilter.length > 0) {
+            isDisplayClearCustomerFilter = true;
         }
 
         if (receivingAddressFilter.length > 0) {
@@ -88,7 +88,7 @@ class OrderNotYetAuctionedList extends React.Component {
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Order description</th>
+                                <th>Customer</th>
                                 <th>Image</th>
                                 <th>Weight (kg)</th>
                                 <th>Receiving address</th>
@@ -102,12 +102,12 @@ class OrderNotYetAuctionedList extends React.Component {
                                 <td>
                                     <input
                                         type="text"
-                                        name="descriptionFilter"
-                                        value={this.state.descriptionFilter}
+                                        name="customerFilter"
+                                        value={this.state.customerFilter}
                                         onChange={this.onSearch}
                                     />
                                     {
-                                        isDisplayClearDescriptionFilter ? <button onClick={this.onClearDescriptionFilter}>Clear</button> : <></>
+                                        isDisplayClearCustomerFilter ? <button onClick={this.onClearCustomerFilter}>Clear</button> : <></>
                                     }
                                 </td>
                                 <td></td>
@@ -140,7 +140,7 @@ class OrderNotYetAuctionedList extends React.Component {
                                 orderNotYetAuctionedData.map((order, index) => {
                                     return <tr key={index}>
                                         <td>{index + 1}</td>
-                                        <td>{order.description}</td>
+                                        <td>{order.customer}</td>
                                         <td><img src={order.image} alt="img" /></td>
                                         <td>{order.weight}</td>
                                         <td>{order.receivingAddress}</td>

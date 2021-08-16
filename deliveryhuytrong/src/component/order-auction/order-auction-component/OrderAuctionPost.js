@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import orderNotYetAuctionedListData from '../../list-orders/list-orders-component/OrderNotYetAuctionedListData';
+import "../order-auction.css";
 import clientIMG from '../image/client.jpg';
 
 class OrderAuctionPost extends React.Component {
@@ -34,19 +35,20 @@ class OrderAuctionPost extends React.Component {
                                                     </div>
                                                     <div className="auction-customer-info-right">
                                                         <p>
-                                                            <span>Customer's Name</span><br />
+                                                            <span>{value.customer}</span><br />
                                                             <span>{value.createdDate}</span>
                                                         </p>
                                                     </div>
                                                 </div>
                                                 <div className="auction-order-info">
-                                                    <p>Order description: <strong>{value.description}</strong>
-                                                        <span id="see-more-auction-order-info-1" onClick={see_more_auction_info}> See more <span className="fas fa-arrow-down" /></span>
-                                                    </p>
+                                                    <p>Customer: <span className="info-comment">{value.customer}</span></p>
+                                                    <p><span id="see-more-auction-order-info-1" onClick={see_more_auction_info}> See more <span className="fas fa-arrow-down" /></span></p>
                                                     <div id="see-more-auction-order-info-2">
-                                                        <p>Weight: <strong>{value.weight} kilograms</strong></p>
-                                                        <p>Receiving address: <strong>{value.receivingAddress}</strong></p>
-                                                        <p>Sending address: <strong>{value.sendingAddress}</strong></p>
+                                                        <p>Order description:</p>
+                                                        <p className="info-comment-2">{value.description}</p>
+                                                        <p>Weight: <span className="info-comment">{value.weight} kilograms</span></p>
+                                                        <p>Receiving address: <span className="info-comment">{value.receivingAddress}</span></p>
+                                                        <p>Sending address: <span className="info-comment">{value.sendingAddress}</span></p>
                                                         <p id="see-less-auction-order-info" onClick={see_less_auction_info}>See less <span className="fas fa-arrow-up" /></p>
                                                     </div>
                                                 </div>

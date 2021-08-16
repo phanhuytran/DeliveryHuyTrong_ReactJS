@@ -1213,9 +1213,8 @@ div.auction-area {
 }
 
 div.order-image img {
-    margin: 0 32.5%;
-    padding: 2%;
-    width: 35%;
+    padding: 2% 5%;
+    width: 100%;
 }
 
 div.auction-area-comment {
@@ -1265,10 +1264,6 @@ div#see-more-auction-order-info-2 {
     font-weight: bold;
     font-size: 13px;
     cursor: pointer;
-}
-
-#see-more-auction-order-info-1 {
-    margin-left: 20px;
 }
 
 #see-less-auction-order-info {

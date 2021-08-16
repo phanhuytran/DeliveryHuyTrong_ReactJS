@@ -1,0 +1,14 @@
+.info-comment {
+    float: right;
+    font-size: 20px;
+    font-style: oblique;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.info-comment-2 {
+    font-size: 20px;
+    font-style: oblique;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: justify;
+    margin: -1% 0 4% 0;
+}

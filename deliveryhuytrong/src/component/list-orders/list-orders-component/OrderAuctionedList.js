@@ -8,7 +8,7 @@ class OrdertAuctionedList extends React.Component {
         super(props);
         this.state = {
             orderAuctionedData: orderAuctionedListData,
-            orderNameFilter: '',
+            customerFilter: '',
             receivingAddressFilter: '',
             sendingAddressFilter: '',
             isDisplayClear: false
@@ -26,7 +26,7 @@ class OrdertAuctionedList extends React.Component {
 
     onClear = () => {
         this.setState({
-            orderNameFilter: '',
+            customerFilter: '',
             receivingAddressFilter: '',
             sendingAddressFilter: ''
         })
@@ -39,14 +39,14 @@ class OrdertAuctionedList extends React.Component {
         let itemsOrigin = this.state.orderAuctionedData;
         let orderAuctionedData = [];
 
-        const orderNameFilter = this.state.orderNameFilter;
+        const customerFilter = this.state.customerFilter;
         const receivingAddressFilter = this.state.receivingAddressFilter;
         const sendingAddressFilter = this.state.sendingAddressFilter;
 
-        if (orderNameFilter.length > 0 || receivingAddressFilter.length > 0 || sendingAddressFilter.length > 0) {
+        if (customerFilter.length > 0 || receivingAddressFilter.length > 0 || sendingAddressFilter.length > 0) {
             isDisplayClear = true
             itemsOrigin.forEach((item) => {
-                if (item.description.toLowerCase().indexOf(orderNameFilter) !== -1
+                if (item.customer.toLowerCase().indexOf(customerFilter) !== -1
                     && item.receivingAddress.toLowerCase().indexOf(receivingAddressFilter) !== -1
                     && item.sendingAddress.toLowerCase().indexOf(sendingAddressFilter) !== -1) {
                     orderAuctionedData.push(item);
@@ -63,9 +63,9 @@ class OrdertAuctionedList extends React.Component {
                     <div className="order-auctioned-filter">
                         <input
                             type="text"
-                            placeholder="Search by order name..."
-                            name="orderNameFilter"
-                            value={this.state.orderNameFilter}
+                            placeholder="Search by customer..."
+                            name="customerFilter"
+                            value={this.state.customerFilter}
                             onChange={this.onSearch}
                         />
                         <input
@@ -93,8 +93,9 @@ class OrdertAuctionedList extends React.Component {
                             orderAuctionedData.map((order, index) => {
                                 return <div className="col-md-4 col-sm-4 col-xs-12 col-lg-4" key={index}>
                                     <div className="single-order-us-bottom">
-                                        <h4>{order.description}</h4>
-                                        <p>Customer:<span>{order.customer}</span></p>
+                                        <h4>{order.customer}</h4>
+                                        <p>Order description:</p>
+                                        <p className="title-info-order-auction">{order.description}</p>
                                         <p>Receiving address:<span>{order.receivingAddress}</span></p>
                                         <p>Sending address:<span>{order.sendingAddress}</span></p>
                                         <p>Status:

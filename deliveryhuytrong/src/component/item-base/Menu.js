@@ -3,7 +3,6 @@ import { NavLink, Route } from "react-router-dom";
 import "./item-base.css";
 import ModalSignInSignUp from './ModalSignInSignUp';
 
-
 const menu = [
     {
         label: "Home",
