@@ -1,7 +1,7 @@
 import React from 'react';
 import OrderPostInfoForm from './OrderPostInfoForm';
 import orderNotYetAuctionedListData from './OrderNotYetAuctionedListData';
-const { v4: uuidv4 } = require('uuid');
+// const { v4: uuidv4 } = require('uuid');
 
 class OrderPostInfo extends React.Component {
 
@@ -11,17 +11,8 @@ class OrderPostInfo extends React.Component {
             orderNotYetAuctioned: orderNotYetAuctionedListData,
             isDisplayPostInfoForm: false
         }
-        localStorage.setItem('orderNotYetAuctioned', JSON.stringify(this.state.orderNotYetAuctioned))
+        // localStorage.setItem('orderNotYetAuctioned', JSON.stringify(this.state.orderNotYetAuctioned))
     }
-
-    // componentWillMount() {
-    //     if (localStorage && localStorage.getItem('orderNotYetAuctioned')) {
-    //         var od = JSON.parse(localStorage.getItem('orderNotYetAuctioned'));
-    //         this.setState({
-    //             orderNotYetAuctioned: od
-    //         });
-    //     }
-    // }
 
     onTogglePostInfoForm = () => {
         this.setState({
@@ -29,35 +20,35 @@ class OrderPostInfo extends React.Component {
         });
     }
 
-    onSubmit = (data) => {
-        let {orderNotYetAuctioned} = this.state;
-        orderNotYetAuctioned.push({
-            id: uuidv4(),
-            description: data.description,
-            image: data.image,
-            weight: data.weight,
-            receivingAddress: data.receivingAddress,
-            sendingAddress: data.sendingAddress,
-            customer: "",
-            createdDate: "",
-            updatedDate: "",
-            isActive: true,
-        });
+    // onSubmit = (data) => {
+    //     let {orderNotYetAuctioned} = this.state;
+    //     orderNotYetAuctioned.push({
+    //         id: 10,
+    //         description: data.description,
+    //         image: data.image,
+    //         weight: data.weight,
+    //         receivingAddress: data.receivingAddress,
+    //         sendingAddress: data.sendingAddress,
+    //         customer: "",
+    //         createdDate: "",
+    //         updatedDate: "",
+    //         isActive: true,
+    //     });
 
-        this.setState({
-            isDisplayPostInfoForm: false,
-            orderNotYetAuctioned: orderNotYetAuctionedListData
-        });
-        console.log(this.state.orderNotYetAuctioned);
-        localStorage.setItem('orderNotYetAuctioned', JSON.stringify(orderNotYetAuctioned));
-
-    }
+    //     this.setState({
+    //         isDisplayPostInfoForm: false,
+    //         orderNotYetAuctioned: orderNotYetAuctionedListData
+    //     });
+    //     console.log(this.state.orderNotYetAuctioned);
+    //     localStorage.setItem('orderNotYetAuctioned', JSON.stringify(orderNotYetAuctioned));
+    // }
 
     render() {
 
         var { isDisplayPostInfoForm } = this.state;
         var elementPostInfoForm = isDisplayPostInfoForm
-            ? <OrderPostInfoForm onSubmit={this.onSubmit} />
+            // ? <OrderPostInfoForm onSubmit={this.onSubmit} />
+            ? <OrderPostInfoForm />
             : '';
 
         return (
