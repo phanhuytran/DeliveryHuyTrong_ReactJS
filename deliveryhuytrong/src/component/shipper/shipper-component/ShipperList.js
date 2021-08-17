@@ -35,7 +35,7 @@ class ShipperList extends React.Component {
 
     render() {
 
-        var { isDisplayClearFilter } = this.state;
+        let { isDisplayClearFilter } = this.state;
 
         let itemsOrigin = this.state.shiperData;
         let shiperData = [];
@@ -61,24 +61,9 @@ class ShipperList extends React.Component {
                     <div className="container">
                         <ShipperTitle />
                         <div className="shipper-list-filter">
-                            <input
-                                type="text"
-                                placeholder="Search by full name..."
-                                name="fullNameFilter"
-                                value={this.state.fullNameFilter}
-                                onChange={this.onSearch}
-                            />
-                            <input
-                                className="ml-spf"
-                                type="text"
-                                placeholder="Search by phone number..."
-                                name="phoneFilter"
-                                value={this.state.phoneFilter}
-                                onChange={this.onSearch}
-                            />
-                            {
-                                isDisplayClearFilter ? <button onClick={this.onClear}>Clear</button> : <></>
-                            }
+                            <input type="text" placeholder="Search by full name..." name="fullNameFilter" value={this.state.fullNameFilter} onChange={this.onSearch} />
+                            <input className="ml-spf" type="text" placeholder="Search by phone number..." name="phoneFilter" value={this.state.phoneFilter} onChange={this.onSearch} />
+                            {isDisplayClearFilter ? <button onClick={this.onClear}>Clear</button> : <></>}
                         </div>
                         <div className="row scroll-shipper-list">
                             {

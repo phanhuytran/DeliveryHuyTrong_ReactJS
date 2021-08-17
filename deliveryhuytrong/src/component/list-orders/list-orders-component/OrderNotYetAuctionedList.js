@@ -117,70 +117,74 @@ class OrderNotYetAuctionedList extends React.Component {
         }
 
         return (
-            <div>
-                <h2>List of orders waiting to be auctioned</h2>
-                <div className="create-post">
-                    <div className="create-post-left">
-                        <div className="new-page-tab" onClick={this.onTogglePostInfoForm}>
-                            {
-                                !isDisplayPostInfoForm ? <span>CREATE A NEW POST</span> : <span>CLOSE</span>
-                            }
+            <section className="order-bottom-area">
+                <div className="container">
+                    <div className="row">
+                        <h2>List of orders waiting to be auctioned</h2>
+                        <div className="create-post">
+                            <div className="create-post-left">
+                                <div className="new-page-tab" onClick={this.onTogglePostInfoForm}>
+                                    {
+                                        !isDisplayPostInfoForm ? <span>CREATE A NEW POST</span> : <span>CLOSE</span>
+                                    }
+                                </div>
+                            </div>
+                            {elementPostInfoForm}
+                        </div>
+                        <div className="table-order-list-area">
+                            <table className="table-order-list">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Customer</th>
+                                        <th>Image</th>
+                                        <th>Weight (kg)</th>
+                                        <th>Receiving address</th>
+                                        <th>Sending address</th>
+                                        <th>Detailed information</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr className="order-list-filter">
+                                        <td>Filter</td>
+                                        <td>
+                                            <input type="text" name="customerFilter" value={this.state.customerFilter} onChange={this.onSearch} />
+                                            {isDisplayClearCustomerFilter ? <button onClick={this.onClearCustomerFilter}>Clear</button> : <></>}
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <input type="text" name="receivingAddressFilter" value={this.state.receivingAddressFilter} onChange={this.onSearch} />
+                                            {isDisplayClearReceivingAddressFilter ? <button onClick={this.onClearReceivingAddressFilter}>Clear</button> : <></>}
+                                        </td>
+                                        <td>
+                                            <input type="text" name="sendingAddressFilter" value={this.state.sendingAddressFilter} onChange={this.onSearch} />
+                                            {isDisplayClearSendingAddressFilter ? <button onClick={this.onClearSendingAddressFilter}>Clear</button> : <></>}
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    {
+                                        orderPostList.map((order, index) => {
+                                            if (order.isWin === false) {
+                                                return <tr key={index}>
+                                                    <td>{index + 1}</td>
+                                                    <td>{order.customer}</td>
+                                                    <td><img src={order.image[0]} alt="img" /></td>
+                                                    <td>{order.weight}</td>
+                                                    <td>{order.receivingAddress}</td>
+                                                    <td>{order.sendingAddress}</td>
+                                                    <td><Link to={"order-auction/" + order.id} className="see-another-page-2">Click to auction <span className="fas fa-info-circle" /></Link></td>
+                                                </tr>
+                                            }
+                                            return <React.Fragment key={index}></React.Fragment>;
+                                        })
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    {elementPostInfoForm}
                 </div>
-                <div className="table-order-list-area">
-                    <table className="table-order-list">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Customer</th>
-                                <th>Image</th>
-                                <th>Weight (kg)</th>
-                                <th>Receiving address</th>
-                                <th>Sending address</th>
-                                <th>Detailed information</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className="order-list-filter">
-                                <td>Filter</td>
-                                <td>
-                                    <input type="text" name="customerFilter" value={this.state.customerFilter} onChange={this.onSearch} />
-                                    {isDisplayClearCustomerFilter ? <button onClick={this.onClearCustomerFilter}>Clear</button> : <></>}
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <input type="text" name="receivingAddressFilter" value={this.state.receivingAddressFilter} onChange={this.onSearch} />
-                                    {isDisplayClearReceivingAddressFilter ? <button onClick={this.onClearReceivingAddressFilter}>Clear</button> : <></>}
-                                </td>
-                                <td>
-                                    <input type="text" name="sendingAddressFilter" value={this.state.sendingAddressFilter} onChange={this.onSearch} />
-                                    {isDisplayClearSendingAddressFilter ? <button onClick={this.onClearSendingAddressFilter}>Clear</button> : <></>}
-                                </td>
-                                <td></td>
-                            </tr>
-                            {
-                                orderPostList.map((order, index) => {
-                                    if (order.isWin === false) {
-                                        return <tr key={index}>
-                                            <td>{index + 1}</td>
-                                            <td>{order.customer}</td>
-                                            <td><img src={order.image[0]} alt="img" /></td>
-                                            <td>{order.weight}</td>
-                                            <td>{order.receivingAddress}</td>
-                                            <td>{order.sendingAddress}</td>
-                                            <td><Link to={"order-auction/" + order.id} className="see-another-page-2">Click to auction <span className="fas fa-info-circle" /></Link></td>
-                                        </tr>
-                                    }
-                                    return <React.Fragment key={index}></React.Fragment>;
-                                })
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            </section>
         );
     }
 }

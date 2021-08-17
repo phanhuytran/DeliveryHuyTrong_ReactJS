@@ -50,7 +50,7 @@ class OrdertAuctionedList extends React.Component {
                 if (item.customer.toLowerCase().indexOf(customerFilter) !== -1
                     && item.receivingAddress.toLowerCase().indexOf(receivingAddressFilter) !== -1
                     && item.sendingAddress.toLowerCase().indexOf(sendingAddressFilter) !== -1) {
-                        orderPostList.push(item);
+                    orderPostList.push(item);
                 }
             });
         } else {
@@ -62,32 +62,10 @@ class OrdertAuctionedList extends React.Component {
                 <div className="container">
                     <h2>List of orders have been auctioned</h2><br />
                     <div className="order-auctioned-filter">
-                        <input
-                            type="text"
-                            placeholder="Search by customer..."
-                            name="customerFilter"
-                            value={this.state.customerFilter}
-                            onChange={this.onSearch}
-                        />
-                        <input
-                            className="ml-spf"
-                            type="text"
-                            placeholder="Search by receiving address..."
-                            name="receivingAddressFilter"
-                            value={this.state.receivingAddressFilter}
-                            onChange={this.onSearch}
-                        />
-                        <input
-                            className="ml-spf"
-                            type="text"
-                            placeholder="Search by send address..."
-                            name="sendingAddressFilter"
-                            value={this.state.sendingAddressFilter}
-                            onChange={this.onSearch}
-                        />
-                        {
-                            isDisplayClear ? <button onClick={this.onClear}>Clear</button> : <></>
-                        }
+                        <input type="text" placeholder="Search by customer..." name="customerFilter" value={this.state.customerFilter} onChange={this.onSearch} />
+                        <input className="ml-spf" type="text" placeholder="Search by receiving address..." name="receivingAddressFilter" value={this.state.receivingAddressFilter} onChange={this.onSearch} />
+                        <input className="ml-spf" type="text" placeholder="Search by send address..." name="sendingAddressFilter" value={this.state.sendingAddressFilter} onChange={this.onSearch} />
+                        {isDisplayClear ? <button onClick={this.onClear}>Clear</button> : <></>}
                     </div>
                     <div className="row scroll-order-list">
                         {
