@@ -1,6 +1,6 @@
 import React from 'react';
 import "../list-orders.css";
-import orderAuctionedListData from './OrderAuctionedListData';
+import orderPostListData from './OrderPostListData';
 // import a from './../../API'
 
 class OrdertAuctionedList extends React.Component {
@@ -8,7 +8,7 @@ class OrdertAuctionedList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            orderAuctionedData: orderAuctionedListData,
+            orderPostList: orderPostListData,
             customerFilter: '',
             receivingAddressFilter: '',
             sendingAddressFilter: '',
@@ -37,8 +37,8 @@ class OrdertAuctionedList extends React.Component {
 
         var { isDisplayClear } = this.state;
 
-        let itemsOrigin = this.state.orderAuctionedData;
-        let orderAuctionedData = [];
+        let itemsOrigin = this.state.orderPostList;
+        let orderPostList = [];
 
         const customerFilter = this.state.customerFilter;
         const receivingAddressFilter = this.state.receivingAddressFilter;
@@ -50,11 +50,11 @@ class OrdertAuctionedList extends React.Component {
                 if (item.customer.toLowerCase().indexOf(customerFilter) !== -1
                     && item.receivingAddress.toLowerCase().indexOf(receivingAddressFilter) !== -1
                     && item.sendingAddress.toLowerCase().indexOf(sendingAddressFilter) !== -1) {
-                    orderAuctionedData.push(item);
+                        orderPostList.push(item);
                 }
             });
         } else {
-            orderAuctionedData = itemsOrigin;
+            orderPostList = itemsOrigin;
         }
 
         return (
@@ -91,29 +91,32 @@ class OrdertAuctionedList extends React.Component {
                     </div>
                     <div className="row scroll-order-list">
                         {
-                            orderAuctionedData.map((order, index) => {
-                                return <div className="col-md-4 col-sm-4 col-xs-12 col-lg-4" key={index}>
-                                    <div className="single-order-us-bottom">
-                                        <h4>{order.customer}</h4>
-                                        <p>Order description:</p>
-                                        <p className="title-info-order-auction">{order.description}</p>
-                                        <p>Receiving address:<span>{order.receivingAddress}</span></p>
-                                        <p>Sending address:<span>{order.sendingAddress}</span></p>
-                                        <p>Status:
-                                            <span className={
-                                                order.status === 'SHIPPED' ? 'order-auction-status-shipped' : '' ||
-                                                    order.status === 'SHIPPING' ? 'order-auction-status-shipping' : '' ||
-                                                        order.status === 'NOTYETSHIPPED' ? 'order-auction-status-not-yet-shipped' : ''
-                                            }>
-                                                {
-                                                    order.status === 'SHIPPED' ? 'Shipped' : '' ||
-                                                        order.status === 'SHIPPING' ? 'Shipping' : '' ||
-                                                            order.status === 'NOTYETSHIPPED' ? 'Not yet shipped' : ''
-                                                }
-                                            </span>
-                                        </p>
+                            orderPostList.map((order, index) => {
+                                if (order.isWin === true) {
+                                    return <div className="col-md-4 col-sm-4 col-xs-12 col-lg-4" key={index}>
+                                        <div className="single-order-us-bottom">
+                                            <h4>{order.customer}</h4>
+                                            <p>Order description:</p>
+                                            <p className="title-info-order-auction">{order.description}</p>
+                                            <p>Receiving address:<span>{order.receivingAddress}</span></p>
+                                            <p>Sending address:<span>{order.sendingAddress}</span></p>
+                                            <p>Status:
+                                                <span className={
+                                                    order.status === 'SHIPPED' ? 'order-auction-status-shipped' : '' ||
+                                                        order.status === 'SHIPPING' ? 'order-auction-status-shipping' : '' ||
+                                                            order.status === 'NOTYETSHIPPED' ? 'order-auction-status-not-yet-shipped' : ''
+                                                }>
+                                                    {
+                                                        order.status === 'SHIPPED' ? 'Shipped' : '' ||
+                                                            order.status === 'SHIPPING' ? 'Shipping' : '' ||
+                                                                order.status === 'NOTYETSHIPPED' ? 'Not yet shipped' : ''
+                                                    }
+                                                </span>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
+                                }
+                                return '';
                             })
                         }
                     </div>

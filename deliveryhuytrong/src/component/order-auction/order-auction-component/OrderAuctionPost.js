@@ -2,7 +2,7 @@ import React from 'react';
 import "../order-auction.css";
 import Carousel from 'react-elastic-carousel';
 import { Link } from 'react-router-dom';
-import orderNotYetAuctionedListData from '../../list-orders/list-orders-component/OrderNotYetAuctionedListData';
+import orderPostListData from '../../list-orders/list-orders-component/OrderPostListData';
 import OrderAuctionComment from './OrderAuctionComment';
 import clientIMG from '../image/client.jpg';
 
@@ -10,7 +10,7 @@ class OrderAuctionPost extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            image: orderNotYetAuctionedListData
+            image: orderPostListData
         }
     }
 
@@ -35,7 +35,7 @@ class OrderAuctionPost extends React.Component {
                         <div className="row">
                             <div className="auction-area">
                                 {
-                                    orderNotYetAuctionedListData.map((value, index) => {
+                                    orderPostListData.map((value, index) => {
                                         if (value.id === orderID) {
                                             return <React.Fragment key={index}>
                                                 <div className="auction-customer-info">

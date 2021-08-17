@@ -22,23 +22,23 @@ class OrderPostInfoForm extends React.Component {
         });
     }
 
-    // onSubmit = (event) => {
-    //     event.preventDefault();
-    //     let item = {
-    //         description: this.state.description,
-    //         image: this.state.image,
-    //         weight: this.state.weight,
-    //         receivingAddress: this.state.receivingAddress,
-    //         sendingAddress: this.state.sendingAddress,
-    //     }
-    //     this.props.onSubmit(item);
-    // }
+    onSubmit = (event) => {
+        event.preventDefault();
+        let item = {
+            description: this.state.description,
+            image: this.state.image,
+            weight: this.state.weight,
+            receivingAddress: this.state.receivingAddress,
+            sendingAddress: this.state.sendingAddress,
+        }
+        this.props.onSubmit(item);
+    }
 
     render() {
         return (
             <div className="create-post-right">
-                {/* <form onSubmit={this.onSubmit.bind(this)}> */}
-                <form>
+                <form onSubmit={this.onSubmit.bind(this)}>
+                {/* <form> */}
                     <table>
                         <tbody>
                             <tr>
