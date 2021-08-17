@@ -41,6 +41,7 @@
 
 #see-less-auction-order-info, #see-more-auction-order-info-1 {
     color: #f9bf3b;
+    margin-bottom: 20px;
 }
 
 #see-less-auction-order-info span, #see-more-auction-order-info-1 span {
@@ -49,5 +50,10 @@
 
 .see-another-page, .see-another-page:hover {
     font-family: 'montserratsemi_bold';
+    color: #f9bf3b;
+}
+
+.auction-info-carousel {
+    padding: 0 2%;
     color: #f9bf3b;
 }

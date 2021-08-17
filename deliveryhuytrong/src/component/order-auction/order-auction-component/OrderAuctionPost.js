@@ -1,10 +1,10 @@
 import React from 'react';
 import "../order-auction.css";
-import OwlCarousel from 'react-owl-carousel';
+import Carousel from 'react-elastic-carousel';
 import { Link } from 'react-router-dom';
 import orderNotYetAuctionedListData from '../../list-orders/list-orders-component/OrderNotYetAuctionedListData';
-import clientIMG from '../image/client.jpg';
 import OrderAuctionComment from './OrderAuctionComment';
+import clientIMG from '../image/client.jpg';
 
 class OrderAuctionPost extends React.Component {
     constructor(props) {
@@ -62,22 +62,13 @@ class OrderAuctionPost extends React.Component {
                                                     </div>
                                                 </div>
                                                 <div className="order-image">
-                                                    <OwlCarousel
-                                                        className="owl-theme"
-                                                        items="1"
-                                                        loop
-                                                        dot="false"
-                                                        nav
-                                                        dotsSpeed="500"
-                                                        smartSpeed="1000"
-                                                        slideBy="1"
-                                                    >
+                                                    <Carousel className="auction-info-carousel">
                                                         {
                                                             value.image.map((i, ix) => {
                                                                 return <img key={ix} src={i} alt="img" />
                                                             })
                                                         }
-                                                    </OwlCarousel>
+                                                    </Carousel>
                                                 </div>
                                             </React.Fragment>
                                         }
