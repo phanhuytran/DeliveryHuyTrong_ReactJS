@@ -1229,7 +1229,6 @@ div.auction-area-comment {
 
 div.auction-customer-info {
     display: flex;
-    width: 50%;
     padding: 4% 4% 0 4%;
 }
 
@@ -1240,11 +1239,11 @@ div.auction-customer-info img {
 }
 
 div.auction-customer-info-left {
-    width: 30%;
+    width: 15%;
 }
 
 div.auction-customer-info-right {
-    width: 70%;
+    width: 88%;
     margin: 2% 0 0 -3%;
 }
 

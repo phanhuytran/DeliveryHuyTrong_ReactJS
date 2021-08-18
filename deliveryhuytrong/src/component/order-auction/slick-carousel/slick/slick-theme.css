@@ -155,7 +155,7 @@
 .slick-dots li button:hover:before,
 .slick-dots li button:focus:before
 {
-    color: #f9bf3b;
+    color: black;
 }
 .slick-dots li button:before
 {

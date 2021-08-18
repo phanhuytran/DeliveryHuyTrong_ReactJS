@@ -35,14 +35,13 @@ class OrdertAuctionedList extends React.Component {
 
     render() {
 
-        var { isDisplayClear } = this.state;
-
-        let itemsOrigin = this.state.orderPostList;
-        let orderPostList = [], result;
-
         const customerFilter = this.state.customerFilter;
         const receivingAddressFilter = this.state.receivingAddressFilter;
         const sendingAddressFilter = this.state.sendingAddressFilter;
+        
+        let { isDisplayClear } = this.state;
+        let itemsOrigin = this.state.orderPostList;
+        let orderPostList = [], result;
 
         if (customerFilter.length > 0 || receivingAddressFilter.length > 0 || sendingAddressFilter.length > 0) {
             isDisplayClear = true

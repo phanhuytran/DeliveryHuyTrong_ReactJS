@@ -5,13 +5,13 @@ import AboutTitle from './AboutTitle';
 class AboutDetail extends React.Component {
     render() {
          
-        function show_about_content() {
+        function showAboutContent() {
             document.getElementById("show-about-content").style.display = "block";
             document.getElementById("hide-away").style.display = "block";
             document.getElementById("show-read-more").style.display = "none";
         }
 
-        function hide_about_content() {
+        function hideAboutContent() {
             document.getElementById("show-about-content").style.display = "none";
             document.getElementById("hide-away").style.display = "none";
             document.getElementById("show-read-more").style.display = "block";
@@ -36,8 +36,8 @@ class AboutDetail extends React.Component {
                                         <h4>Application's Settings:</h4><p>+ Add posting function for shipper account.<br />+ Change the display of currency from VND to K.<br />+ Automatically save information when the shipper manipulates the news.<br />+ Determine the location from the shipper to the location of the poster more accurately.<br />+ Add Comment feature.<br />+ Change the interface of the shop account to be easier to use.<br />+ Automatically call the shop by keyword.<br />+ Automatically save news by keyword.<br />+ Improved fast calling on android version 6.0.</p>
                                         <h4>What Are You Waiting For, Install And Use Delivery Huy Trong Today!</h4>
                                     </div>
-                                    <p id="show-read-more" onClick={show_about_content}>see more <span className="fas fa-arrow-down" /></p>
-                                    <p id="hide-away" onClick={hide_about_content}>see less <span className="fas fa-arrow-up" /></p>
+                                    <p id="show-read-more" onClick={showAboutContent}>see more <span className="fas fa-arrow-down" /></p>
+                                    <p id="hide-away" onClick={hideAboutContent}>see less <span className="fas fa-arrow-up" /></p>
                                 </div>
                             </div>
                             <div className="col-md-offset-1 col-sm-6 col-md-5">

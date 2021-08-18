@@ -76,21 +76,19 @@ class OrderNotYetAuctionedList extends React.Component {
 
     render() {
 
-        let { isDisplayPostInfoForm } = this.state;
-        let elementPostInfoForm = isDisplayPostInfoForm
-            ? <OrderPostInfoForm onSubmit={this.onSubmit} />
-            : '';
-
-        let { isDisplayClearCustomerFilter } = this.state;
-        let { isDisplayClearReceivingAddressFilter } = this.state
-        let { isDisplayClearSendingAddressFilter } = this.state
-
-        let itemsOrigin = this.state.orderPostList;
-        let orderPostList = [], result, i = 0;
-
         const customerFilter = this.state.customerFilter;
         const receivingAddressFilter = this.state.receivingAddressFilter;
         const sendingAddressFilter = this.state.sendingAddressFilter;
+
+        let { isDisplayPostInfoForm } = this.state;
+        let { isDisplayClearCustomerFilter } = this.state;
+        let { isDisplayClearReceivingAddressFilter } = this.state
+        let { isDisplayClearSendingAddressFilter } = this.state
+        let itemsOrigin = this.state.orderPostList;
+        let orderPostList = [], result, i = 0;
+        let elementPostInfoForm = isDisplayPostInfoForm
+            ? <OrderPostInfoForm onSubmit={this.onSubmit} />
+            : '';
 
         if (customerFilter.length > 0 || receivingAddressFilter.length > 0 || sendingAddressFilter.length > 0) {
             itemsOrigin.forEach((item) => {

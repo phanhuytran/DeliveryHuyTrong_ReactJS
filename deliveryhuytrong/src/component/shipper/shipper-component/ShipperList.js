@@ -35,13 +35,12 @@ class ShipperList extends React.Component {
 
     render() {
 
-        let { isDisplayClearFilter } = this.state;
-
-        let itemsOrigin = this.state.shiperData;
-        let shiperData = [], result;
-
         const fullNameFilter = this.state.fullNameFilter;
         const phoneFilter = this.state.phoneFilter;
+        
+        let { isDisplayClearFilter } = this.state;
+        let itemsOrigin = this.state.shiperData;
+        let shiperData = [], result;
 
         if (fullNameFilter.length > 0 || phoneFilter.length > 0) {
             isDisplayClearFilter = true;

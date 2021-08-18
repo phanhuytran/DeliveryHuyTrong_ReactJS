@@ -21,6 +21,46 @@
     cursor: text;
 }
 
+.auction-customer-info-right span:nth-child(2) {
+    float: right;
+    font-size: 20px;
+    padding: 4px 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.auction-customer-info-right span:nth-child(2):hover {
+    background-color: #eee;
+}
+
+.auction-option {
+    position: absolute;
+    left: 70%;
+    top: 52%;
+    z-index: 2;
+    width: 8%;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(33,33,33,.2);
+    animation: fadeIn linear 0.1s;
+    animation: growth linear 0.1s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
+.auction-option p {
+    margin: 0;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.auction-option p:hover {
+    background-color: #eee;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
