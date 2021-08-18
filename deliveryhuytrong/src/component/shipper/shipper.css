@@ -2,3 +2,9 @@
     font-family: 'montserratsemi_bold';
     color: #f9bf3b;
 }
+
+.no-shipper-found {
+    text-align: center;
+    color: #dc3545;
+    margin-bottom: 4%;
+}

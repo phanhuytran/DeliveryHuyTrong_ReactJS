@@ -86,7 +86,7 @@ class OrderNotYetAuctionedList extends React.Component {
         let { isDisplayClearSendingAddressFilter } = this.state
 
         let itemsOrigin = this.state.orderPostList;
-        let orderPostList = [];
+        let orderPostList = [], result, i = 0;
 
         const customerFilter = this.state.customerFilter;
         const receivingAddressFilter = this.state.receivingAddressFilter;
@@ -96,12 +96,20 @@ class OrderNotYetAuctionedList extends React.Component {
             itemsOrigin.forEach((item) => {
                 if (item.customer.toLowerCase().indexOf(customerFilter) !== -1
                     && item.receivingAddress.toLowerCase().indexOf(receivingAddressFilter) !== -1
-                    && item.sendingAddress.toLowerCase().indexOf(sendingAddressFilter) !== -1) {
+                    && item.sendingAddress.toLowerCase().indexOf(sendingAddressFilter) !== -1
+                    && item.isWin === false) {
                     orderPostList.push(item);
+                    console.log(item.isWin)
                 }
             });
         } else {
             orderPostList = itemsOrigin;
+        }
+
+        if (orderPostList.length === 0) {
+            result = <td colSpan={7} className="no-shipper-found">
+                <h1>No order found</h1>
+            </td>
         }
 
         if (customerFilter.length > 0) {
@@ -166,8 +174,9 @@ class OrderNotYetAuctionedList extends React.Component {
                                     {
                                         orderPostList.map((order, index) => {
                                             if (order.isWin === false) {
+                                                i++;
                                                 return <tr key={index}>
-                                                    <td>{index + 1}</td>
+                                                    <td>{i}</td>
                                                     <td>{order.customer}</td>
                                                     <td><img src={order.image[0]} alt="img" /></td>
                                                     <td>{order.weight}</td>
@@ -179,6 +188,7 @@ class OrderNotYetAuctionedList extends React.Component {
                                             return <React.Fragment key={index}></React.Fragment>;
                                         })
                                     }
+                                    <tr>{result}</tr>
                                 </tbody>
                             </table>
                         </div>

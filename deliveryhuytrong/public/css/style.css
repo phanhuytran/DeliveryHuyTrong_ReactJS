@@ -1202,6 +1202,12 @@ table.table-order-list tbody tr:hover {
     color: #fff;
     margin: 2px;
     padding: 2px 4px;
+    transition: 0.4s;
+}
+
+.order-list-filter button:hover {
+    background-color: #fff;
+    color: #f9bf3b;
 }
 
 div.auction-area {

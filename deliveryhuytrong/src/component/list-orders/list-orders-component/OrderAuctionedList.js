@@ -38,7 +38,7 @@ class OrdertAuctionedList extends React.Component {
         var { isDisplayClear } = this.state;
 
         let itemsOrigin = this.state.orderPostList;
-        let orderPostList = [];
+        let orderPostList = [], result;
 
         const customerFilter = this.state.customerFilter;
         const receivingAddressFilter = this.state.receivingAddressFilter;
@@ -49,12 +49,19 @@ class OrdertAuctionedList extends React.Component {
             itemsOrigin.forEach((item) => {
                 if (item.customer.toLowerCase().indexOf(customerFilter) !== -1
                     && item.receivingAddress.toLowerCase().indexOf(receivingAddressFilter) !== -1
-                    && item.sendingAddress.toLowerCase().indexOf(sendingAddressFilter) !== -1) {
+                    && item.sendingAddress.toLowerCase().indexOf(sendingAddressFilter) !== -1
+                    && item.isWin === true) {
                     orderPostList.push(item);
                 }
             });
         } else {
             orderPostList = itemsOrigin;
+        }
+
+        if (orderPostList.length === 0) {
+            result = <div className="no-shipper-found">
+                <h1>No order found</h1>
+            </div>
         }
 
         return (
@@ -97,6 +104,7 @@ class OrdertAuctionedList extends React.Component {
                                 return '';
                             })
                         }
+                        {result}
                     </div>
                 </div>
             </section>

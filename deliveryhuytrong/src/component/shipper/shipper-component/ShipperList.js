@@ -38,7 +38,7 @@ class ShipperList extends React.Component {
         let { isDisplayClearFilter } = this.state;
 
         let itemsOrigin = this.state.shiperData;
-        let shiperData = [];
+        let shiperData = [], result;
 
         const fullNameFilter = this.state.fullNameFilter;
         const phoneFilter = this.state.phoneFilter;
@@ -53,6 +53,12 @@ class ShipperList extends React.Component {
             });
         } else {
             shiperData = itemsOrigin;
+        }
+
+        if (shiperData.length === 0) {
+            result = <div className="no-shipper-found">
+                <h1>No shipper found</h1>
+            </div>
         }
 
         return (
@@ -83,6 +89,7 @@ class ShipperList extends React.Component {
                                     />
                                 })
                             }
+                            {result}
                         </div>
                         <Link to="/list-orders" className="see-another-page">SEE LIST OF ORDERS</Link>
                     </div>
