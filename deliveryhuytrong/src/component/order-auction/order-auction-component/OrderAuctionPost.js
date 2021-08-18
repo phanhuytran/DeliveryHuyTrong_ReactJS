@@ -1,6 +1,8 @@
 import React from 'react';
 import "../order-auction.css";
-import Carousel from 'react-elastic-carousel';
+import Slider from "react-slick";
+import "../slick-carousel/slick/slick.css";
+import "../slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import orderPostListData from '../../list-orders/list-orders-component/OrderPostListData';
 import OrderAuctionComment from './OrderAuctionComment';
@@ -15,6 +17,14 @@ class OrderAuctionPost extends React.Component {
     }
 
     render() {
+
+        const settingSlider = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        };
 
         function see_more_auction_info() {
             document.getElementById("see-more-auction-order-info-2").style.display = "block";
@@ -62,13 +72,13 @@ class OrderAuctionPost extends React.Component {
                                                     </div>
                                                 </div>
                                                 <div className="order-image">
-                                                    <Carousel className="auction-info-carousel">
+                                                    <Slider className="auction-info-carousel" {...settingSlider}>
                                                         {
                                                             value.image.map((i, ix) => {
                                                                 return <img key={ix} src={i} alt="img" />
                                                             })
                                                         }
-                                                    </Carousel>
+                                                    </Slider>
                                                 </div>
                                             </React.Fragment>
                                         }

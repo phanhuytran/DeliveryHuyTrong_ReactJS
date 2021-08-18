@@ -45,7 +45,7 @@ let orderPostListData = [
         "createdDate": "17/08/2021",
         "updatedDate": "",
         "status": "SHIPPED",
-        "isWin": true,
+        "isWin": false,
         "isActive": true
     }, {
         "id": 4,
@@ -60,7 +60,7 @@ let orderPostListData = [
         "createdDate": "17/08/2021",
         "updatedDate": "",
         "status": "SHIPPING",
-        "isWin": true,
+        "isWin": false,
         "isActive": true
     }, {
         "id": 5,
@@ -75,7 +75,7 @@ let orderPostListData = [
         "createdDate": "17/08/2021",
         "updatedDate": "",
         "status": "NOTYETSHIPPED",
-        "isWin": true,
+        "isWin": false,
         "isActive": true
     }
 ];
