@@ -5,6 +5,7 @@ import "../slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import { remove } from 'lodash';
+import swal from 'sweetalert';
 import orderPostListData from '../../list-orders/list-orders-component/OrderPostListData';
 import OrderAuctionComment from './OrderAuctionComment';
 // import Modal from 'react-modal';
@@ -21,14 +22,29 @@ class OrderAuctionPost extends React.Component {
 
     removeAuctionPost = (id) => {
         let orderPostList = this.state.orderPostList;
-        remove(orderPostList, (item) => {
-            if (item.isWin === false) {
-                return item.id === id;
+        swal({
+            title: "Do you want to remove this post?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true
+        }).then((willRemove) => {
+            if (willRemove) {
+                remove(orderPostList, (item) => {
+                    if (item.isWin === false) {
+                        swal("This post was removed successfully!", { icon: "success" });
+                        return item.id === id;
+                    } else if (item.isWin === true) {
+                        swal("This post was auctioned!", { icon: "error" });
+                    }
+                });
+                this.setState({
+                    orderPostList: orderPostList,
+                    isDisplayPostOption: false
+                });
+                // swal("This post was removed successfully!", { icon: "success" });
+            } else {
+                swal("You pressed cancel!", { icon: "warning" });
             }
-        });
-        this.setState({
-            orderPostList: orderPostList,
-            isDisplayPostOption: false
         });
     }
 

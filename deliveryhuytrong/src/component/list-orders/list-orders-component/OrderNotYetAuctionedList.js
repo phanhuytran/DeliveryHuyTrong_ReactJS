@@ -136,8 +136,8 @@ class OrderNotYetAuctionedList extends React.Component {
                             </div>
                             {elementPostInfoForm}
                         </div>
-                        <div className="table-order-list-area">
-                            <table className="table-order-list">
+                        <div className="table-list-area">
+                            <table className="table-list">
                                 <thead>
                                     <tr>
                                         <th>#</th>

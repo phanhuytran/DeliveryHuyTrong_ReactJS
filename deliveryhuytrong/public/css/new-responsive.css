@@ -101,7 +101,7 @@
     }
 
     /* table-order-list-area */
-    .table-order-list-area {
+    .table-list-area {
         height: 280px;
         overflow-x: scroll;
         overflow-y: scroll;
@@ -132,7 +132,6 @@
     }
     div.auction-customer-info {
         display: flex;
-        width: 300px;
         padding: 4% 4% 0 4%;
     }
     div.auction-customer-info-left {
@@ -188,6 +187,11 @@
     }
     div.auction-order-info {
         width: 80%;
+    }
+    .auction-option {
+        left: 68% !important;
+        top: 48% !important;
+        width: 25% !important;
     }
 
 

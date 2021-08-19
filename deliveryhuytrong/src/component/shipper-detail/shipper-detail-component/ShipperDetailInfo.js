@@ -2,6 +2,7 @@ import React from 'react';
 import '../shipper-detail.css';
 import { Link } from 'react-router-dom';
 import { remove } from 'lodash';
+import swal from 'sweetalert';
 import ShipperDetailPersonalInfo from './ShipperDetailPersonalInfo';
 import ShipperDetailRating from './ShipperDetailRating';
 import ShipperDetailTitle from './ShipperDetailTitle';
@@ -11,24 +12,30 @@ class ShipperDetailInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            shipperList: shipperListData
+            shipperList: shipperListData,
         }
     }
 
     removeShipper = (id) => {
         let shipperList = this.state.shipperList;
-        if (window.confirm("Do you want to remove this shipper?")) {
-            remove(shipperList, (item) => {
-                return item.id === id;
-            });
-            this.setState({
-                shipperList: shipperList
-            });
-            alert("This shipper was removed successfully!");
-        } else {
-            alert("You pressed cancel!");
-        }
-
+        swal({
+            title: "Do you want to remove this shipper?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true
+        }).then((willRemove) => {
+            if (willRemove) {
+                remove(shipperList, (item) => {
+                    return item.id === id;
+                });
+                this.setState({
+                    shipperList: shipperList
+                });
+                swal("This shipper was removed successfully!", { icon: "success" });
+            } else {
+                swal("You pressed cancel!", { icon: "warning" });
+            }
+        });
     }
 
     render() {
@@ -46,9 +53,9 @@ class ShipperDetailInfo extends React.Component {
                                     if (value.id === shipperID) {
                                         return <React.Fragment key={index}>
                                             <div className="shipper-info-left wow bounceIn">
-                                                <img src={value.image} alt="img" /><br />
+                                                <img src={value.avatar} alt="img" /><br />
                                                 <button>edit</button>
-                                                <Link to="/shipper"><button onClick={() => this.removeShipper(shipperID)}>remove</button></Link>
+                                                <button onClick={() => this.removeShipper(shipperID)}>remove</button>
                                             </div><br />
                                             <div className="shipper-info-right">
                                                 <form>

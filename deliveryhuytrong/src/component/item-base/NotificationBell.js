@@ -9,10 +9,10 @@ class NotificationBell extends React.Component {
                 <Link to="/statistic"><i className="fas fa-chart-line fas-bell" /></Link>
                 <div className="notification-bell">
                     <div className="notBtn-bell">
-                        <Link href="/">
+                        <div>
                             <div className="number-bell">2</div>
                             <i className="fas fa-bell fas-bell" />
-                        </Link>
+                        </div>
                         <div className="box-bell">
                             <div className="display-bell">
                                 <a href="/">
