@@ -53,6 +53,7 @@
 .auction-option p {
     margin: 0;
     padding: 10px 15px;
+    color: #5d5d5d;
     cursor: pointer;
     transition: 0.4s;
 }
@@ -96,4 +97,8 @@
 .auction-info-carousel {
     padding: 0 4%;
     color: #f9bf3b;
+}
+
+.modal-remove-auction-post {
+    z-index: 100;
 }

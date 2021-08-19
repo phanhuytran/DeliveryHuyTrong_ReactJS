@@ -1,11 +1,13 @@
 import React from 'react';
 import "../order-auction.css";
-import Slider from "react-slick";
 import "../slick-carousel/slick/slick.css";
 import "../slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 import { Link } from 'react-router-dom';
+import { remove } from 'lodash';
 import orderPostListData from '../../list-orders/list-orders-component/OrderPostListData';
 import OrderAuctionComment from './OrderAuctionComment';
+// import Modal from 'react-modal';
 import clientIMG from '../image/client.jpg';
 
 class OrderAuctionPost extends React.Component {
@@ -17,6 +19,19 @@ class OrderAuctionPost extends React.Component {
         }
     }
 
+    removeAuctionPost = (id) => {
+        let orderPostList = this.state.orderPostList;
+        remove(orderPostList, (item) => {
+            if (item.isWin === false) {
+                return item.id === id;
+            }
+        });
+        this.setState({
+            orderPostList: orderPostList,
+            isDisplayPostOption: false
+        });
+    }
+
     onTogglePostOption = () => {
         this.setState({
             isDisplayPostOption: !this.state.isDisplayPostOption
@@ -24,7 +39,6 @@ class OrderAuctionPost extends React.Component {
     }
 
     render() {
-
         const settingSlider = {
             dots: true,
             infinite: true,
@@ -48,7 +62,8 @@ class OrderAuctionPost extends React.Component {
         let elementPostOption = isDisplayPostOption
             ? <div className="auction-option">
                 <p>Edit</p>
-                <p>Remove</p>
+                {/* <Link to="/list-orders"><p onClick={() => this.removeAuctionPost(orderID)}>Remove</p></Link> */}
+                <p onClick={() => this.removeAuctionPost(orderID)}>Remove</p>
             </div> : '';
 
         return (
@@ -93,13 +108,13 @@ class OrderAuctionPost extends React.Component {
                                                         })
                                                     }
                                                 </Slider>
+                                                <OrderAuctionComment />
                                             </div>
                                         </React.Fragment>
                                     }
                                     return '';
                                 })
                             }
-                            <OrderAuctionComment />
                         </div>
                     </div><br />
                     <Link to="/list-orders" className="see-another-page">SEE LIST OF ORDERS</Link>

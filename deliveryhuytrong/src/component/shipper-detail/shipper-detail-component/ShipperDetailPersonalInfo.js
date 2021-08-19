@@ -2,14 +2,20 @@ import React from 'react';
 import shipperListData from '../../shipper/shipper-component/ShipperListData';
 
 class ShipperDetailPersonalInfo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            shipperList: shipperListData
+        }
+    }
     render() {
-
-        var shipperID = parseInt(this.props.props.match.params.id, 10);
+        let shipperID = parseInt(this.props.props.match.params.id, 10);
+        let { shipperList } = this.state;
 
         return (
             <>
                 {
-                    shipperListData.map((value, index) => {
+                    shipperList.map((value, index) => {
                         if (value.id === shipperID) {
                             return <React.Fragment key={index}>
                                 <tr>

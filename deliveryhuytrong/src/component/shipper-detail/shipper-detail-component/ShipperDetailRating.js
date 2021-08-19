@@ -2,7 +2,6 @@ import React from 'react';
 
 class ShipperDetailRating extends React.Component {
     render() {
-
         function cofirm_rating() {
             var checkbox = document.getElementsByName("rating");
             for (var i = 0; i < checkbox.length; i++) {

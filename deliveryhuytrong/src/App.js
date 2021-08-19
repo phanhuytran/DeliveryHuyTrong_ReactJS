@@ -11,14 +11,15 @@ class App extends React.Component {
         <Router>
           <Header />
           <Switch>
-            {this.showContentMenu(routes)}
+            {this.showMenu(routes)}
           </Switch>
           <Footer />
         </Router>
       </div>
     );
   }
-  showContentMenu = (routes) => {
+  
+  showMenu = (routes) => {
     var result = null;
     if (routes.length > 0) {
       result = routes.map((route, index) => {

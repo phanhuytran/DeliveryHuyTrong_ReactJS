@@ -8,12 +8,17 @@ import BodyOrderAuction from './component/order-auction/BodyOrderAuction';
 import BodyPricing from './component/pricing/BodyPricing';
 import BodyShipperDetail from './component/shipper-detail/BodyShipperDetail';
 import BodyShipper from './component/shipper/BodyShipper';
+import BodyStatistic from './component/statistic/BodyStatistic';
 
 const routes = [
     {
         path: "/",
         exact: true,
         main: () => <BodyIndex />
+    }, {
+        path: "/statistic",
+        exact: true,
+        main: () => <BodyStatistic />
     }, {
         path: "/about",
         exact: true,

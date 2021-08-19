@@ -4,7 +4,6 @@ import AboutTitle from './AboutTitle';
 
 class AboutDetail extends React.Component {
     render() {
-         
         function showAboutContent() {
             document.getElementById("show-about-content").style.display = "block";
             document.getElementById("hide-away").style.display = "block";

@@ -2,3 +2,19 @@
     font-family: 'montserratsemi_bold';
     color: #f9bf3b;
 }
+
+.shipper-info-left button {
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #f9bf3b;
+    color: #fff;
+    border: 2px solid #eee;
+    margin: 20px 10px 0 0;
+    padding: 8px 12px;
+    transition: 0.4s;
+}
+
+.shipper-info-left button:hover {
+    background-color: #fff;
+    color: #f9bf3b;
+}

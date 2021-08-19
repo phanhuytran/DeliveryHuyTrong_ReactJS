@@ -9,6 +9,10 @@ const menu = [
         to: "/",
         exact: true
     }, {
+        label: "Statistic",
+        to: "/statistic",
+        exact: true
+    }, {
         label: "About",
         to: "/about",
         exact: true
@@ -37,7 +41,7 @@ const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
             var active = match ? 'current-menu-item' : '';
             return (
                 <li className="menu-main">
-                    <NavLink to={to} activeClassName={active} className="navlink_color">
+                    <NavLink to={to} activeClassName={active} className="navlink-color">
                         {label}
                     </NavLink>
                 </li>

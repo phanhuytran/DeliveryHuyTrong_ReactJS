@@ -4,7 +4,6 @@ import OrderPostInfoForm from './OrderPostInfoForm';
 import orderPostListData from './OrderPostListData';
 
 class OrderNotYetAuctionedList extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {

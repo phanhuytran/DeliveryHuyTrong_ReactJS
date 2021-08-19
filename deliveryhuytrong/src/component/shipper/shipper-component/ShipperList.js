@@ -6,7 +6,6 @@ import ShipperTitle from './ShipperTitle';
 import shipperListData from './ShipperListData';
 
 class ShipperList extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {

@@ -4,7 +4,6 @@ import Modal from 'react-modal';
 import SignInSignUp from './SignInSignUp';
 
 function ModalSignInSignUp() {
-
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     return (
@@ -13,8 +12,6 @@ function ModalSignInSignUp() {
                 <ul className="nav navbar-nav menu-sign-in-sign-up">
                     <li onClick={() => setModalIsOpen(true)}><p>log in</p></li>
                     <li onClick={() => setModalIsOpen(true)}><p>sign up</p></li>
-                    {/* <li onClick={() => setModalIsOpen(true)}><a>log in</a></li>
-                    <li onClick={() => setModalIsOpen(true)}><a>sign up</a></li> */}
                 </ul>
             </div>
             <Modal className="modal-signin-signup" isOpen={modalIsOpen} ariaHideApp={false}>

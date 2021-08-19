@@ -1,17 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import shipperIMG from './image/shipper.jpg'
 
 class NotificationBell extends React.Component {
     render() {
         return (
             <div className="icons-bell">
-                <span><i className="fas fa-archive fas-bell" /></span>
+                <Link to="/statistic"><i className="fas fa-chart-line fas-bell" /></Link>
                 <div className="notification-bell">
                     <div className="notBtn-bell">
-                        <a href="/">
+                        <Link href="/">
                             <div className="number-bell">2</div>
                             <i className="fas fa-bell fas-bell" />
-                        </a>
+                        </Link>
                         <div className="box-bell">
                             <div className="display-bell">
                                 <a href="/">
@@ -125,7 +126,7 @@ class NotificationBell extends React.Component {
                         </div>
                     </div>
                 </div>
-                <a href="/list-orders"><i className="fas fa-edit fas-bell" /></a>
+                <Link to="/list-orders"><i className="fas fa-edit fas-bell" /></Link>
             </div>
         );
     }

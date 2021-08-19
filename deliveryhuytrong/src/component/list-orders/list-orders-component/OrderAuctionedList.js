@@ -4,7 +4,6 @@ import orderPostListData from './OrderPostListData';
 // import a from './../../API'
 
 class OrdertAuctionedList extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {

@@ -39,12 +39,13 @@
     cursor: pointer;
 }
 
-.navlink_color, .menu-sign-in-sign-up li:first-child p {
+.navlink-color, .menu-sign-in-sign-up li:first-child p {
+    padding: 15px 14px !important;
     color: #fff;
     transition: 0.5s;
 }
 
-.navlink_color:hover, .menu-sign-in-sign-up li:first-child p:hover {
+.navlink-color:hover, .menu-sign-in-sign-up li:first-child p:hover {
     color: #f9bf3b;
 }
 
