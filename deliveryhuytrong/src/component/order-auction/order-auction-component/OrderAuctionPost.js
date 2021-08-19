@@ -8,7 +8,6 @@ import { remove } from 'lodash';
 import swal from 'sweetalert';
 import orderPostListData from '../../list-orders/list-orders-component/OrderPostListData';
 import OrderAuctionComment from './OrderAuctionComment';
-// import Modal from 'react-modal';
 import clientIMG from '../image/client.jpg';
 
 class OrderAuctionPost extends React.Component {
@@ -30,10 +29,10 @@ class OrderAuctionPost extends React.Component {
         }).then((willRemove) => {
             if (willRemove) {
                 remove(orderPostList, (item) => {
-                    if (item.isWin === false) {
+                    if (item.isWin === false && item.id === id) {
                         swal("This post was removed successfully!", { icon: "success" });
                         return item.id === id;
-                    } else if (item.isWin === true) {
+                    } else if (item.isWin === true && item.id === id) {
                         swal("This post was auctioned!", { icon: "error" });
                     }
                 });
@@ -41,7 +40,6 @@ class OrderAuctionPost extends React.Component {
                     orderPostList: orderPostList,
                     isDisplayPostOption: false
                 });
-                // swal("This post was removed successfully!", { icon: "success" });
             } else {
                 swal("You pressed cancel!", { icon: "warning" });
             }
