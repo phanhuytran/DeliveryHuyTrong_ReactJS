@@ -33,11 +33,10 @@ class OrdertAuctionedList extends React.Component {
     }
 
     render() {
-
         const customerFilter = this.state.customerFilter;
         const receivingAddressFilter = this.state.receivingAddressFilter;
         const sendingAddressFilter = this.state.sendingAddressFilter;
-        
+
         let { isDisplayClear } = this.state;
         let itemsOrigin = this.state.orderPostList;
         let orderPostList = [], result;

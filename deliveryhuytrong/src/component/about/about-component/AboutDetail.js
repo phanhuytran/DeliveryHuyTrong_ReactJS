@@ -20,7 +20,7 @@ class AboutDetail extends React.Component {
             <div>
                 <section className="about_us_area" id="about">
                     <div className="container">
-                        <AboutTitle/>
+                        <AboutTitle />
                         <div className="row">
                             <div className="col-md-6 col-sm-6">
                                 <div className="about_us_content">

@@ -37,7 +37,6 @@ class OrderPostInfoForm extends React.Component {
         return (
             <div className="create-post-right">
                 <form onSubmit={this.onSubmit.bind(this)}>
-                {/* <form> */}
                     <table>
                         <tbody>
                             <tr>

@@ -74,7 +74,6 @@ class OrderNotYetAuctionedList extends React.Component {
     }
 
     render() {
-
         const customerFilter = this.state.customerFilter;
         const receivingAddressFilter = this.state.receivingAddressFilter;
         const sendingAddressFilter = this.state.sendingAddressFilter;

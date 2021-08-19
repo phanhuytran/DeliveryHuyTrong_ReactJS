@@ -32,7 +32,6 @@ class ShipperList extends React.Component {
     }
 
     render() {
-
         const fullNameFilter = this.state.fullNameFilter;
         const phoneFilter = this.state.phoneFilter;
 
