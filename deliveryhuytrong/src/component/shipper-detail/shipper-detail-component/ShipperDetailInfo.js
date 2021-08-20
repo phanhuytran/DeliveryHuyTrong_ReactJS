@@ -10,6 +10,7 @@ import shipperListData from '../../shipper/shipper-component/ShipperListData';
 
 export default function ShipperDetailInfo(props) {
     const [shipperList, setShipperList] = useState(shipperListData);
+    
     const shipperID = parseInt(props.props.match.params.id, 10);
     const history = useHistory();
 
@@ -27,7 +28,7 @@ export default function ShipperDetailInfo(props) {
                 });
                 setShipperList(shipper);
                 swal("This shipper was removed successfully!", { icon: "success" });
-                history.goBack();
+                history.push("/shipper");
             } else {
                 swal("You pressed cancel!", { icon: "warning" });
             }

@@ -1,121 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-class OrderPostInfoForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            description: '',
-            image: '',
-            weight: 0,
-            receivingAddress: '',
-            sendingAddress: ''
-        }
-    }
+export default function OrderPostInfoForm(props) {
+    const [description, setDescription] = useState('');
+    const [image, setImage] = useState('');
+    const [weight, setWeight] = useState(0);
+    const [receivingAddress, setReceivingAddress] = useState('');
+    const [sendingAddress, setSendingAddress] = useState('');
 
-    onChange = (event) => {
-        var target = event.target;
-        var name = target.name;
-        var value = target.value;
-        this.setState({
-            [name]: value
-        });
-    }
-
-    onSubmit = (event) => {
+    function onSubmit(event) {
         event.preventDefault();
         let item = {
-            description: this.state.description,
-            image: this.state.image,
-            weight: this.state.weight,
-            receivingAddress: this.state.receivingAddress,
-            sendingAddress: this.state.sendingAddress,
+            description: description,
+            image: image,
+            weight: weight,
+            receivingAddress: receivingAddress,
+            sendingAddress: sendingAddress,
         }
-        this.props.onSubmit(item);
+        props.onSubmit(item);
     }
 
-    render() {
-        return (
-            <div className="create-post-right">
-                <form onSubmit={this.onSubmit.bind(this)}>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>Order description:</td>
-                                <td>
-                                    <input
-                                        type="text"
-                                        placeholder="Order description..."
-                                        required
-                                        name="description"
-                                        value={this.state.description}
-                                        onChange={this.onChange}
-                                    />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Image:</td>
-                                <td>
-                                    <input
-                                        type="file"
-                                        placeholder="Other information..."
-                                        multiple
-                                        name="image"
-                                        onChange={this.onChange}
-                                    />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Weight:</td>
-                                <td>
-                                    <input
-                                        type="number"
-                                        min="0"
-                                        placeholder="Weight..."
-                                        required
-                                        name="weight"
-                                        value={this.state.weight}
-                                        onChange={this.onChange}
-                                    />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Receiving address:</td>
-                                <td>
-                                    <input
-                                        type="text"
-                                        placeholder="Receiving address..."
-                                        required
-                                        name="receivingAddress"
-                                        value={this.state.receivingAddress}
-                                        onChange={this.onChange}
-                                    />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sending address:</td>
-                                <td>
-                                    <input
-                                        type="text"
-                                        placeholder="Sending address..."
-                                        required
-                                        name="sendingAddress"
-                                        value={this.state.sendingAddress}
-                                        onChange={this.onChange}
-                                    />
-                                </td>
-                            </tr>
-                            <tr>
-                            </tr><tr>
-                                <td colSpan={2}>
-                                    <button type="submit">POST</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
-            </div>
-        );
-    }
+    return (
+        <div className="create-post-right">
+            <form onSubmit={onSubmit}>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Order description:</td>
+                            <td>
+                                <input type="text" placeholder="Order description..." value={description} onChange={e => setDescription(e.target.value)} required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Image:</td>
+                            <td>
+                                <input type="file" placeholder="Other information..." multiple value={image} onChange={e => setImage(e.target.value)} required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Weight:</td>
+                            <td>
+                                <input type="number" min="0" placeholder="Weight..." value={weight} onChange={e => setWeight(e.target.value)} required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Receiving address:</td>
+                            <td>
+                                <input type="text" placeholder="Receiving address..." value={receivingAddress} onChange={e => setReceivingAddress(e.target.value)} required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sending address:</td>
+                            <td>
+                                <input type="text" placeholder="Sending address..." value={sendingAddress} onChange={e => setSendingAddress(e.target.value)} required />
+                            </td>
+                        </tr>
+                        <tr>
+                        </tr><tr>
+                            <td colSpan={2}>
+                                <button type="submit">POST</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    );
 }
-
-export default OrderPostInfoForm;

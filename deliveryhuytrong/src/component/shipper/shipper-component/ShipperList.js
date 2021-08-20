@@ -10,17 +10,14 @@ export default function ShipperList() {
     const [phoneFilter, setPhoneFilter] = useState('');
     const [isDisplayClearFilter] = useState(false);
 
-    function onClear() {
-        setFullNameFilter('');
-        setPhoneFilter('');
-    }
-
     const fullName = fullNameFilter;
     const phone = phoneFilter;
+    const itemsOrigin = shiperList;
 
-    let isDisplayClear = isDisplayClearFilter;
-    let itemsOrigin = shiperList;
     let shipper = [], result, i = 0;
+    let isDisplayClear = isDisplayClearFilter;
+
+    function onClear() { setFullNameFilter(''); setPhoneFilter(''); }
 
     if (fullName.length > 0 || phone.length > 0) {
         isDisplayClear = true;
