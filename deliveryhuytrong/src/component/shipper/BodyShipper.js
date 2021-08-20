@@ -3,16 +3,12 @@ import React from 'react';
 import ShipperList from './shipper-component/ShipperList';
 import NotificationBell from '../item-base/NotificationBell';
 
-class BodyShipper extends React.Component {
-    render() {
-        return (
-            <div>
-                <NotificationBell />
-                <ShipperList />
-                {/* <ShipperCustomerOpinion /> */}
-            </div>
-        );
-    }
+export default function BodyShipper() {
+    return (
+        <div>
+            <NotificationBell />
+            <ShipperList />
+            {/* <ShipperCustomerOpinion /> */}
+        </div>
+    );
 }
-
-export default BodyShipper;

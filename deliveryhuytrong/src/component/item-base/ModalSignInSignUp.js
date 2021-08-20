@@ -3,7 +3,7 @@ import "./item-base.css";
 import Modal from 'react-modal';
 import SignInSignUp from './SignInSignUp';
 
-function ModalSignInSignUp() {
+export default function ModalSignInSignUp() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     return (
@@ -23,5 +23,3 @@ function ModalSignInSignUp() {
         </>
     );
 }
-
-export default ModalSignInSignUp;

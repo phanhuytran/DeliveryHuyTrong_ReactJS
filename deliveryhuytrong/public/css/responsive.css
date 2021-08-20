@@ -232,16 +232,16 @@
     .about_us_content {
         margin-bottom: 30px;
     }
-    .single_count {
+    .single-count {
         margin-bottom: 20px;
     }
-    .single_count h1 {
+    .single-count h1 {
         font-size: 36px;
     }
-    .single_count > h5 {
+    .single-count > h5 {
         font-size: 12px;
     }
-    .single_count::before {
+    .single-count::before {
         display: none;
     }
     .pricing-plan-area {

@@ -1,7 +1,7 @@
 // import React from 'react';
 // import { Link } from 'react-router-dom';
 
-// class Shipper extends React.Component {
+// export default class Shipper extends React.Component {
 //     render() {
 //         return (
 //             <div className="col-md-4 col-sm-4 col-xs-12">
@@ -21,5 +21,3 @@
 //         );
 //     }
 // }
-
-// export default Shipper;

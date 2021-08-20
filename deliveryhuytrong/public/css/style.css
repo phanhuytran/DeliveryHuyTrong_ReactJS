@@ -285,7 +285,7 @@ nav.navbar {
     padding-left: 10px;
 }
 
-.couter_up_area {
+.couter-up-area {
     height: 320px;
     width: 95%;
     position: relative;
@@ -293,7 +293,12 @@ nav.navbar {
     margin: 0 auto 5% auto;
 }
 
-.couter_up_area:before {
+.couter-up-area .container {
+    width: 72%;
+    margin-left: 28%;
+}
+
+.couter-up-area:before {
     position: absolute;
     left: 0;
     top: 0;
@@ -303,20 +308,20 @@ nav.navbar {
     height: 100%;
 }
 
-.single_count > h1 {
+.single-count > h1 {
     color: #f9bf3b;
     font-size: 60px;
     font-family: "montserratbold";
 }
 
-.single_count > h5 {
+.single-count > h5 {
     color: #fff;
     font-family: 'montserratlight';
     font-size: 16px;
     text-transform: capitalize
 }
 
-.single_count:before {
+.single-count:before {
     background: #f9bf3b none repeat scroll 0 0;
     content: "";
     height: 45px;

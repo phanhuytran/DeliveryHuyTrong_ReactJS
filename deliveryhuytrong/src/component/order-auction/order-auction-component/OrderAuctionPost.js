@@ -33,7 +33,18 @@ class OrderAuctionPost extends React.Component {
                         swal("This post was removed successfully!", { icon: "success" });
                         return item.id === id;
                     } else if (item.isWin === true && item.id === id) {
-                        swal("This post was auctioned!", { icon: "error" });
+                        swal({
+                            title: "This post was auctioned. Do you want to cancel this post?",
+                            icon: "error",
+                            buttons: true,
+                            dangerMode: true
+                        }).then((willRemove) => {
+                            if (willRemove) {
+                                swal("Your request has been sent to the shipper. Please wait for the shipper to confirm...", { icon: "success" });
+                            } else {
+                                swal("You pressed cancel!", { icon: "warning" });
+                            }
+                        });
                     }
                 });
                 this.setState({

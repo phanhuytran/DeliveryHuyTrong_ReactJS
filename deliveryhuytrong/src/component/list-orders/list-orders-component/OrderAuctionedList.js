@@ -1,7 +1,6 @@
 import React from 'react';
 import "../list-orders.css";
 import orderPostListData from './OrderPostListData';
-// import a from './../../API'
 
 class OrdertAuctionedList extends React.Component {
     constructor(props) {
