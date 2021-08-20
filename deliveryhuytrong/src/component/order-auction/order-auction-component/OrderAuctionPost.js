@@ -50,11 +50,11 @@ export default function OrderAuctionPost(props) {
             if (willRemove) {
                 remove(orderPost, (item) => {
                     if (item.isWin === false && item.id === id) {
-                        swal("This post was removed successfully!", { icon: "success" });
+                        swal("This order was removed successfully!", { icon: "success" });
                         return item.id === id;
                     } else if (item.isWin === true && item.id === id) {
                         swal({
-                            title: "This post was auctioned. Do you want to cancel this post?",
+                            title: "This order was auctioned. Do you want to cancel this order?",
                             icon: "error",
                             buttons: true,
                             dangerMode: true

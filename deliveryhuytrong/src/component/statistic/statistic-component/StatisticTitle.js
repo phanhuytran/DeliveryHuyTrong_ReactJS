@@ -9,7 +9,7 @@ export default function StatisticTitle() {
                     <div className="row page-title">
                         <div className="col-md-6 col-sm-6 col-xs-6 text-left">
                             <div className="order_us_content_title">
-                                <h2>statistic</h2>
+                                <h2>revenue statistics</h2>
                                 <h5>Prestigious delivery partner, high quality at an affordable price</h5>
                             </div>
                         </div>
