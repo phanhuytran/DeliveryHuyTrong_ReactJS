@@ -42,7 +42,7 @@ export default function OrderAuctionPost(props) {
     function removeAuctionPost(id) {
         let orderPost = orderPostList;
         swal({
-            title: "Do you want to remove this post?",
+            title: "Do you want to remove this order?",
             icon: "warning",
             buttons: true,
             dangerMode: true
