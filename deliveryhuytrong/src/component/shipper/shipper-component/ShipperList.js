@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../shipper.css';
 import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import ShipperTitle from './ShipperTitle';
 import shipperListData from './ShipperListData';
 import ShipperInfoForm from './ShipperInfoForm';
@@ -12,22 +13,22 @@ export default function ShipperList() {
     const [isDisplayClearFilter] = useState(false);
     const [isDisplayShipperInfoForm, setIsDisplayShipperInfoForm] = useState(false);
 
-    const itemsOrigin = shiperList;
     const fullName = fullNameFilter;
     const phone = phoneFilter;
     const displayShipperInfoForm = isDisplayShipperInfoForm;
+    const itemsOrigin = shiperList;
 
     let shipper = [], result, i = 0;
     let isDisplayClear = isDisplayClearFilter;
 
     const elementShipperInfoForm = displayShipperInfoForm
-        ? <ShipperInfoForm onSubmit={onSubmit} />
+        ? <ShipperInfoForm onSubmit={addShipper} />
         : '';
 
-    function onSubmit(data) {
+    function addShipper(data) {
         let shipper = shiperList;
         shipper.push({
-            id: 100,
+            id: uuidv4(),
             firstName: data.firstName,
             lastName: data.lastName,
             dateOfBirth: data.dateOfBirth,

@@ -14,7 +14,7 @@ export default function OrderAuctionPost(props) {
     const [orderPostList, setOrderPostList] = useState(orderPostListData);
     const [isDisplayPostOption, setIsDisplayPostOption] = useState(false);
 
-    const orderID = parseInt(props.props.match.params.id, 10);
+    const orderID = props.props.match.params.id;
     const history = useHistory();
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
     const orderPost = orderPostList;

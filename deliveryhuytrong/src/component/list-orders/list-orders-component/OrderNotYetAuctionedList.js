@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import OrderPostInfoForm from './OrderPostInfoForm';
 import orderPostListData from './OrderPostListData';
 
@@ -13,11 +14,11 @@ export default function OrderNotYetAuctionedList() {
     const [isDisplayClearSendingAddressFilter] = useState(false);
     const [isDisplayPostInfoForm, setIsDisplayPostInfoForm] = useState(false);
 
-    const itemsOrigin = orderPostList;
     const customer = customerFilter;
     const receivingAddress = receivingAddressFilter;
     const sendingAddress = sendingAddressFilter;
     const displayPostInfoForm = isDisplayPostInfoForm;
+    const itemsOrigin = orderPostList;
 
     let orderPost = [], result, i = 0;
     let isDisplayClearCustomer = isDisplayClearCustomerFilter;
@@ -25,13 +26,13 @@ export default function OrderNotYetAuctionedList() {
     let isDisplayClearSendingAddress = isDisplayClearSendingAddressFilter;
 
     const elementPostInfoForm = displayPostInfoForm
-        ? <OrderPostInfoForm onSubmit={onSubmit} />
+        ? <OrderPostInfoForm onSubmit={createPost} />
         : '';
 
-    function onSubmit(data) {
+    function createPost(data) {
         let orderPost = orderPostList;
         orderPost.push({
-            id: 10,
+            id: uuidv4(),
             description: data.description,
             image: data.image,
             weight: data.weight,
@@ -41,6 +42,7 @@ export default function OrderNotYetAuctionedList() {
             createdDate: "",
             updatedDate: "",
             isWin: false,
+            status: "NOTYETSHIPPED",
             isActive: true,
         });
 

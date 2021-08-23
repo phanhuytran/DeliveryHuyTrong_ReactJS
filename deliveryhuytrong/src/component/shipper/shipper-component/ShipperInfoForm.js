@@ -55,7 +55,8 @@ export default function ShipperInfoForm(props) {
                             <td>Gender:</td>
                             <td>
                                 <select className="sl-gender-shipper-form" value={gender} onChange={e => setGender(e.target.value)} required>
-                                    <option value="Male">Male</option>
+                                    <option value="" disabled hidden></option>
+                                    <option value="Male" selected="Male">Male</option>
                                     <option value="Female">Female</option>
                                     <option value="Other">Other</option>
                                 </select>

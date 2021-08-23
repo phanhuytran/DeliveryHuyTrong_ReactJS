@@ -14,13 +14,13 @@ export default function StatisticOrderList() {
     const [isDisplayClearCustomerFilter] = useState(false);
     const [isDisplayClearReceivingAddressFilter] = useState(false);
     const [isDisplayClearSendingAddressFilter] = useState(false);
-    
-    const itemsOrigin = orderPostList;
+
     const description = descriptionFilter;
     const createdDate = createdDateFilter;
     const customer = customerFilter;
     const receivingAddress = receivingAddressFilter;
-    const sendingAddress = sendingAddressFilter;
+    const sendingAddress = sendingAddressFilter;    
+    const itemsOrigin = orderPostList;
 
     let orderPost = [], result, i = 0;
     let isDisplayClearDescription = isDisplayClearDescriptionFilter;

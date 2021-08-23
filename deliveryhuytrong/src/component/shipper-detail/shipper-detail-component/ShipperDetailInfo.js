@@ -11,7 +11,7 @@ import shipperListData from '../../shipper/shipper-component/ShipperListData';
 export default function ShipperDetailInfo(props) {
     const [shipperList, setShipperList] = useState(shipperListData);
     
-    const shipperID = parseInt(props.props.match.params.id, 10);
+    const shipperID = props.props.match.params.id;
     const history = useHistory();
 
     function removeShipper(id) {

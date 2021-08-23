@@ -106,6 +106,10 @@ div.sign-up-container input, div.sign-up-container select {
     width: 46.9%;
 }
 
+div.sign-up-container select, input[type=file] {
+    cursor: pointer;
+}
+
 div.sign-up-container input:focus-visible, div.sign-up-container select:focus-visible,
 iv.radio-role input:focus-visible, div.sign-in-container input:focus-visible, input[type=file]:focus-visible {
     outline: 1px auto #f9bf3b;

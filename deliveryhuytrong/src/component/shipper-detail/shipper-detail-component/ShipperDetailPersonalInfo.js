@@ -3,7 +3,7 @@ import shipperListData from '../../shipper/shipper-component/ShipperListData';
 
 export default function ShipperDetailPersonalInfo(props) {
     const [shipperList] = useState(shipperListData);
-    const shipperID = parseInt(props.props.match.params.id, 10);
+    const shipperID = props.props.match.params.id;
     const shipper = shipperList;
 
     return (
@@ -17,7 +17,7 @@ export default function ShipperDetailPersonalInfo(props) {
                                 <td colSpan={2} className="text-right shipper-highlight-info">{value.firstName} {value.lastName}</td>
                             </tr>
                             <tr>
-                                <td>Date of Birth:</td>
+                                <td>Date of birth:</td>
                                 <td colSpan={2} className="text-right">{value.dateOfBirth}</td>
                             </tr>
                             <tr>

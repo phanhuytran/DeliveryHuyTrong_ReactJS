@@ -1,22 +1,24 @@
+import { v4 as uuidv4 } from 'uuid';
+
 let orderPostListData = [
     {
-        "id": 1,
+        "id": uuidv4(),
         "description": "Duck seeds (60 eggs. Be careful when delivering, when you arrive at the place of delivery, but the goods are not as expected, I will feed you duck seeds during the covid-19 season).",
         "image": [
             "https://songkhoevadep.net/wp-content/uploads/2021/01/bi-cam-an-trung-vit-lon-duoc-khong-650x375.png",
             "https://image.thanhnien.vn/1024/uploaded/vuphuong/2020_11_02/anh1_pkag.jpg"
         ],
-        "weight": 2,
+        "weight": 24,
         "receivingAddress": "District of Columbia",
         "sendingAddress": "Miami, Florida",
         "customer": "Nhat Tien Truong",
         "createdDate": "2021-08-11",
         "updatedDate": "",
-        "status": "SHIPPED",
         "isWin": true,
+        "status": "SHIPPED",
         "isActive": true
     }, {
-        "id": 2,
+        "id": uuidv4(),
         "description": "Garden pomelo (2 tons of Miet Garden Grapefruit. Request delivery before this week, delay in exam please compensate according to contract requirements).",
         "image": [
             "https://info-imgs.vgcloud.vn/2021/01/25/10/can-tet-gia-buoi-da-xanh-giam-xuong-day-nha-vuon-van-vang-bong-thuong-lai.jpg",
@@ -29,11 +31,11 @@ let orderPostListData = [
         "customer": "Quoc Anh Tran Doan",
         "createdDate": "2021-08-11",
         "updatedDate": "",
-        "status": "SHIPPING",
         "isWin": true,
+        "status": "SHIPPING",
         "isActive": true
     }, {
-        "id": 3,
+        "id": uuidv4(),
         "description": "Vaccine Covid 19 (Please transport to hospitals all over Vietnam. Shipping request arrives before September 2021).",
         "image": [
             "https://file3.qdnd.vn/data/images/0/2021/08/09/lamanh/0108-vaccine-us.jpg",
@@ -44,11 +46,11 @@ let orderPostListData = [
         "customer": "Thao Truong",
         "createdDate": "2021-08-17",
         "updatedDate": "",
-        "status": "NOTYETSHIPPED",
         "isWin": true,
+        "status": "NOTYETSHIPPED",
         "isActive": true
     }, {
-        "id": 4,
+        "id": uuidv4(),
         "description": "Tiger Beer (12 boxes, 24 cans each. Delivery is required on August 16, 2021).",
         "image": [
             "https://cdn.tgdd.vn/Products/Images/2282/171021/bhx/6-lon-bia-tiger-330ml-202103162330599969.jpg",
@@ -59,11 +61,11 @@ let orderPostListData = [
         "customer": "Phan Hung Tran",
         "createdDate": "2021-08-17",
         "updatedDate": "",
-        "status": "NOTYETSHIPPED",
         "isWin": false,
+        "status": "NOTYETSHIPPED",
         "isActive": true
     }, {
-        "id": 5,
+        "id": uuidv4(),
         "description": "Alcohol & Marijuana (This is a medical ingredient, so there is no need to be afraid to transport it. For any problems, please call 0775398511).",
         "image": [
             "https://images.theconversation.com/files/2982/original/3600947113_fe7208d8a8_b.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop",
@@ -74,8 +76,8 @@ let orderPostListData = [
         "customer": "Cu No Tran",
         "createdDate": "2021-08-17",
         "updatedDate": "",
-        "status": "NOTYETSHIPPED",
         "isWin": false,
+        "status": "NOTYETSHIPPED",
         "isActive": true
     }
 ];
