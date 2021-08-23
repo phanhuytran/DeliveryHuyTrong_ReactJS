@@ -1042,7 +1042,6 @@ div.create-post-left {
 }
 
 div.create-post-right {
-    /* display: none; */
     width: 80%;
     padding: 2%;
     animation: fadeIn linear 0.3s;
@@ -1352,6 +1351,7 @@ div.auction-area-comment-date {
 .pricing-area .single-pricing-table.slick-slide:focus, .single_calculate input:focus, .single_calculate select:focus {
     outline: none;
 }
+
 .single-footer .form-control:focus {
     box-shadow: none;
 }

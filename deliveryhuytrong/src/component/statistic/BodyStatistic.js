@@ -1,6 +1,8 @@
 import React from 'react';
 import NotificationBell from '../item-base/NotificationBell';
-import StatisticChart from './statistic-component/StatisticChart';
+import StatisticOrderList from './statistic-component/StatisticOrderList';
+import StatisticDeliveryFrequencyChart from './statistic-component/StatisticDeliveryFrequencyChart';
+import StatisticRevenueChart from './statistic-component/StatisticRevenueChart';
 import StatisticTitle from './statistic-component/StatisticTitle';
 
 export default function BodyStatistic() {
@@ -8,7 +10,9 @@ export default function BodyStatistic() {
         <div>
             <NotificationBell />
             <StatisticTitle />
-            <StatisticChart />
+            <StatisticOrderList />
+            <StatisticDeliveryFrequencyChart />
+            <StatisticRevenueChart />
         </div>
     );
 }

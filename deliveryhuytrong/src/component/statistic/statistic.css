@@ -1,4 +1,37 @@
+.statistic-order .table-list-area {
+    margin-top: 3%;
+}
+
+.statistic-order .table-list-area .table-list tbody tr td:nth-child(2) {
+    padding: 10px;
+}
+
+.statistic-order .table-list-area .table-list tbody tr td:last-child {
+    width: 12%;
+}
+
 .statistic-chart {
     width: 80%;
     margin: 0 auto 5% auto;
+}
+
+.statistic-order {
+    width: 88%;
+    margin: 0 auto 5% auto;
+}
+
+.statistic-order h2 {
+    margin-left: 2%;
+}
+
+.statistic-chart h2 {
+    margin: 8% 0 5% 0;
+}
+
+.status-not-yet-auctioned {
+    font-size: 13px !important;
+    border-radius: 5px;
+    padding: 5px 7px;
+    background-color: #5d5d5d;
+    color: #fff;
 }

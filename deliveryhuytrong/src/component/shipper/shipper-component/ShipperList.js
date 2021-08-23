@@ -3,20 +3,48 @@ import '../shipper.css';
 import { Link } from 'react-router-dom';
 import ShipperTitle from './ShipperTitle';
 import shipperListData from './ShipperListData';
+import ShipperInfoForm from './ShipperInfoForm';
 
 export default function ShipperList() {
-    const [shiperList] = useState(shipperListData);
+    const [shiperList, setShipperList] = useState(shipperListData);
     const [fullNameFilter, setFullNameFilter] = useState('');
     const [phoneFilter, setPhoneFilter] = useState('');
     const [isDisplayClearFilter] = useState(false);
+    const [isDisplayShipperInfoForm, setIsDisplayShipperInfoForm] = useState(false);
 
+    const itemsOrigin = shiperList;
     const fullName = fullNameFilter;
     const phone = phoneFilter;
-    const itemsOrigin = shiperList;
+    const displayShipperInfoForm = isDisplayShipperInfoForm;
 
     let shipper = [], result, i = 0;
     let isDisplayClear = isDisplayClearFilter;
 
+    const elementShipperInfoForm = displayShipperInfoForm
+        ? <ShipperInfoForm onSubmit={onSubmit} />
+        : '';
+
+    function onSubmit(data) {
+        let shipper = shiperList;
+        shipper.push({
+            id: 100,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            dateOfBirth: data.dateOfBirth,
+            gender: data.gender,
+            idCard: data.idCard,
+            address: data.address,
+            email: data.email,
+            phone: data.phone,
+            avatar: data.avatar,
+            isActive: true,
+        });
+
+        setIsDisplayShipperInfoForm(false);
+        setShipperList(shipper);
+    }
+
+    function onToggleShipperInfoForm() { setIsDisplayShipperInfoForm(toggle => !toggle); }
     function onClear() { setFullNameFilter(''); setPhoneFilter(''); }
 
     if (fullName.length > 0 || phone.length > 0) {
@@ -32,7 +60,7 @@ export default function ShipperList() {
     }
 
     if (shipper.length === 0) {
-        result = <td colSpan={9} className="no-shipper-found">
+        result = <td colSpan={9} className="no-data-found">
             <h1>No shipper found</h1>
         </td>
     }
@@ -42,9 +70,19 @@ export default function ShipperList() {
             <section className="about_top">
                 <div className="container">
                     <ShipperTitle />
+                    <div className="create-post">
+                        <div className="create-post-left">
+                            <div className="new-shipper-tab" onClick={onToggleShipperInfoForm}>
+                                {
+                                    !displayShipperInfoForm ? <span>ADD A NEW SHIPPER</span> : <span>CLOSE</span>
+                                }
+                            </div>
+                        </div>
+                        {elementShipperInfoForm}
+                    </div>
                     <div className="shipper-list-filter">
-                        <input type="text" placeholder="Search by full name..." name="fullNameFilter" value={fullNameFilter} onChange={e => setFullNameFilter(e.target.value)} />
-                        <input className="ml-spf" type="text" placeholder="Search by phone number..." name="phoneFilter" value={phoneFilter} onChange={e => setPhoneFilter(e.target.value)} />
+                        <input type="text" placeholder="Search by full name..." value={fullName} onChange={e => setFullNameFilter(e.target.value)} />
+                        <input className="ml-spf" type="text" placeholder="Search by phone number..." value={phone} onChange={e => setPhoneFilter(e.target.value)} />
                         {isDisplayClear ? <button onClick={onClear}>Clear</button> : <></>}
                     </div>
                     <div className="table-list-area shipper">

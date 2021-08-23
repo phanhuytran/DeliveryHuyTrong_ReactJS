@@ -7,8 +7,41 @@
     color: #f9bf3b;
 }
 
-.no-shipper-found {
+.no-data-found {
     text-align: center;
     color: #dc3545;
     margin-bottom: 4%;
+}
+
+div.new-shipper-tab {
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid #eee;
+    margin-bottom: 12%;
+    padding: 4%;
+    color: #fff;
+    background-color: #f9bf3b;
+    width: 80%;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+div.new-shipper-tab:hover {
+    color: #f9bf3b;
+    background-color: #fff;
+}
+
+.btn-add-shipper {
+    margin-left: 141% !important;
+}
+
+.sl-gender-shipper-form {
+    border: 2px solid #eee;
+    margin: 2% 4% 2% 20%;
+    padding: 2.5%;
+    width: 150%;
+}
+
+.sl-gender-shipper-form:focus-visible {
+    outline: 2px solid #f9bf3b;
 }

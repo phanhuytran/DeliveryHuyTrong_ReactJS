@@ -34,7 +34,7 @@ export default function OrdertAuctionedList() {
     }
 
     if (orderPost.length === 0) {
-        result = <div className="no-shipper-found">
+        result = <div className="no-data-found">
             <h1>No order found</h1>
         </div>
     }
@@ -44,9 +44,9 @@ export default function OrdertAuctionedList() {
             <div className="container">
                 <h2>List of orders have been auctioned</h2><br />
                 <div className="order-auctioned-filter">
-                    <input type="text" placeholder="Search by customer..." name="customerFilter" value={customerFilter} onChange={e => setCustomerFilter(e.target.value)} />
-                    <input className="ml-spf" type="text" placeholder="Search by receiving address..." name="receivingAddressFilter" value={receivingAddressFilter} onChange={e => setReceivingAddressFilter(e.target.value)} />
-                    <input className="ml-spf" type="text" placeholder="Search by send address..." name="sendingAddressFilter" value={sendingAddressFilter} onChange={e => setSendingAddressFilter(e.target.value)} />
+                    <input type="text" placeholder="Search by customer..." value={customer} onChange={e => setCustomerFilter(e.target.value)} />
+                    <input className="ml-spf" type="text" placeholder="Search by receiving address..." value={receivingAddress} onChange={e => setReceivingAddressFilter(e.target.value)} />
+                    <input className="ml-spf" type="text" placeholder="Search by send address..." value={sendingAddress} onChange={e => setSendingAddressFilter(e.target.value)} />
                     {isDisplayClear ? <button onClick={onClear}>Clear</button> : <></>}
                 </div>
                 <div className="row scroll-order-list">

@@ -28,11 +28,6 @@ export default function OrderNotYetAuctionedList() {
         ? <OrderPostInfoForm onSubmit={onSubmit} />
         : '';
 
-    function onClearCustomerFilter() { setCustomerFilter(''); }
-    function onClearReceivingAddressFilter() { setReceivingAddressFilter(''); }
-    function onClearSendingAddressFilter() { setSendingAddressFilter(''); }
-    function onTogglePostInfoForm() { setIsDisplayPostInfoForm(toggle => !toggle); }
-
     function onSubmit(data) {
         let orderPost = orderPostList;
         orderPost.push({
@@ -52,12 +47,17 @@ export default function OrderNotYetAuctionedList() {
         setIsDisplayPostInfoForm(false);
         setOrderPostList(orderPost);
     }
+    
+    function onTogglePostInfoForm() { setIsDisplayPostInfoForm(toggle => !toggle); }
+    function onClearCustomerFilter() { setCustomerFilter(''); }
+    function onClearReceivingAddressFilter() { setReceivingAddressFilter(''); }
+    function onClearSendingAddressFilter() { setSendingAddressFilter(''); }
 
-    if (customerFilter.length > 0 || receivingAddressFilter.length > 0 || sendingAddressFilter.length > 0) {
+    if (customer.length > 0 || receivingAddress.length > 0 || sendingAddress.length > 0) {
         itemsOrigin.forEach((item) => {
-            if (item.customer.toLowerCase().indexOf(customerFilter) !== -1
-                && item.receivingAddress.toLowerCase().indexOf(receivingAddressFilter) !== -1
-                && item.sendingAddress.toLowerCase().indexOf(sendingAddressFilter) !== -1
+            if (item.customer.toLowerCase().indexOf(customer) !== -1
+                && item.receivingAddress.toLowerCase().indexOf(receivingAddress) !== -1
+                && item.sendingAddress.toLowerCase().indexOf(sendingAddress) !== -1
                 && item.isWin === false) {
                 orderPost.push(item);
             }
@@ -67,7 +67,7 @@ export default function OrderNotYetAuctionedList() {
     }
 
     if (orderPost.length === 0) {
-        result = <td colSpan={7} className="no-shipper-found">
+        result = <td colSpan={7} className="no-data-found">
             <h1>No order found</h1>
         </td>
     }
@@ -108,17 +108,17 @@ export default function OrderNotYetAuctionedList() {
                                 <tr className="order-list-filter">
                                     <td>Filter</td>
                                     <td>
-                                        <input type="text" name="customerFilter" value={customerFilter} onChange={e => setCustomerFilter(e.target.value)} />
+                                        <input type="text" value={customer} onChange={e => setCustomerFilter(e.target.value)} />
                                         {isDisplayClearCustomer ? <button onClick={onClearCustomerFilter}>Clear</button> : <></>}
                                     </td>
                                     <td></td>
                                     <td></td>
                                     <td>
-                                        <input type="text" name="receivingAddressFilter" value={receivingAddressFilter} onChange={e => setReceivingAddressFilter(e.target.value)} />
+                                        <input type="text" value={receivingAddress} onChange={e => setReceivingAddressFilter(e.target.value)} />
                                         {isDisplayClearReceivingAddress ? <button onClick={onClearReceivingAddressFilter}>Clear</button> : <></>}
                                     </td>
                                     <td>
-                                        <input type="text" name="sendingAddressFilter" value={sendingAddressFilter} onChange={e => setSendingAddressFilter(e.target.value)} />
+                                        <input type="text" value={sendingAddress} onChange={e => setSendingAddressFilter(e.target.value)} />
                                         {isDisplayClearSendingAddress ? <button onClick={onClearSendingAddressFilter}>Clear</button> : <></>}
                                     </td>
                                     <td></td>

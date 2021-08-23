@@ -5,7 +5,7 @@ import shipperIMG from './image/shipper.jpg'
 export default function NotificationBell() {
     return (
         <div className="icons-bell">
-            <Link to="/statistic"><i className="fas fa-chart-line fas-bell" /></Link>
+            <Link to="/statistic"><i className="fas fa-archive fas-bell" /></Link>
             <div className="notification-bell">
                 <div className="notBtn-bell">
                     <div>

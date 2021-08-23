@@ -10,10 +10,10 @@ let orderPostListData = [
         "receivingAddress": "District of Columbia",
         "sendingAddress": "Miami, Florida",
         "customer": "Nhat Tien Truong",
-        "createdDate": "11/08/2021",
+        "createdDate": "2021-08-11",
         "updatedDate": "",
-        "status": "",
-        "isWin": false,
+        "status": "SHIPPED",
+        "isWin": true,
         "isActive": true
     }, {
         "id": 2,
@@ -27,10 +27,10 @@ let orderPostListData = [
         "receivingAddress": "Nevada",
         "sendingAddress": "Texas",
         "customer": "Quoc Anh Tran Doan",
-        "createdDate": "11/08/2021",
+        "createdDate": "2021-08-11",
         "updatedDate": "",
-        "status": "",
-        "isWin": false,
+        "status": "SHIPPING",
+        "isWin": true,
         "isActive": true
     }, {
         "id": 3,
@@ -42,9 +42,9 @@ let orderPostListData = [
         "receivingAddress": "Louisiana",
         "sendingAddress": "Texas",
         "customer": "Thao Truong",
-        "createdDate": "17/08/2021",
+        "createdDate": "2021-08-17",
         "updatedDate": "",
-        "status": "SHIPPED",
+        "status": "NOTYETSHIPPED",
         "isWin": true,
         "isActive": true
     }, {
@@ -57,10 +57,10 @@ let orderPostListData = [
         "receivingAddress": "Utah",
         "sendingAddress": "Tennessee",
         "customer": "Phan Hung Tran",
-        "createdDate": "17/08/2021",
+        "createdDate": "2021-08-17",
         "updatedDate": "",
-        "status": "SHIPPING",
-        "isWin": true,
+        "status": "NOTYETSHIPPED",
+        "isWin": false,
         "isActive": true
     }, {
         "id": 5,
@@ -72,10 +72,10 @@ let orderPostListData = [
         "receivingAddress": "New Jersey",
         "sendingAddress": "Hawaii",
         "customer": "Cu No Tran",
-        "createdDate": "17/08/2021",
+        "createdDate": "2021-08-17",
         "updatedDate": "",
         "status": "NOTYETSHIPPED",
-        "isWin": true,
+        "isWin": false,
         "isActive": true
     }
 ];

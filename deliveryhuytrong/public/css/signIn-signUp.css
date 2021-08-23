@@ -127,11 +127,8 @@ div.radio-role span {
 }
 
 div.sign-up-container option {
-    color: #757575;
-}
-
-div.sign-up-container option {
     width: 100px;
+    color: #757575;
 }
 
 div.sign-in-container input {
