@@ -1,32 +1,37 @@
 import React, { useState } from 'react';
 import '../shipper.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { remove } from 'lodash';
+import swal from 'sweetalert';
 import { v4 as uuidv4 } from 'uuid';
 import ShipperTitle from './ShipperTitle';
 import shipperListData from './ShipperListData';
 import ShipperInfoForm from './ShipperInfoForm';
 
 export default function ShipperList() {
-    const [shiperList, setShipperList] = useState(shipperListData);
+    const [shipperList, setShipperList] = useState(shipperListData);
     const [fullNameFilter, setFullNameFilter] = useState('');
     const [phoneFilter, setPhoneFilter] = useState('');
     const [isDisplayClearFilter] = useState(false);
     const [isDisplayShipperInfoForm, setIsDisplayShipperInfoForm] = useState(false);
+    // const [itemSelected, setItemSelected] = useState(null);
 
+    const history = useHistory();
     const fullName = fullNameFilter;
     const phone = phoneFilter;
     const displayShipperInfoForm = isDisplayShipperInfoForm;
-    const itemsOrigin = shiperList;
+    const itemsOrigin = shipperList;
 
     let shipper = [], result, i = 0;
     let isDisplayClear = isDisplayClearFilter;
 
     const elementShipperInfoForm = displayShipperInfoForm
+        // ? <ShipperInfoForm itemSelected={itemSelected} onSubmit={addShipper} />
         ? <ShipperInfoForm onSubmit={addShipper} />
         : '';
 
     function addShipper(data) {
-        let shipper = shiperList;
+        let shipper = shipperList;
         shipper.push({
             id: uuidv4(),
             firstName: data.firstName,
@@ -45,6 +50,32 @@ export default function ShipperList() {
         setShipperList(shipper);
     }
 
+    function removeShipper(id) {
+        let shipper = shipperList;
+        swal({
+            title: "Do you want to remove this shipper?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true
+        }).then((willRemove) => {
+            if (willRemove) {
+                remove(shipper, item => {
+                    return item.id === id;
+                });
+                setShipperList(shipper);
+                swal("This shipper was removed successfully!", { icon: "success" });
+                history.push("/shipper");
+            } else {
+                swal("You pressed cancel!", { icon: "warning" });
+            }
+        });
+    }
+
+    function editShipper(item) {
+        setIsDisplayShipperInfoForm(true);
+        // setItemSelected(item);
+    }
+
     function onToggleShipperInfoForm() { setIsDisplayShipperInfoForm(toggle => !toggle); }
     function onClear() { setFullNameFilter(''); setPhoneFilter(''); }
 
@@ -61,7 +92,7 @@ export default function ShipperList() {
     }
 
     if (shipper.length === 0) {
-        result = <td colSpan={9} className="no-data-found">
+        result = <td colSpan={12} className="no-data-found">
             <h1>No shipper found</h1>
         </td>
     }
@@ -99,6 +130,7 @@ export default function ShipperList() {
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Detailed information</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -115,6 +147,11 @@ export default function ShipperList() {
                                             <td>{shipper.email}</td>
                                             <td>{shipper.phone}</td>
                                             <td><Link to={"shipper-detail/" + shipper.id} className="see-another-page-2">Click to rate <span className="fas fa-info-circle" /></Link></td>
+                                            <td>
+                                                <span className="see-another-page-1" onClick={() => editShipper(shipper)}>Edit</span>
+                                                {/* <RemoveShipper props={shipper.id} /> */}
+                                                <span className="see-another-page-2" onClick={() => removeShipper(shipper.id)}>Remove</span>
+                                            </td>
                                         </tr>
                                     })
                                 }

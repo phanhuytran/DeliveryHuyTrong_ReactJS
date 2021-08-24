@@ -35,28 +35,22 @@ export default function ShipperInfoForm(props) {
                     <tbody>
                         <tr>
                             <td>First name:</td>
-                            <td>
-                                <input type="text" placeholder="First name..." value={firstName} onChange={e => setFirstName(e.target.value)} required />
-                            </td>
+                            <td><input type="text" placeholder="First name..." value={firstName} onChange={e => setFirstName(e.target.value)} required /></td>
                         </tr>
                         <tr>
                             <td>Last name:</td>
-                            <td>
-                                <input type="text" placeholder="Last name..." multiple value={lastName} onChange={e => setLastName(e.target.value)} required />
-                            </td>
+                            <td><input type="text" placeholder="Last name..." multiple value={lastName} onChange={e => setLastName(e.target.value)} required /></td>
                         </tr>
                         <tr>
                             <td>Date of birth:</td>
-                            <td>
-                                <input type="date" placeholder="Date of birth..." value={dateOfBirth} onChange={e => setDateOfBirth(e.target.value)} required />
-                            </td>
+                            <td><input type="date" placeholder="Date of birth..." value={dateOfBirth} onChange={e => setDateOfBirth(e.target.value)} required /></td>
                         </tr>
                         <tr>
                             <td>Gender:</td>
                             <td>
                                 <select className="sl-gender-shipper-form" value={gender} onChange={e => setGender(e.target.value)} required>
                                     <option value="" disabled hidden></option>
-                                    <option value="Male" selected="Male">Male</option>
+                                    <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                     <option value="Other">Other</option>
                                 </select>
@@ -64,39 +58,27 @@ export default function ShipperInfoForm(props) {
                         </tr>
                         <tr>
                             <td>ID card:</td>
-                            <td>
-                                <input type="text" placeholder="ID card..." value={idCard} onChange={e => setIDCard(e.target.value)} required />
-                            </td>
+                            <td><input type="text" placeholder="ID card..." value={idCard} onChange={e => setIDCard(e.target.value)} required /></td>
                         </tr>
                         <tr>
                             <td>Address:</td>
-                            <td>
-                                <input type="text" placeholder="Address..." value={address} onChange={e => setAddress(e.target.value)} required />
-                            </td>
+                            <td><input type="text" placeholder="Address..." value={address} onChange={e => setAddress(e.target.value)} required /></td>
                         </tr>
                         <tr>
                             <td>Email:</td>
-                            <td>
-                                <input type="email" placeholder="Email..." value={email} onChange={e => setEmail(e.target.value)} required />
-                            </td>
+                            <td><input type="email" placeholder="Email..." value={email} onChange={e => setEmail(e.target.value)} required /></td>
                         </tr>
                         <tr>
                             <td>Phone:</td>
-                            <td>
-                                <input type="text" placeholder="Phone..." value={phone} onChange={e => setPhone(e.target.value)} required />
-                            </td>
+                            <td><input type="text" placeholder="Phone..." value={phone} onChange={e => setPhone(e.target.value)} required /></td>
                         </tr>
                         <tr>
                             <td>Avatar:</td>
-                            <td>
-                                <input type="file" value={avatar} onChange={e => setAvatar(e.target.value)} required />
-                            </td>
+                            <td><input type="file" value={avatar} onChange={e => setAvatar(e.target.value)} required /></td>
                         </tr>
                         <tr>
                         </tr><tr>
-                            <td colSpan={2}>
-                                <button className="btn-add-shipper" type="submit">ADD</button>
-                            </td>
+                            <td colSpan={2}><button className="btn-add-shipper" type="submit">ADD</button></td>
                         </tr>
                     </tbody>
                 </table>
