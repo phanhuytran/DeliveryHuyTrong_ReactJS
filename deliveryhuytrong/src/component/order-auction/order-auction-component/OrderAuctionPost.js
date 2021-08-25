@@ -1,29 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "../order-auction.css";
 import "../slick-carousel/slick/slick.css";
 import "../slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link, useHistory } from 'react-router-dom';
-import { remove } from 'lodash';
 import swal from 'sweetalert';
-import orderPostListData from '../../list-orders/list-orders-component/OrderPostListData';
 import OrderAuctionComment from './OrderAuctionComment';
 import clientIMG from '../image/client.jpg';
+import API, { endpoints } from '../../API';
+import axios from 'axios';
 
 export default function OrderAuctionPost(props) {
-    const [orderPostList, setOrderPostList] = useState(orderPostListData);
+    const [orderPostList, setOrderPostList] = useState([]);
     const [isDisplayPostOption, setIsDisplayPostOption] = useState(false);
 
-    const orderID = props.props.match.params.id;
+    const orderID = parseInt(props.props.match.params.id, 10);
     const history = useHistory();
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
-    const orderPost = orderPostList;
     const displayPostOption = isDisplayPostOption;
     const elementPostOption = displayPostOption
         ? <div className="auction-option">
             <p>Edit</p>
             <p onClick={() => removeAuctionPost(orderID)}>Remove</p>
         </div> : '';
+
+    useEffect(() => {
+        API.get(endpoints['posts']).then(res => (
+            setOrderPostList(res.data.results)
+        ));
+    }, [])
 
     function onTogglePostOption() {
         setIsDisplayPostOption(toggle => !toggle);
@@ -48,27 +53,12 @@ export default function OrderAuctionPost(props) {
             dangerMode: true
         }).then((willRemove) => {
             if (willRemove) {
-                remove(orderPost, (item) => {
-                    if (item.isWin === false && item.id === id) {
-                        swal("This order was removed successfully!", { icon: "success" });
-                        return item.id === id;
-                    } else if (item.isWin === true && item.id === id) {
-                        swal({
-                            title: "This order was auctioned. Do you want to cancel this order?",
-                            icon: "error",
-                            buttons: true,
-                            dangerMode: true
-                        }).then((willCancel) => {
-                            if (willCancel) {
-                                swal("Your request has been sent to the shipper. Please wait for the shipper to confirm...", { icon: "success" });
-                            } else {
-                                swal("You pressed cancel!", { icon: "warning" });
-                            }
-                        });
-                    }
-                });
+                axios.delete('http://127.0.0.1:8000/posts/' + id)
                 setOrderPostList(orderPost);
-                history.push("/list-orders");
+                swal("This order was removed successfully!", { icon: "success" });
+                setTimeout(() => {
+                    history.push("/list-orders");
+                }, 500);
             } else {
                 swal("You pressed cancel!", { icon: "warning" });
             }
@@ -82,7 +72,7 @@ export default function OrderAuctionPost(props) {
                     <div className="auction-area">
                         {elementPostOption}
                         {
-                            orderPost.map((value, index) => {
+                            orderPostList.map((value, index) => {
                                 if (value.id === orderID) {
                                     return <React.Fragment key={index}>
                                         <div className="auction-customer-info">
@@ -93,7 +83,7 @@ export default function OrderAuctionPost(props) {
                                                 <p>
                                                     <span>{value.customer}</span>
                                                     <span onClick={onTogglePostOption}><i className="fas fa-ellipsis-h"></i></span><br />
-                                                    <span>{value.createdDate}</span>
+                                                    <span>{value.created_date}</span>
                                                 </p>
                                             </div>
                                         </div>
@@ -104,15 +94,15 @@ export default function OrderAuctionPost(props) {
                                                 <p>Order description:</p>
                                                 <p className="info-comment-2">{value.description}</p>
                                                 <p>Weight: <span className="info-comment">{value.weight} kilograms</span></p>
-                                                <p>Receiving address: <span className="info-comment">{value.receivingAddress}</span></p>
-                                                <p>Sending address: <span className="info-comment">{value.sendingAddress}</span></p>
+                                                <p>Receiving address: <span className="info-comment">{value.receive_stock.address}</span></p>
+                                                <p>Sending address: <span className="info-comment">{value.send_stock.address}</span></p>
                                                 <p id="see-less-auction-order-info" onClick={seeLessAuctionInfo}>See Less <span className="fas fa-arrow-up" /></p>
                                             </div>
                                         </div>
                                         <div className="order-image">
                                             <Slider className="auction-info-carousel" {...settingSlider}>
                                                 {
-                                                    value.image.map((i, ix) => {
+                                                    value.image_items.map((i, ix) => {
                                                         return <img key={ix} src={i} alt="img" />
                                                     })
                                                 }

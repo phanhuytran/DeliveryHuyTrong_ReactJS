@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
+import API, { endpoints } from '../../API';
 import OrderPostInfoForm from './OrderPostInfoForm';
-import orderPostListData from './OrderPostListData';
 
 export default function OrderNotYetAuctionedList() {
-    const [orderPostList, setOrderPostList] = useState(orderPostListData);
+    const [orderPostList, setOrderPostList] = useState([]);
     const [customerFilter, setCustomerFilter] = useState('');
     const [receivingAddressFilter, setReceivingAddressFilter] = useState('');
     const [sendingAddressFilter, setSendingAddressFilter] = useState('');
@@ -29,27 +29,30 @@ export default function OrderNotYetAuctionedList() {
         ? <OrderPostInfoForm onSubmit={createPost} />
         : '';
 
+    useEffect(() => {
+        API.get(endpoints['posts']).then(res => (
+            setOrderPostList(res.data.results)
+        ));
+    }, []);
+
     function createPost(data) {
         let orderPost = orderPostList;
         orderPost.push({
-            id: uuidv4(),
             description: data.description,
-            image: data.image,
             weight: data.weight,
-            receivingAddress: data.receivingAddress,
-            sendingAddress: data.sendingAddress,
-            customer: "",
-            createdDate: "",
-            updatedDate: "",
-            isWin: false,
-            status: "NOTYETSHIPPED",
-            isActive: true,
+            receive_stock: {
+                address: data.receive_stock
+            },
+            send_stock: {
+                address: data.send_stock
+            }
         });
-
+        // window.location.href = "/list-orders";
+        axios.post('http://127.0.0.1:8000/posts/', data)
         setIsDisplayPostInfoForm(false);
         setOrderPostList(orderPost);
     }
-    
+
     function onTogglePostInfoForm() { setIsDisplayPostInfoForm(toggle => !toggle); }
     function onClearCustomerFilter() { setCustomerFilter(''); }
     function onClearReceivingAddressFilter() { setReceivingAddressFilter(''); }
@@ -57,10 +60,15 @@ export default function OrderNotYetAuctionedList() {
 
     if (customer.length > 0 || receivingAddress.length > 0 || sendingAddress.length > 0) {
         itemsOrigin.forEach((item) => {
-            if (item.customer.toLowerCase().indexOf(customer) !== -1
-                && item.receivingAddress.toLowerCase().indexOf(receivingAddress) !== -1
-                && item.sendingAddress.toLowerCase().indexOf(sendingAddress) !== -1
-                && item.isWin === false) {
+            // if (item.customer.toLowerCase().indexOf(customer) !== -1
+            //     && item.receive_stock.address.toLowerCase().indexOf(receivingAddress) !== -1
+            //     && item.send_stock.address.toLowerCase().indexOf(sendingAddress) !== -1) {
+            //     // && item.isWin === false) {
+            //     orderPost.push(item);
+            // }
+            if (item.receive_stock.address.toLowerCase().indexOf(receivingAddress) !== -1
+                && item.send_stock.address.toLowerCase().indexOf(sendingAddress) !== -1) {
+                // && item.isWin === false) {
                 orderPost.push(item);
             }
         });
@@ -127,19 +135,19 @@ export default function OrderNotYetAuctionedList() {
                                 </tr>
                                 {
                                     orderPost.map((order, index) => {
-                                        if (order.isWin === false) {
-                                            i++;
-                                            return <tr key={index}>
-                                                <td>{i}</td>
-                                                <td>{order.customer}</td>
-                                                <td><img src={order.image[0]} alt="img" /></td>
-                                                <td>{order.weight}</td>
-                                                <td>{order.receivingAddress}</td>
-                                                <td>{order.sendingAddress}</td>
-                                                <td><Link to={"order-auction/" + order.id} className="see-another-page-2">Click to auction <span className="fas fa-info-circle" /></Link></td>
-                                            </tr>
-                                        }
-                                        return <React.Fragment key={index}></React.Fragment>;
+                                        // if (order.isWin === false) {
+                                        i++;
+                                        return <tr key={index}>
+                                            <td>{i}</td>
+                                            <td>{order.description}</td>
+                                            <td><img src={order.image_items} alt="img" /></td>
+                                            <td>{order.weight}</td>
+                                            <td>{order.receive_stock.address}</td>
+                                            <td>{order.send_stock.address}</td>
+                                            <td><Link to={"order-auction/" + order.id} className="see-another-page-2">Click to auction <span className="fas fa-info-circle" /></Link></td>
+                                        </tr>
+                                        // }
+                                        // return <React.Fragment key={index}></React.Fragment>;
                                     })
                                 }
                                 <tr>{result}</tr>

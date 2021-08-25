@@ -1,8 +1,10 @@
+// import axios from 'axios';
 import React, { useState } from 'react';
+// import API from '../../API';
 
 export default function OrderPostInfoForm(props) {
     const [description, setDescription] = useState('');
-    const [image, setImage] = useState('');
+    // const [image, setImage] = useState('');
     const [weight, setWeight] = useState(0);
     const [receivingAddress, setReceivingAddress] = useState('');
     const [sendingAddress, setSendingAddress] = useState('');
@@ -11,11 +13,12 @@ export default function OrderPostInfoForm(props) {
         event.preventDefault();
         let item = {
             description: description,
-            image: image,
+            // image: image,
             weight: weight,
-            receivingAddress: receivingAddress,
-            sendingAddress: sendingAddress,
+            receive_stock: receivingAddress,
+            send_stock: sendingAddress,
         }
+        
         props.onSubmit(item);
     }
 
@@ -33,7 +36,8 @@ export default function OrderPostInfoForm(props) {
                         <tr>
                             <td>Image:</td>
                             <td>
-                                <input type="file" placeholder="Other information..." multiple value={image} onChange={e => setImage(e.target.value)} required />
+                                <input type="file" placeholder="Other information..." multiple />
+                                {/* <input type="file" placeholder="Other information..." multiple value={image} onChange={e => setImage(e.target.value)} required /> */}
                             </td>
                         </tr>
                         <tr>

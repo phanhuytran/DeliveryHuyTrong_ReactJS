@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export let endpoints = {
-    'shipper': '',
+    'posts': '/posts/',
 }
 
 export default axios.create({

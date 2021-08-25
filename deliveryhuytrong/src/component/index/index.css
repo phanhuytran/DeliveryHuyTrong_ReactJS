@@ -8,3 +8,46 @@
 .index-show-item span {
     padding-left: 10px;
 }
+
+.introduction {
+    position: relative;
+    background: url(https://previews.123rf.com/images/shutterhero/shutterhero2007/shutterhero200700028/151475109-food-delivery-drivers-are-driving-to-deliver-products-to-customers-who-order-online-at-night-.jpg) no-repeat;
+    background-position: center;
+    background-color: #22313f;
+    height: 607px;
+}
+
+.introduction::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(34, 47, 60, 0.93);
+    content: "";
+    width: 100%;
+    height: 100%;
+}
+
+.introduction-content {
+    position: absolute;
+    text-align: center;
+    color: #fff;
+    margin: 12% 0 12% 14%;
+}
+
+.introduction-content hr {
+    width: 20%;
+    margin: 0 auto 5% auto;
+    border-top: 1px solid #f9bf3b;
+}
+
+.introduction-content h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 56px;
+    margin-bottom: 5%;
+    color: #f9bf3b;
+}
+
+.introduction-content p {
+    font-size: 24px;
+}
