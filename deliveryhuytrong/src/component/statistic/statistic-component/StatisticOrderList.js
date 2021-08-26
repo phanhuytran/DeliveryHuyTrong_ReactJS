@@ -7,8 +7,8 @@ export default function StatisticOrderList() {
     const [descriptionFilter, setDescriptionFilter] = useState('');
     const [createdDateFilter, setCreatedDateFilter] = useState('');
     const [customerFilter, setCustomerFilter] = useState('');
-    const [receivingAddressFilter, setReceivingAddressFilter] = useState('');
     const [sendingAddressFilter, setSendingAddressFilter] = useState('');
+    const [receivingAddressFilter, setReceivingAddressFilter] = useState('');
     const [isDisplayClearDescriptionFilter] = useState(false);
     const [isDisplayClearCreatedDateFilter] = useState(false);
     const [isDisplayClearCustomerFilter] = useState(false);
@@ -18,30 +18,30 @@ export default function StatisticOrderList() {
     const description = descriptionFilter;
     const createdDate = createdDateFilter;
     const customer = customerFilter;
+    const sendingAddress = sendingAddressFilter;
     const receivingAddress = receivingAddressFilter;
-    const sendingAddress = sendingAddressFilter;    
     const itemsOrigin = orderPostList;
 
     let orderPost = [], result, i = 0;
     let isDisplayClearDescription = isDisplayClearDescriptionFilter;
     let isDisplayClearCreatedDate = isDisplayClearCreatedDateFilter;
     let isDisplayClearCustomer = isDisplayClearCustomerFilter;
-    let isDisplayClearReceivingAddress = isDisplayClearReceivingAddressFilter;
     let isDisplayClearSendingAddress = isDisplayClearSendingAddressFilter;
+    let isDisplayClearReceivingAddress = isDisplayClearReceivingAddressFilter;
 
     function onClearDescriptionFilter() { setDescriptionFilter(''); }
     function onClearCreatedDateFilter() { setCreatedDateFilter(''); }
     function onClearCustomerFilter() { setCustomerFilter(''); }
-    function onClearReceivingAddressFilter() { setReceivingAddressFilter(''); }
     function onClearSendingAddressFilter() { setSendingAddressFilter(''); }
+    function onClearReceivingAddressFilter() { setReceivingAddressFilter(''); }
 
-    if (description.length > 0 || createdDate.length > 0 || customer.length > 0 || receivingAddress.length > 0 || sendingAddress.length > 0) {
+    if (description.length > 0 || createdDate.length > 0 || customer.length > 0 || sendingAddress.length > 0 || receivingAddress.length > 0) {
         itemsOrigin.forEach((item) => {
             if (item.description.toLowerCase().indexOf(description) !== -1
                 && item.createdDate.toLowerCase().indexOf(createdDate) !== -1
                 && item.customer.toLowerCase().indexOf(customer) !== -1
-                && item.receivingAddress.toLowerCase().indexOf(receivingAddress) !== -1
-                && item.sendingAddress.toLowerCase().indexOf(sendingAddress) !== -1) {
+                && item.sendingAddress.toLowerCase().indexOf(sendingAddress) !== -1
+                && item.receivingAddress.toLowerCase().indexOf(receivingAddress) !== -1) {
                 orderPost.push(item);
             }
         });
@@ -58,8 +58,8 @@ export default function StatisticOrderList() {
     if (description.length > 0) { isDisplayClearDescription = true; }
     if (createdDate.length > 0) { isDisplayClearCreatedDate = true; }
     if (customer.length > 0) { isDisplayClearCustomer = true; }
-    if (receivingAddress.length > 0) { isDisplayClearReceivingAddress = true; }
     if (sendingAddress.length > 0) { isDisplayClearSendingAddress = true; }
+    if (receivingAddress.length > 0) { isDisplayClearReceivingAddress = true; }
 
     return (
         <div className="statistic-order">
@@ -74,8 +74,8 @@ export default function StatisticOrderList() {
                             <th>Customer</th>
                             <th>Image</th>
                             <th>Weight (kg)</th>
-                            <th>Receiving address</th>
                             <th>Sending address</th>
+                            <th>Receiving address</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -97,12 +97,12 @@ export default function StatisticOrderList() {
                             <td></td>
                             <td></td>
                             <td>
-                                <input type="text" value={receivingAddress} onChange={e => setReceivingAddressFilter(e.target.value)} />
-                                {isDisplayClearReceivingAddress ? <button onClick={onClearReceivingAddressFilter}>Clear</button> : <></>}
-                            </td>
-                            <td>
                                 <input type="text" value={sendingAddress} onChange={e => setSendingAddressFilter(e.target.value)} />
                                 {isDisplayClearSendingAddress ? <button onClick={onClearSendingAddressFilter}>Clear</button> : <></>}
+                            </td>
+                            <td>
+                                <input type="text" value={receivingAddress} onChange={e => setReceivingAddressFilter(e.target.value)} />
+                                {isDisplayClearReceivingAddress ? <button onClick={onClearReceivingAddressFilter}>Clear</button> : <></>}
                             </td>
                             <td></td>
                         </tr>
@@ -117,8 +117,8 @@ export default function StatisticOrderList() {
                                     <td>{order.customer}</td>
                                     <td><img src={order.image[0]} alt="img" /></td>
                                     <td>{order.weight}</td>
-                                    <td>{order.receivingAddress}</td>
                                     <td>{order.sendingAddress}</td>
+                                    <td>{order.receivingAddress}</td>
                                     <td>
                                         {
                                             order.isWin === false ? <span className="status-not-yet-auctioned">Not yet auctioned</span> : '' ||

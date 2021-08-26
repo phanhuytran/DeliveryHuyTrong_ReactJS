@@ -125,7 +125,7 @@ export default function NotificationBell() {
                     </div>
                 </div>
             </div>
-            <Link to="/list-orders"><i className="fas fa-edit fas-bell" /></Link>
+            <Link to="/post"><i className="fas fa-edit fas-bell" /></Link>
         </div>
     );
 }

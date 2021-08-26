@@ -19,8 +19,8 @@ const data = canvas => {
         labels,
         datasets: [
             {
-                label: "Revenue",
-                data: [14030000, 16250000, 21342000, 21005000, 20591000, 26024000, 25240000, 30166000, 32675000, 35743000],
+                label: "Frequency",
+                data: [1.2, 1.4, 1.75, 2.02, 2, 2.34, 2.55, 2.41, 2.46, 2.6],
                 borderWidth: 2,
                 fill: true,
                 borderColor: "green"
@@ -29,10 +29,10 @@ const data = canvas => {
     };
 };
 
-export default function StatisticRevenueChart() {
+export default function DeliveryFrequencyChart() {
     return (
         <div className="statistic-chart">
-            <h2>Revenue Chart</h2>
+            <h2>Delivery Frequency Chart</h2>
             <Line data={data} />
         </div>
     );

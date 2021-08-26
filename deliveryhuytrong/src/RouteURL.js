@@ -5,6 +5,7 @@ import BodyIndex from './component/index/BodyIndex';
 import PageNotFound from './component/item-base/PageNotFound';
 import BodyOrder from './component/list-orders/BodyOrder';
 import BodyOrderAuction from './component/order-auction/BodyOrderAuction';
+import BodyPost from './component/post/BodyPost';
 import BodyPricing from './component/pricing/BodyPricing';
 import BodyShipperDetail from './component/shipper-detail/BodyShipperDetail';
 import BodyShipper from './component/shipper/BodyShipper';
@@ -47,6 +48,10 @@ const routes = [
         path: "/contact",
         exact: true,
         main: () => <BodyContact />
+    }, {
+        path: "/post",
+        exact: true,
+        main: () => <BodyPost />
     }, {
         path: "",
         exact: true,

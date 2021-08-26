@@ -1,0 +1,245 @@
+.post {
+    width: 84%;
+    margin: 1% auto 5% auto;
+}
+
+.post-body {
+    display: flex;
+    width: 100%;
+}
+
+.post-body-left {
+    width: 30%;
+    box-shadow: 0 0 5px rgba(33,33,33,.2);
+    border-radius: 8px;
+}
+
+.post-body-center {
+    width: 2%;
+}
+
+.post-body-right {
+    width: 68%;
+    box-shadow: 0 0 5px rgba(33,33,33,.2);
+    border-radius: 8px;
+}
+
+.post-body-left table {
+    margin: 10%;
+}
+
+.post-body-left table tr td:first-child {
+    text-align: center;
+}
+
+.post-body-left table tr td {
+    padding: 8px 10px;
+}
+
+.post-body-left h5 {
+    font-weight: bold;
+    font-size: 15px;
+    margin: 4% 0 -2.5% 5%;
+}
+
+.post-body-left img {
+    width: 30%;
+    margin: 0 35% 5% 35%;
+}
+
+.post-body-left h4 {
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.post-content-header {
+    display: flex;
+    width: 90%;
+    margin: 2% auto;
+}
+
+.post-content-header-left {
+    width: 9%;
+}
+
+.post-content-header-left img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.post-content-header-center {
+    width: 81%;
+    margin-top: 4px;
+}
+
+.post-content-header-center span {
+    font-size: 13px;
+}
+
+.post-content-header-right {
+    width: 10%;
+}
+
+.post-content-header-right p {
+    font-size: 20px;
+    float: right;
+    margin-top: 10%;
+    padding: 4px 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.post-content-header-right p:hover {
+    background-color: #eee;
+}
+
+.post-option {
+    position: absolute;
+    width: 8%;
+    margin: 3% 0 0 -2%;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(33,33,33,.2);
+    animation: fadeIn linear 0.1s;
+    animation: growth linear 0.1s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
+.post-option p {
+    font-size: 15px;
+    width: 100%;
+    float: left;
+    margin: 0;
+    padding: 10px 15px;
+    color: #5d5d5d;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.post-option p:hover {
+    border-radius: 0;
+    padding: 10px 15px;
+    background-color: #eee;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes growth {
+    from {
+        transform: scale(var(--growth-from));
+    }
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
+
+.post-content {
+    width: 90%;
+    margin: 0 auto 5% auto;
+}
+
+.post-content p {
+    margin-bottom: 8px;
+}
+
+.post-content span {
+    float: right;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.post-content img {
+    padding: 0 !important;
+}
+
+.show-post-content {
+    animation: fadeIn linear 0.4s;
+    animation: growth linear 0.4s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
+.show-hide-content i {
+    font-size: 20px;
+    color: #f9bf3b;
+    padding: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.show-hide-content i:hover {
+    background-color: #f9bf3b;
+    color: #fff;
+}
+
+.post-form {
+    width: 90%;
+    margin: 5% auto;
+}
+
+.post-form button {
+    font-weight: bold;
+    background-color: #f9bf3b;
+    color: #fff;
+    padding: 5px 10px;
+    border: 2px solid #eee;
+    border-radius: 5px;
+    transition: 0.4s;
+}
+
+.post-form button:hover {
+    background-color: #fff;
+    color: #f9bf3b;
+}
+
+.post-form table {
+    width: 80%;
+    margin: 3% auto;
+}
+
+.post-form table tr td:first-child {
+    width: 30%;
+    padding: 15px;
+}
+
+.post-form table tr td:last-child {
+    width: 50%;
+}
+
+.post-form table tr:last-child td {
+    padding: 15px 0;
+}
+
+.post-form table tr:last-child button {
+    float: right;
+}
+
+.post-form table input, .post-form table select {
+    width: 100%;
+    border: 1px solid #eee;
+    padding: 5px 10px;
+}
+
+.post-form table input:focus-visible, .post-form button:focus-visible, .post-form table select:focus-visible {
+    outline: 2px solid #f9bf3b;
+}
+
+.post-form form {
+    animation: fadeIn linear 0.2s;
+    animation: growth linear 0.2s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
