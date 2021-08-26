@@ -72,7 +72,7 @@ export default function Post() {
                 <div className="post-body-right">
                     <PostForm onSubmit={createPost} />
                     {
-                        _.sortBy(postList,"created_date").reverse().map((post, index) => {
+                        _.sortBy(postList, "created_date").reverse().map((post, index) => {
                             return <React.Fragment key={index}>
                                 <div className="post-content-header">
                                     <div className="post-content-header-left">
