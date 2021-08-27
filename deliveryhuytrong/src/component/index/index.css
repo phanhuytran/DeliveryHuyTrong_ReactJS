@@ -11,7 +11,7 @@
 
 .introduction {
     position: relative;
-    background: url(https://previews.123rf.com/images/shutterhero/shutterhero2007/shutterhero200700028/151475109-food-delivery-drivers-are-driving-to-deliver-products-to-customers-who-order-online-at-night-.jpg) no-repeat;
+    background: url(./image/delivery.jpg) no-repeat;
     background-position: center;
     background-color: #22313f;
     height: 607px;
@@ -31,7 +31,8 @@
     position: absolute;
     text-align: center;
     color: #fff;
-    margin: 12% 0 12% 14%;
+    width: 100%;
+    margin: 12% auto;
 }
 
 .introduction-content hr {

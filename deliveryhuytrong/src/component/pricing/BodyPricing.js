@@ -4,7 +4,7 @@ import NotificationBell from '../item-base/NotificationBell';
 
 export default function BodyPricing() {
     return (
-        <div>
+        <>
             <NotificationBell />
             <section className="order_us_area" id="pricing">
                 <div className="container">
@@ -67,6 +67,6 @@ export default function BodyPricing() {
                     </div>
                 </div>
             </section><br /><br />
-        </div>
+        </>
     );
 }

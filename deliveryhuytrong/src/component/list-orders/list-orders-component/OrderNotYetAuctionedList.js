@@ -33,14 +33,10 @@ export default function OrderNotYetAuctionedList() {
 
     if (customer.length > 0 || sendingAddress.length > 0 || receivingAddress.length > 0) {
         itemsOrigin.forEach((item) => {
-            // if (item.customer.toLowerCase().indexOf(customer) !== -1
-            //     && item.send_stock.address.toLowerCase().indexOf(sendingAddress) !== -1
-            //     && item.receive_stock.address.toLowerCase().indexOf(receivingAddress) !== -1) {
-            //     // && item.isWin === false) {
-            //     orderPost.push(item);
-            // }
-            if (item.send_stock.address.toLowerCase().indexOf(sendingAddress) !== -1
+            if ((item.customer.first_name + " " + item.customer.last_name).toLowerCase().indexOf(customer) !== -1
+                && item.send_stock.address.toLowerCase().indexOf(sendingAddress) !== -1
                 && item.receive_stock.address.toLowerCase().indexOf(receivingAddress) !== -1) {
+                // && item.isWin === false) {
                 orderPost.push(item);
             }
         });
@@ -100,8 +96,8 @@ export default function OrderNotYetAuctionedList() {
                                         i++;
                                         return <tr key={index}>
                                             <td>{i}</td>
-                                            <td>{order.description}</td>
-                                            <td><img src={order.image_items} alt="img" /></td>
+                                            <td>{order.customer.first_name} {order.customer.last_name}</td>
+                                            <td><img src={order.image_items[0].image} alt="img" /></td>
                                             <td>{order.weight}</td>
                                             <td>{order.send_stock.address}</td>
                                             <td>{order.receive_stock.address}</td>

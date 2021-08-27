@@ -5,10 +5,10 @@ import NotificationBell from '../item-base/NotificationBell';
 
 export default function BodyAuction(props) {
     return (
-        <div>
+        <>
             <NotificationBell />
             <OrderAuctionTitle />
             <OrderAuctionPost props={props.props} />
-        </div>
+        </>
     );
 }

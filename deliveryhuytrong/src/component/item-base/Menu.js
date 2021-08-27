@@ -52,7 +52,7 @@ const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
 
 export default function Menu() {
     return (
-        <div>
+        <>
             <div>
                 <div className="col-md-6 col-xs-6 col-md-offset-1 col-sm-7 col-lg-offset-1 col-lg-6 mobMenuCol">
                     <nav className="navbar">
@@ -63,7 +63,7 @@ export default function Menu() {
                 </div>
             </div>
             <ModalSignInSignUp />
-        </div>
+        </>
     );
 }
 

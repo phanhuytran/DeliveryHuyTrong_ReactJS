@@ -4,7 +4,7 @@ import logoIMG from './image/logo.png';
 
 export default function Header() {
     return (
-        <div>
+        <>
             <div id="preloader" />
             <section className="about-us">
                 <div className="logo_menu" id="sticker">
@@ -20,6 +20,6 @@ export default function Header() {
                     </div>
                 </div>
             </section>
-        </div>
+        </>
     );
 }

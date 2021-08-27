@@ -44,13 +44,13 @@ export default function OrderAuctionPost(props) {
                                             </div>
                                             <div className="auction-customer-info-right">
                                                 <p>
-                                                    <span>{value.customer}</span><br />
-                                                    <span>{value.created_date}</span>
+                                                    <span>{value.customer.first_name} {value.customer.last_name}</span><br />
+                                                    <span>{(value.created_date).slice(0, 10)}</span>
                                                 </p>
                                             </div>
                                         </div>
                                         <div className="auction-order-info">
-                                            <p>Customer: <span className="info-comment">{value.customer}</span></p>
+                                            <p>Customer: <span className="info-comment">{value.customer.first_name} {value.customer.last_name}</span></p>
                                             <p><span id="see-more-auction-order-info-1" onClick={seeMoreAuctionInfo}> See More <span className="fas fa-arrow-down" /></span></p>
                                             <div id="see-more-auction-order-info-2">
                                                 <p>Order description:</p>
@@ -65,7 +65,7 @@ export default function OrderAuctionPost(props) {
                                             <Slider className="auction-info-carousel" {...settingSlider}>
                                                 {
                                                     value.image_items.map((i, ix) => {
-                                                        return <img key={ix} src={i} alt="img" />
+                                                        return <img key={ix} src={i.image} alt="img" />
                                                     })
                                                 }
                                             </Slider>

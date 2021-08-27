@@ -7,12 +7,12 @@ import StatisticTitle from './statistic-component/StatisticTitle';
 
 export default function BodyStatistic() {
     return (
-        <div>
+        <>
             <NotificationBell />
             <StatisticTitle />
             <StatisticOrderList />
             <DeliveryFrequencyChart />
             <RevenueChart />
-        </div>
+        </>
     );
 }

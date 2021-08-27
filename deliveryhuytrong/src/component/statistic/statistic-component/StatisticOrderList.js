@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../statistic.css';
-import orderPostListData from '../../list-orders/list-orders-component/OrderPostListData';
+import API, { endpoints } from '../../API';
 
 export default function StatisticOrderList() {
-    const [orderPostList] = useState(orderPostListData);
+    const [orderList, setOrderList] = useState([]);
     const [descriptionFilter, setDescriptionFilter] = useState('');
     const [createdDateFilter, setCreatedDateFilter] = useState('');
     const [customerFilter, setCustomerFilter] = useState('');
@@ -20,15 +20,21 @@ export default function StatisticOrderList() {
     const customer = customerFilter;
     const sendingAddress = sendingAddressFilter;
     const receivingAddress = receivingAddressFilter;
-    const itemsOrigin = orderPostList;
+    const itemsOrigin = orderList;
 
-    let orderPost = [], result, i = 0;
+    let order = [], result, i = 0;
     let isDisplayClearDescription = isDisplayClearDescriptionFilter;
     let isDisplayClearCreatedDate = isDisplayClearCreatedDateFilter;
     let isDisplayClearCustomer = isDisplayClearCustomerFilter;
     let isDisplayClearSendingAddress = isDisplayClearSendingAddressFilter;
     let isDisplayClearReceivingAddress = isDisplayClearReceivingAddressFilter;
 
+    useEffect(() => {
+        API.get(endpoints['posts']).then(res => (
+            setOrderList(res.data.results)
+        ));
+    }, []);
+    
     function onClearDescriptionFilter() { setDescriptionFilter(''); }
     function onClearCreatedDateFilter() { setCreatedDateFilter(''); }
     function onClearCustomerFilter() { setCustomerFilter(''); }
@@ -38,18 +44,18 @@ export default function StatisticOrderList() {
     if (description.length > 0 || createdDate.length > 0 || customer.length > 0 || sendingAddress.length > 0 || receivingAddress.length > 0) {
         itemsOrigin.forEach((item) => {
             if (item.description.toLowerCase().indexOf(description) !== -1
-                && item.createdDate.toLowerCase().indexOf(createdDate) !== -1
-                && item.customer.toLowerCase().indexOf(customer) !== -1
-                && item.sendingAddress.toLowerCase().indexOf(sendingAddress) !== -1
-                && item.receivingAddress.toLowerCase().indexOf(receivingAddress) !== -1) {
-                orderPost.push(item);
+                && item.created_date.toLowerCase().indexOf(createdDate) !== -1
+                && (item.customer.first_name + " " + item.customer.last_name).toLowerCase().indexOf(customer) !== -1
+                && item.send_stock.address.toLowerCase().indexOf(sendingAddress) !== -1
+                && item.receive_stock.address.toLowerCase().indexOf(receivingAddress) !== -1) {
+                    order.push(item);
             }
         });
     } else {
-        orderPost = itemsOrigin;
+        order = itemsOrigin;
     }
 
-    if (orderPost.length === 0) {
+    if (order.length === 0) {
         result = <td colSpan={9} className="no-data-found">
             <h1>No order found</h1>
         </td>
@@ -107,38 +113,18 @@ export default function StatisticOrderList() {
                             <td></td>
                         </tr>
                         {
-                            orderPost.map((order, index) => {
+                            order.map((ord, index) => {
                                 i++;
                                 return <tr key={index}>
                                     <td>{i}</td>
-                                    {/* <td><span className="see-another-page-2">Show description</span></td> */}
-                                    <td>{order.description}</td>
-                                    <td>{order.createdDate}</td>
-                                    <td>{order.customer}</td>
-                                    <td><img src={order.image[0]} alt="img" /></td>
-                                    <td>{order.weight}</td>
-                                    <td>{order.sendingAddress}</td>
-                                    <td>{order.receivingAddress}</td>
-                                    <td>
-                                        {
-                                            order.isWin === false ? <span className="status-not-yet-auctioned">Not yet auctioned</span> : '' ||
-                                                order.status === 'SHIPPED' ? <span className={
-                                                    order.status === 'SHIPPED' ? 'order-auction-status-shipped' : '' ||
-                                                        order.status === 'SHIPPING' ? 'order-auction-status-shipping' : '' ||
-                                                            order.status === 'NOTYETSHIPPED' ? 'order-auction-status-not-yet-shipped' : ''
-                                                }>Shipped</span> : '' ||
-                                                    order.status === 'SHIPPING' ? <span className={
-                                                        order.status === 'SHIPPED' ? 'order-auction-status-shipped' : '' ||
-                                                            order.status === 'SHIPPING' ? 'order-auction-status-shipping' : '' ||
-                                                                order.status === 'NOTYETSHIPPED' ? 'order-auction-status-not-yet-shipped' : ''
-                                                    }>Shipping</span> : '' ||
-                                                        order.status === 'NOTYETSHIPPED' ? <span className={
-                                                            order.status === 'SHIPPED' ? 'order-auction-status-shipped' : '' ||
-                                                                order.status === 'SHIPPING' ? 'order-auction-status-shipping' : '' ||
-                                                                    order.status === 'NOTYETSHIPPED' ? 'order-auction-status-not-yet-shipped' : ''
-                                                        }>Not yet shipped</span> : ''
-                                        }
-                                    </td>
+                                    <td>{ord.description}</td>
+                                    <td>{(ord.created_date).slice(0, 10)}</td>
+                                    <td>{ord.customer.first_name} {ord.customer.last_name}</td>
+                                    <td><img src={ord.image_items[0].image} alt="img" /></td>
+                                    <td>{ord.weight}</td>
+                                    <td>{ord.send_stock.address}</td>
+                                    <td>{ord.receive_stock.address}</td>
+                                    <td></td>
                                 </tr>
                             })
                         }

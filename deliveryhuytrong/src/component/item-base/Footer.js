@@ -4,7 +4,7 @@ import goToTopIMG from './image/go-to-top.png';
 
 export default function Footer() {
     return (
-        <div>
+        <>
             <section className="footer-area" id="contact">
                 <div className="container">
                     <div className="row">
@@ -65,6 +65,6 @@ export default function Footer() {
             <div className="goToTop">
                 <a href="#top"><img src={goToTopIMG} alt="top" /></a>
             </div>
-        </div>
+        </>
     );
 }

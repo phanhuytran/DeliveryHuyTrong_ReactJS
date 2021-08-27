@@ -98,70 +98,68 @@ export default function ShipperList() {
     }
 
     return (
-        <div>
-            <section className="about_top">
-                <div className="container">
-                    <ShipperTitle />
-                    <div className="create-post">
-                        <div className="create-post-left">
-                            <div className="new-shipper-tab" onClick={onToggleShipperInfoForm}>
-                                {
-                                    !displayShipperInfoForm ? <span>ADD A NEW SHIPPER</span> : <span>CLOSE</span>
-                                }
-                            </div>
+        <section className="about_top">
+            <div className="container">
+                <ShipperTitle />
+                <div className="create-post">
+                    <div className="create-post-left">
+                        <div className="new-shipper-tab" onClick={onToggleShipperInfoForm}>
+                            {
+                                !displayShipperInfoForm ? <span>ADD A NEW SHIPPER</span> : <span>CLOSE</span>
+                            }
                         </div>
-                        {elementShipperInfoForm}
                     </div>
-                    <div className="shipper-list-filter">
-                        <input type="text" placeholder="Search by full name..." value={fullName} onChange={e => setFullNameFilter(e.target.value)} />
-                        <input className="ml-spf" type="text" placeholder="Search by phone number..." value={phone} onChange={e => setPhoneFilter(e.target.value)} />
-                        {isDisplayClear ? <button onClick={onClear}>Clear</button> : <></>}
-                    </div>
-                    <div className="table-list-area shipper">
-                        <table className="table-list">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Full name</th>
-                                    <th>Avatar</th>
-                                    <th>Date of Birth</th>
-                                    <th>Gender</th>
-                                    <th>Address</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Detailed information</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    shipper.map((shipper, index) => {
-                                        i++;
-                                        return <tr key={index}>
-                                            <td>{i}</td>
-                                            <td>{shipper.firstName} {shipper.lastName}</td>
-                                            <td><img src={shipper.avatar} alt="avatar" /></td>
-                                            <td>{shipper.dateOfBirth}</td>
-                                            <td>{shipper.gender}</td>
-                                            <td>{shipper.address}</td>
-                                            <td>{shipper.email}</td>
-                                            <td>{shipper.phone}</td>
-                                            <td><Link to={"shipper-detail/" + shipper.id} className="see-another-page-2">Click to rate <span className="fas fa-info-circle" /></Link></td>
-                                            <td>
-                                                <span className="see-another-page-1" onClick={() => editShipper(shipper)}>Edit</span>
-                                                {/* <RemoveShipper props={shipper.id} /> */}
-                                                <span className="see-another-page-2" onClick={() => removeShipper(shipper.id)}>Remove</span>
-                                            </td>
-                                        </tr>
-                                    })
-                                }
-                                <tr>{result}</tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <Link to="/list-orders" className="see-another-page">SEE LIST OF ORDERS</Link>
+                    {elementShipperInfoForm}
                 </div>
-            </section>
-        </div>
+                <div className="shipper-list-filter">
+                    <input type="text" placeholder="Search by full name..." value={fullName} onChange={e => setFullNameFilter(e.target.value)} />
+                    <input className="ml-spf" type="text" placeholder="Search by phone number..." value={phone} onChange={e => setPhoneFilter(e.target.value)} />
+                    {isDisplayClear ? <button onClick={onClear}>Clear</button> : <></>}
+                </div>
+                <div className="table-list-area shipper">
+                    <table className="table-list">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Full name</th>
+                                <th>Avatar</th>
+                                <th>Date of Birth</th>
+                                <th>Gender</th>
+                                <th>Address</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Detailed information</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                shipper.map((shipper, index) => {
+                                    i++;
+                                    return <tr key={index}>
+                                        <td>{i}</td>
+                                        <td>{shipper.firstName} {shipper.lastName}</td>
+                                        <td><img src={shipper.avatar} alt="avatar" /></td>
+                                        <td>{shipper.dateOfBirth}</td>
+                                        <td>{shipper.gender}</td>
+                                        <td>{shipper.address}</td>
+                                        <td>{shipper.email}</td>
+                                        <td>{shipper.phone}</td>
+                                        <td><Link to={"shipper-detail/" + shipper.id} className="see-another-page-2">Click to rate <span className="fas fa-info-circle" /></Link></td>
+                                        <td>
+                                            <span className="see-another-page-1" onClick={() => editShipper(shipper)}>Edit</span>
+                                            {/* <RemoveShipper props={shipper.id} /> */}
+                                            <span className="see-another-page-2" onClick={() => removeShipper(shipper.id)}>Remove</span>
+                                        </td>
+                                    </tr>
+                                })
+                            }
+                            <tr>{result}</tr>
+                        </tbody>
+                    </table>
+                </div>
+                <Link to="/list-orders" className="see-another-page">SEE LIST OF ORDERS</Link>
+            </div>
+        </section>
     );
 }

@@ -1,16 +1,18 @@
 import React from 'react';
 import IndexAbout from './index-component/IndexAbout';
-import IndexIntro from './index-component/IndexIntro';
+import IndexInitiatory from './index-component/IndexInitiatory';
 import IndexStatistic from './index-component/IndexStatistic';
 import Introduction from './index-component/Introduction';
+import OrderNotYetAuctionedList from './../list-orders/list-orders-component/OrderNotYetAuctionedList.js';
 
 export default function BodyIndex() {
     return (
-        <div>
+        <>
             <Introduction />
-            <IndexIntro />
+            <IndexInitiatory />
             <IndexAbout />
             <IndexStatistic />
-        </div>
+            <OrderNotYetAuctionedList />
+        </>
     );
 }
