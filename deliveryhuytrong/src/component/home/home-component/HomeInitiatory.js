@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function IndexIntro() {
+export default function HomeInitiatory() {
     return (
         <section className="about_top">
             <div className="container">

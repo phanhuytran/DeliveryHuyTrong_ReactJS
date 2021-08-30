@@ -693,6 +693,7 @@ video#bgvid {
     color: #fff;
     height: 30px;
     line-height: 30px;
+    margin-left: 5px;
     padding: 5px 8px;
     text-align: center;
     width: 30px;
@@ -705,7 +706,7 @@ video#bgvid {
 }
 
 .list li, .list li > a {
-    color: #fff;
+    color: #919191;
     line-height: 25px;
     text-transform: capitalize;
     transition: 0.4s;
@@ -1261,8 +1262,8 @@ div.auction-customer-info-right span:last-child {
 }
 
 div.auction-order-info {
-    width: 70%;
-    margin: 2% auto 0 auto;
+    width: 90%;
+    margin: 4% auto 0 auto;
 }
 
 div#see-more-auction-order-info-2 {
@@ -1300,7 +1301,7 @@ div.auction-area-comment-flex-left img {
 }
 
 div.auction-area-comment-flex-center {
-    width: 80%;
+    width: 85%;
 }
 
 div.auction-area-comment-flex-center input {
@@ -1317,7 +1318,7 @@ div.auction-area-comment-flex-center input:focus-visible {
 }
 
 div.auction-area-comment-flex-right {
-    width: 10%;
+    width: 5%;
 }
 
 div.auction-area-comment-flex-right button {
@@ -1326,7 +1327,7 @@ div.auction-area-comment-flex-right button {
     font-weight: bold;
     font-size: 25px;
     border: none;
-    margin: 9% 0;
+    margin: 20% 0;
     padding: 5%;
     transition: 0.3s;
 }

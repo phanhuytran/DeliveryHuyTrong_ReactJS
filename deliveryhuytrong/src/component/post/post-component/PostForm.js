@@ -3,7 +3,7 @@ import API, { endpoints } from '../../API';
 import '../post.css';
 
 export default function PostForm(props) {
-    const [postList, setPostList] = useState([]);
+    const [stockList, setStockList] = useState([]);
     const [description, setDescription] = useState('');
     const [weight, setWeight] = useState(0);
     const [receivingAddress, setReceivingAddress] = useState('');
@@ -27,8 +27,8 @@ export default function PostForm(props) {
     }
 
     useEffect(() => {
-        API.get(endpoints['posts']).then(res => (
-            setPostList(res.data.results)
+        API.get(endpoints['stocks']).then(res => (
+            setStockList(res.data.results)
         ));
     }, []);
 
@@ -87,12 +87,11 @@ export default function PostForm(props) {
                             <tr>
                                 <td>Sending address:</td>
                                 <td>
-                                    {/* <input type="text" placeholder="Sending address..." value={sendingAddress} onChange={e => setSendingAddress(e.target.value)} required /> */}
                                     <select value={sendingAddress} onChange={e => setSendingAddress(e.target.value)} required>
                                         <option value="" disabled hidden></option>
                                         {
-                                            postList.map((option_send, index) => {
-                                                return <option key={index} value={option_send.send_stock.id}>{option_send.send_stock.address}</option>
+                                            stockList.map((option_send, index) => {
+                                                return <option key={index} value={option_send.id}>{option_send.address}</option>
                                             })
                                         }
                                     </select>
@@ -101,12 +100,11 @@ export default function PostForm(props) {
                             <tr>
                                 <td>Receiving address:</td>
                                 <td>
-                                    {/* <input type="text" placeholder="Receiving address..." value={receivingAddress} onChange={e => setReceivingAddress(e.target.value)} required /> */}
                                     <select value={receivingAddress} onChange={e => setReceivingAddress(e.target.value)} required>
                                         <option value="" disabled hidden></option>
                                         {
-                                            postList.map((option_rec, index) => {
-                                                return <option key={index} value={option_rec.receive_stock.id}>{option_rec.receive_stock.address}</option>
+                                            stockList.map((option_rec, index) => {
+                                                return <option key={index} value={option_rec.id}>{option_rec.address}</option>
                                             })
                                         }
                                     </select>

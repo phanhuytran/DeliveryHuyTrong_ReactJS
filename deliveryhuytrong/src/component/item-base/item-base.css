@@ -95,3 +95,12 @@
     color: #fff;
     margin: 6.5% 18.46%;
 }
+
+.see-info-current-user {
+    color: #fff !important;
+    transition: 0.4s;
+}
+
+.current-user-cursor-style {
+    cursor: text !important;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import "./item-base.css";
 import { NavLink, Route } from "react-router-dom";
-import ModalSignInSignUp from './ModalSignInSignUp';
+import ModalSignInSignUp from './signIn-signUp-component/ModalSignInSignUp';
 
 const menu = [
     {

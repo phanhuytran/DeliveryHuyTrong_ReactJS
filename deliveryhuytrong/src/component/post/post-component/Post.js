@@ -8,6 +8,7 @@ import API, { endpoints } from '../../API';
 import axios from 'axios';
 import PostForm from './PostForm';
 import PostComment from './PostComment';
+import { Link } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
 
 export default function Post() {
@@ -122,7 +123,8 @@ export default function Post() {
                                             }
                                         </Slider>
                                     </div>
-                                    <PostComment />
+                                    <PostComment /><br />
+                                    <Link className="click-auction-confirm" to={"post-detail/" + post.id}>Click to auction confirmation</Link>
                                 </div>
                             </React.Fragment>
                         })

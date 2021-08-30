@@ -1,6 +1,6 @@
 import React from 'react';
-import Menu from './Menu';
 import logoIMG from './image/logo.png';
+import Menu from './Menu';
 
 export default function Header() {
     return (

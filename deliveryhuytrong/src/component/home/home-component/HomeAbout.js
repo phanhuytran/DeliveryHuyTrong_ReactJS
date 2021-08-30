@@ -1,8 +1,8 @@
 import React from 'react';
-import '../index.css';
+import '../home.css';
 import { Link } from 'react-router-dom';
 
-export default function IndexAbout() {
+export default function HomeAbout() {
     return (
         <section className="index_area" id="about">
             <div className="container">

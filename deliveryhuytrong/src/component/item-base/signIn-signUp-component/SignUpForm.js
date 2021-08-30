@@ -28,11 +28,9 @@ export default function SignUpForm() {
                     <input type="password" placeholder="Password" required />
                     <input type="password" placeholder="Confirm password" required />
                     <input type="file" placeholder="Profile picture" required />
-                    <div className="radio-role">
-                        <span />
-                        <input type="radio" name="role" defaultValue="customer" title="Customer" required />Customer
-                        <span />
-                        <input type="radio" name="role" defaultValue="shipper" title="Shipper" required />Shipper
+                    <div className="checkbox-role">
+                        <input type="checkbox"/>
+                        <span>Shipper</span>
                     </div>
                 </div>
                 <button className="btn-s signUp">Sign Up</button>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import shipperListData from '../../shipper/shipper-component/ShipperListData';
 import orderPostListData from '../../list-orders/list-orders-component/OrderPostListData';
 
-export default function IndexStatistic() {
+export default function HomeStatistic() {
     const [shipperList] = useState(shipperListData);
     const [orderPostList] = useState(orderPostListData);
 

@@ -1,9 +1,9 @@
 import React from 'react';
-import "./item-base.css";
-import SignInOverlay from './signIn-signUp-component/SignInOverlay';
-import SignUpOverlay from './signIn-signUp-component/SignUpOverlay';
-import SignUpForm from './signIn-signUp-component/SignUpForm';
-import SignInForm from './signIn-signUp-component/SignInForm';
+import "../item-base.css";
+import SignInOverlay from './SignInOverlay';
+import SignUpOverlay from './SignUpOverlay';
+import SignUpForm from './SignUpForm';
+import SignInForm from './SignInForm';
 
 export default function SignInSignUp() {
     React.useEffect(() => {

@@ -120,6 +120,7 @@ export default function StatisticOrderList() {
                                     <td>{ord.description}</td>
                                     <td>{(ord.created_date).slice(0, 10)}</td>
                                     <td>{ord.customer.first_name} {ord.customer.last_name}</td>
+                                    {/* <td><img src="" alt="img" /></td> */}
                                     <td><img src={ord.image_items[0].image} alt="img" /></td>
                                     <td>{ord.weight}</td>
                                     <td>{ord.send_stock.address}</td>

@@ -18,7 +18,7 @@ export default function Footer() {
                         </div>
                         <div className="col-md-2 col-sm-3 col-xs-12 col-lg-2">
                             <div className="single-footer">
-                                <h2>more links</h2>
+                                <h2>see more</h2>
                                 <ul className="list">
                                     <li><a href="/about">about us</a></li>
                                     <li>we accepts</li>

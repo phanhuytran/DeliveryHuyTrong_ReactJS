@@ -111,23 +111,23 @@ div.sign-up-container select, input[type=file] {
 }
 
 div.sign-up-container input:focus-visible, div.sign-up-container select:focus-visible,
-iv.radio-role input:focus-visible, div.sign-in-container input:focus-visible, input[type=file]:focus-visible {
+iv.checkbox-role input:focus-visible, div.sign-in-container input:focus-visible, input[type=file]:focus-visible {
     outline: 1px auto #f9bf3b;
 }
 
-div.radio-role {
+div.checkbox-role {
     display: flex;
     padding: 10px 0px;
     color: #5d5d5d;
 }
 
-div.radio-role input {
-    margin: 0.7%;
+div.checkbox-role input {
     width: 8%;
 }
 
-div.radio-role span {
-    margin-left: 14%;
+div.checkbox-role span {
+    font-size: 17px;
+    padding-top: 1px;
 }
 
 div.sign-up-container option {
