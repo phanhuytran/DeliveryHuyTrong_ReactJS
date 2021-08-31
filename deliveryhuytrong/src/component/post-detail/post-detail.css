@@ -1,3 +1,23 @@
 .radio-select-shipper {
     margin: 74% 30% !important;
 }
+
+.auction-confirmation {
+    text-align: center;
+    margin: 8% 0;
+}
+
+.auction-confirmation button {
+    font-weight: bold;
+    background-color: #f9bf3b;
+    color: #fff;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    transition: 0.4s;
+}
+
+.auction-confirmation button:hover {
+    background-color: #fff;
+    color: #f9bf3b;
+}

@@ -1,6 +1,6 @@
 .modal-signin-signup {
     margin: 0 auto;
-    width: 68%;
+    width: 80%;
     max-height: 10%;
     animation: fadeIn linear 0.3s;
     animation: growth linear 0.3s;
@@ -35,7 +35,7 @@
     color: #22313f;
     position: fixed;
     top: 2.5%;
-    left: 85%;
+    left: 91%;
     cursor: pointer;
 }
 

@@ -4,11 +4,15 @@ import { UserContext } from '../../../App';
 export default function SignInForm() {
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
+    // const [isIncorrect, setIsIncorrect] = useState('');
     const auth = useContext(UserContext);
 
     const login = async (e) => {
         e.preventDefault();
-        auth.login(username, password)
+        auth.login(username, password);
+        // if (!username || !password) {
+        //     setIsIncorrect('Username or password is incorrect');
+        // }
     }
 
     return (
@@ -20,7 +24,7 @@ export default function SignInForm() {
                     <a className="a-s social" href="https://www.facebook.com/thephanhuytran/"><i className="fab fa-google-plus-g" /></a>
                     <a className="a-s social" href="https://www.facebook.com/thephanhuytran/"><i className="fab fa-linkedin-in" /></a>
                 </div>
-                <span className="error">error</span>
+                <span className="error">{}</span>
                 <input type="text" placeholder="Username" id="username" onChange={e => setUsername(e.target.value)} required />
                 <input type="password" placeholder="Password" id="password" onChange={e => setPassword(e.target.value)} required />
                 <a className="a-s" href="/">Forgot your password?</a>

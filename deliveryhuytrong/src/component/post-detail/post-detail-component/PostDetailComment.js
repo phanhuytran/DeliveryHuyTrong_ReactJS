@@ -21,20 +21,12 @@ export default function PostDetailComment() {
                         </div>
                     </div>
                     <div className="auction-area-comment-flex-right">
-                        <input className="radio-select-shipper" name="radio-select-shipper" type="radio" required/>
+                        <input className="radio-select-shipper" name="radio-select-shipper" type="radio" required />
                     </div>
                 </div>
                 <hr />
-                <div className="auction-area-comment-flex">
-                    <div className="auction-area-comment-flex-left">
-                        <img src={clientIMG} alt="img" />
-                    </div>
-                    <div className="auction-area-comment-flex-center">
-                        <input type="text" placeholder="Write a auction information..." />
-                    </div>
-                    <div className="auction-area-comment-flex-right">
-                        <button type="submit"><i className="fas fa-location-arrow" /></button>
-                    </div>
+                <div className="auction-confirmation">
+                    <button type="submit">Auction confirmation</button>
                 </div>
             </div>
         </form>

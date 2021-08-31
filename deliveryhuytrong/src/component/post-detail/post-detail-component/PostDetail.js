@@ -78,7 +78,7 @@ export default function PostDetail(props) {
                         }
                     </div>
                 </div><br />
-                <Link to="/list-orders" className="see-another-page">SEE LIST OF ORDERS</Link>
+                <Link to="/post" className="see-another-page">SEE MY POSTS</Link>
             </div>
         </section>
     );

@@ -53,12 +53,14 @@
     font-size: 12px;
     font-weight: bold;
     padding: 12px 45px;
-    margin-top: 10px;
+    margin-top: 10
+    px;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: background-color 0.5s,border-color 0.5s, color 0.5s;
     cursor: pointer;
 }
+
 .btn-s:hover {
     background-color: #f9bf3b;
     border-color: #f9bf3b;
@@ -71,6 +73,10 @@
 
 .btn-s:focus {
     outline: none;
+}
+
+button.signUp {
+    margin-top: 10px;
 }
 
 button.ghost {
@@ -101,9 +107,9 @@ div.sign-up-container input, div.sign-up-container select {
     background-color: #eee;
     border: none;
     border-radius: 20px;
-    padding: 12px 15px;
-    margin: 6px 5px;
-    width: 46.9%;
+    padding: 12px;
+    margin: 0 5px;
+    width: 160px;
 }
 
 div.sign-up-container select, input[type=file] {
@@ -111,28 +117,28 @@ div.sign-up-container select, input[type=file] {
 }
 
 div.sign-up-container input:focus-visible, div.sign-up-container select:focus-visible,
-iv.checkbox-role input:focus-visible, div.sign-in-container input:focus-visible, input[type=file]:focus-visible {
+input[type=checkbox]:focus-visible, div.sign-in-container input:focus-visible, input[type=file]:focus-visible {
     outline: 1px auto #f9bf3b;
-}
-
-div.checkbox-role {
-    display: flex;
-    padding: 10px 0px;
-    color: #5d5d5d;
-}
-
-div.checkbox-role input {
-    width: 8%;
-}
-
-div.checkbox-role span {
-    font-size: 17px;
-    padding-top: 1px;
 }
 
 div.sign-up-container option {
     width: 100px;
     color: #757575;
+}
+
+.sign-up-container table tr {
+    display: block;
+    margin-bottom: 3%;
+}
+
+.sign-up-container input[type=checkbox] {
+    width: 20px;
+    margin-top: 6px;
+}
+
+.checkbox-shipper {
+    font-size: 21px;
+    padding-left: 10px;
 }
 
 div.sign-in-container input {
@@ -144,9 +150,6 @@ div.sign-in-container input {
     width: 80%;
 }
 
-input[type=file] {
-    display: inline;
-}
 .container-s {
     background-color: #fff;
     border-radius: 10px;
@@ -196,7 +199,6 @@ input[type=file] {
         opacity: 0;
         z-index: 1;
     }
-
     50%,
     100% {
         opacity: 1;
@@ -290,4 +292,5 @@ input[type=file] {
 span.error {
     color: red;
     font-size: 16px;
+    margin-bottom: 3%;
 }
