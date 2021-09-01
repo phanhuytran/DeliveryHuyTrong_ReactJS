@@ -4,15 +4,11 @@ import { UserContext } from '../../../App';
 export default function SignInForm() {
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
-    // const [isIncorrect, setIsIncorrect] = useState('');
     const auth = useContext(UserContext);
 
     const login = async (e) => {
-        e.preventDefault();
         auth.login(username, password);
-        // if (!username || !password) {
-        //     setIsIncorrect('Username or password is incorrect');
-        // }
+        e.preventDefault();
     }
 
     return (

@@ -49,6 +49,17 @@
     color: #f9bf3b;
 }
 
+.signup ul li:last-child .current-user-header {
+    font-family: 'montserratsemi_bold';
+    font-size: 15px;
+    margin: 0 -7px;
+    text-transform: none !important;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
 .current-menu-item {
     color: #f9bf3b !important;
 }
@@ -68,7 +79,7 @@
     line-height: 20px;
 }
 
-.page-not-found {
+.page-not-found, .authorization-required {
     background: url(image/shipper.jpg);
     background-color: #22313f;
     height: 238px;
@@ -77,7 +88,7 @@
     margin: 0.8% auto 0.8% auto;
 }
 
-.page-not-found::before {
+.page-not-found::before, .authorization-required::before {
     position: absolute;
     left: 0;
     top: 0;
@@ -87,13 +98,20 @@
     height: 100%;
 }
 
-.page-not-found h1 {
+.page-not-found h1, .authorization-required h1 {
     position: absolute;
     font-family: 'montserratsemi_bold';
     font-size: 70px;
     font-weight: bold;
     color: #fff;
+}
+
+.page-not-found h1 {
     margin: 6.5% 18.46%;
+}
+
+.authorization-required h1 {
+    margin: 6.5% 5.56%;
 }
 
 .see-info-current-user {

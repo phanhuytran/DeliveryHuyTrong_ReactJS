@@ -292,5 +292,11 @@ div.sign-in-container input {
 span.error {
     color: red;
     font-size: 16px;
-    margin-bottom: 3%;
+    margin-bottom: 4%;
+}
+
+span.success {
+    color: green;
+    font-size: 16px;
+    margin-bottom: 4%;
 }

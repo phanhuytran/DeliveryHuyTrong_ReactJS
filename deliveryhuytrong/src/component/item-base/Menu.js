@@ -1,63 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./item-base.css";
-import { NavLink, Route } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import ModalSignInSignUp from './signIn-signUp-component/ModalSignInSignUp';
-
-const menu = [
-    {
-        label: "Home",
-        to: "/",
-        exact: true
-    }, {
-        label: "Statistic",
-        to: "/statistic",
-        exact: true
-    }, {
-        label: "About",
-        to: "/about",
-        exact: true
-    }, {
-        label: "Order",
-        to: "/list-orders",
-        exact: true
-    }, {
-        label: "Shipper",
-        to: "/shipper",
-        exact: true
-    }, {
-        label: "Pricing",
-        to: "/pricing",
-        exact: true
-    }, {
-        label: "Contact",
-        to: "/contact",
-        exact: true
-    }
-];
-
-const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
-    return (
-        <Route path={to} exact={activeOnlyWhenExact} children={({ match }) => {
-            var active = match ? 'current-menu-item' : '';
-            return (
-                <li className="menu-main">
-                    <NavLink to={to} activeClassName={active} className="navlink-color">
-                        {label}
-                    </NavLink>
-                </li>
-            )
-        }} />
-    )
-}
+import { UserContext } from '../../App';
 
 export default function Menu() {
+    const auth = useContext(UserContext);
+    let user = auth.user;
+
     return (
         <>
             <div>
                 <div className="col-md-6 col-xs-6 col-md-offset-1 col-sm-7 col-lg-offset-1 col-lg-6 mobMenuCol">
                     <nav className="navbar">
                         <ul className="nav navbar-nav navbar-right menu">
-                            {showMenu(menu)}
+                            <li className="menu-main"><NavLink to="/" exact={true} activeClassName="current-menu-item" className="navlink-color">Home</NavLink></li>
+                            {
+                                user ? <li className="menu-main"><NavLink to="/statistic" exact={true} activeClassName="current-menu-item" className="navlink-color">Statistic</NavLink></li> : ''
+                            }
+                            <li className="menu-main"><NavLink to="/about" exact={true} activeClassName="current-menu-item" className="navlink-color">About</NavLink></li>
+                            {
+                                user ? <li className="menu-main"><NavLink to="/list-orders" exact={true} activeClassName="current-menu-item" className="navlink-color">Order</NavLink></li> : ''
+                            }
+                            {
+                                user ? <li className="menu-main"><NavLink to="/shipper" exact={true} activeClassName="current-menu-item" className="navlink-color">Shipper</NavLink></li> : ''
+                            }
+                            <li className="menu-main"><NavLink to="/pricing" exact={true} activeClassName="current-menu-item" className="navlink-color">Pricing</NavLink></li>
+                            <li className="menu-main"><NavLink to="/contact" exact={true} activeClassName="current-menu-item" className="navlink-color">Contact</NavLink></li>
                         </ul>
                     </nav>
                 </div>
@@ -65,21 +34,4 @@ export default function Menu() {
             <ModalSignInSignUp />
         </>
     );
-}
-
-function showMenu(menu) {
-    var result = null;
-    if (menu.length > 0) {
-        result = menu.map((menu, index) => {
-            return (
-                <MenuLink
-                    key={index}
-                    label={menu.label}
-                    to={menu.to}
-                    activeOnlyWhenExact={menu.exact}
-                />
-            )
-        });
-    }
-    return result;
 }

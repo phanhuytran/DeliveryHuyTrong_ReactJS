@@ -4,7 +4,7 @@ import * as _ from "lodash";
 import swal from 'sweetalert';
 import Slider from "react-slick";
 import PersonalInformation from './PersonalInformation';
-import API, { endpoints } from '../../API';
+import { AuthAPI, endpoints } from '../../API';
 import axios from 'axios';
 import PostForm from './PostForm';
 import PostComment from './PostComment';
@@ -26,7 +26,7 @@ export default function Post() {
     };
 
     useEffect(() => {
-        API.get(endpoints['posts']).then(res => (
+        AuthAPI.get(endpoints['posts']).then(res => (
             setPostList(res.data.results)
         ));
     }, []);

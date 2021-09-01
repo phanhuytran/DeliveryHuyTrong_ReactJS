@@ -7,7 +7,9 @@ export default class SignUpForm extends React.Component {
         this.user = {
             'first_name': '',
             'last_name': '',
+            'date_of_birth': '',
             'gender': '',
+            'address': '',
             'email': '',
             'phone': '',
             'username': '',
@@ -18,7 +20,8 @@ export default class SignUpForm extends React.Component {
         this.avatar = React.createRef();
         this.state = {
             'user': this.user,
-            message: ''
+            message: '',
+            is_successful: '',
         }
     }
 
@@ -44,9 +47,16 @@ export default class SignUpForm extends React.Component {
                 }
             }).then((res) => {
                 console.log(res);
-                // this.setState('Account was registered successfully')
+                this.setState({
+                    message: 'Account was registered successfully!',
+                    is_successful: 'success'
+                })
             }).catch((err) => {
-                console.log(err.response.data)
+                console.log(err.response.data);
+            })
+        } else {
+            this.setState({
+                message: 'Please make sure your password match!'
             })
         }
         e.preventDefault();
@@ -62,13 +72,20 @@ export default class SignUpForm extends React.Component {
                         <a className="a-s social" href="/"><i className="fab fa-google-plus-g" /></a>
                         <a className="a-s social" href="/"><i className="fab fa-linkedin-in" /></a>
                     </div>
-                    <span className="error">{this.state.message}</span>
+                    {
+                        this.state.is_successful === 'success' ?
+                            <span className="success">
+                                {this.state.message}
+                            </span> : <span className="error">
+                                {this.state.message}
+                            </span>
+                    }
                     <table>
                         <tbody>
                             <tr>
-                                <td><span>First name</span><br /><input type="text" placeholder="First name" required value={this.state.user.first_name} onChange={this.change.bind(this, 'first_name')} /></td>
-                                <td><span>Last name</span><br /><input type="text" placeholder="Last name" required value={this.state.user.last_name} onChange={this.change.bind(this, 'last_name')} /></td>
-                                <td><span>Date of birth</span><br /><input type="date" required /></td>
+                                <td><span>First name</span><br /><input type="text" placeholder="First name" value={this.state.user.first_name} onChange={this.change.bind(this, 'first_name')} required /></td>
+                                <td><span>Last name</span><br /><input type="text" placeholder="Last name" value={this.state.user.last_name} onChange={this.change.bind(this, 'last_name')} required /></td>
+                                <td><span>Date of birth</span><br /><input type="date" value={this.state.user.date_of_birth} onChange={this.change.bind(this, 'date_of_birth')} required /></td>
                             </tr>
                             <tr>
                                 <td><span>Gender</span><br />
@@ -80,7 +97,7 @@ export default class SignUpForm extends React.Component {
                                     </select>
                                 </td>
                                 <td><span>Avatar</span><br /><input type="file" ref={this.avatar} required /></td>
-                                <td><span>Address</span><br /><input type="text" placeholder="Address" required /></td>
+                                <td><span>Address</span><br /><input type="text" placeholder="Address" value={this.state.user.address} onChange={this.change.bind(this, 'address')} required /></td>
                             </tr>
                             <tr>
                                 <td><span>Email</span><br /><input type="email" placeholder="Email" value={this.state.user.email} onChange={this.change.bind(this, 'email')} required /></td>

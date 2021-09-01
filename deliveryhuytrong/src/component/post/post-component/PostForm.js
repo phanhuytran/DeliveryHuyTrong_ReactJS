@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import API, { endpoints } from '../../API';
+import React, { useContext, useEffect, useState } from 'react';
+import cookies from 'react-cookies';
+import { UserContext } from '../../../App';
+import { AuthAPI, endpoints } from '../../API';
 import '../post.css';
 
 export default function PostForm(props) {
@@ -27,7 +29,7 @@ export default function PostForm(props) {
     }
 
     useEffect(() => {
-        API.get(endpoints['stocks']).then(res => (
+        AuthAPI.get(endpoints['stocks']).then(res => (
             setStockList(res.data.results)
         ));
     }, []);
@@ -52,6 +54,25 @@ export default function PostForm(props) {
         }
         setIsDisplayPostForm(false);
         props.onSubmit(item);
+    }
+
+    const auth = useContext(UserContext);
+    let user = auth.user;
+    let r = <select value={receivingAddress} onChange={e => setReceivingAddress(e.target.value)} required>
+        <option value="" disabled hidden></option>
+    </select>
+    if (cookies.load("user") != null) {
+        user = cookies.load("user");
+    }
+    if (user != null) {
+        r = <select value={receivingAddress} onChange={e => setReceivingAddress(e.target.value)} required>
+            <option value="" disabled hidden></option>
+            {
+                stockList.map((option_rec, index) => {
+                    return <option key={index} value={option_rec.id}>{option_rec.address}</option>
+                })
+            }
+        </select>
     }
 
     return (
@@ -100,14 +121,7 @@ export default function PostForm(props) {
                             <tr>
                                 <td>Receiving address:</td>
                                 <td>
-                                    <select value={receivingAddress} onChange={e => setReceivingAddress(e.target.value)} required>
-                                        <option value="" disabled hidden></option>
-                                        {
-                                            stockList.map((option_rec, index) => {
-                                                return <option key={index} value={option_rec.id}>{option_rec.address}</option>
-                                            })
-                                        }
-                                    </select>
+                                    {r}
                                 </td>
                             </tr>
                             <tr>
