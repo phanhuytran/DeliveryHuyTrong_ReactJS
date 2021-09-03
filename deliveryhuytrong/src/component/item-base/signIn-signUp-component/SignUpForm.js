@@ -1,4 +1,6 @@
 import React from 'react';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import API, { endpoints } from '../../API';
 
 export default class SignUpForm extends React.Component {
@@ -76,50 +78,91 @@ export default class SignUpForm extends React.Component {
                         this.state.is_successful === 'success' ?
                             <span className="success">
                                 {this.state.message}
-                            </span> : <span className="error">
+                            </span> : <span className="error" id="message">
                                 {this.state.message}
                             </span>
                     }
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td><span>First name</span><br /><input type="text" placeholder="First name" value={this.state.user.first_name} onChange={this.change.bind(this, 'first_name')} required /></td>
-                                <td><span>Last name</span><br /><input type="text" placeholder="Last name" value={this.state.user.last_name} onChange={this.change.bind(this, 'last_name')} required /></td>
-                                <td><span>Date of birth</span><br /><input type="date" value={this.state.user.date_of_birth} onChange={this.change.bind(this, 'date_of_birth')} required /></td>
-                            </tr>
-                            <tr>
-                                <td><span>Gender</span><br />
-                                    <select value={this.state.user.gender} onChange={this.change.bind(this, 'gender')} required>
-                                        <option value="" disabled hidden></option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </td>
-                                <td><span>Avatar</span><br /><input type="file" ref={this.avatar} required /></td>
-                                <td><span>Address</span><br /><input type="text" placeholder="Address" value={this.state.user.address} onChange={this.change.bind(this, 'address')} required /></td>
-                            </tr>
-                            <tr>
-                                <td><span>Email</span><br /><input type="email" placeholder="Email" value={this.state.user.email} onChange={this.change.bind(this, 'email')} required /></td>
-                                <td><span>Phone</span><br /><input type="text" placeholder="Phone" value={this.state.user.phone} onChange={this.change.bind(this, 'phone')} required /></td>
-                                <td><span>Role</span><br />
-                                    <select value={this.state.user.choice_group} onChange={this.change.bind(this, 'choice_group')} required>
-                                        <option value={0} disabled hidden></option>
-                                        <option value={1}>Customer</option>
-                                        <option value={2}>Shipper</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span>Username</span><br /><input type="text" placeholder="Username" value={this.state.user.username} onChange={this.change.bind(this, 'username')} required /></td>
-                                <td><span>Password</span><br /><input type="password" placeholder="Password" value={this.state.user.password} onChange={this.change.bind(this, 'password')} required /></td>
-                                <td><span>Confirm password</span><br /><input type="password" placeholder="Confirm password" value={this.state.user.confirm_password} onChange={this.change.bind(this, 'confirm_password')} required /></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button className="btn-s signUp">Sign Up</button>
+                    <div className="register-main">
+                        <div id="sign-up-1">
+                            <p>First name</p><input type="text" id="first_name" placeholder="First name" value={this.state.user.first_name} onChange={this.change.bind(this, 'first_name')} required />
+                            <p>Last name</p><input type="text" id="last_name" placeholder="Last name" value={this.state.user.last_name} onChange={this.change.bind(this, 'last_name')} required />
+                            <p>Date of birth</p><input type="date" id="date_of_birth" value={this.state.user.date_of_birth} onChange={this.change.bind(this, 'date_of_birth')} required />
+                            <p>Gender</p>
+                            <select value={this.state.user.gender} id="gender" onChange={this.change.bind(this, 'gender')} required>
+                                <option value="" disabled hidden></option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div id="sign-up-next-1">
+                                <ArrowForwardIcon className="cursor-move-part" style={{ fontSize: 40 }} onClick={nextSignUp2} />
+                            </div>
+                        </div>
+                        <div id="sign-up-2">
+                            <p>Address</p><input type="text" id="address" placeholder="Address" value={this.state.user.address} onChange={this.change.bind(this, 'address')} required />
+                            <p>Email</p><input type="email" id="email" placeholder="Email" value={this.state.user.email} onChange={this.change.bind(this, 'email')} required />
+                            <p>Phone</p><input type="text" id="phone" placeholder="Phone" value={this.state.user.phone} onChange={this.change.bind(this, 'phone')} required />
+                            <p>Avatar</p><input type="file" id="avatar" ref={this.avatar} required />
+                            <div id="sign-up-previous-1">
+                                <ArrowBackIcon className="cursor-move-part" style={{ fontSize: 40 }} onClick={previousSignUp1} />
+                            </div>
+                            <div id="sign-up-next-2">
+                                <ArrowForwardIcon className="cursor-move-part" style={{ fontSize: 40 }} onClick={nextSignUp3} />
+                            </div>
+                        </div>
+                        <div id="sign-up-3">
+                            <p>Username</p><input type="text" placeholder="Username" value={this.state.user.username} onChange={this.change.bind(this, 'username')} required />
+                            <p>Password</p><input type="password" placeholder="Password" value={this.state.user.password} onChange={this.change.bind(this, 'password')} required />
+                            <p>Confirm password</p><input type="password" placeholder="Confirm password" value={this.state.user.confirm_password} onChange={this.change.bind(this, 'confirm_password')} required />
+                            <p>Role</p>
+                            <select value={this.state.user.choice_group} onChange={this.change.bind(this, 'choice_group')} required>
+                                <option value={0} disabled hidden></option>
+                                <option value={1}>Customer</option>
+                                <option value={2}>Shipper</option>
+                            </select>
+                            <div id="sign-up-previous-2">
+                                <ArrowBackIcon className="cursor-move-part" style={{ fontSize: 40 }} onClick={previousSignUp2} />
+                            </div>
+                            <button type="submit" className="btn-s signUp">Sign Up</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         );
+
+        function nextSignUp2() {
+            if (document.getElementById("first_name").value === '' || document.getElementById("last_name").value === '' || document.getElementById("date_of_birth").value === '' || document.getElementById("gender").value === '') {
+                document.getElementById("message").innerHTML = "Please enter full registration information!";
+            } else {
+                document.getElementById("message").innerHTML = "";
+                document.getElementById("sign-up-1").style.display = "none";
+                document.getElementById("sign-up-2").style.display = "block";
+                document.getElementById("sign-up-3").style.display = "none";
+            }
+        }
+
+        function nextSignUp3() {
+            if (document.getElementById("address").value === '' || document.getElementById("email").value === '' || document.getElementById("phone").value === '' || document.getElementById("avatar").value === '') {
+                document.getElementById("message").innerHTML = "Please enter full registration information!";
+            } else {
+                document.getElementById("message").innerHTML = "";
+                document.getElementById("sign-up-1").style.display = "none";
+                document.getElementById("sign-up-2").style.display = "none";
+                document.getElementById("sign-up-3").style.display = "block";
+            }
+        }
+
+        function previousSignUp1() {
+            document.getElementById("sign-up-1").style.display = "block";
+            document.getElementById("sign-up-2").style.display = "none";
+            document.getElementById("sign-up-3").style.display = "none";
+        }
+
+        function previousSignUp2() {
+            document.getElementById("message").innerHTML = "";
+            document.getElementById("sign-up-1").style.display = "none";
+            document.getElementById("sign-up-2").style.display = "block";
+            document.getElementById("sign-up-3").style.display = "none";
+        }
     }
 }

@@ -1,3 +1,12 @@
+@keyframes growth {
+    from {
+        transform: scale(var(--growth-from));
+    }
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
+
 .body-s {
     background: #f6f5f7;
     display: flex;
@@ -76,7 +85,7 @@
 }
 
 button.signUp {
-    margin-top: 10px;
+    margin-top: -5px;
 }
 
 button.ghost {
@@ -109,7 +118,7 @@ div.sign-up-container input, div.sign-up-container select {
     border-radius: 20px;
     padding: 12px;
     margin: 0 5px;
-    width: 160px;
+    width: 80%;
 }
 
 div.sign-up-container select, input[type=file] {
@@ -126,11 +135,6 @@ div.sign-up-container option {
     color: #757575;
 }
 
-.sign-up-container table tr {
-    display: block;
-    margin-bottom: 3%;
-}
-
 .sign-up-container input[type=checkbox] {
     width: 20px;
     margin-top: 6px;
@@ -145,7 +149,7 @@ div.sign-in-container input {
     background-color: #eee;
     border: none;
     border-radius: 20px;
-    margin: 6px 5px;
+    margin: 6px 5px 15px 5px;
     padding: 12px;
     width: 80%;
 }
@@ -296,7 +300,69 @@ span.error {
 }
 
 span.success {
-    color: green;
+    color: #11cc11;
     font-size: 16px;
     margin-bottom: 4%;
+}
+
+.register-main {
+    width: 100%;
+    height: 400px;
+    animation: growth linear 0.3s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
+.form-s p {
+    margin: 0 0 0px -61%;
+}
+
+.register-main p {
+    text-align: left;
+    margin: 0 0 5px 60px;
+}
+
+.register-main input,.register-main select {
+    margin-bottom: 12px !important;
+}
+
+#sign-up-next-1, #sign-up-next-2 {
+    position: relative;
+    left: 30%;
+    animation: growth linear 0.3s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
+#sign-up-next-2 {
+    margin-top: -9.5%;
+}
+
+#sign-up-previous-1, #sign-up-previous-2 {
+    position: relative;
+    left: -30%;
+    animation: growth linear 0.3s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
+#sign-up-1 {
+    animation: growth linear 0.3s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
+#sign-up-2, #sign-up-3 {
+    display: none;
+    animation: growth linear 0.3s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
+#sign-up-2 input[type="file"] {
+    margin-left: 10%;
+}
+
+.cursor-move-part {
+    cursor: pointer;
 }

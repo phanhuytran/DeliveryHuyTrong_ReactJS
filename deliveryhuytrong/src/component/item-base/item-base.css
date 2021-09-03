@@ -2,7 +2,6 @@
     margin: 0 auto;
     width: 80%;
     max-height: 10%;
-    animation: fadeIn linear 0.3s;
     animation: growth linear 0.3s;
     --growth-from: 0;
     --growth-to: 1;
@@ -10,15 +9,6 @@
 
 .modal-signin-signup:focus-visible {
     outline: none;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
 }
 
 @keyframes growth {
@@ -49,7 +39,7 @@
     color: #f9bf3b;
 }
 
-.signup ul li:last-child .current-user-header {
+.signup ul li .current-user-header {
     font-family: 'montserratsemi_bold';
     font-size: 15px;
     margin: 0 -7px;
@@ -121,4 +111,67 @@
 
 .current-user-cursor-style {
     cursor: text !important;
+}
+
+.header-info {
+    display: flex;
+    width: 100%;
+    position: absolute;left: 26%;
+    top: 29%;
+    left: 26%;
+    font-family: 'montserratsemi_bold';
+    font-size: 15px;
+    color: #fff;
+}
+
+.header-info-left {
+    margin: 0;
+}
+
+.header-info-left .username {
+    color: #fff;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.header-info-left .username:hover {
+    color: #f9bf3b;
+}
+
+.header-info-center {
+    margin-right: 2%;
+}
+
+.header-info-right p {
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.header-info-right p:hover {
+    color: #f9bf3b;
+}
+
+#single-arrow {
+    margin-top: 3px;
+    animation: growth linear 0.2s;
+    --growth-from: 0;
+    --growth-to: 1;
+    cursor: pointer;
+}
+
+#double-arrow {
+    margin: 10% 0 0 80%;
+}
+
+#log-out {
+    margin: 1.2% 0 0 5%;
+}
+
+#double-arrow, #log-out {
+    display: none;
+    animation: growth linear 0.2s;
+    --growth-from: 0;
+    --growth-to: 1;
+    cursor: pointer;
 }

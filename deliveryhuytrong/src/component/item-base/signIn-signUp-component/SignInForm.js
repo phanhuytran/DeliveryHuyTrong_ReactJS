@@ -21,7 +21,9 @@ export default function SignInForm() {
                     <a className="a-s social" href="https://www.facebook.com/thephanhuytran/"><i className="fab fa-linkedin-in" /></a>
                 </div>
                 <span className="error">{}</span>
+                <p>Username</p>
                 <input type="text" placeholder="Username" id="username" onChange={e => setUsername(e.target.value)} required />
+                <p>Password</p>
                 <input type="password" placeholder="Password" id="password" onChange={e => setPassword(e.target.value)} required />
                 <a className="a-s" href="/">Forgot your password?</a>
                 <button type="submit" className="btn-s signIn">Sign In</button>

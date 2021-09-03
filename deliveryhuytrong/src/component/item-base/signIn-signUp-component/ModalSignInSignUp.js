@@ -3,6 +3,8 @@ import "../item-base.css";
 import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import Modal from 'react-modal';
 import cookies from 'react-cookies';
 import SignInSignUp from './SignInSignUp';
@@ -74,8 +76,6 @@ export default function ModalSignInSignUp() {
                     <Link to="/post"><Avatar src={user.avatar} alt="avatar" /></Link>
                 </StyledBadge>
             </li>
-            {/* <li><div onClick={logout}>{user.username}</div></li> */}
-            <li><Link className="current-user-header" to="/post">{user.username}</Link></li>
         </>
     }
 
@@ -83,6 +83,24 @@ export default function ModalSignInSignUp() {
         <>
             <div className="col-md-3 col-sm-3 col-xs-4 col-lg-3 signup">
                 <ul className="nav navbar-nav menu-sign-in-sign-up">{r}</ul>
+                {
+                    user != null ? <div className="header-info">
+                        <div className="header-info-left">
+                            <Link className="username" to="post">{user.username}</Link>
+                        </div>
+                        <div className="header-info-center">
+                            <div id="single-arrow">
+                                <ChevronRightIcon className="arrow-expand" style={{ fontSize: 15 }} onClick={showLogOut} />
+                            </div>
+                            <div id="double-arrow">
+                                <DoubleArrowIcon className="arrow-expand" style={{ fontSize: 12 }} onClick={hideLogOut} />
+                            </div>
+                        </div>
+                        <div className="header-info-right" id="log-out">
+                            <p onClick={logout}>LOG OUT</p>
+                        </div>
+                    </div> : ''
+                }
             </div>
             {
                 !user ? <>
@@ -96,4 +114,16 @@ export default function ModalSignInSignUp() {
             }
         </>
     );
+
+    function showLogOut() {
+        document.getElementById("single-arrow").style.display = "none";
+        document.getElementById("double-arrow").style.display = "block";
+        document.getElementById("log-out").style.display = "block";
+    }
+
+    function hideLogOut() {
+        document.getElementById("single-arrow").style.display = "block";
+        document.getElementById("double-arrow").style.display = "none";
+        document.getElementById("log-out").style.display = "none";
+    }
 }
