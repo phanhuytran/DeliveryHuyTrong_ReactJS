@@ -4,6 +4,7 @@ import { UserContext } from '../../../App';
 export default function SignInForm() {
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
+    // const [message, setMessage] = useState('');
     const auth = useContext(UserContext);
 
     const login = async (e) => {

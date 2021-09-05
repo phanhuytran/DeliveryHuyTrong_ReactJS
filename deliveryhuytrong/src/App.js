@@ -20,8 +20,9 @@ import BodyPostDetail from './component/post-detail/BodyPostDetail';
 
 export let UserContext = React.createContext();
 
-export default function App(props) {
+export default function App() {
   const [user, setUser] = useState(null);
+  // const [message, setMessage] = useState('');
 
   const login = async (username, password) => {
     let res = await API.post(endpoints['login'], {
@@ -31,6 +32,9 @@ export default function App(props) {
       'password': password,
       'grant_type': 'password'
     })
+    // if (!username && !password) {
+    //   setMessage('Username or password is incorrect!')
+    // }
     cookies.save("access_token", res.data.access_token);
     let user = await API.get(endpoints['current-user'], {
       headers: {

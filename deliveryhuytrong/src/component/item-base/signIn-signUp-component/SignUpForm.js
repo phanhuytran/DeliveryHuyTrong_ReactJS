@@ -23,7 +23,7 @@ export default class SignUpForm extends React.Component {
         this.state = {
             'user': this.user,
             message: '',
-            is_successful: '',
+            is_successful: false,
         }
     }
 
@@ -51,10 +51,20 @@ export default class SignUpForm extends React.Component {
                 console.log(res);
                 this.setState({
                     message: 'Account was registered successfully!',
-                    is_successful: 'success'
+                    is_successful: true
                 })
             }).catch((err) => {
                 console.log(err.response.data);
+                if (err.response.data.email) {
+                    this.setState({
+                        message: err.response.data.email.toString()
+                    })
+                }
+                if (err.response.data.username) {
+                    this.setState({
+                        message: err.response.data.username.toString()
+                    })
+                }
             })
         } else {
             this.setState({
@@ -75,7 +85,7 @@ export default class SignUpForm extends React.Component {
                         <a className="a-s social" href="/"><i className="fab fa-linkedin-in" /></a>
                     </div>
                     {
-                        this.state.is_successful === 'success' ?
+                        this.state.is_successful === true ?
                             <span className="success">
                                 {this.state.message}
                             </span> : <span className="error" id="message">

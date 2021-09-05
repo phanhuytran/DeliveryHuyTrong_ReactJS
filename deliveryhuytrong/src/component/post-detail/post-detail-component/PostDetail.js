@@ -13,21 +13,16 @@ export default function PostDetail(props) {
     const orderID = parseInt(props.props.match.params.id, 10);
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
 
+    const getOrderPostList = async () => {
+        let res = await API.get(endpoints['posts']);
+        setOrderPostList(res.data.results);
+    }
+
     useEffect(() => {
-        API.get(endpoints['posts']).then(res => (
-            setOrderPostList(res.data.results)
-        ));
+        getOrderPostList().then(() => {
+            // Here is an asynchronous task.
+        });
     }, [])
-
-    function seeMoreAuctionInfo() {
-        document.getElementById("see-more-auction-order-info-1").style.display = "none";
-        document.getElementById("see-more-auction-order-info-2").style.display = "block";
-    }
-
-    function seeLessAuctionInfo() {
-        document.getElementById("see-more-auction-order-info-1").style.display = "inline-block";
-        document.getElementById("see-more-auction-order-info-2").style.display = "none";
-    }
 
     return (
         <section className="order-bottom-area">
@@ -82,4 +77,14 @@ export default function PostDetail(props) {
             </div>
         </section>
     );
+
+    function seeMoreAuctionInfo() {
+        document.getElementById("see-more-auction-order-info-1").style.display = "none";
+        document.getElementById("see-more-auction-order-info-2").style.display = "block";
+    }
+
+    function seeLessAuctionInfo() {
+        document.getElementById("see-more-auction-order-info-1").style.display = "inline-block";
+        document.getElementById("see-more-auction-order-info-2").style.display = "none";
+    }
 }

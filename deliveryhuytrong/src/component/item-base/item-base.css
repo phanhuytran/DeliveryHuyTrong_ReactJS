@@ -115,13 +115,13 @@
 
 .header-info {
     display: flex;
-    width: 100%;
-    position: absolute;left: 26%;
-    top: 29%;
-    left: 26%;
+    position: absolute;
+    z-index: 1001;
+    top: 2.3%;
+    left: 77.5%;
     font-family: 'montserratsemi_bold';
     font-size: 15px;
-    color: #fff;
+    color: #919191;
 }
 
 .header-info-left {
@@ -142,36 +142,63 @@
     margin-right: 2%;
 }
 
-.header-info-right p {
+.header-info-right table tr td {
     font-size: 12px;
+    padding: 10px 15px;
     cursor: pointer;
     transition: 0.4s;
 }
 
-.header-info-right p:hover {
+.header-info-right table {
+    width: 100%;
+}
+
+.header-info-right table tr td:first-child {
+    width: 20%;
+}
+
+.header-info-right table tr td:last-child {
+    padding-left: 0;
+    width: 80%;
+}
+
+.header-info-right table tr:hover {
     color: #f9bf3b;
 }
 
-#single-arrow {
-    margin-top: 3px;
+#expand-more {
+    position: absolute;
+    top: 15%;
     animation: growth linear 0.2s;
     --growth-from: 0;
     --growth-to: 1;
-    cursor: pointer;
 }
 
-#double-arrow {
-    margin: 10% 0 0 80%;
+#expand-less {
+    position: absolute;
+    top: 5%;
+}
+
+#expand-less span, #expand-more span {
+    margin-right: 8px;
 }
 
 #log-out {
-    margin: 1.2% 0 0 5%;
+    width: 150px;
+    margin: 25px 0 0 -40px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgb(33 33 33 / 20%);
+    background-color: #fff;
 }
 
-#double-arrow, #log-out {
+#expand-less, #log-out {
     display: none;
     animation: growth linear 0.2s;
     --growth-from: 0;
     --growth-to: 1;
+}
+
+.cursor-expand {
+    color: #fff;
     cursor: pointer;
 }
