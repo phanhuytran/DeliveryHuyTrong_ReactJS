@@ -5,8 +5,8 @@ import "../slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import OrderAuctionComment from './OrderAuctionComment';
-import clientIMG from '../image/client.jpg';
 import API, { endpoints } from '../../API';
+import clientIMG from '../image/client.jpg';
 
 export default function OrderAuctionPost(props) {
     const [orderPostList, setOrderPostList] = useState([]);
@@ -18,16 +18,6 @@ export default function OrderAuctionPost(props) {
             setOrderPostList(res.data.results)
         ));
     }, [])
-
-    function seeMoreAuctionInfo() {
-        document.getElementById("see-more-auction-order-info-1").style.display = "none";
-        document.getElementById("see-more-auction-order-info-2").style.display = "block";
-    }
-
-    function seeLessAuctionInfo() {
-        document.getElementById("see-more-auction-order-info-1").style.display = "inline-block";
-        document.getElementById("see-more-auction-order-info-2").style.display = "none";
-    }
 
     return (
         <section className="order-bottom-area">
@@ -82,4 +72,14 @@ export default function OrderAuctionPost(props) {
             </div>
         </section>
     );
+
+    function seeMoreAuctionInfo() {
+        document.getElementById("see-more-auction-order-info-1").style.display = "none";
+        document.getElementById("see-more-auction-order-info-2").style.display = "block";
+    }
+
+    function seeLessAuctionInfo() {
+        document.getElementById("see-more-auction-order-info-1").style.display = "inline-block";
+        document.getElementById("see-more-auction-order-info-2").style.display = "none";
+    }
 }

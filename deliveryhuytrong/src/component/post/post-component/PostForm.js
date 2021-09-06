@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-import cookies from 'react-cookies';
-import { UserContext } from '../../../App';
-import { AuthAPI, endpoints } from '../../API';
+import React, { useEffect, useState } from 'react';
 import '../post.css';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import RemoveCircleOutlineSharpIcon from '@material-ui/icons/RemoveCircleOutlineSharp';
+import { AuthAPI, endpoints } from '../../API';
+import StockForm from './StockForm';
 
 export default function PostForm(props) {
     const [stockList, setStockList] = useState([]);
@@ -11,7 +12,14 @@ export default function PostForm(props) {
     const [receivingAddress, setReceivingAddress] = useState('');
     const [sendingAddress, setSendingAddress] = useState('');
     const [isDisplayPostForm, setIsDisplayPostForm] = useState(false);
+    const [isDisplayStockForm, setIsDisplayStockForm] = useState(false);
     const [selectedFiles, setSelectedFiles] = useState([]);
+
+    useEffect(() => {
+        AuthAPI.get(endpoints['stocks']).then(res => (
+            setStockList(res.data.results)
+        ));
+    }, []);
 
     const handleImageChange = e => {
         setSelectedFiles([]);
@@ -27,14 +35,6 @@ export default function PostForm(props) {
             return <img className="upload-image-file" src={image} alt="img" key={image} />;
         })
     }
-
-    useEffect(() => {
-        AuthAPI.get(endpoints['stocks']).then(res => (
-            setStockList(res.data.results)
-        ));
-    }, []);
-
-    function onTogglePostForm() { setIsDisplayPostForm(toggle => !toggle); }
 
     function onSubmit(event) {
         event.preventDefault();
@@ -56,83 +56,95 @@ export default function PostForm(props) {
         props.onSubmit(item);
     }
 
-    const auth = useContext(UserContext);
-    let user = auth.user;
-    let r = <select value={receivingAddress} onChange={e => setReceivingAddress(e.target.value)} required>
-        <option value="" disabled hidden></option>
-    </select>
-    if (cookies.load("user") != null) {
-        user = cookies.load("user");
-    }
-    if (user != null) {
-        r = <select value={receivingAddress} onChange={e => setReceivingAddress(e.target.value)} required>
-            <option value="" disabled hidden></option>
-            {
-                stockList.map((option_rec, index) => {
-                    return <option key={index} value={option_rec.id}>{option_rec.address}</option>
-                })
-            }
-        </select>
+    async function createStock(data) {
+        let stock = stockList;
+        await AuthAPI.post(endpoints['stocks'], data);
+        setStockList(stock);
+        setIsDisplayStockForm(false);
     }
 
     return (
         <div className="post-form">
             <button onClick={onTogglePostForm}>
-                {!isDisplayPostForm ? <span>CREATE A NEW POST</span> : <span>CLOSE</span>}
+                {!isDisplayPostForm ? <span>Create a new post</span> : <span>Close</span>}
             </button>
-            {isDisplayPostForm ?
-                <form onSubmit={onSubmit} encType="multipart/form-data">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>Order description:</td>
-                                <td>
-                                    <input type="text" placeholder="Order description..." value={description} onChange={e => setDescription(e.target.value)} required />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Image:</td>
-                                <td>
-                                    <input type="file" id="file" name="file[]" multiple onChange={handleImageChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colSpan={2}>{renderImages(selectedFiles)}</td>
-                            </tr>
-                            <tr>
-                                <td>Weight:</td>
-                                <td>
-                                    <input type="number" min="0" step="0.01" placeholder="Weight..." value={weight} onChange={e => setWeight(e.target.value)} required />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sending address:</td>
-                                <td>
-                                    <select value={sendingAddress} onChange={e => setSendingAddress(e.target.value)} required>
-                                        <option value="" disabled hidden></option>
-                                        {
-                                            stockList.map((option_send, index) => {
-                                                return <option key={index} value={option_send.id}>{option_send.address}</option>
-                                            })
-                                        }
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Receiving address:</td>
-                                <td>
-                                    {r}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colSpan={2}>
-                                    <button type="submit">POST</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form> : ''
+            <span className="add-stock">
+                {
+                    !isDisplayStockForm ? <AddCircleOutlineIcon onClick={onToggleStockForm} style={{ fontSize: 20 }} className="add-stock-icon" />
+                    : <RemoveCircleOutlineSharpIcon onClick={onToggleStockForm} style={{ fontSize: 20 }} className="add-stock-icon" />
+                }
+                <span>Add stock</span>
+            </span>
+            {isDisplayPostForm ? <form onSubmit={onSubmit} encType="multipart/form-data">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Order description:</td>
+                            <td>
+                                <input type="text" placeholder="Order description..." value={description} onChange={e => setDescription(e.target.value)} required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Image:</td>
+                            <td>
+                                <input type="file" id="file" name="file[]" multiple onChange={handleImageChange} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>{renderImages(selectedFiles)}</td>
+                        </tr>
+                        <tr>
+                            <td>Weight:</td>
+                            <td>
+                                <input type="number" min="0" step="0.01" placeholder="Weight..." value={weight} onChange={e => setWeight(e.target.value)} required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sending address:</td>
+                            <td>
+                                <select value={sendingAddress} onChange={e => setSendingAddress(e.target.value)} required>
+                                    <option value="" disabled hidden></option>
+                                    {
+                                        stockList.map((option_send, index) => {
+                                            return <option key={index} value={option_send.id}>{option_send.address}</option>
+                                        })
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Receiving address:</td>
+                            <td>
+                                <select value={receivingAddress} onChange={e => setReceivingAddress(e.target.value)} required>
+                                    <option value="" disabled hidden></option>
+                                    {
+                                        stockList.map((option_receive, index) => {
+                                            return <option key={index} value={option_receive.id}>{option_receive.address}</option>
+                                        })
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>
+                                <button type="submit">Post</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form> : ''
             }
+            {isDisplayStockForm ? <StockForm onSubmit={createStock} /> : ''}
         </div>
     );
+
+    function onTogglePostForm() {
+        setIsDisplayPostForm(toggle => !toggle);
+        setIsDisplayStockForm(false);
+    }
+
+    function onToggleStockForm() {
+        setIsDisplayStockForm(toggle => !toggle);
+        setIsDisplayPostForm(false);
+    }
 }

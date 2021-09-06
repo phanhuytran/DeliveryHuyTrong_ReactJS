@@ -9,14 +9,12 @@ import axios from 'axios';
 import PostForm from './PostForm';
 import PostComment from './PostComment';
 import { Link } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom';
 
 export default function Post() {
     const [postList, setPostList] = useState([]);
     const [hiddenContent, setHiddenContent] = useState({});
     const [hiddenPostOption, setHiddenPostOption] = useState({});
 
-    // const history = useHistory();
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
     const onToggleHideContent = index => {
         setHiddenContent({ ...hiddenContent, [index]: !hiddenContent[index] });

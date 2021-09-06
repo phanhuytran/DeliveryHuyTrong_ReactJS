@@ -32,9 +32,6 @@ export default function App() {
       'password': password,
       'grant_type': 'password'
     })
-    // if (!username && !password) {
-    //   setMessage('Username or password is incorrect!')
-    // }
     cookies.save("access_token", res.data.access_token);
     let user = await API.get(endpoints['current-user'], {
       headers: {
