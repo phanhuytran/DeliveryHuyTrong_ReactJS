@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../post.css';
+import cookies from 'react-cookies';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineSharpIcon from '@material-ui/icons/RemoveCircleOutlineSharp';
 import { AuthAPI, endpoints } from '../../API';
@@ -14,6 +15,8 @@ export default function PostForm(props) {
     const [isDisplayPostForm, setIsDisplayPostForm] = useState(false);
     const [isDisplayStockForm, setIsDisplayStockForm] = useState(false);
     const [selectedFiles, setSelectedFiles] = useState([]);
+
+    let user = cookies.load("user");
 
     useEffect(() => {
         AuthAPI.get(endpoints['stocks']).then(res => (
@@ -37,13 +40,15 @@ export default function PostForm(props) {
     }
 
     function onSubmit(event) {
-        event.preventDefault();
+        // event.preventDefault();
         var files = event.target[1].files;
+        console.log(event.target[1].files)
         const formData = new FormData();
         for (let i = 0; i < files.length; i++) {
             formData.append('file[]', files[i])
         }
         let item = {
+            customer: user.id,
             description: description,
             weight: weight,
             image: [

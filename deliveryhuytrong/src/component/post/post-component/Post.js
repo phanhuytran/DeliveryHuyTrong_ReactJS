@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import '../post.css';
+import { Link } from 'react-router-dom';
 import * as _ from "lodash";
 import swal from 'sweetalert';
 import Slider from "react-slick";
-import PersonalInformation from './PersonalInformation';
-import { AuthAPI, endpoints } from '../../API';
 import axios from 'axios';
+// import cookies from 'react-cookies';
 import PostForm from './PostForm';
 import PostComment from './PostComment';
-import { Link } from 'react-router-dom';
+import PersonalInformation from './PersonalInformation';
+import { AuthAPI, endpoints } from '../../API';
 
 export default function Post() {
     const [postList, setPostList] = useState([]);
@@ -23,29 +24,20 @@ export default function Post() {
         setHiddenPostOption({ ...hiddenPostOption, [index]: !hiddenPostOption[index] });
     };
 
+    // let user = cookies.load("user");
+
     useEffect(() => {
         AuthAPI.get(endpoints['posts']).then(res => (
             setPostList(res.data.results)
         ));
     }, []);
 
-    function createPost(data) {
+    async function createPost(data) {
         let post = postList;
-        // window.location.href = "/post";
-        axios.post('http://127.0.0.1:8000/posts/', data)
-        console.log(data)
+        await AuthAPI.post(endpoints['posts'], data);
+        console.log(data);
         setPostList(post);
-        // post.push({
-        //     description: data.description,
-        //     weight: data.weight,
-        //     receive_stock: {
-        //         address: data.receive_stock
-        //     },
-        //     send_stock: {
-        //         address: data.send_stock
-        //     }
-        // });
-        // history.push("/post");
+        // window.location.reload();
     }
 
     function removePost(id) {
@@ -69,6 +61,17 @@ export default function Post() {
         });
     }
 
+    // let result;
+    // console.log(postList)
+    // // if (user.username === a) {
+
+    // // }
+    // if (postList.length === 0) {
+    //     result = <div>
+    //         <h1>Huy</h1>
+    //     </div>
+    // }
+
     return (
         <div className="post">
             <div className="post-body">
@@ -77,13 +80,14 @@ export default function Post() {
                     <PostForm onSubmit={createPost} />
                     {
                         _.sortBy(postList).reverse().map((post, index) => {
+                            // if (user.username === post.customer.username)
                             return <React.Fragment key={index}>
                                 <div className="post-content-header">
                                     <div className="post-content-header-left">
                                         <img src={post.customer.avatar} alt="img" />
                                     </div>
                                     <div className="post-content-header-center">
-                                        <p><strong>{post.customer.first_name} {post.customer.last_name}</strong><br /><span>{(post.created_date).slice(0, 10)}</span></p>
+                                        <p><strong>{post.customer.username}</strong><br /><span>{(post.created_date).slice(0, 10)}</span></p>
                                     </div>
                                     <div className="post-content-header-right">
                                         <p onClick={() => onTogglePostOption(index)}>
@@ -125,8 +129,10 @@ export default function Post() {
                                     <Link className="click-auction-confirm" to={"post-detail/" + post.id}>Click to auction confirmation</Link>
                                 </div>
                             </React.Fragment>
+                            // return <React.Fragment key={index}><h1>Huy</h1></React.Fragment>
                         })
                     }
+                    {/* {result} */}
                 </div>
             </div>
         </div>

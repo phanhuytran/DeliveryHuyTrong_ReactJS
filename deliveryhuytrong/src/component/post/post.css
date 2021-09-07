@@ -225,8 +225,12 @@
 
 .post-form table tr:last-child button {
     width: auto;
-    border-style: solid;
-    padding: 2px 10px;
+    border: 2px solid #f9bf3b;
+    padding: 0 10px;
+}
+
+.post-form table tr:last-child button:hover {
+    border: 2px solid #eee;
 }
 
 .post-form table tr:last-child button {
@@ -268,9 +272,9 @@
     background-color: #f9bf3b;
     color: #fff;
     margin: 0 33.6%;
-    padding: 7px 10px;
+    padding: 5px 10px;
     border: 2px solid #eee;
-    border-radius: 10px;
+    border-radius: 5px;
     transition: 0.4s;
 }
 

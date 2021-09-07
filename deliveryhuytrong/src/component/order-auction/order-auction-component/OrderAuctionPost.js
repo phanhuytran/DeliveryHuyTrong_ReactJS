@@ -34,7 +34,7 @@ export default function OrderAuctionPost(props) {
                                             </div>
                                             <div className="auction-customer-info-right">
                                                 <p>
-                                                    <span>{value.customer.first_name} {value.customer.last_name}</span><br />
+                                                    <span>{value.customer.username}</span><br />
                                                     <span>{(value.created_date).slice(0, 10)}</span>
                                                 </p>
                                             </div>
