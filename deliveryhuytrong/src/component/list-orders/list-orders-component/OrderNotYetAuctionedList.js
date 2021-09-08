@@ -97,8 +97,7 @@ export default function OrderNotYetAuctionedList() {
                                         return <tr key={index}>
                                             <td>{i}</td>
                                             <td>{order.customer.first_name} {order.customer.last_name}</td>
-                                            {/* <td><img src="" alt="img" /></td> */}
-                                            <td><img src={order.image_items[index].image} alt="img" /></td>
+                                            <td><img src={order.image_items[0].image} alt="img" /></td>
                                             <td>{order.weight}</td>
                                             <td>{order.send_stock.address}</td>
                                             <td>{order.receive_stock.address}</td>

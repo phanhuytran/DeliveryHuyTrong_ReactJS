@@ -7,6 +7,7 @@ import { UserContext } from '../../App';
 export default function Menu() {
     const auth = useContext(UserContext);
     let user = auth.user;
+    // console.log(auth.choice_group)
 
     return (
         <>

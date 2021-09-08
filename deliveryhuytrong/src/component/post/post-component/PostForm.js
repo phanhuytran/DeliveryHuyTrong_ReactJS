@@ -5,6 +5,7 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineSharpIcon from '@material-ui/icons/RemoveCircleOutlineSharp';
 import { AuthAPI, endpoints } from '../../API';
 import StockForm from './StockForm';
+// import axios from 'axios';
 
 export default function PostForm(props) {
     const [stockList, setStockList] = useState([]);
@@ -40,20 +41,29 @@ export default function PostForm(props) {
     }
 
     function onSubmit(event) {
-        // event.preventDefault();
+        event.preventDefault();
         var files = event.target[1].files;
         console.log(event.target[1].files)
         const formData = new FormData();
         for (let i = 0; i < files.length; i++) {
             formData.append('file[]', files[i])
         }
+        // axios({
+        //     url: 'http://127.0.0.1:8000/posts/',
+        //     method: 'POST',
+        //     data: formData
+        // })
+
+        console.log(formData)
+
         let item = {
             customer: user.id,
             description: description,
             weight: weight,
-            image: [
-                selectedFiles
-            ],
+            // image_items: {
+            //     image: formData,
+            //     // post:
+            // },
             receive_stock: receivingAddress,
             send_stock: sendingAddress,
         }
@@ -85,24 +95,16 @@ export default function PostForm(props) {
                     <tbody>
                         <tr>
                             <td>Order description:</td>
-                            <td>
-                                <input type="text" placeholder="Order description..." value={description} onChange={e => setDescription(e.target.value)} required />
-                            </td>
+                            <td><input type="text" placeholder="Order description..." value={description} onChange={e => setDescription(e.target.value)} required /></td>
                         </tr>
                         <tr>
                             <td>Image:</td>
-                            <td>
-                                <input type="file" id="file" name="file[]" multiple onChange={handleImageChange} />
-                            </td>
+                            <td><input type="file" id="file" name="file[]" multiple onChange={handleImageChange} /></td>
                         </tr>
-                        <tr>
-                            <td colSpan={2}>{renderImages(selectedFiles)}</td>
-                        </tr>
+                        <tr><td colSpan={2}>{renderImages(selectedFiles)}</td></tr>
                         <tr>
                             <td>Weight:</td>
-                            <td>
-                                <input type="number" min="0" step="0.01" placeholder="Weight..." value={weight} onChange={e => setWeight(e.target.value)} required />
-                            </td>
+                            <td><input type="number" min="0" step="0.01" placeholder="Weight..." value={weight} onChange={e => setWeight(e.target.value)} required /></td>
                         </tr>
                         <tr>
                             <td>Sending address:</td>
@@ -130,11 +132,7 @@ export default function PostForm(props) {
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td colSpan={2}>
-                                <button type="submit">Post</button>
-                            </td>
-                        </tr>
+                        <tr><td colSpan={2}><button type="submit">Post</button></td></tr>
                     </tbody>
                 </table>
             </form> : ''

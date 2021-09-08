@@ -165,8 +165,8 @@
 }
 
 .show-post-content {
-    animation: fadeIn linear 0.4s;
-    animation: growth linear 0.4s;
+    animation: fadeIn linear 0.3s;
+    animation: growth linear 0.3s;
     --growth-from: 0;
     --growth-to: 1;
 }
@@ -321,8 +321,8 @@ p.created-date-comment {
 
 .add-stock {
     position: absolute;
-    top: 48.18%;
-    left: 51%;
+    top: 317px;
+    left: 700px;
 }
 
 .add-stock .add-stock-icon {
@@ -343,4 +343,10 @@ p.created-date-comment {
     left: 125%;
     width: 70px;
     margin-top: 0.15%;
+}
+
+.no-post-found {
+    margin: 15% 0px;
+    text-align: center;
+    color: #dc3545;
 }

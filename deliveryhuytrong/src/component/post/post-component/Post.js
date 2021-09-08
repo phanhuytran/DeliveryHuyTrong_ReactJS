@@ -5,7 +5,7 @@ import * as _ from "lodash";
 import swal from 'sweetalert';
 import Slider from "react-slick";
 import axios from 'axios';
-// import cookies from 'react-cookies';
+import cookies from 'react-cookies';
 import PostForm from './PostForm';
 import PostComment from './PostComment';
 import PersonalInformation from './PersonalInformation';
@@ -24,7 +24,7 @@ export default function Post() {
         setHiddenPostOption({ ...hiddenPostOption, [index]: !hiddenPostOption[index] });
     };
 
-    // let user = cookies.load("user");
+    let user = cookies.load("user");
 
     useEffect(() => {
         AuthAPI.get(endpoints['posts']).then(res => (
@@ -33,10 +33,10 @@ export default function Post() {
     }, []);
 
     async function createPost(data) {
-        let post = postList;
-        await AuthAPI.post(endpoints['posts'], data);
-        console.log(data);
-        setPostList(post);
+        // let post = postList;
+        // await AuthAPI.post(endpoints['posts'], data);
+        // console.log(data);
+        // setPostList(post);
         // window.location.reload();
     }
 
@@ -61,17 +61,6 @@ export default function Post() {
         });
     }
 
-    // let result;
-    // console.log(postList)
-    // // if (user.username === a) {
-
-    // // }
-    // if (postList.length === 0) {
-    //     result = <div>
-    //         <h1>Huy</h1>
-    //     </div>
-    // }
-
     return (
         <div className="post">
             <div className="post-body">
@@ -80,59 +69,63 @@ export default function Post() {
                     <PostForm onSubmit={createPost} />
                     {
                         _.sortBy(postList).reverse().map((post, index) => {
-                            // if (user.username === post.customer.username)
-                            return <React.Fragment key={index}>
-                                <div className="post-content-header">
-                                    <div className="post-content-header-left">
-                                        <img src={post.customer.avatar} alt="img" />
+                            if (user.username === post.customer.username) {
+                                // i++;
+                                return <React.Fragment key={index}>
+                                    <div className="post-content-header">
+                                        <div className="post-content-header-left">
+                                            <img src={post.customer.avatar} alt="img" />
+                                        </div>
+                                        <div className="post-content-header-center">
+                                            <p><strong>{post.customer.username}</strong><br /><span>{(post.created_date).slice(0, 10)}</span></p>
+                                        </div>
+                                        <div className="post-content-header-right">
+                                            <p onClick={() => onTogglePostOption(index)}>
+                                                <span><i className="fas fa-ellipsis-h"></i></span>
+                                            </p>
+                                            {!hiddenPostOption[index] && <></>} {
+                                                hiddenPostOption[index] && <div className="post-option">
+                                                    <p>Edit</p>
+                                                    <p onClick={() => removePost(post.id)}>Remove</p>
+                                                </div>
+                                            }
+                                        </div>
                                     </div>
-                                    <div className="post-content-header-center">
-                                        <p><strong>{post.customer.username}</strong><br /><span>{(post.created_date).slice(0, 10)}</span></p>
-                                    </div>
-                                    <div className="post-content-header-right">
-                                        <p onClick={() => onTogglePostOption(index)}>
-                                            <span><i className="fas fa-ellipsis-h"></i></span>
-                                        </p>
-                                        {!hiddenPostOption[index] && <></>} {
-                                            hiddenPostOption[index] && <div className="post-option">
-                                                <p>Edit</p>
-                                                <p onClick={() => removePost(post.id)}>Remove</p>
+                                    <div className="post-content">
+                                        {
+                                            !hiddenContent[index] && <div>
+                                                <p>Customer:<span>{post.customer.first_name} {post.customer.last_name}</span></p>
+                                            </div>
+                                        } {
+                                            hiddenContent[index] && <div className="show-post-content">
+                                                <p>Customer:<span>{post.customer.first_name} {post.customer.last_name}</span></p>
+                                                <p>Description:<span>{post.description}</span></p>
+                                                <p>Weight:<span>{post.weight}</span></p>
+                                                <p>Sending address:<span>{post.send_stock.address}</span></p>
+                                                <p>Receiving address:<span>{post.receive_stock.address}</span></p>
                                             </div>
                                         }
-                                    </div>
-                                </div>
-                                <div className="post-content">
-                                    {
-                                        !hiddenContent[index] && <div>
-                                            <p>Customer:<span>{post.customer.first_name} {post.customer.last_name}</span></p>
+                                        <p className="show-hide-content"><i className="fas fa-ellipsis-h" onClick={() => onToggleHideContent(index)}></i></p>
+                                        <div className="order-image">
+                                            <Slider className="auction-info-carousel" {...settingSlider}>
+                                                {
+                                                    post.image_items.map((i, ix) => {
+                                                        return <img key={ix} src={i.image} alt="img" />
+                                                    })
+                                                }
+                                            </Slider>
                                         </div>
-                                    } {
-                                        hiddenContent[index] && <div className="show-post-content">
-                                            <p>Customer:<span>{post.customer.first_name} {post.customer.last_name}</span></p>
-                                            <p>Description:<span>{post.description}</span></p>
-                                            <p>Weight:<span>{post.weight}</span></p>
-                                            <p>Sending address:<span>{post.send_stock.address}</span></p>
-                                            <p>Receiving address:<span>{post.receive_stock.address}</span></p>
-                                        </div>
-                                    }
-                                    <p className="show-hide-content"><i className="fas fa-ellipsis-h" onClick={() => onToggleHideContent(index)}></i></p>
-                                    <div className="order-image">
-                                        <Slider className="auction-info-carousel" {...settingSlider}>
-                                            {
-                                                post.image_items.map((i, ix) => {
-                                                    return <img key={ix} src={i.image} alt="img" />
-                                                })
-                                            }
-                                        </Slider>
+                                        <PostComment /><br />
+                                        <Link className="click-auction-confirm" to={"post-detail/" + post.id}>Click to auction confirmation</Link>
                                     </div>
-                                    <PostComment /><br />
-                                    <Link className="click-auction-confirm" to={"post-detail/" + post.id}>Click to auction confirmation</Link>
-                                </div>
-                            </React.Fragment>
-                            // return <React.Fragment key={index}><h1>Huy</h1></React.Fragment>
+                                </React.Fragment>
+                            }
+                            // if (i === 0) {
+                            //     return <h1 key={index} className="no-post-found">No post found</h1>
+                            // }
+                            return <React.Fragment key={index}></React.Fragment>
                         })
                     }
-                    {/* {result} */}
                 </div>
             </div>
         </div>
