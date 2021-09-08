@@ -6,15 +6,18 @@ import swal from 'sweetalert';
 import Slider from "react-slick";
 import axios from 'axios';
 import cookies from 'react-cookies';
+import Modal from 'react-modal';
 import PostForm from './PostForm';
 import PostComment from './PostComment';
 import PersonalInformation from './PersonalInformation';
 import { AuthAPI, endpoints } from '../../API';
+import EditPostForm from './EditPostForm';
 
 export default function Post() {
     const [postList, setPostList] = useState([]);
     const [hiddenContent, setHiddenContent] = useState({});
     const [hiddenPostOption, setHiddenPostOption] = useState({});
+    const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
 
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
     const onToggleHideContent = index => {
@@ -61,6 +64,14 @@ export default function Post() {
         });
     }
 
+    function editPost(id, data) {
+        let post = postList;
+        axios.put('http://127.0.0.1:8000/posts/' + id, data)
+        console.log(id);
+        setPostList(post);
+        window.location.reload();
+    }
+
     return (
         <div className="post">
             <div className="post-body">
@@ -85,7 +96,13 @@ export default function Post() {
                                             </p>
                                             {!hiddenPostOption[index] && <></>} {
                                                 hiddenPostOption[index] && <div className="post-option">
-                                                    <p>Edit</p>
+                                                    <p onClick={() => setModalEditIsOpen(true)}>Edit</p>
+                                                    <Modal className="modal-edit-post-form" isOpen={modalEditIsOpen} ariaHideApp={false}>
+                                                        <EditPostForm onSubmit={() => editPost(post.id)} />
+                                                        <div className="close-modal-edit-post-form" onClick={() => setModalEditIsOpen(false)}>
+                                                            <i className="fas fa-times-circle"></i>
+                                                        </div>
+                                                    </Modal>
                                                     <p onClick={() => removePost(post.id)}>Remove</p>
                                                 </div>
                                             }

@@ -43,10 +43,11 @@ export default function PostForm(props) {
     function onSubmit(event) {
         event.preventDefault();
         var files = event.target[1].files;
-        console.log(event.target[1].files)
+        console.log(files)
         const formData = new FormData();
         for (let i = 0; i < files.length; i++) {
             formData.append('file[]', files[i])
+            console.log(formData.append('file[]', files[i]))
         }
         // axios({
         //     url: 'http://127.0.0.1:8000/posts/',

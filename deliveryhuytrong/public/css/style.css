@@ -1,3 +1,16 @@
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #eee;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: #f9bf3b;
+    border: 2px solid #f9bf3b;
+}
+
 .header_area {
     position: relative;
 }

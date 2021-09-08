@@ -21,11 +21,11 @@
 }
 
 .close-modal-signin-signup {
-    font-size: 30px;
-    color: #22313f;
     position: fixed;
     top: 2.5%;
     left: 91%;
+    font-size: 30px;
+    color: #22313f;
     cursor: pointer;
 }
 
