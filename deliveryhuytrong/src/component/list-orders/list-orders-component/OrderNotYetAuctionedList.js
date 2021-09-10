@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import API, { endpoints } from '../../API';
+import { AuthAPI, endpoints } from '../../API';
 
 export default function OrderNotYetAuctionedList() {
     const [orderPostList, setOrderPostList] = useState([]);
@@ -22,7 +22,8 @@ export default function OrderNotYetAuctionedList() {
     let isDisplayClearReceivingAddress = isDisplayClearReceivingAddressFilter;
 
     useEffect(() => {
-        API.get(endpoints['posts']).then(res => (
+        // API.get(endpoints['posts']).then(res => (
+        AuthAPI.get(endpoints['posts']).then(res => (
             setOrderPostList(res.data.results)
         ));
     }, []);

@@ -8,7 +8,6 @@ import Menu from './Menu';
 import { UserContext } from '../../App';
 
 export default function Header() {
-
     const auth = useContext(UserContext);
     let user = auth.user;
     

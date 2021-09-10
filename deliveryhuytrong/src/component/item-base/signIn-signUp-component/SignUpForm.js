@@ -52,7 +52,10 @@ export default class SignUpForm extends React.Component {
                 this.setState({
                     message: 'Account was registered successfully!',
                     is_successful: true
-                })
+                });
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
             }).catch((err) => {
                 console.log(err.response.data);
                 if (err.response.data.email) {
@@ -124,7 +127,7 @@ export default class SignUpForm extends React.Component {
                             <p>Username</p><input type="text" placeholder="Username" value={this.state.user.username} onChange={this.change.bind(this, 'username')} required />
                             <p>Password</p><input type="password" placeholder="Password" value={this.state.user.password} onChange={this.change.bind(this, 'password')} required />
                             <p>Confirm password</p><input type="password" placeholder="Confirm password" value={this.state.user.confirm_password} onChange={this.change.bind(this, 'confirm_password')} required />
-                            <p>Role</p>
+                            <p>User type</p>
                             <select value={this.state.user.choice_group} onChange={this.change.bind(this, 'choice_group')} required>
                                 <option value={0} disabled hidden></option>
                                 <option value={1}>Customer</option>

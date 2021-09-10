@@ -21,8 +21,9 @@
 }
 
 .close-modal-signin-signup {
+    font-size: 20px !important;
     position: fixed;
-    top: 2.5%;
+    top: 2.8%;
     left: 91%;
     font-size: 30px;
     color: #22313f;

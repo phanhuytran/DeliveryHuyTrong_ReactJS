@@ -5,7 +5,7 @@ import "../slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import OrderAuctionComment from './OrderAuctionComment';
-import API, { endpoints } from '../../API';
+import { AuthAPI, endpoints } from '../../API';
 import clientIMG from '../image/client.jpg';
 
 export default function OrderAuctionPost(props) {
@@ -14,7 +14,7 @@ export default function OrderAuctionPost(props) {
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
 
     useEffect(() => {
-        API.get(endpoints['posts']).then(res => (
+        AuthAPI.get(endpoints['posts']).then(res => (
             setOrderPostList(res.data.results)
         ));
     }, [])

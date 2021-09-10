@@ -5,7 +5,7 @@ import "../slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import clientIMG from '../image/client.jpg';
-import API, { endpoints } from '../../API';
+import { AuthAPI, endpoints } from '../../API';
 import PostDetailComment from './PostDetailComment';
 
 export default function PostDetail(props) {
@@ -14,7 +14,7 @@ export default function PostDetail(props) {
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
 
     const getOrderPostList = async () => {
-        let res = await API.get(endpoints['posts']);
+        let res = await AuthAPI.get(endpoints['posts']);
         setOrderPostList(res.data.results);
     }
 
