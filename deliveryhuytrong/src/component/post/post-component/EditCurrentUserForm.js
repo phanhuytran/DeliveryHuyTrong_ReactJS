@@ -1,8 +1,7 @@
 import React from 'react';
 import '../post.css';
 import cookies from 'react-cookies';
-import API, { AuthAPI, endpoints } from '../../API';
-import axios from 'axios';
+import { AuthAPI, endpoints } from '../../API';
 
 export default class EditCurrentUserForm extends React.Component {
     constructor(props) {
@@ -32,7 +31,8 @@ export default class EditCurrentUserForm extends React.Component {
         }
         this.setState({
             user: { ...this.state.user, ...fields },
-            message: ''
+            messagePhone: '',
+            messageEmail: ''
         })
     }
 
@@ -56,12 +56,12 @@ export default class EditCurrentUserForm extends React.Component {
             console.log(err.response.data);
             if (err.response.data.phone) {
                 this.setState({
-                    message: err.response.data.phone.toString()
+                    messagePhone: err.response.data.phone.toString()
                 })
             }
             if (err.response.data.email) {
                 this.setState({
-                    message: err.response.data.email.toString()
+                    messageEmail: err.response.data.email.toString()
                 })
             }
         });
@@ -71,10 +71,12 @@ export default class EditCurrentUserForm extends React.Component {
         return (
             <form className="edit-form" onSubmit={this.editInfo}>
                 <h1 style={{ fontSize: 22 }}>PERSONAL INFORMATION</h1>
-                <p className="edit-error">{this.state.message}</p>
-                <p>First name</p><input type="text" placeholder="First name..." value={this.state.user.first_name} onChange={this.change.bind(this, 'first_name')} required />
-                <p>Last name</p><input type="text" placeholder="Last name..." value={this.state.user.last_name} onChange={this.change.bind(this, 'last_name')} required />
-                <p>Date of birth</p><input type="date" value={this.state.user.date_of_birth} onChange={this.change.bind(this, 'date_of_birth')} required />
+                <p>First name</p>
+                <input type="text" placeholder="First name..." value={this.state.user.first_name} onChange={this.change.bind(this, 'first_name')} required />
+                <p>Last name</p>
+                <input type="text" placeholder="Last name..." value={this.state.user.last_name} onChange={this.change.bind(this, 'last_name')} required />
+                <p>Date of birth</p>
+                <input type="date" value={this.state.user.date_of_birth} onChange={this.change.bind(this, 'date_of_birth')} required />
                 <p>Gender</p>
                 <select value={this.state.user.gender} onChange={this.change.bind(this, 'gender')} required>
                     <option value="" disabled hidden></option>
@@ -82,10 +84,16 @@ export default class EditCurrentUserForm extends React.Component {
                     <option value="female">Female</option>
                     <option value="other">Other</option>
                 </select>
-                <p>Address</p><input type="text" placeholder="Address..." value={this.state.user.address} onChange={this.change.bind(this, 'address')} required />
-                <p>Email</p><input type="email" placeholder="Email..." value={this.state.user.email} onChange={this.change.bind(this, 'email')} required />
-                <p>Phone</p><input type="text" placeholder="Phone..." value={this.state.user.phone} onChange={this.change.bind(this, 'phone')} required />
-                <p>Avatar</p><input type="file" ref={this.avatar} required /><br />
+                <p>Address</p>
+                <input type="text" placeholder="Address..." value={this.state.user.address} onChange={this.change.bind(this, 'address')} required />
+                <p>Email</p>
+                <input type="email" placeholder="Email..." value={this.state.user.email} onChange={this.change.bind(this, 'email')} required />
+                <p className="edit-error">{this.state.messageEmail}</p>
+                <p>Phone</p>
+                <input type="text" placeholder="Phone..." value={this.state.user.phone} onChange={this.change.bind(this, 'phone')} required />
+                <p className="edit-error">{this.state.messagePhone}</p>
+                <p>Avatar</p>
+                <input type="file" ref={this.avatar} required /><br />
                 <button className="btn-edit-current-user" type="submit">Edit</button><div style={{ marginBottom: '80px' }}></div>
             </form>
         );

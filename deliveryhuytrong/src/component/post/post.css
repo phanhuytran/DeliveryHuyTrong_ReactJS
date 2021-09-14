@@ -20,7 +20,6 @@
 
 .post-body-right {
     width: 68%;
-    box-shadow: 0 0 5px rgba(33,33,33,.2);
     border-radius: 8px;
 }
 
@@ -164,7 +163,7 @@
 
 .post-content {
     width: 90%;
-    margin: 0 auto 10% auto;
+    margin: 0 auto;
 }
 
 .post-content p {
@@ -204,8 +203,17 @@
 }
 
 .post-form {
-    width: 90%;
-    margin: 5% auto;
+    margin: 0 0 3% 0;
+    padding: 3% 4%;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(33,33,33,.2);
+}
+
+.post-item {
+    margin: 3% 0 0 0;
+    padding: 2% 0 5% 0;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(33,33,33,.2);
 }
 
 .post-form button {
@@ -258,7 +266,7 @@
 .post-form table input, .post-form table select {
     width: 100%;
     border: 1px solid #eee;
-    padding: 5px 10px;
+    padding: 5px;
 }
 
 .post-form table input:focus-visible, .post-form button:focus-visible, .post-form table select:focus-visible {
@@ -339,7 +347,7 @@ p.created-date-comment {
 
 .add-stock {
     position: absolute;
-    top: 317px;
+    top: 303px;
     left: 700px;
 }
 
@@ -394,13 +402,13 @@ p.created-date-comment {
 }
 
 .edit-form {
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
 }
 
 .edit-form h1 {
     text-align: center;
-    margin: 12% 0 15% 0;
+    margin: 12% 0;
 }
 
 .edit-form input, .edit-form select {
@@ -439,11 +447,23 @@ p.created-date-comment {
 }
 
 .edit-error {
-    text-align: center;
-    margin: -20px 0 15px 0;
+    margin-top: -25px;
     color: red;
 }
 
 .btn-edit-current-user {
     margin: 0 !important;
+}
+
+.post-list-null {
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgb(33 33 33 / 20%);
+}
+
+.post-list-null p {
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+    padding: 10% 0 40.3% 0;
+    color: #dc3545;
 }

@@ -102,9 +102,12 @@ export default class SignUpForm extends React.Component {
                     }
                     <div className="register-main">
                         <div id="sign-up-1">
-                            <p>First name</p><input type="text" id="first_name" placeholder="First name" value={this.state.user.first_name} onChange={this.change.bind(this, 'first_name')} required />
-                            <p>Last name</p><input type="text" id="last_name" placeholder="Last name" value={this.state.user.last_name} onChange={this.change.bind(this, 'last_name')} required />
-                            <p>Date of birth</p><input type="date" id="date_of_birth" value={this.state.user.date_of_birth} onChange={this.change.bind(this, 'date_of_birth')} required />
+                            <p>First name</p>
+                            <input type="text" id="first_name" placeholder="First name" value={this.state.user.first_name} onChange={this.change.bind(this, 'first_name')} required />
+                            <p>Last name</p>
+                            <input type="text" id="last_name" placeholder="Last name" value={this.state.user.last_name} onChange={this.change.bind(this, 'last_name')} required />
+                            <p>Date of birth</p>
+                            <input type="date" id="date_of_birth" value={this.state.user.date_of_birth} onChange={this.change.bind(this, 'date_of_birth')} required />
                             <p>Gender</p>
                             <select value={this.state.user.gender} id="gender" onChange={this.change.bind(this, 'gender')} required>
                                 <option value="" disabled hidden></option>
@@ -117,10 +120,14 @@ export default class SignUpForm extends React.Component {
                             </div>
                         </div>
                         <div id="sign-up-2">
-                            <p>Address</p><input type="text" id="address" placeholder="Address" value={this.state.user.address} onChange={this.change.bind(this, 'address')} required />
-                            <p>Email</p><input type="email" id="email" placeholder="Email" value={this.state.user.email} onChange={this.change.bind(this, 'email')} required />
-                            <p>Phone</p><input type="text" id="phone" placeholder="Phone" value={this.state.user.phone} onChange={this.change.bind(this, 'phone')} required />
-                            <p>Avatar</p><input type="file" id="avatar" ref={this.avatar} required />
+                            <p>Address</p>
+                            <input type="text" id="address" placeholder="Address" value={this.state.user.address} onChange={this.change.bind(this, 'address')} required />
+                            <p>Email</p>
+                            <input type="email" id="email" placeholder="Email" value={this.state.user.email} onChange={this.change.bind(this, 'email')} required />
+                            <p>Phone</p>
+                            <input type="text" id="phone" placeholder="Phone" value={this.state.user.phone} onChange={this.change.bind(this, 'phone')} required />
+                            <p>Avatar</p>
+                            <input type="file" id="avatar" ref={this.avatar} required />
                             <div id="sign-up-previous-1">
                                 <ArrowBackIcon className="cursor-move-part" style={{ fontSize: 40 }} onClick={previousSignUp1} />
                             </div>
@@ -129,9 +136,12 @@ export default class SignUpForm extends React.Component {
                             </div>
                         </div>
                         <div id="sign-up-3">
-                            <p>Username</p><input type="text" placeholder="Username" value={this.state.user.username} onChange={this.change.bind(this, 'username')} required />
-                            <p>Password</p><input type="password" placeholder="Password" value={this.state.user.password} onChange={this.change.bind(this, 'password')} required />
-                            <p>Confirm password</p><input type="password" placeholder="Confirm password" value={this.state.user.confirm_password} onChange={this.change.bind(this, 'confirm_password')} required />
+                            <p>Username</p>
+                            <input type="text" placeholder="Username" value={this.state.user.username} onChange={this.change.bind(this, 'username')} required />
+                            <p>Password</p>
+                            <input type="password" placeholder="Password" value={this.state.user.password} onChange={this.change.bind(this, 'password')} required />
+                            <p>Confirm password</p>
+                            <input type="password" placeholder="Confirm password" value={this.state.user.confirm_password} onChange={this.change.bind(this, 'confirm_password')} required />
                             <p>User type</p>
                             <select value={this.state.user.choice_group} onChange={this.change.bind(this, 'choice_group')} required>
                                 <option value={0} disabled hidden></option>

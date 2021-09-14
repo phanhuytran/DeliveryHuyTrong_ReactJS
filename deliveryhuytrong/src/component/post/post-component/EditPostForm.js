@@ -10,6 +10,7 @@ export default function EditPostForm(props) {
     const [receivingAddress, setReceivingAddress] = useState(props.receivingAddress);
     const [sendingAddress, setSendingAddress] = useState(props.sendingAddress);
     const [selectedFiles, setSelectedFiles] = useState([]);
+    const image = React.createRef();
 
     let user = cookies.load("user");
     useEffect(() => {
@@ -33,16 +34,19 @@ export default function EditPostForm(props) {
         })
     }
 
-    function onSubmit(event) {
-        event.preventDefault();
-        let item = {
-            customer: user.id,
-            description: description,
-            weight: weight,
-            receive_stock: receivingAddress,
-            send_stock: sendingAddress,
+    function onSubmit(e) {
+        e.preventDefault();
+        let formData = new FormData();
+        let files = image.current.files;
+        for (let i = 0; i < files.length; i++) {
+            formData.append("image_items", files[i])
         }
-        props.onSubmit(item);
+        formData.append("customer", user.id);
+        formData.append("description", description);
+        formData.append("weight", weight);
+        formData.append("receive_stock", receivingAddress);
+        formData.append("send_stock", sendingAddress);
+        props.onSubmit(formData);
     }
 
     return (
@@ -51,7 +55,7 @@ export default function EditPostForm(props) {
             <p>Order description:</p>
             <input type="text" placeholder="Order description..." value={description} onChange={e => setDescription(e.target.value)} required />
             <p>Image:</p>
-            <input type="file" id="file" name="file[]" multiple onChange={handleImageChange} />
+            <input type="file" ref={image} multiple onChange={handleImageChange} />
             <div>{renderImages(selectedFiles)}</div>
             <p>Weight:</p>
             <input type="number" min="0" step="0.01" placeholder="Weight..." value={weight} onChange={e => setWeight(e.target.value)} required />

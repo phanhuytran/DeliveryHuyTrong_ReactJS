@@ -5,7 +5,6 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineSharpIcon from '@material-ui/icons/RemoveCircleOutlineSharp';
 import { AuthAPI, endpoints } from '../../API';
 import StockForm from './StockForm';
-import axios from 'axios';
 
 export default function PostForm(props) {
     const [stockList, setStockList] = useState([]);
@@ -41,46 +40,19 @@ export default function PostForm(props) {
         })
     }
 
-    function onSubmit(event) {
-        event.preventDefault();
-
-        // var files = event.target[1].files;
-        let files = image.current.files;
-        console.log(files)
+    function onSubmit() {
         let formData = new FormData();
+        let files = image.current.files;
         for (let i = 0; i < files.length; i++) {
-            console.log(files[i])
-            formData.append("image", files[i])
+            formData.append("image_items", files[i])
         }
-        console.log(formData)
-
-        let item = {
-            customer: user.id,
-            description: description,
-            weight: weight,
-            
-            image_items: axios({
-                method: 'POST',
-                url: 'http://127.0.0.1:8000/image-item/',
-                data: {
-                    image: formData,
-                    // post: 
-                },
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    'Authorization': `Bearer ${cookies.load('access_token')}`
-                }
-            }).then((res) => {
-                console.log(res);
-            }).catch((err) => {
-                console.log(err.response.data);
-            }),
-
-            receive_stock: receivingAddress,
-            send_stock: sendingAddress,
-        }
+        formData.append("customer", user.id);
+        formData.append("description", description);
+        formData.append("weight", weight);
+        formData.append("receive_stock", receivingAddress);
+        formData.append("send_stock", sendingAddress);
         setIsDisplayPostForm(false);
-        props.onSubmit(item);
+        props.onSubmit(formData);
     }
 
     async function createStock(data) {
@@ -111,7 +83,7 @@ export default function PostForm(props) {
                         </tr>
                         <tr>
                             <td>Image:</td>
-                            <td><input type="file" id="image" name="image" ref={image} multiple onChange={handleImageChange} /></td>
+                            <td><input type="file" ref={image} multiple onChange={handleImageChange} /></td>
                         </tr>
                         <tr><td colSpan={2}>{renderImages(selectedFiles)}</td></tr>
                         <tr>
