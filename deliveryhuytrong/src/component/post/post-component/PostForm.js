@@ -5,7 +5,7 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineSharpIcon from '@material-ui/icons/RemoveCircleOutlineSharp';
 import { AuthAPI, endpoints } from '../../API';
 import StockForm from './StockForm';
-// import axios from 'axios';
+import axios from 'axios';
 
 export default function PostForm(props) {
     const [stockList, setStockList] = useState([]);
@@ -16,6 +16,7 @@ export default function PostForm(props) {
     const [isDisplayPostForm, setIsDisplayPostForm] = useState(false);
     const [isDisplayStockForm, setIsDisplayStockForm] = useState(false);
     const [selectedFiles, setSelectedFiles] = useState([]);
+    const image = React.createRef();
 
     let user = cookies.load("user");
 
@@ -42,29 +43,39 @@ export default function PostForm(props) {
 
     function onSubmit(event) {
         event.preventDefault();
-        var files = event.target[1].files;
-        console.log(files)
-        const formData = new FormData();
-        for (let i = 0; i < files.length; i++) {
-            formData.append('file[]', files[i])
-            console.log(formData.append('file[]', files[i]))
-        }
-        // axios({
-        //     url: 'http://127.0.0.1:8000/posts/',
-        //     method: 'POST',
-        //     data: formData
-        // })
 
+        // var files = event.target[1].files;
+        let files = image.current.files;
+        console.log(files)
+        let formData = new FormData();
+        for (let i = 0; i < files.length; i++) {
+            console.log(files[i])
+            formData.append("image", files[i])
+        }
         console.log(formData)
 
         let item = {
             customer: user.id,
             description: description,
             weight: weight,
-            // image_items: {
-            //     image: formData,
-            //     // post:
-            // },
+            
+            image_items: axios({
+                method: 'POST',
+                url: 'http://127.0.0.1:8000/image-item/',
+                data: {
+                    image: formData,
+                    // post: 
+                },
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${cookies.load('access_token')}`
+                }
+            }).then((res) => {
+                console.log(res);
+            }).catch((err) => {
+                console.log(err.response.data);
+            }),
+
             receive_stock: receivingAddress,
             send_stock: sendingAddress,
         }
@@ -87,7 +98,7 @@ export default function PostForm(props) {
             <span className="add-stock">
                 {
                     !isDisplayStockForm ? <AddCircleOutlineIcon onClick={onToggleStockForm} style={{ fontSize: 20 }} className="add-stock-icon" />
-                    : <RemoveCircleOutlineSharpIcon onClick={onToggleStockForm} style={{ fontSize: 20 }} className="add-stock-icon" />
+                        : <RemoveCircleOutlineSharpIcon onClick={onToggleStockForm} style={{ fontSize: 20 }} className="add-stock-icon" />
                 }
                 <span>Add stock</span>
             </span>
@@ -100,7 +111,7 @@ export default function PostForm(props) {
                         </tr>
                         <tr>
                             <td>Image:</td>
-                            <td><input type="file" id="file" name="file[]" multiple onChange={handleImageChange} /></td>
+                            <td><input type="file" id="image" name="image" ref={image} multiple onChange={handleImageChange} /></td>
                         </tr>
                         <tr><td colSpan={2}>{renderImages(selectedFiles)}</td></tr>
                         <tr>

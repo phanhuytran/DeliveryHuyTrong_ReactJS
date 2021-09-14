@@ -7,6 +7,7 @@ export let endpoints = {
     'current-user': '/users/current-user/',
     'posts': '/posts/',
     'stocks': '/stocks/',
+    'image-item': '/image-item/',
 }
 
 export let AuthAPI = axios.create({

@@ -18,7 +18,6 @@ export default class EditCurrentUserForm extends React.Component {
             'username': cookies.load("user").username,
             'password': cookies.load("user").password
         }
-        
         this.avatar = React.createRef();
         this.state = {
             'user': cookies.load("user"),
@@ -27,6 +26,7 @@ export default class EditCurrentUserForm extends React.Component {
     }
 
     change = (field, event) => {
+        console.log(cookies.load("user"))
         let fields = {
             [field]: event.target.value
         }
@@ -43,24 +43,28 @@ export default class EditCurrentUserForm extends React.Component {
             formData.append(k, this.state.user[k])
         }
         formData.append('avatar', this.avatar.current.files[0]);
-        AuthAPI.put(endpoints['users'] + cookies.load("user").id + '/', formData, {
+        AuthAPI.patch(endpoints['users'] + cookies.load("user").id + '/', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
-        // axios.put('http://127.0.0.1:8000/users/' + cookies.load("user").id, formData, {
-        //     headers: {
-        //         'Content-Type': 'multipart/form-data'
-        //     }
         }).then((res) => {
             console.log(res);
+            console.log(res.data);
+            cookies.save("user", res.data);
+            window.location.reload();
         }).catch((err) => {
             console.log(err.response.data);
+            if (err.response.data.phone) {
+                this.setState({
+                    message: err.response.data.phone.toString()
+                })
+            }
             if (err.response.data.email) {
                 this.setState({
                     message: err.response.data.email.toString()
                 })
             }
-        })
+        });
     }
 
     render() {

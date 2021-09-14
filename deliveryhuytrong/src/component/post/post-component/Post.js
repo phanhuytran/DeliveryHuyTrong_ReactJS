@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../post.css';
+import cookies from 'react-cookies';
 import { Link } from 'react-router-dom';
 import * as _ from "lodash";
 import swal from 'sweetalert';
@@ -33,10 +34,18 @@ export default function Post() {
     }, []);
 
     async function createPost(data) {
-        let post = postList;
-        await AuthAPI.post(endpoints['posts'], data);
-        console.log(data);
-        setPostList(post);
+        // let post = postList;
+        // await axios({
+        //     method: "POST",
+        //     url: "http://127.0.0.1:8000/posts/",
+        //     data: data,
+        //     headers: {
+        //         // 'Content-Type': 'multipart/form-data',
+        //         'Authorization': `Bearer ${cookies.load('access_token')}`
+        //     }
+        // })
+        // console.log(data);
+        // setPostList(post);
         // window.location.reload();
     }
 

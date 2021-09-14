@@ -58,6 +58,11 @@ export default class SignUpForm extends React.Component {
                 }, 500);
             }).catch((err) => {
                 console.log(err.response.data);
+                if (err.response.data.phone) {
+                    this.setState({
+                        message: err.response.data.phone.toString()
+                    })
+                }
                 if (err.response.data.email) {
                     this.setState({
                         message: err.response.data.email.toString()
