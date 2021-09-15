@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import '../post.css';
+import '../../post/post.css';
 import cookies from 'react-cookies';
 import { AuthAPI, endpoints } from '../../API';
 
-export default function EditPostForm(props) {
+export default function EditPostDetailForm(props) {
     const [stockList, setStockList] = useState([]);
     const [description, setDescription] = useState(props.description);
     const [weight, setWeight] = useState(props.weight);

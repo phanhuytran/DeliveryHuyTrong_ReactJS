@@ -15,6 +15,7 @@ export default function PostForm(props) {
     const [isDisplayPostForm, setIsDisplayPostForm] = useState(false);
     const [isDisplayStockForm, setIsDisplayStockForm] = useState(false);
     const [selectedFiles, setSelectedFiles] = useState([]);
+    const [isImage, setIsImage] = useState(false);
     const image = React.createRef();
 
     let user = cookies.load("user");
@@ -32,6 +33,7 @@ export default function PostForm(props) {
             setSelectedFiles((prevImages) => prevImages.concat(filesArray));
             Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
         }
+        setIsImage(true);
     }
 
     const renderImages = source => {
@@ -77,15 +79,17 @@ export default function PostForm(props) {
             {isDisplayPostForm ? <form onSubmit={onSubmit} encType="multipart/form-data">
                 <table>
                     <tbody>
+                        <tr><td colSpan={2} style={{ paddingBottom: '0' }}>Order description:</td></tr>
                         <tr>
-                            <td>Order description:</td>
-                            <td><input type="text" placeholder="Order description..." value={description} onChange={e => setDescription(e.target.value)} required /></td>
+                            <td colSpan={2} style={{ paddingRight: '0' }}><textarea cols={53} rows={5} placeholder="Please describe your order..." value={description} onChange={e => setDescription(e.target.value)} required /></td>
                         </tr>
                         <tr>
                             <td>Image:</td>
                             <td><input type="file" ref={image} multiple onChange={handleImageChange} /></td>
                         </tr>
-                        <tr><td colSpan={2}>{renderImages(selectedFiles)}</td></tr>
+                        {
+                            isImage === true ? <tr><td colSpan={2} style={{ padding: '0 0 15px 15px' }}>{renderImages(selectedFiles)}</td></tr> : ''
+                        }
                         <tr>
                             <td>Weight:</td>
                             <td><input type="number" min="0" step="0.01" placeholder="Weight..." value={weight} onChange={e => setWeight(e.target.value)} required /></td>

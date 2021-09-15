@@ -43,11 +43,12 @@ export default function OrderAuctionPost(props) {
                                             <p>Customer: <span className="info-comment">{value.customer.first_name} {value.customer.last_name}</span></p>
                                             <p><span id="see-more-auction-order-info-1" onClick={seeMoreAuctionInfo}> See More <span className="fas fa-arrow-down" /></span></p>
                                             <div id="see-more-auction-order-info-2">
-                                                <p>Order description:</p>
-                                                <p className="info-comment-2">{value.description}</p>
-                                                <p>Weight: <span className="info-comment">{value.weight} kilograms</span></p>
-                                                <p>Sending address: <span className="info-comment">{value.send_stock.address}</span></p>
-                                                <p>Receiving address: <span className="info-comment">{value.receive_stock.address}</span></p>
+                                            <p>Order description:<span className="info-comment">{value.description}</span></p>
+                                                <p>Weight:<span className="info-comment">{value.weight} kilograms</span></p>
+                                                <p>Sending address:<span className="info-comment">{value.send_stock.address}</span></p>
+                                                <p>Sending address information:<span className="info-comment">{value.send_stock.name_represent_man} - {value.send_stock.phone}</span></p>
+                                                <p>Receiving address:<span className="info-comment">{value.receive_stock.address}</span></p>
+                                                <p>Receiving address information:<span className="info-comment">{value.receive_stock.name_represent_man} - {value.receive_stock.phone}</span></p>
                                                 <p id="see-less-auction-order-info" onClick={seeLessAuctionInfo}>See Less <span className="fas fa-arrow-up" /></p>
                                             </div>
                                         </div>

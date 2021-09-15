@@ -127,7 +127,7 @@
 }
 
 .post-option p {
-    font-size: 15px;
+    font-size: 14px;
     width: 100%;
     float: left;
     margin: 0;
@@ -167,14 +167,14 @@
 }
 
 .post-content p {
-    margin-bottom: 8px;
+    margin-bottom: 2px;
 }
 
 .post-content span {
     float: right;
-    font-family: 'Times New Roman', Times, serif;
+    /* font-family: 'Times New Roman', Times, serif;
     font-style: italic;
-    font-size: 20px;
+    font-size: 20px; */
 }
 
 .post-content img {
@@ -237,7 +237,7 @@
 }
 
 .post-form table tr td:first-child {
-    width: 30%;
+    width: 25%;
     padding: 15px;
 }
 
@@ -263,18 +263,20 @@
     float: right;
 }
 
-.post-form table input, .post-form table select {
+.post-form table input, .post-form table select, .post-form table textarea {
+    text-align: justify;
     width: 100%;
     border: 1px solid #eee;
     padding: 5px;
 }
 
-.post-form table input:focus-visible, .post-form button:focus-visible, .post-form table select:focus-visible {
+.post-form table input:focus-visible, .post-form button:focus-visible,
+.post-form table select:focus-visible, .post-form table textarea:focus-visible {
     outline: 2px solid #f9bf3b;
 }
 
 .post-form form {
-    animation: fadeIn linear 0.2s;
+    width: 700px;
     animation: growth linear 0.2s;
     --growth-from: 0;
     --growth-to: 1;
@@ -283,8 +285,18 @@
 .upload-image-file {
     width: 87.46px;
     height: 87.46px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
+    margin: 0 3.39px 3.39px 0;
     padding: 5px;
+    animation: growth linear 0.2s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
+.upload-image-file:hover {
+    transform: scale(1.15);
+    transition: 1s;
+    cursor: pointer;
 }
 
 .post-comment hr {
@@ -312,7 +324,7 @@
 .post-comment-flex {
     display: flex;
     width: 100%;
-    margin: 2% auto;
+    margin: 2% auto 3% auto;
 }
 
 .post-comment-flex-left {
@@ -332,8 +344,8 @@
 
 .post-comment-content {
     background-color: #eee;
-    padding: 10px 20px;
-    border-radius: 20px;
+    padding: 10px 30px;
+    border-radius: 30px;
 }
 
 .post-comment-content p {
@@ -342,7 +354,11 @@
 
 p.created-date-comment {
     font-size: 13px;
-    margin: 1% 0 0 3.5%;
+    margin: 1% 0 0 5%;
+}
+
+.order-image {
+    margin-top: 15px;
 }
 
 .add-stock {
@@ -411,14 +427,15 @@ p.created-date-comment {
     margin: 12% 0;
 }
 
-.edit-form input, .edit-form select {
+.edit-form input, .edit-form select, .edit-form textarea {
+    text-align: justify;
     width: 100%;
     margin: 0 0 30px 0;
     padding: 5px 10px;
     border: 1px solid #eee;
 }
 
-.edit-form input:focus-visible, .edit-form select:focus-visible {
+.edit-form input:focus-visible, .edit-form select:focus-visible, .edit-form textarea:focus-visible {
     outline: 2px solid #f9bf3b;
 }
 
@@ -441,14 +458,32 @@ p.created-date-comment {
 .edit-upload-image-file {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
-    margin: -10px 0 20px 0;
+    /* border-radius: 50%; */
+    margin: -20px 0 20px 0;
     padding: 5px;
+    animation: growth linear 0.2s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
+.edit-upload-image-file:hover {
+    transform: scale(1.2);
+    transition: 1s;
+    cursor: pointer;
 }
 
 .edit-error {
     margin-top: -25px;
     color: red;
+}
+
+.edit-form-avatar {
+    text-align: center;
+}
+
+.edit-form-avatar img {
+    width: 25%;
+    margin: -30px 0 30px 0;
 }
 
 .btn-edit-current-user {

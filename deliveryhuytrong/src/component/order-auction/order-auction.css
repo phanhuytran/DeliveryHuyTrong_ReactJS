@@ -1,16 +1,5 @@
 .info-comment {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
-    font-style: oblique;
     float: right;
-}
-
-.info-comment-2 {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
-    font-style: oblique;
-    text-align: justify;
-    margin: -1% 0 4% 0;
 }
 
 #see-more-auction-order-info-2 {
@@ -20,6 +9,10 @@
     --growth-to: 1;
     cursor: text;
 }
+
+/* .auction-order-info p, #see-more-auction-order-info-2 p {
+    margin-bottom: 2px;
+} */
 
 .auction-customer-info-right span:nth-child(2) {
     float: right;
@@ -82,7 +75,10 @@
 
 #see-less-auction-order-info, #see-more-auction-order-info-1 {
     color: #f9bf3b;
-    margin-bottom: 20px;
+}
+
+#see-less-auction-order-info {
+    margin-bottom: 18px !important;
 }
 
 #see-less-auction-order-info span, #see-more-auction-order-info-1 span {

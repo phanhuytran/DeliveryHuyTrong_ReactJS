@@ -80,7 +80,7 @@ export default function Post() {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${cookies.load('access_token')}`
             }
-        });
+        })
         console.log(data);
         setPostList(post);
         setHiddenPostOption(false);
@@ -148,7 +148,9 @@ export default function Post() {
                                                 <p>Description:<span>{post.description}</span></p>
                                                 <p>Weight:<span>{post.weight} kilograms</span></p>
                                                 <p>Sending address:<span>{post.send_stock.address}</span></p>
+                                                <p>Sending address information:<span>{post.send_stock.name_represent_man} - {post.send_stock.phone}</span></p>
                                                 <p>Receiving address:<span>{post.receive_stock.address}</span></p>
+                                                <p>Receiving address information:<span>{post.receive_stock.name_represent_man} - {post.receive_stock.phone}</span></p>
                                             </div>
                                         }
                                         <p className="show-hide-content"><i className="fas fa-ellipsis-h" onClick={() => onToggleHideContent(index)}></i></p>
