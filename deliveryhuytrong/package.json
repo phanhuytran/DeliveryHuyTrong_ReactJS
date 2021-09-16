@@ -14,6 +14,7 @@
     "chart.js": "^3.5.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
+    "qs": "^6.10.1",
     "react": "^17.0.2",
     "react-animated-modal": "^1.1.1",
     "react-chartjs-2": "^3.0.4",

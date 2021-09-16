@@ -80,9 +80,6 @@ export default class EditCurrentUserForm extends React.Component {
                 <p>Phone</p>
                 <input type="text" placeholder="Phone..." value={this.state.user.phone} onChange={this.change.bind(this, 'phone')} required />
                 <p className="edit-error">{this.state.messagePhone}</p>
-                <p>Avatar</p>
-                <input type="file" ref={this.avatar} onChange={this.change.bind(this, 'avatar')} /><br />
-                <p className="edit-form-avatar"><img src={cookies.load("user").avatar} alt="avatar" /></p>
                 <button className="btn-edit-current-user" type="submit">Edit</button><div style={{ marginBottom: '80px' }}></div>
             </form>
         );

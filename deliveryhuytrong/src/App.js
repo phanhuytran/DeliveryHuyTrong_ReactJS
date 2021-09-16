@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import cookies from 'react-cookies';
+import qs from 'qs';
 import Footer from './component/item-base/Footer';
 import Header from './component/item-base/Header';
 import API, { endpoints } from './component/API';
@@ -17,6 +18,7 @@ import BodyContact from './component/contact/BodyContact';
 import BodyShipperDetail from './component/shipper-detail/BodyShipperDetail';
 import BodyPost from './component/post/BodyPost';
 import BodyPostDetail from './component/post-detail/BodyPostDetail';
+import axios from 'axios';
 
 export let UserContext = React.createContext();
 
@@ -25,12 +27,21 @@ export default function App() {
   // const [message, setMessage] = useState('');
 
   const login = async (username, password) => {
-    let res = await API.post(endpoints['login'], {
-      'client_id': 'tgnUoY0SERab0qLgk7sLLVeg4cLAkX6u03vQKFM6',
-      'client_secret': 'vJPDDldC54M4r5lLDHOQIqW7qyj000kZiCI4XbQUefOQUbsJEgcwXXnxaxIrKgb365uLbXaoOc7Ew9qYTkD6svpqByd2GMDjrDqmyjwM02XQmI6If9y0E9JCjfAASDeS',
-      'username': username,
-      'password': password,
-      'grant_type': 'password'
+    let res = await axios({
+      method: 'POST',
+      url: 'http://127.0.0.1:8000/o/token/',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: qs.stringify({
+        'client_id': 'GAoIoyXnX6pX6SwLNxeFWmcSyFY7lRfnDzKEDJDI',
+        'client_secret': 'jszRNc5BqGwiJ4bt8a2JixeCEWUb2OiAm2cxYbWatnClTfNRWn8IgBy8nOP57wluThd3qiKdn4xUtko8nySFWxjS2TfiH9HlyUzee4s99srowoQ1UQ9t4ccdb2HnDSMe',
+        'username': username,
+        'password': password,
+        'grant_type': 'password',
+      })
+    }).catch((err) => {
+      console.log(err.response.data)
     })
     cookies.save("access_token", res.data.access_token);
     let user = await API.get(endpoints['current-user'], {

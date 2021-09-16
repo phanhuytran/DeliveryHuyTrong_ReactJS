@@ -22,7 +22,7 @@ export default function PostForm(props) {
 
     useEffect(() => {
         AuthAPI.get(endpoints['stocks']).then(res => (
-            setStockList(res.data.results)
+            setStockList(res.data)
         ));
     }, []);
 
@@ -88,7 +88,7 @@ export default function PostForm(props) {
                             <td><input type="file" ref={image} multiple onChange={handleImageChange} /></td>
                         </tr>
                         {
-                            isImage === true ? <tr><td colSpan={2} style={{ padding: '0 0 15px 15px' }}>{renderImages(selectedFiles)}</td></tr> : ''
+                            isImage === true ? <tr><td colSpan={2} style={{ padding: '0 0 15px 15px' }}>{renderImages(selectedFiles)}</td></tr> : <></>
                         }
                         <tr>
                             <td>Weight:</td>
@@ -100,7 +100,7 @@ export default function PostForm(props) {
                                 <select value={sendingAddress} onChange={e => setSendingAddress(e.target.value)} required>
                                     <option value="" disabled hidden></option>
                                     {
-                                        stockList.map((option_send, index) => {
+                                        stockList && stockList.map((option_send, index) => {
                                             return <option key={index} value={option_send.id}>{option_send.address}</option>
                                         })
                                     }
@@ -113,7 +113,7 @@ export default function PostForm(props) {
                                 <select value={receivingAddress} onChange={e => setReceivingAddress(e.target.value)} required>
                                     <option value="" disabled hidden></option>
                                     {
-                                        stockList.map((option_receive, index) => {
+                                        stockList && stockList.map((option_receive, index) => {
                                             return <option key={index} value={option_receive.id}>{option_receive.address}</option>
                                         })
                                     }

@@ -1,12 +1,30 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import '../post.css'
 import cookies from 'react-cookies';
 import Modal from 'react-modal';
 import EditCurrentUserForm from './EditCurrentUserForm';
+import { AuthAPI, endpoints } from '../../API';
 
 export default function PersonalInformation() {
     const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
+    const [modalChooseAvatar, setModalChooseAvatar] = useState(false);
+    const avatar = useRef();
     let user = cookies.load("user");
+
+    const changeAvatar = () => {
+        let formData = new FormData();
+        formData.append('avatar', avatar.current.files[0]);
+        AuthAPI.patch(endpoints['users'] + cookies.load("user").id + '/', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then((res) => {
+            cookies.save("user", res.data);
+            window.location.reload();
+        }).catch((err) => {
+            console.log(err.response.data)
+        })
+    }
 
     return (
         <>
@@ -24,7 +42,19 @@ export default function PersonalInformation() {
                 <hr />
                 {
                     user ? <>
-                        <img src={user.avatar} alt="img" />
+                        <button onClick={() => setModalChooseAvatar(true)}>
+                            <img src={user.avatar} alt="img" />
+                        </button>
+                        <Modal className="modal-edit-post-form" isOpen={modalChooseAvatar} ariaHideApp={false}>
+                            <div clasName="modal-choose-avatar">
+                                <input type="file" ref={avatar} />
+                                <button onClick={changeAvatar}>Change avatar</button>
+                            </div>
+                            <div className="close-modal-edit-post-form" onClick={() => setModalChooseAvatar(false)}>
+                                <i className="fas fa-times-circle"></i>
+                            </div>
+                        </Modal>
+                        {/* <img src={user.avatar} alt="img" /> */}
                         <h4>{user.first_name} {user.last_name}</h4>
                         <table>
                             <tbody>
