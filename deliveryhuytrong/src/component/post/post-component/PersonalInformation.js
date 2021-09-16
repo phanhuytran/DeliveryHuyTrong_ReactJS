@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import '../post.css'
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 import cookies from 'react-cookies';
 import Modal from 'react-modal';
 import EditCurrentUserForm from './EditCurrentUserForm';
@@ -8,6 +9,9 @@ import { AuthAPI, endpoints } from '../../API';
 export default function PersonalInformation() {
     const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
     const [modalChooseAvatar, setModalChooseAvatar] = useState(false);
+    const [selectedAvatar, setSelectedAvatar] = useState([]);
+    const [isAvatar, setIsAvatar] = useState(false);
+
     const avatar = useRef();
     let user = cookies.load("user");
 
@@ -23,6 +27,22 @@ export default function PersonalInformation() {
             window.location.reload();
         }).catch((err) => {
             console.log(err.response.data)
+        })
+    }
+
+    const handleImageChange = e => {
+        setSelectedAvatar([]);
+        if (e.target.files) {
+            const filesArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file));
+            setSelectedAvatar((prevImages) => prevImages.concat(filesArray));
+            Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+        }
+        setIsAvatar(true);
+    }
+
+    const renderAvatar = source => {
+        return source.map((image) => {
+            return <img className="update-upload-avatar" src={image} alt="img" key={image} />;
         })
     }
 
@@ -42,19 +62,33 @@ export default function PersonalInformation() {
                 <hr />
                 {
                     user ? <>
-                        <button onClick={() => setModalChooseAvatar(true)}>
-                            <img src={user.avatar} alt="img" />
-                        </button>
-                        <Modal className="modal-edit-post-form" isOpen={modalChooseAvatar} ariaHideApp={false}>
-                            <div clasName="modal-choose-avatar">
-                                <input type="file" ref={avatar} />
-                                <button onClick={changeAvatar}>Change avatar</button>
+                        <div className="choose-avatar">
+                            <button onClick={() => setModalChooseAvatar(true)}>
+                                <img src={user.avatar} alt="img" />
+                                <div className="middle-upload-avatar">
+                                    <FileUploadIcon style={{ fontSize: 45 }} />
+                                </div>
+                            </button>
+                        </div>
+                        <Modal className="modal-choose-avatar" isOpen={modalChooseAvatar} ariaHideApp={false}>
+                            <h1>UPDATE AVATAR</h1>
+                            <div className="choose-avatar-item">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="file" ref={avatar} onChange={handleImageChange} /></td>
+                                            <td>{renderAvatar(selectedAvatar)}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                {
+                                    isAvatar === true ? <button onClick={changeAvatar}>Change avatar</button> : <></>
+                                }
                             </div>
-                            <div className="close-modal-edit-post-form" onClick={() => setModalChooseAvatar(false)}>
+                            <div className="close-modal-choose-avatar" onClick={() => setModalChooseAvatar(false)}>
                                 <i className="fas fa-times-circle"></i>
                             </div>
                         </Modal>
-                        {/* <img src={user.avatar} alt="img" /> */}
                         <h4>{user.first_name} {user.last_name}</h4>
                         <table>
                             <tbody>

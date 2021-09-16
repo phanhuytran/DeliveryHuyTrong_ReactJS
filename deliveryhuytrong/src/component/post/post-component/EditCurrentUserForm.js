@@ -10,7 +10,6 @@ export default class EditCurrentUserForm extends React.Component {
             user: cookies.load("user"),
             message: ''
         }
-        this.avatar = React.createRef();
     }
 
     change = (field, event) => {
@@ -28,9 +27,11 @@ export default class EditCurrentUserForm extends React.Component {
         event.preventDefault();
         let formData = new FormData();
         for (let k in this.state.user) {
-            formData.append(k, this.state.user[k])
+            if (k !== this.state.user.avatar) {
+                formData.append(k, this.state.user[k])
+            }
         }
-        formData.append('avatar', this.avatar.current.files[0]);
+        // formData.append('avatar', this.state.user.avatar);
         AuthAPI.patch(endpoints['users'] + cookies.load("user").id + '/', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -80,7 +81,7 @@ export default class EditCurrentUserForm extends React.Component {
                 <p>Phone</p>
                 <input type="text" placeholder="Phone..." value={this.state.user.phone} onChange={this.change.bind(this, 'phone')} required />
                 <p className="edit-error">{this.state.messagePhone}</p>
-                <button className="btn-edit-current-user" type="submit">Edit</button><div style={{ marginBottom: '80px' }}></div>
+                <button className="btn-edit-current-user" type="submit">Edit</button><div style={{ marginBottom: '100px' }}></div>
             </form>
         );
     }

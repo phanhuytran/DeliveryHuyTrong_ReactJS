@@ -59,14 +59,14 @@
     margin: 4% 0 -2.5% 5%;
 }
 
-.post-body-left img {
+/* .post-body-left img {
     width: 30%;
     margin: 0 35% 5% 35%;
-}
+} */
 
 .post-body-left h4 {
     text-align: center;
-    margin-bottom: 5%;
+    margin: 5% 0 -5% 0;
 }
 
 .post-content-header {
@@ -82,6 +82,7 @@
 .post-content-header-left img {
     width: 50px;
     height: 50px;
+    object-fit: cover;
     border-radius: 50%;
 }
 
@@ -285,7 +286,6 @@
 .upload-image-file {
     width: 87.46px;
     height: 87.46px;
-    /* border-radius: 50%; */
     margin: 0 3.39px 3.39px 0;
     padding: 5px;
     animation: growth linear 0.2s;
@@ -335,6 +335,7 @@
 .post-comment-flex-left img {
     width: 40px;
     height: 40px;
+    object-fit: cover;
     border-radius: 50%;
 }
 
@@ -393,6 +394,19 @@ p.created-date-comment {
     color: #dc3545;
 }
 
+.modal-choose-avatar {
+    margin: 16.85% auto;
+    width: 30%;
+    height: 30%;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgb(33 33 33 / 20%);
+    background-color: #fff;
+    outline: none;
+    animation: growth linear 0.2s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
 .modal-edit-post-form {
     margin: 2% auto;
     width: 30%;
@@ -405,6 +419,111 @@ p.created-date-comment {
     animation: growth linear 0.25s;
     --growth-from: 0;
     --growth-to: 1;
+}
+
+.choose-avatar {
+    width: 44%;
+    margin: 0 auto;
+}
+
+.choose-avatar button {
+    border: none;
+    border-radius: 50%
+}
+
+.choose-avatar button img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.choose-avatar button:hover img {
+    transition: 0.4s;
+    opacity: 0.3;
+}
+
+.choose-avatar button:hover .middle-upload-avatar {
+    opacity: 1;
+}
+
+.middle-upload-avatar {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 63%;
+    left: 20.5%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.modal-choose-avatar {
+    text-align: center;
+}
+
+.modal-choose-avatar h1 {
+    font-size: 20px;
+    margin: 0 auto;
+    padding: 15px 15px 0 15px;
+}
+
+.update-upload-avatar {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    animation: growth linear 0.2s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
+.choose-avatar-item table {
+    width: 100%;
+    height: 105px;
+    margin: 0 auto;
+}
+
+.choose-avatar-item table tbody tr td:first-child {
+    width: 66%;
+}
+
+.choose-avatar-item table tbody tr td:last-child {
+    width: 34%;
+}
+
+.choose-avatar-item input {
+    width: 85%;
+    margin: 0 auto;
+    padding: 5px;
+    border: 1px solid #eee;
+}
+
+.choose-avatar-item button {
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 2px solid #f9bf3b;
+    background-color: #f9bf3b;
+    color: #fff;
+    transition: 0.4s;
+    animation: growth linear 0.25s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
+.choose-avatar-item button:hover {
+    background-color: #fff;
+    color: #f9bf3b;
+}
+
+.close-modal-choose-avatar {
+    font-size: 20px !important;
+    position: fixed;
+    top: 34.2%;
+    left: 66%;
+    font-size: 30px;
+    color: #22313f;
+    cursor: pointer;
 }
 
 .close-modal-edit-post-form {
@@ -435,14 +554,14 @@ p.created-date-comment {
     border: 1px solid #eee;
 }
 
-.edit-form input:focus-visible, .edit-form select:focus-visible, .edit-form textarea:focus-visible {
+.edit-form input:focus-visible, .edit-form select:focus-visible,
+.edit-form textarea:focus-visible, .choose-avatar-item input:focus-visible {
     outline: 2px solid #f9bf3b;
 }
 
 .edit-form button {
     float: right;
     font-weight: bold;
-    margin: 6% 0 0 0;
     padding: 0 10px;
     border: 2px solid #f9bf3b;
     background-color: #f9bf3b;
@@ -487,7 +606,7 @@ p.created-date-comment {
 }
 
 .btn-edit-current-user {
-    margin: 0 !important;
+    margin: 5% 0;
 }
 
 .post-list-null {

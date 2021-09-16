@@ -15,7 +15,7 @@ export default function EditPostForm(props) {
     let user = cookies.load("user");
     useEffect(() => {
         AuthAPI.get(endpoints['stocks']).then(res => (
-            setStockList(res.data.results)
+            setStockList(res.data)
         ));
     }, []);
 
@@ -77,7 +77,7 @@ export default function EditPostForm(props) {
                     })
                 }
             </select><br />
-            <button type="submit">Post</button><div style={{ marginBottom: '100px' }}></div>
+            <button type="submit">Post</button><div style={{ marginBottom: '70px' }}></div>
         </form>
     );
 }
