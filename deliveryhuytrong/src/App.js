@@ -4,7 +4,7 @@ import cookies from 'react-cookies';
 import qs from 'qs';
 import Footer from './component/item-base/Footer';
 import Header from './component/item-base/Header';
-import API, { endpoints } from './component/API';
+import API, {  endpoints } from './component/API';
 import BodyHome from './component/home/BodyHome';
 import BodyOrder from './component/list-orders/BodyOrder';
 import BodyOrderAuction from './component/order-auction/BodyOrderAuction';
@@ -24,7 +24,16 @@ export let UserContext = React.createContext();
 
 export default function App() {
   const [user, setUser] = useState(null);
+  // const [oath2Info, setOath2Info] = useState([]);
   const [message, setMessage] = useState(null);
+
+  // useEffect(() => {
+  //   async function getOath2Info() {
+  //     let res = await AuthAPI.get(endpoints['oauth2-info']);
+  //     setOath2Info(res.data);
+  //   }
+  //   getOath2Info();
+  // }, []);
 
   const login = async (username, password) => {
     await axios({
@@ -33,6 +42,8 @@ export default function App() {
       headers: {
         'content-type': 'application/x-www-form-urlencoded'
       }, data: qs.stringify({
+        // 'client_id': oath2Info.client_id,
+        // 'client_secret': oath2Info.client_secret,
         'client_id': 'GAoIoyXnX6pX6SwLNxeFWmcSyFY7lRfnDzKEDJDI',
         'client_secret': 'jszRNc5BqGwiJ4bt8a2JixeCEWUb2OiAm2cxYbWatnClTfNRWn8IgBy8nOP57wluThd3qiKdn4xUtko8nySFWxjS2TfiH9HlyUzee4s99srowoQ1UQ9t4ccdb2HnDSMe',
         'username': username,
@@ -89,7 +100,7 @@ export default function App() {
               <Route path="/post" exact={true} component={BodyPost} />
               <Route path="/post-detail/:id" exact={true} component={(props) => (<BodyPostDetail props={props} />)} />
               {/* {
-                cookies.load("user").username === 'tranphanhuy'
+                cookies.load("user").groups === [1]
                   ? <Switch>
                     <Route path="/post" exact={true} component={BodyPost} />
                     <Route path="/post-detail/:id" exact={true} component={(props) => (<BodyPostDetail props={props} />)} />

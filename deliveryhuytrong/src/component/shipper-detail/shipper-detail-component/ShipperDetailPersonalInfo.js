@@ -1,32 +1,35 @@
-import React, { useState } from 'react';
-import shipperListData from '../../shipper/shipper-component/ShipperListData';
+import React, { useState, useEffect } from 'react';
+import { AuthAPI, endpoints } from '../../API';
 
 export default function ShipperDetailPersonalInfo(props) {
-    const [shipperList] = useState(shipperListData);
-    const shipperID = props.props.match.params.id;
-    const shipper = shipperList;
+    const [shipperList, setShipperList] = useState([]);
+    const shipperID = parseInt(props.props.match.params.id, 10);
+
+    useEffect(() => {
+        async function getShipperList() {
+            let res = await AuthAPI.get(endpoints['shippers']);
+            setShipperList(res.data);
+        }
+        getShipperList();
+    }, []);
 
     return (
         <>
             {
-                shipper.map((value, index) => {
+                shipperList.map((value, index) => {
                     if (value.id === shipperID) {
                         return <React.Fragment key={index}>
                             <tr>
                                 <td>Full name:</td>
-                                <td colSpan={2} className="text-right shipper-highlight-info">{value.firstName} {value.lastName}</td>
+                                <td colSpan={2} className="text-right shipper-highlight-info">{value.first_name} {value.last_name}</td>
                             </tr>
                             <tr>
                                 <td>Date of birth:</td>
-                                <td colSpan={2} className="text-right">{value.dateOfBirth}</td>
+                                <td colSpan={2} className="text-right">{value.date_of_birth}</td>
                             </tr>
                             <tr>
                                 <td>Gender:</td>
                                 <td colSpan={2} className="text-right">{value.gender}</td>
-                            </tr>
-                            <tr>
-                                <td>ID card:</td>
-                                <td colSpan={2} className="text-right">{value.idCard}</td>
                             </tr>
                             <tr>
                                 <td>Address:</td>

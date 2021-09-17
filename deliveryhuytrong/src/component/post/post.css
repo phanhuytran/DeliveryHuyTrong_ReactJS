@@ -286,6 +286,7 @@
 .upload-image-file {
     width: 87.46px;
     height: 87.46px;
+    object-fit: cover;
     margin: 0 3.39px 3.39px 0;
     padding: 5px;
     animation: growth linear 0.2s;
@@ -577,7 +578,7 @@ p.created-date-comment {
 .edit-upload-image-file {
     width: 50px;
     height: 50px;
-    /* border-radius: 50%; */
+    object-fit: cover;
     margin: -20px 0 20px 0;
     padding: 5px;
     animation: growth linear 0.2s;

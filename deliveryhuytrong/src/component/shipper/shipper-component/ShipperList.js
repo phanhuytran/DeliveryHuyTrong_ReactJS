@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../shipper.css';
 import { Link } from 'react-router-dom';
 import ShipperTitle from './ShipperTitle';
-import ShipperInfoForm from './ShipperInfoForm';
+// import ShipperInfoForm from './ShipperInfoForm';
 import { AuthAPI, endpoints } from '../../API';
 
 export default function ShipperList() {
@@ -10,17 +10,17 @@ export default function ShipperList() {
     const [fullNameFilter, setFullNameFilter] = useState('');
     const [phoneFilter, setPhoneFilter] = useState('');
     const [isDisplayClearFilter] = useState(false);
-    const [isDisplayShipperInfoForm, setIsDisplayShipperInfoForm] = useState(false);
+    // const [isDisplayShipperInfoForm, setIsDisplayShipperInfoForm] = useState(false);
 
     const fullName = fullNameFilter;
     const phone = phoneFilter;
-    const displayShipperInfoForm = isDisplayShipperInfoForm;
+    // const displayShipperInfoForm = isDisplayShipperInfoForm;
     const itemsOrigin = shipperList;
 
     useEffect(() => {
         async function getShipperList() {
-            let res = await AuthAPI.get(endpoints['users']);
-            setShipperList(res.data.results);
+            let res = await AuthAPI.get(endpoints['shippers']);
+            setShipperList(res.data);
         }
         getShipperList();
     }, []);
@@ -28,27 +28,27 @@ export default function ShipperList() {
     let shipper = [], result, i = 0;
     let isDisplayClear = isDisplayClearFilter;
 
-    const elementShipperInfoForm = displayShipperInfoForm
-        ? <ShipperInfoForm onSubmit={createShipper} />
-        : '';
+    // const elementShipperInfoForm = displayShipperInfoForm
+    //     ? <ShipperInfoForm onSubmit={createShipper} />
+    //     : '';
 
-    function createShipper(data) {
-    }
+    // function createShipper(data) {
+    // }
 
-    function removeShipper(id) {
-    }
+    // function removeShipper(id) {
+    // }
 
-    function editShipper(item) {
-    }
+    // function editShipper(item) {
+    // }
 
-    function onToggleShipperInfoForm() { setIsDisplayShipperInfoForm(toggle => !toggle); }
+    // function onToggleShipperInfoForm() { setIsDisplayShipperInfoForm(toggle => !toggle); }
     function onClear() { setFullNameFilter(''); setPhoneFilter(''); }
 
     if (fullName.length > 0 || phone.length > 0) {
         isDisplayClear = true;
         itemsOrigin.forEach((item) => {
-            if (((item.firstName.toLowerCase() + " " + item.lastName.toLowerCase()).indexOf(fullName) !== -1
-                && item.phone.indexOf(phone) !== -1)) {
+            if (((item.first_name.toLowerCase() + " " + item.last_name.toLowerCase()).indexOf(fullName) !== -1
+            && item.phone.indexOf(phone) !== -1)) {
                 shipper.push(item);
             }
         });
@@ -66,7 +66,7 @@ export default function ShipperList() {
         <section className="about_top">
             <div className="container">
                 <ShipperTitle />
-                <div className="create-post">
+                {/* <div className="create-post">
                     <div className="create-post-left">
                         <div className="new-shipper-tab" onClick={onToggleShipperInfoForm}>
                             {
@@ -75,7 +75,7 @@ export default function ShipperList() {
                         </div>
                     </div>
                     {elementShipperInfoForm}
-                </div>
+                </div> */}
                 <div className="shipper-list-filter">
                     <input type="text" placeholder="Search by full name..." value={fullName} onChange={e => setFullNameFilter(e.target.value)} />
                     <input className="ml-spf" type="text" placeholder="Search by phone number..." value={phone} onChange={e => setPhoneFilter(e.target.value)} />
@@ -94,7 +94,7 @@ export default function ShipperList() {
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Detailed information</th>
-                                <th>Action</th>
+                                {/* <th>Action</th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -111,11 +111,11 @@ export default function ShipperList() {
                                         <td>{shipper.email}</td>
                                         <td>{shipper.phone}</td>
                                         <td><Link to={"shipper-detail/" + shipper.id} className="see-another-page-2">Click to rate <span className="fas fa-info-circle" /></Link></td>
-                                        <td>
+                                        {/* <td>
                                             <span className="see-another-page-1" onClick={() => editShipper(shipper)}>Edit</span>
-                                            {/* <RemoveShipper props={shipper.id} /> */}
+                                            // <RemoveShipper props={shipper.id} />
                                             <span className="see-another-page-2" onClick={() => removeShipper(shipper.id)}>Remove</span>
-                                        </td>
+                                        </td> */}
                                     </tr>
                                 })
                             }

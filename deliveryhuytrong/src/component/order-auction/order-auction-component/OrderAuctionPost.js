@@ -14,10 +14,12 @@ export default function OrderAuctionPost(props) {
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
 
     useEffect(() => {
-        AuthAPI.get(endpoints['posts']).then(res => (
-            setOrderPostList(res.data.results)
-        ));
-    }, [])
+        async function getOrderDetailList() {
+            let res = await AuthAPI.get(endpoints['posts']);
+            setOrderPostList(res.data.results);
+        }
+        getOrderDetailList();
+    });
 
     return (
         <section className="order-bottom-area">
@@ -43,7 +45,7 @@ export default function OrderAuctionPost(props) {
                                             <p>Customer: <span className="info-comment">{value.customer.first_name} {value.customer.last_name}</span></p>
                                             <p><span id="see-more-auction-order-info-1" onClick={seeMoreAuctionInfo}> See More <span className="fas fa-arrow-down" /></span></p>
                                             <div id="see-more-auction-order-info-2">
-                                            <p>Order description:<span className="info-comment">{value.description}</span></p>
+                                                <p>Order description:<span className="info-comment">{value.description}</span></p>
                                                 <p>Weight:<span className="info-comment">{value.weight} kilograms</span></p>
                                                 <p>Sending address:<span className="info-comment">{value.send_stock.address}</span></p>
                                                 <p>Sending address information:<span className="info-comment">{value.send_stock.name_represent_man} - {value.send_stock.phone}</span></p>

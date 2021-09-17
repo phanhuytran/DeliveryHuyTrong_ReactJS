@@ -69,9 +69,9 @@ export default class EditCurrentUserForm extends React.Component {
                 <p>Gender</p>
                 <select value={this.state.user.gender} onChange={this.change.bind(this, 'gender')} required>
                     <option value="" disabled hidden></option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
                 </select>
                 <p>Address</p>
                 <input type="text" placeholder="Address..." value={this.state.user.address} onChange={this.change.bind(this, 'address')} required />

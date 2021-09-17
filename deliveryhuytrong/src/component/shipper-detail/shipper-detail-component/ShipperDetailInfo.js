@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../shipper-detail.css';
 import { Link } from 'react-router-dom';
 import ShipperDetailPersonalInfo from './ShipperDetailPersonalInfo';
 import ShipperDetailRating from './ShipperDetailRating';
 import ShipperDetailTitle from './ShipperDetailTitle';
-import shipperListData from '../../shipper/shipper-component/ShipperListData';
+import { AuthAPI, endpoints } from '../../API';
 
 export default function ShipperDetailInfo(props) {
-    const [shipperList] = useState(shipperListData);
-    const shipperID = props.props.match.params.id;
+    const [shipperList, setShipperList] = useState([]);
+    const shipperID = parseInt(props.props.match.params.id, 10);
+
+    useEffect(() => {
+        async function getShipperList() {
+            let res = await AuthAPI.get(endpoints['shippers']);
+            setShipperList(res.data);
+        }
+        getShipperList();
+    }, []);
 
     return (
         <section className="about_top">
@@ -34,7 +42,7 @@ export default function ShipperDetailInfo(props) {
                                     </div>
                                 </React.Fragment>
                             }
-                            return '';
+                            return <React.Fragment key={index}></React.Fragment>;
                         })
                     }
                 </div>

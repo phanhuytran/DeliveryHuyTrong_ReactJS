@@ -1,16 +1,6 @@
 import React from 'react';
 
 export default function ShipperDetailRating() {
-    function cofirm_rating() {
-        var checkbox = document.getElementsByName("rating");
-        for (var i = 0; i < checkbox.length; i++) {
-            if (checkbox[i].checked === true) {
-                document.getElementById("result-confirm-rating").innerHTML = "Your rating: " + checkbox[i].value;
-                document.getElementById("btn-confirm-rating").style.color = "#1cb33c";
-            }
-        }
-    }
-
     return (
         <>
             <tr>
@@ -45,4 +35,14 @@ export default function ShipperDetailRating() {
             </tr>
         </>
     );
+
+    function cofirm_rating() {
+        var checkbox = document.getElementsByName("rating");
+        for (var i = 0; i < checkbox.length; i++) {
+            if (checkbox[i].checked === true) {
+                document.getElementById("result-confirm-rating").innerHTML = "Your rating: " + checkbox[i].value;
+                document.getElementById("btn-confirm-rating").style.color = "#1cb33c";
+            }
+        }
+    }
 }
