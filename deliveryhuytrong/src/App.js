@@ -24,26 +24,30 @@ export let UserContext = React.createContext();
 
 export default function App() {
   const [user, setUser] = useState(null);
-  // const [message, setMessage] = useState('');
+  const [message, setMessage] = useState(null);
 
   const login = async (username, password) => {
-    let res = await axios({
+    await axios({
       method: 'POST',
       url: 'http://127.0.0.1:8000/o/token/',
       headers: {
         'content-type': 'application/x-www-form-urlencoded'
-      },
-      data: qs.stringify({
+      }, data: qs.stringify({
         'client_id': 'GAoIoyXnX6pX6SwLNxeFWmcSyFY7lRfnDzKEDJDI',
         'client_secret': 'jszRNc5BqGwiJ4bt8a2JixeCEWUb2OiAm2cxYbWatnClTfNRWn8IgBy8nOP57wluThd3qiKdn4xUtko8nySFWxjS2TfiH9HlyUzee4s99srowoQ1UQ9t4ccdb2HnDSMe',
         'username': username,
         'password': password,
         'grant_type': 'password',
       })
+    }).then((res) => {
+      console.log(res);
+      setMessage(true);
+      cookies.save("access_token", res.data.access_token);
     }).catch((err) => {
-      console.log(err.response.data)
+      console.log(err.response.data);
+      setMessage(false);
     })
-    cookies.save("access_token", res.data.access_token);
+
     let user = await API.get(endpoints['current-user'], {
       headers: {
         'Authorization': `Bearer ${cookies.load('access_token')}`
@@ -67,7 +71,7 @@ export default function App() {
   }
 
   return (
-    <UserContext.Provider value={{ user, login }}>
+    <UserContext.Provider value={{ user, login, message }}>
       <Router>
         <Header />
         <Switch>
@@ -84,6 +88,14 @@ export default function App() {
               <Route path="/shipper-detail/:id" exact={true} component={(props) => (<BodyShipperDetail props={props} />)} />
               <Route path="/post" exact={true} component={BodyPost} />
               <Route path="/post-detail/:id" exact={true} component={(props) => (<BodyPostDetail props={props} />)} />
+              {/* {
+                cookies.load("user").username === 'tranphanhuy'
+                  ? <Switch>
+                    <Route path="/post" exact={true} component={BodyPost} />
+                    <Route path="/post-detail/:id" exact={true} component={(props) => (<BodyPostDetail props={props} />)} />
+                  </Switch>
+                  : <Switch><Route path="/post" exact={true} component={BodyContact} /></Switch>
+              } */}
               <Route path="" exact={true} component={PageNotFound_404} />
             </Switch> : <Switch>
               <Route path="/statistic" exact={true} component={AuthorizationRequired_401} />

@@ -6,9 +6,10 @@ import { AuthAPI, endpoints } from '../../API';
 export default class EditCurrentUserForm extends React.Component {
     constructor(props) {
         super(props);
+        this.avatar = React.createRef();
         this.state = {
             user: cookies.load("user"),
-            message: ''
+            message: '',
         }
     }
 
@@ -27,11 +28,10 @@ export default class EditCurrentUserForm extends React.Component {
         event.preventDefault();
         let formData = new FormData();
         for (let k in this.state.user) {
-            if (k !== this.state.user.avatar) {
+            if (k !== 'avatar') {
                 formData.append(k, this.state.user[k])
             }
         }
-        // formData.append('avatar', this.state.user.avatar);
         AuthAPI.patch(endpoints['users'] + cookies.load("user").id + '/', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'

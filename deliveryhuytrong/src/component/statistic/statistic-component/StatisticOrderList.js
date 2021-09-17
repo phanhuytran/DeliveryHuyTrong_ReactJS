@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../statistic.css';
-import API, { endpoints } from '../../API';
+import { AuthAPI, endpoints } from '../../API';
 
 export default function StatisticOrderList() {
     const [orderList, setOrderList] = useState([]);
@@ -30,11 +30,11 @@ export default function StatisticOrderList() {
     let isDisplayClearReceivingAddress = isDisplayClearReceivingAddressFilter;
 
     useEffect(() => {
-        API.get(endpoints['posts']).then(res => (
+        AuthAPI.get(endpoints['posts']).then(res => (
             setOrderList(res.data.results)
         ));
     }, []);
-    
+
     function onClearDescriptionFilter() { setDescriptionFilter(''); }
     function onClearCreatedDateFilter() { setCreatedDateFilter(''); }
     function onClearCustomerFilter() { setCustomerFilter(''); }
@@ -48,7 +48,7 @@ export default function StatisticOrderList() {
                 && (item.customer.first_name + " " + item.customer.last_name).toLowerCase().indexOf(customer) !== -1
                 && item.send_stock.address.toLowerCase().indexOf(sendingAddress) !== -1
                 && item.receive_stock.address.toLowerCase().indexOf(receivingAddress) !== -1) {
-                    order.push(item);
+                order.push(item);
             }
         });
     } else {

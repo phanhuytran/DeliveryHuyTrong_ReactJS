@@ -4,7 +4,6 @@ import { UserContext } from '../../../App';
 export default function SignInForm() {
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
-    // const [message, setMessage] = useState('');
     const auth = useContext(UserContext);
 
     const login = async (e) => {
@@ -21,7 +20,12 @@ export default function SignInForm() {
                     <a className="a-s social" href="https://www.facebook.com/thephanhuytran/"><i className="fab fa-google-plus-g" /></a>
                     <a className="a-s social" href="https://www.facebook.com/thephanhuytran/"><i className="fab fa-linkedin-in" /></a>
                 </div>
-                <span className="error">{}</span>
+                {
+                    auth.message === true
+                    ? <span className="success">Logged in successfully!</span> :
+                    auth.message === false
+                    ? <span className="error">Username or password is incorrect!</span> : <></>
+                }
                 <p>Username</p>
                 <input type="text" placeholder="Username" id="username" onChange={e => setUsername(e.target.value)} required />
                 <p>Password</p>
