@@ -22,10 +22,11 @@ export default function OrderNotYetAuctionedList() {
     let isDisplayClearReceivingAddress = isDisplayClearReceivingAddressFilter;
 
     useEffect(() => {
-        // API.get(endpoints['posts']).then(res => (
-        AuthAPI.get(endpoints['posts']).then(res => (
-            setOrderPostList(res.data.results)
-        ));
+        async function getOrderPostList() {
+            let res = await AuthAPI.get(endpoints['posts']);
+            setOrderPostList(res.data.results);
+        }
+        getOrderPostList();
     }, []);
 
     function onClearCustomerFilter() { setCustomerFilter(''); }

@@ -18,12 +18,12 @@ export default function PostForm(props) {
     const [isImage, setIsImage] = useState(false);
     const image = React.createRef();
 
-    let user = cookies.load("user");
-
     useEffect(() => {
-        AuthAPI.get(endpoints['stocks']).then(res => (
-            setStockList(res.data)
-        ));
+        async function getStockList() {
+            let res = await AuthAPI.get(endpoints['stocks']);
+            setStockList(res.data);
+        }
+        getStockList();
     }, []);
 
     const handleImageChange = e => {
@@ -42,13 +42,13 @@ export default function PostForm(props) {
         })
     }
 
-    function onSubmit() {
+    function onSubmit(e) {
         let formData = new FormData();
         let files = image.current.files;
         for (let i = 0; i < files.length; i++) {
             formData.append("image_items", files[i])
         }
-        formData.append("customer", user.id);
+        formData.append("customer", cookies.load("user").id);
         formData.append("description", description);
         formData.append("weight", weight);
         formData.append("receive_stock", receivingAddress);
@@ -85,7 +85,7 @@ export default function PostForm(props) {
                         </tr>
                         <tr>
                             <td>Image:</td>
-                            <td><input type="file" ref={image} multiple onChange={handleImageChange} /></td>
+                            <td><input type="file" ref={image} multiple onChange={handleImageChange} required /></td>
                         </tr>
                         {
                             isImage === true ? <tr><td colSpan={2} style={{ padding: '0 0 15px 15px' }}>{renderImages(selectedFiles)}</td></tr> : <></>

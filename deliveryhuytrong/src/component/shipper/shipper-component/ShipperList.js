@@ -1,79 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../shipper.css';
-import { Link, useHistory } from 'react-router-dom';
-import { remove } from 'lodash';
-import swal from 'sweetalert';
-import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom';
 import ShipperTitle from './ShipperTitle';
-import shipperListData from './ShipperListData';
 import ShipperInfoForm from './ShipperInfoForm';
+import { AuthAPI, endpoints } from '../../API';
 
 export default function ShipperList() {
-    const [shipperList, setShipperList] = useState(shipperListData);
+    const [shipperList, setShipperList] = useState([]);
     const [fullNameFilter, setFullNameFilter] = useState('');
     const [phoneFilter, setPhoneFilter] = useState('');
     const [isDisplayClearFilter] = useState(false);
     const [isDisplayShipperInfoForm, setIsDisplayShipperInfoForm] = useState(false);
-    // const [itemSelected, setItemSelected] = useState(null);
 
-    const history = useHistory();
     const fullName = fullNameFilter;
     const phone = phoneFilter;
     const displayShipperInfoForm = isDisplayShipperInfoForm;
     const itemsOrigin = shipperList;
 
+    useEffect(() => {
+        async function getShipperList() {
+            let res = await AuthAPI.get(endpoints['users']);
+            setShipperList(res.data.results);
+        }
+        getShipperList();
+    }, []);
+
     let shipper = [], result, i = 0;
     let isDisplayClear = isDisplayClearFilter;
 
     const elementShipperInfoForm = displayShipperInfoForm
-        // ? <ShipperInfoForm itemSelected={itemSelected} onSubmit={addShipper} />
-        ? <ShipperInfoForm onSubmit={addShipper} />
+        ? <ShipperInfoForm onSubmit={createShipper} />
         : '';
 
-    function addShipper(data) {
-        let shipper = shipperList;
-        shipper.push({
-            id: uuidv4(),
-            firstName: data.firstName,
-            lastName: data.lastName,
-            dateOfBirth: data.dateOfBirth,
-            gender: data.gender,
-            idCard: data.idCard,
-            address: data.address,
-            email: data.email,
-            phone: data.phone,
-            avatar: data.avatar,
-            isActive: true,
-        });
-
-        setIsDisplayShipperInfoForm(false);
-        setShipperList(shipper);
+    function createShipper(data) {
     }
 
     function removeShipper(id) {
-        let shipper = shipperList;
-        swal({
-            title: "Do you want to remove this shipper?",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true
-        }).then((willRemove) => {
-            if (willRemove) {
-                remove(shipper, item => {
-                    return item.id === id;
-                });
-                setShipperList(shipper);
-                swal("This shipper was removed successfully!", { icon: "success" });
-                history.push("/shipper");
-            } else {
-                swal("You pressed cancel!", { icon: "warning" });
-            }
-        });
     }
 
     function editShipper(item) {
-        setIsDisplayShipperInfoForm(true);
-        // setItemSelected(item);
     }
 
     function onToggleShipperInfoForm() { setIsDisplayShipperInfoForm(toggle => !toggle); }
@@ -138,9 +103,9 @@ export default function ShipperList() {
                                     i++;
                                     return <tr key={index}>
                                         <td>{i}</td>
-                                        <td>{shipper.firstName} {shipper.lastName}</td>
+                                        <td>{shipper.first_name} {shipper.last_name}</td>
                                         <td><img src={shipper.avatar} alt="avatar" /></td>
-                                        <td>{shipper.dateOfBirth}</td>
+                                        <td>{shipper.date_of_birth}</td>
                                         <td>{shipper.gender}</td>
                                         <td>{shipper.address}</td>
                                         <td>{shipper.email}</td>

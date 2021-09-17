@@ -6,10 +6,10 @@ import { AuthAPI, endpoints } from '../../API';
 export default class EditCurrentUserForm extends React.Component {
     constructor(props) {
         super(props);
-        this.avatar = React.createRef();
         this.state = {
             user: cookies.load("user"),
-            message: '',
+            messagePhone: '',
+            messageEmail: ''
         }
     }
 

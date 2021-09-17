@@ -30,9 +30,11 @@ export default function StatisticOrderList() {
     let isDisplayClearReceivingAddress = isDisplayClearReceivingAddressFilter;
 
     useEffect(() => {
-        AuthAPI.get(endpoints['posts']).then(res => (
-            setOrderList(res.data.results)
-        ));
+        async function getOrderList() {
+            let res = await AuthAPI.get(endpoints['posts']);
+            setOrderList(res.data.results);
+        }
+        getOrderList();
     }, []);
 
     function onClearDescriptionFilter() { setDescriptionFilter(''); }

@@ -28,9 +28,11 @@ export default function Post() {
     };
 
     useEffect(() => {
-        AuthAPI.get(endpoints['posts']).then(res => (
-            setPostList(res.data.results)
-        ));
+        async function getPostList() {
+            let res = await AuthAPI.get(endpoints['posts']);
+            setPostList(res.data.results);
+        }
+        getPostList();
     }, []);
 
     async function createPost(data) {
@@ -80,6 +82,8 @@ export default function Post() {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${cookies.load('access_token')}`
             }
+        }).catch((err) => {
+            console.log(err.response.data)
         })
         console.log(data);
         setPostList(post);

@@ -7,11 +7,9 @@ export default function StockForm(props) {
     const [representative, setRepresentative] = useState('');
     const [phone, setPhone] = useState('');
 
-    let user = cookies.load("user");
-
     function onSubmit() {
         let item = {
-            customer: user.id,
+            customer: cookies.load("user").id,
             address: address,
             name_represent_man: representative,
             phone: phone,

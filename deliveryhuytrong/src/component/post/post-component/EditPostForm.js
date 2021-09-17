@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../post.css';
-import cookies from 'react-cookies';
+// import cookies from 'react-cookies';
 import { AuthAPI, endpoints } from '../../API';
 
 export default function EditPostForm(props) {
@@ -12,11 +12,12 @@ export default function EditPostForm(props) {
     const [selectedFiles, setSelectedFiles] = useState([]);
     const image = React.createRef();
 
-    let user = cookies.load("user");
     useEffect(() => {
-        AuthAPI.get(endpoints['stocks']).then(res => (
-            setStockList(res.data)
-        ));
+        async function getStockList() {
+            let res = await AuthAPI.get(endpoints['stocks']);
+            setStockList(res.data);
+        }
+        getStockList();
     }, []);
 
     const handleImageChange = e => {
@@ -34,14 +35,13 @@ export default function EditPostForm(props) {
         })
     }
 
-    function onSubmit(e) {
-        e.preventDefault();
+    function onSubmit() {
         let formData = new FormData();
         let files = image.current.files;
         for (let i = 0; i < files.length; i++) {
             formData.append("image_items", files[i])
         }
-        formData.append("customer", user.id);
+        // formData.append("customer", cookies.load("user").id);
         formData.append("description", description);
         formData.append("weight", weight);
         formData.append("receive_stock", receivingAddress);
@@ -55,7 +55,7 @@ export default function EditPostForm(props) {
             <p>Order description:</p>
             <textarea cols={46} rows={5} placeholder="Please describe your order..." value={description} onChange={e => setDescription(e.target.value)} required />
             <p>Image:</p>
-            <input type="file" ref={image} multiple onChange={handleImageChange} />
+            <input type="file" ref={image} multiple onChange={handleImageChange} required />
             <div>{renderImages(selectedFiles)}</div>
             <p>Weight:</p>
             <input type="number" min="0" step="0.01" placeholder="Weight..." value={weight} onChange={e => setWeight(e.target.value)} required />

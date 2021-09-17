@@ -83,7 +83,7 @@ export default function ModalSignInSignUp() {
                             <i className="fas fa-times-circle"></i>
                         </div>
                     </Modal>
-                </> : ''
+                </> : <></>
             }
         </>
     );
