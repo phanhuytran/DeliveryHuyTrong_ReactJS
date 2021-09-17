@@ -5,6 +5,7 @@ import cookies from 'react-cookies';
 import Modal from 'react-modal';
 import EditCurrentUserForm from './EditCurrentUserForm';
 import { AuthAPI, endpoints } from '../../API';
+import avatarIMG from '../image/user.png'
 
 export default function PersonalInformation() {
     const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
@@ -64,7 +65,10 @@ export default function PersonalInformation() {
                     user ? <>
                         <div className="choose-avatar">
                             <button onClick={() => setModalChooseAvatar(true)}>
-                                <img src={user.avatar} alt="img" />
+                                {
+                                    cookies.load("user").avatar !== null ? <img src={user.avatar} alt="avatar" />
+                                    : <img src={avatarIMG} alt="avatar" />
+                                }
                                 <div className="middle-upload-avatar">
                                     <FileUploadIcon style={{ fontSize: 45 }} />
                                 </div>

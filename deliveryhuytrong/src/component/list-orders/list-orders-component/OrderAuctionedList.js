@@ -35,7 +35,7 @@ export default function OrdertAuctionedList() {
 
     if (orderPost.length === 0) {
         result = <div className="no-data-found">
-            <h1>No order found</h1>
+            <h1>Order not found</h1>
         </div>
     }
 

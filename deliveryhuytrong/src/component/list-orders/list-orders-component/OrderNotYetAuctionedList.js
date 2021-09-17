@@ -48,7 +48,7 @@ export default function OrderNotYetAuctionedList() {
 
     if (orderPost.length === 0) {
         result = <td colSpan={7} className="no-data-found">
-            <h1>No order found</h1>
+            <h1>Order not found</h1>
         </td>
     }
 

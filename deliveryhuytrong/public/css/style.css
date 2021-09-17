@@ -1281,6 +1281,10 @@ div.auction-order-info {
     margin: 4% auto 0 auto;
 }
 
+div.auction-order-info p {
+    margin: 0 0 5px;
+}
+
 div#see-more-auction-order-info-2 {
     display: none;
 }

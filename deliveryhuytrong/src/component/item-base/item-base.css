@@ -70,7 +70,7 @@
     line-height: 20px;
 }
 
-.page-not-found, .authorization-required {
+.page-not-found, .authorization-required, .forbidden {
     background: url(image/shipper.jpg);
     background-color: #22313f;
     height: 238px;
@@ -79,7 +79,7 @@
     margin: 0.8% auto 0.8% auto;
 }
 
-.page-not-found::before, .authorization-required::before {
+.page-not-found::before, .authorization-required::before, .forbidden::before {
     position: absolute;
     left: 0;
     top: 0;
@@ -89,7 +89,7 @@
     height: 100%;
 }
 
-.page-not-found h1, .authorization-required h1 {
+.page-not-found h1, .authorization-required h1, .forbidden h1 {
     position: absolute;
     font-family: 'montserratsemi_bold';
     font-size: 70px;
@@ -103,6 +103,10 @@
 
 .authorization-required h1 {
     margin: 6.5% 5.56%;
+}
+
+.forbidden h1 {
+    margin: 6.5% 26.845%;
 }
 
 .see-info-current-user {

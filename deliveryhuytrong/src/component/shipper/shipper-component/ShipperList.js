@@ -58,7 +58,7 @@ export default function ShipperList() {
 
     if (shipper.length === 0) {
         result = <td colSpan={12} className="no-data-found">
-            <h1>No shipper found</h1>
+            <h1>Shipper not found</h1>
         </td>
     }
 

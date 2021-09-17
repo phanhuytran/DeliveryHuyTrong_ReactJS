@@ -93,7 +93,7 @@ export default function Post() {
 
     let result;
     if (postList.length === 0) {
-        result = <div className="post-list-null"><p>No post found</p></div>
+        result = <div className="post-list-null"><p>Post not found</p></div>
     }
 
     return (
@@ -101,80 +101,84 @@ export default function Post() {
             <div className="post-body">
                 <PersonalInformation />
                 <div className="post-body-right">
-                    <PostForm onSubmit={createPost} />
                     {
-                        _.sortBy(postList).reverse().map((post, index) => {
-                            return <React.Fragment key={index}>
-                                <div className="post-item">
-                                    <div className="post-content-header">
-                                        <div className="post-content-header-left">
-                                            <img src={post.customer.avatar} alt="img" />
-                                        </div>
-                                        <div className="post-content-header-center">
-                                            <p><strong>{post.customer.username}</strong><br /><span>{(post.created_date).slice(0, 10)}</span></p>
-                                        </div>
-                                        <div className="post-content-header-right">
-                                            <p onClick={() => onTogglePostOption(index)}>
-                                                <span><i className="fas fa-ellipsis-h"></i></span>
-                                            </p>
-                                            {!hiddenPostOption[index] && <></>} {
-                                                hiddenPostOption[index] && <div className="post-option">
-                                                    <p onClick={() => setModalEditIsOpen(true)}>Edit</p>
-                                                    <Modal className="modal-edit-post-form" isOpen={modalEditIsOpen} ariaHideApp={false}>
-                                                        <EditPostForm
-                                                            onSubmit={() => editPost(post.id)}
-                                                            props={post}
-                                                            description={post.description}
-                                                            weight={post.weight}
-                                                            receivingAddress={post.receive_stock}
-                                                            sendingAddress={post.send_stock}
-                                                            image={post.image_items.map((i, ix) => {
-                                                                return <img key={ix} src={i.image} alt="img" />
-                                                            })}
-                                                        />
-                                                        <div className="close-modal-edit-post-form" onClick={() => setModalEditIsOpen(false)}>
-                                                            <i className="fas fa-times-circle"></i>
-                                                        </div>
-                                                    </Modal>
-                                                    <p onClick={() => removePost(post.id)}>Remove</p>
+                        cookies.load("user").groups[0] === 1 ? <>
+                            <PostForm onSubmit={createPost} />
+                            {
+                                _.sortBy(postList).reverse().map((post, index) => {
+                                    return <React.Fragment key={index}>
+                                        <div className="post-item">
+                                            <div className="post-content-header">
+                                                <div className="post-content-header-left">
+                                                    <img src={post.customer.avatar} alt="img" />
                                                 </div>
-                                            }
-                                        </div>
-                                    </div>
-                                    <div className="post-content">
-                                        {
-                                            !hiddenContent[index] && <div>
-                                                <p>Customer:<span>{post.customer.first_name} {post.customer.last_name}</span></p>
+                                                <div className="post-content-header-center">
+                                                    <p><strong>{post.customer.username}</strong><br /><span>{(post.created_date).slice(0, 10)}</span></p>
+                                                </div>
+                                                <div className="post-content-header-right">
+                                                    <p onClick={() => onTogglePostOption(index)}>
+                                                        <span><i className="fas fa-ellipsis-h"></i></span>
+                                                    </p>
+                                                    {!hiddenPostOption[index] && <></>} {
+                                                        hiddenPostOption[index] && <div className="post-option">
+                                                            <p onClick={() => setModalEditIsOpen(true)}>Edit</p>
+                                                            <Modal className="modal-edit-post-form" isOpen={modalEditIsOpen} ariaHideApp={false}>
+                                                                <EditPostForm
+                                                                    onSubmit={() => editPost(post.id)}
+                                                                    props={post}
+                                                                    description={post.description}
+                                                                    weight={post.weight}
+                                                                    receivingAddress={post.receive_stock}
+                                                                    sendingAddress={post.send_stock}
+                                                                    image={post.image_items.map((i, ix) => {
+                                                                        return <img key={ix} src={i.image} alt="img" />
+                                                                    })}
+                                                                />
+                                                                <div className="close-modal-edit-post-form" onClick={() => setModalEditIsOpen(false)}>
+                                                                    <i className="fas fa-times-circle"></i>
+                                                                </div>
+                                                            </Modal>
+                                                            <p onClick={() => removePost(post.id)}>Remove</p>
+                                                        </div>
+                                                    }
+                                                </div>
                                             </div>
-                                        } {
-                                            hiddenContent[index] && <div className="show-post-content">
-                                                <p>Customer:<span>{post.customer.first_name} {post.customer.last_name}</span></p>
-                                                <p>Description:<span>{post.description}</span></p>
-                                                <p>Weight:<span>{post.weight} kilograms</span></p>
-                                                <p>Sending address:<span>{post.send_stock.address}</span></p>
-                                                <p>Sending address information:<span>{post.send_stock.name_represent_man} - {post.send_stock.phone}</span></p>
-                                                <p>Receiving address:<span>{post.receive_stock.address}</span></p>
-                                                <p>Receiving address information:<span>{post.receive_stock.name_represent_man} - {post.receive_stock.phone}</span></p>
-                                            </div>
-                                        }
-                                        <p className="show-hide-content"><i className="fas fa-ellipsis-h" onClick={() => onToggleHideContent(index)}></i></p>
-                                        <div className="order-image">
-                                            <Slider className="auction-info-carousel" {...settingSlider}>
+                                            <div className="post-content">
                                                 {
-                                                    post.image_items.map((i, ix) => {
-                                                        return <img key={ix} src={i.image} alt="img" />
-                                                    })
+                                                    !hiddenContent[index] && <div>
+                                                        <p>Customer:<span>{post.customer.first_name} {post.customer.last_name}</span></p>
+                                                    </div>
+                                                } {
+                                                    hiddenContent[index] && <div className="show-post-content">
+                                                        <p>Customer:<span>{post.customer.first_name} {post.customer.last_name}</span></p>
+                                                        <p>Description:<span>{post.description}</span></p>
+                                                        <p>Weight:<span>{post.weight} kilograms</span></p>
+                                                        <p>Sending address:<span>{post.send_stock.address}</span></p>
+                                                        <p>Sending address information:<span>{post.send_stock.name_represent_man} - {post.send_stock.phone}</span></p>
+                                                        <p>Receiving address:<span>{post.receive_stock.address}</span></p>
+                                                        <p>Receiving address information:<span>{post.receive_stock.name_represent_man} - {post.receive_stock.phone}</span></p>
+                                                    </div>
                                                 }
-                                            </Slider>
+                                                <p className="show-hide-content"><i className="fas fa-ellipsis-h" onClick={() => onToggleHideContent(index)}></i></p>
+                                                <div className="order-image">
+                                                    <Slider className="auction-info-carousel" {...settingSlider}>
+                                                        {
+                                                            post.image_items.map((i, ix) => {
+                                                                return <img key={ix} src={i.image} alt="img" />
+                                                            })
+                                                        }
+                                                    </Slider>
+                                                </div>
+                                                <PostComment /><br />
+                                                <Link className="click-auction-confirm" to={"post-detail/" + post.id}>Click to auction confirmation</Link>
+                                            </div>
                                         </div>
-                                        <PostComment /><br />
-                                        <Link className="click-auction-confirm" to={"post-detail/" + post.id}>Click to auction confirmation</Link>
-                                    </div>
-                                </div>
-                            </React.Fragment>
-                        })
+                                    </React.Fragment>
+                                })
+                            }
+                            {result}
+                        </> : <></>
                     }
-                    {result}
                 </div>
             </div>
         </div>

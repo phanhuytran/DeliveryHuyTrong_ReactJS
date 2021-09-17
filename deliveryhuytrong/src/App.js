@@ -4,7 +4,7 @@ import cookies from 'react-cookies';
 import qs from 'qs';
 import Footer from './component/item-base/Footer';
 import Header from './component/item-base/Header';
-import API, {  endpoints } from './component/API';
+import API, { endpoints } from './component/API';
 import BodyHome from './component/home/BodyHome';
 import BodyOrder from './component/list-orders/BodyOrder';
 import BodyOrderAuction from './component/order-auction/BodyOrderAuction';
@@ -19,6 +19,7 @@ import BodyShipperDetail from './component/shipper-detail/BodyShipperDetail';
 import BodyPost from './component/post/BodyPost';
 import BodyPostDetail from './component/post-detail/BodyPostDetail';
 import axios from 'axios';
+import Forbidden_403 from './component/item-base/403_Forbidden';
 
 export let UserContext = React.createContext();
 
@@ -92,9 +93,21 @@ export default function App() {
           <Route path="/contact" exact={true} component={BodyContact} />
           {
             user ? <Switch>
-              <Route path="/statistic" exact={true} component={BodyStatistic} />
-              <Route path="/list-orders" exact={true} component={BodyOrder} />
-              <Route path="/order-auction/:id" exact={true} component={(props) => (<BodyOrderAuction props={props} />)} />
+              {
+                cookies.load("user").username === 'admin'
+                  ? <Route path="/statistic" exact={true} component={BodyStatistic} />
+                  : <Route path="/statistic" exact={true} component={Forbidden_403} />
+              }
+              {
+                cookies.load("user").groups[0] === 2 || cookies.load("user").username === 'admin'
+                  ? <Route path="/list-orders" exact={true} component={BodyOrder} />
+                  : <Route path="/list-orders" exact={true} component={Forbidden_403} />
+              }
+              {
+                cookies.load("user").groups[0] === 2 || cookies.load("user").username === 'admin'
+                  ? <Route path="/order-auction/:id" exact={true} component={(props) => (<BodyOrderAuction props={props} />)} />
+                  : <Route path="/order-auction/:id" exact={true} component={Forbidden_403} />
+              }
               <Route path="/shipper" exact={true} component={BodyShipper} />
               <Route path="/shipper-detail/:id" exact={true} component={(props) => (<BodyShipperDetail props={props} />)} />
               <Route path="/post" exact={true} component={BodyPost} />
