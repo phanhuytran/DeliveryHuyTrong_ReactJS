@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import '../shipper.css';
+import cookies from 'react-cookies';
 import { Link } from 'react-router-dom';
+import StarRateIcon from '@mui/icons-material/StarRate';
 import ShipperTitle from './ShipperTitle';
 // import ShipperInfoForm from './ShipperInfoForm';
 import { AuthAPI, endpoints } from '../../API';
@@ -48,7 +50,7 @@ export default function ShipperList() {
         isDisplayClear = true;
         itemsOrigin.forEach((item) => {
             if (((item.first_name.toLowerCase() + " " + item.last_name.toLowerCase()).indexOf(fullName) !== -1
-            && item.phone.indexOf(phone) !== -1)) {
+                && item.phone.indexOf(phone) !== -1)) {
                 shipper.push(item);
             }
         });
@@ -93,7 +95,11 @@ export default function ShipperList() {
                                 <th>Address</th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                <th>Detailed information</th>
+                                {
+                                    cookies.load("user").groups[0] === 1
+                                        ? <th>Detailed information</th>
+                                        : <></>
+                                }
                                 {/* <th>Action</th> */}
                             </tr>
                         </thead>
@@ -110,7 +116,11 @@ export default function ShipperList() {
                                         <td>{shipper.address}</td>
                                         <td>{shipper.email}</td>
                                         <td>{shipper.phone}</td>
-                                        <td><Link to={"shipper-detail/" + shipper.id} className="see-another-page-2">Click to rate <span className="fas fa-info-circle" /></Link></td>
+                                        {
+                                            cookies.load("user").groups[0] === 1
+                                                ? <td><Link to={"shipper-detail/" + shipper.id} className="see-another-page-2">Click to rate <StarRateIcon /></Link></td>
+                                                : <></>
+                                        }
                                         {/* <td>
                                             <span className="see-another-page-1" onClick={() => editShipper(shipper)}>Edit</span>
                                             // <RemoveShipper props={shipper.id} />

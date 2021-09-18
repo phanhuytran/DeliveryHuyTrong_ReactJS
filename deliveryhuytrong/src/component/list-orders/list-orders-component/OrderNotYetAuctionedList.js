@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import GavelIcon from '@mui/icons-material/Gavel';
 import { AuthAPI, endpoints } from '../../API';
 
 export default function OrderNotYetAuctionedList() {
@@ -103,7 +104,7 @@ export default function OrderNotYetAuctionedList() {
                                             <td>{order.weight}</td>
                                             <td>{order.send_stock.address}</td>
                                             <td>{order.receive_stock.address}</td>
-                                            <td><Link to={"order-auction/" + order.id} className="see-another-page-2">Click to auction <span className="fas fa-info-circle" /></Link></td>
+                                            <td><Link to={"order/" + order.id + "/auction"} className="see-another-page-2">Click to auction <GavelIcon /></Link></td>
                                         </tr>
                                     })
                                 }

@@ -61,7 +61,7 @@ export default function OrderAuctionPost(props) {
                                                     })
                                                 }
                                             </Slider>
-                                            <OrderAuctionComment />
+                                            <OrderAuctionComment post={post} />
                                         </div>
                                     </React.Fragment>
                                 }

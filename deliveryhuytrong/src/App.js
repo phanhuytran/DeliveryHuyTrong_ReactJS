@@ -105,8 +105,8 @@ export default function App() {
               }
               {
                 cookies.load("user").groups[0] === 2 || cookies.load("user").username === 'admin'
-                  ? <Route path="/order-auction/:id" exact={true} component={(props) => (<BodyOrderAuction props={props} />)} />
-                  : <Route path="/order-auction/:id" exact={true} component={Forbidden_403} />
+                  ? <Route path="/order/:id/auction" exact={true} component={(props) => (<BodyOrderAuction props={props} />)} />
+                  : <Route path="/order/:id/auction" exact={true} component={Forbidden_403} />
               }
               <Route path="/shipper" exact={true} component={BodyShipper} />
               <Route path="/shipper-detail/:id" exact={true} component={(props) => (<BodyShipperDetail props={props} />)} />
@@ -125,7 +125,7 @@ export default function App() {
             </Switch> : <Switch>
               <Route path="/statistic" exact={true} component={AuthorizationRequired_401} />
               <Route path="/list-orders" exact={true} component={AuthorizationRequired_401} />
-              <Route path="/order-auction/:id" exact={true} component={AuthorizationRequired_401} />
+              <Route path="/order/:id/auction" exact={true} component={AuthorizationRequired_401} />
               <Route path="/shipper" exact={true} component={AuthorizationRequired_401} />
               <Route path="/shipper-detail/:id" exact={true} component={AuthorizationRequired_401} />
               <Route path="/post" exact={true} component={AuthorizationRequired_401} />

@@ -399,7 +399,7 @@ p.created-date-comment {
     margin: 16.85% auto;
     width: 30%;
     height: 30%;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     box-shadow: 0 0 5px rgb(33 33 33 / 20%);
     background-color: #fff;
     outline: none;
@@ -412,7 +412,7 @@ p.created-date-comment {
     margin: 2% auto;
     width: 30%;
     height: 91%;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     box-shadow: 0 0 5px rgb(33 33 33 / 20%);
     background-color: #fff;
     overflow-y: scroll;
@@ -593,7 +593,7 @@ p.created-date-comment {
 }
 
 .edit-error {
-    margin-top: -25px;
+    margin: -25px 0 0 5px;
     color: red;
 }
 

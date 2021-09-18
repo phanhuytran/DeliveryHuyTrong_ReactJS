@@ -8,9 +8,9 @@ export let endpoints = {
     'current-user': '/users/current-user/',
     'shippers': '/shippers/',
     'posts': '/posts/',
-    // 'post-detail': (postID) => `/posts/${postID}/`,
     'stocks': '/stocks/',
-    'image-item': '/image-item/'
+    'image-item': '/image-item/',
+    'auctions': '/auctions/'
 }
 
 export let AuthAPI = axios.create({
