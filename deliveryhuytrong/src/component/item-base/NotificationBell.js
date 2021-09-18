@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import cookies from 'react-cookies';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
 import shipperIMG from './image/shipper.jpg'
@@ -11,7 +12,11 @@ export default function NotificationBell() {
         <div className="icons-bell">
             {
                 user ? <>
-                    <Link to="/statistic"><i className="fas fa-archive fas-bell" /></Link>
+                    {
+                        cookies.load("user").username === 'admin'
+                            ? <Link to="/statistic"><i className="fas fa-archive fas-bell" /></Link>
+                            : <></>
+                    }
                     <div className="notification-bell">
                         <div className="notBtn-bell">
                             <div>

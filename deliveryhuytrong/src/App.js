@@ -110,16 +110,17 @@ export default function App() {
               }
               <Route path="/shipper" exact={true} component={BodyShipper} />
               <Route path="/shipper-detail/:id" exact={true} component={(props) => (<BodyShipperDetail props={props} />)} />
-              <Route path="/post" exact={true} component={BodyPost} />
-              <Route path="/post-detail/:id" exact={true} component={(props) => (<BodyPostDetail props={props} />)} />
               {/* {
-                cookies.load("user").groups === [1]
-                  ? <Switch>
-                    <Route path="/post" exact={true} component={BodyPost} />
-                    <Route path="/post-detail/:id" exact={true} component={(props) => (<BodyPostDetail props={props} />)} />
-                  </Switch>
-                  : <Switch><Route path="/post" exact={true} component={BodyContact} /></Switch>
+                cookies.load("user").groups[0] === 1
+                  ? <Route path="/post" exact={true} component={BodyPost} />
+                  : <Route path="/post" exact={true} component={Forbidden_403} />
               } */}
+              <Route path="/post" exact={true} component={BodyPost} />
+              {
+                cookies.load("user").groups[0] === 1
+                  ? <Route path="/post-detail/:id" exact={true} component={(props) => (<BodyPostDetail props={props} />)} />
+                  : <Route path="/post-detail/:id" exact={true} component={Forbidden_403} />
+              }
               <Route path="" exact={true} component={PageNotFound_404} />
             </Switch> : <Switch>
               <Route path="/statistic" exact={true} component={AuthorizationRequired_401} />

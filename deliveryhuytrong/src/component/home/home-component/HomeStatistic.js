@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
-import shipperListData from '../../shipper/shipper-component/ShipperListData';
-import orderPostListData from '../../list-orders/list-orders-component/OrderPostListData';
+import React, { useState, useEffect } from 'react';
+import { AuthAPI, endpoints } from '../../API';
 
 export default function HomeStatistic() {
-    const [shipperList] = useState(shipperListData);
-    const [orderPostList] = useState(orderPostListData);
+    const [shipperList, setShipperList] = useState([]);
+    const [postList, setPostList] = useState([]);
+
+    useEffect(() => {
+        async function getShipperList() {
+            let res = await AuthAPI.get(endpoints['shippers']);
+            setShipperList(res.data);
+        }
+        async function getPostList() {
+            let res = await AuthAPI.get(endpoints['posts']);
+            setPostList(res.data.results);
+        }
+        getPostList();
+        getShipperList();
+    }, []);
 
     return (
         <section className="couter-up-area" id="shipper">
@@ -29,7 +41,7 @@ export default function HomeStatistic() {
                             <div className="col-md-2 col-sm-3 col-md-offset-1 text-center">
                                 <div className="single-count">
                                     <h1 className="counter">
-                                        {orderPostList.length}
+                                        {postList.length}
                                     </h1>
                                     <h5>Orders</h5>
                                 </div>

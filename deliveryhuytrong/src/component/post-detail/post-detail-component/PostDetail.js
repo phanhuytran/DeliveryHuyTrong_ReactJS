@@ -8,7 +8,6 @@ import cookies from 'react-cookies';
 import Modal from 'react-modal';
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
-import clientIMG from '../image/client.jpg';
 import { AuthAPI, endpoints } from '../../API';
 import PostDetailComment from './PostDetailComment';
 import EditPostDetailForm from './EditPostDetailForm';
@@ -20,12 +19,11 @@ export default function PostDetail(props) {
     const orderID = parseInt(props.props.match.params.id, 10);
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
 
-    const getOrderPostList = async () => {
-        let res = await AuthAPI.get(endpoints['posts']);
-        setPostList(res.data.results);
-    }
-
     useEffect(() => {
+        const getOrderPostList = async () => {
+            let res = await AuthAPI.get(endpoints['posts']);
+            setPostList(res.data.results);
+        }
         getOrderPostList();
     }, []);
 
@@ -82,7 +80,7 @@ export default function PostDetail(props) {
                                     return <React.Fragment key={index}>
                                         <div className="auction-customer-info">
                                             <div className="auction-customer-info-left">
-                                                <img src={clientIMG} alt="img" />
+                                                <img src={post.customer.avatar} alt="avatar" />
                                             </div>
                                             <div className="auction-customer-info-right">
                                                 <p>

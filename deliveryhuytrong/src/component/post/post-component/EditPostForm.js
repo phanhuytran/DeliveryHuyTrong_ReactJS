@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import '../post.css';
-// import cookies from 'react-cookies';
+import cookies from 'react-cookies';
 import { AuthAPI, endpoints } from '../../API';
 
 export default function EditPostForm(props) {
     const [stockList, setStockList] = useState([]);
-    const [description, setDescription] = useState(props.description);
-    const [weight, setWeight] = useState(props.weight);
-    const [receivingAddress, setReceivingAddress] = useState(props.receivingAddress);
-    const [sendingAddress, setSendingAddress] = useState(props.sendingAddress);
+    const [description, setDescription] = useState('');
+    const [weight, setWeight] = useState('');
+    const [receivingAddress, setReceivingAddress] = useState('');
+    const [sendingAddress, setSendingAddress] = useState('');
     const [selectedFiles, setSelectedFiles] = useState([]);
     const image = React.createRef();
 
@@ -35,7 +35,8 @@ export default function EditPostForm(props) {
         })
     }
 
-    function onSubmit() {
+    function onSubmit(e) {
+        e.preventDefault();
         let formData = new FormData();
         let files = image.current.files;
         for (let i = 0; i < files.length; i++) {
@@ -53,14 +54,14 @@ export default function EditPostForm(props) {
         <form className="edit-form" onSubmit={onSubmit} encType="multipart/form-data">
             <h1 style={{ marginBottom: '11%' }}>EDIT POST</h1>
             <p>Order description:</p>
-            <textarea cols={46} rows={5} placeholder="Please describe your order..." value={description} onChange={e => setDescription(e.target.value)} required />
+            <textarea cols={46} rows={5} placeholder="Please describe your order..." value={props.description} onChange={e => setDescription(e.target.value)} required />
             <p>Image:</p>
             <input type="file" ref={image} multiple onChange={handleImageChange} required />
             <div>{renderImages(selectedFiles)}</div>
             <p>Weight:</p>
-            <input type="number" min="0" step="0.01" placeholder="Weight..." value={weight} onChange={e => setWeight(e.target.value)} required />
+            <input type="number" min="0" step="0.01" placeholder="Weight..." value={props.weight} onChange={e => setWeight(e.target.value)} required />
             <p>Sending address:</p>
-            <select value={sendingAddress.id} onChange={e => setSendingAddress(e.target.value)} required>
+            <select value={props.sendingAddress.id} onChange={e => setSendingAddress(e.target.value)} required>
                 <option value="" disabled hidden></option>
                 {
                     stockList.map((option_send, index) => {
@@ -69,7 +70,7 @@ export default function EditPostForm(props) {
                 }
             </select>
             <p>Receiving address:</p>
-            <select value={receivingAddress.id} onChange={e => setReceivingAddress(e.target.value)} required>
+            <select value={props.receivingAddress.id} onChange={e => setReceivingAddress(e.target.value)} required>
                 <option value="" disabled hidden></option>
                 {
                     stockList.map((option_receive, index) => {

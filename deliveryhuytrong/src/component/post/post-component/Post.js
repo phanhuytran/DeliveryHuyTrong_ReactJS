@@ -72,14 +72,14 @@ export default function Post() {
         });
     }
 
-    async function editPost(data) {
+    async function editPost(id, data) {
         let post = postList;
         await axios({
-            method: "POST",
-            url: "http://127.0.0.1:8000/posts/",
+            method: "PATCH",
+            url: "http://127.0.0.1:8000/posts/" + id + "/",
             data: data,
             headers: {
-                'Content-Type': 'multipart/form-data',
+                'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
                 'Authorization': `Bearer ${cookies.load('access_token')}`
             }
         }).catch((err) => {
@@ -124,7 +124,7 @@ export default function Post() {
                                                             <p onClick={() => setModalEditIsOpen(true)}>Edit</p>
                                                             <Modal className="modal-edit-post-form" isOpen={modalEditIsOpen} ariaHideApp={false}>
                                                                 <EditPostForm
-                                                                    onSubmit={() => editPost(post.id)}
+                                                                    onSubmit={() => editPost(post.id, post)}
                                                                     props={post}
                                                                     description={post.description}
                                                                     weight={post.weight}
