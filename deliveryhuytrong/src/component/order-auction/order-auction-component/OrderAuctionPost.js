@@ -31,7 +31,7 @@ export default function OrderAuctionPost(props) {
                                     return <React.Fragment key={index}>
                                         <div className="auction-customer-info">
                                             <div className="auction-customer-info-left">
-                                                <img src={post.customer.avatar} alt="img" />
+                                                {/* <img src={post.customer.avatar} alt="img" /> */}
                                             </div>
                                             <div className="auction-customer-info-right">
                                                 <p>
