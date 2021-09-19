@@ -85,3 +85,47 @@
     background-color: #fff;
     color: #f9bf3b;
 }
+
+.cmt-auction-option {
+    font-size: 20px;
+    margin: 39% 0;
+    padding: 3px 6.5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.cmt-auction-option:hover {
+    background-color: #eee;
+}
+
+.cmt-auction-action {
+    position: absolute;
+    width: 8%;
+    margin: -1% 0 0 -4.5%;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(33,33,33,.2);
+    animation: fadeIn linear 0.1s;
+    animation: growth linear 0.1s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
+.cmt-auction-action p {
+    font-size: 14px;
+    width: 100%;
+    float: left;
+    margin: 0;
+    padding: 10px 15px;
+    color: #5d5d5d;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.cmt-auction-action p:hover {
+    border-radius: 0;
+    padding: 10px 15px;
+    background-color: #eee;
+}

@@ -102,3 +102,33 @@
     font-size: 18px;
     margin: 0;
 }
+
+.cmt-message {
+    font-size: 16px;
+    text-align: center;
+    color: red;
+    margin-bottom: 18px;
+}
+
+.auction-area-comment-info input {
+    background-color: #fff !important;
+    width: 91% !important;
+}
+
+.auction-area-comment-info button {
+    position: absolute;
+    top: 1000px;
+    background-color: none;
+    border: none;
+    transition: 0.4s;
+}
+
+.auction-area-comment-info button:hover {
+    color: #f9bf3b;
+}
+
+.cancel-edit-auction {
+    font-weight: bold;
+    color: #dc3545;
+    cursor: pointer;
+}

@@ -13,7 +13,7 @@ export default function PostDetailComment() {
                     </div>
                     <div className="auction-area-comment-flex-center">
                         <div className="auction-area-comment-info">
-                            <strong>Shipper's Name</strong><br />
+                            <strong style={{ fontSize: 16 }}>Shipper's Name</strong><br />
                             <span>20.000 VNĐ - 0775398511</span>
                         </div>
                         <div className="auction-area-comment-date">

@@ -13,12 +13,12 @@ export default function OrderAuctionPost(props) {
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
 
     useEffect(() => {
-        async function getOrderDetailList() {
+        const getOrderPostList = async () => {
             let res = await AuthAPI.get(endpoints['posts']);
             setOrderPostList(res.data.results);
         }
-        getOrderDetailList();
-    });
+        getOrderPostList();
+    }, []);
 
     return (
         <section className="order-bottom-area">
@@ -31,11 +31,11 @@ export default function OrderAuctionPost(props) {
                                     return <React.Fragment key={index}>
                                         <div className="auction-customer-info">
                                             <div className="auction-customer-info-left">
-                                                {/* <img src={post.customer.avatar} alt="img" /> */}
+                                                <img src={post.customer.avatar} alt="img" />
                                             </div>
                                             <div className="auction-customer-info-right">
                                                 <p>
-                                                    <span>{post.customer.username}</span><br />
+                                                    <span style={{fontSize: 16}}>{post.customer.username}</span><br />
                                                     <span>{(post.created_date).slice(0, 10)}</span>
                                                 </p>
                                             </div>
@@ -61,8 +61,8 @@ export default function OrderAuctionPost(props) {
                                                     })
                                                 }
                                             </Slider>
-                                            <OrderAuctionComment post={post} />
                                         </div>
+                                        <OrderAuctionComment post={post} />
                                     </React.Fragment>
                                 }
                                 return '';

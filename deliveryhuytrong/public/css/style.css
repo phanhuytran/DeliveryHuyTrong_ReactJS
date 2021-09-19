@@ -1265,7 +1265,7 @@ div.auction-customer-info-left {
 
 div.auction-customer-info-right {
     width: 88%;
-    margin: 2% 0 0 -3%;
+    margin: 1.5% 0 0 -3%;
 }
 
 div.auction-customer-info-right span:first-child {
@@ -1358,15 +1358,15 @@ div.auction-area-comment-flex-right button:hover {
 
 div.auction-area-comment-info {
     background-color: #eee;
-    border-radius: 20px;
+    border-radius: 30px;
     border: 2px solid #eee;
     margin: 0 2% 1% 1%;
-    padding: 1.5% 3%;
+    padding: 1.5% 4%;
 }
 
 div.auction-area-comment-date {
     font-size: 13px;
-    margin-left: 4%;
+    margin-left: 5.5%;
 }
 
 .pricing-area .single-pricing-table.slick-slide:focus, .single_calculate input:focus, .single_calculate select:focus {

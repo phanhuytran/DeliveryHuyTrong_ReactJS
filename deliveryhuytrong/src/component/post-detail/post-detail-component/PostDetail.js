@@ -84,7 +84,7 @@ export default function PostDetail(props) {
                                             </div>
                                             <div className="auction-customer-info-right">
                                                 <p>
-                                                    <span>{post.customer.first_name} {post.customer.last_name}</span>
+                                                    <span style={{ fontSize: 16 }}>{post.customer.username}</span>
                                                     <span onClick={onTogglePostOption}><i className="fas fa-ellipsis-h"></i></span><br />
                                                     <span>{(post.created_date).slice(0, 10)}</span>
                                                 </p>

@@ -45,12 +45,12 @@ export default class EditCurrentUserForm extends React.Component {
             console.log(err.response.data);
             if (err.response.data.phone) {
                 this.setState({
-                    messagePhone: err.response.data.phone.toString()
+                    messagePhone: 'Ensure this phone has no more than 10 digits in total'
                 })
             }
             if (err.response.data.email) {
                 this.setState({
-                    messageEmail: err.response.data.email.toString()
+                    messageEmail: 'Enter a valid email address'
                 })
             }
         });

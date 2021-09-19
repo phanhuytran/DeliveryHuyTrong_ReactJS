@@ -60,17 +60,17 @@ export default class SignUpForm extends React.Component {
                 console.log(err.response.data);
                 if (err.response.data.phone) {
                     this.setState({
-                        message: err.response.data.phone.toString()
+                        message: 'Ensure this phone has no more than 10 digits in total'
                     })
                 }
                 if (err.response.data.email) {
                     this.setState({
-                        message: err.response.data.email.toString()
+                        message: 'Enter a valid email address'
                     })
                 }
                 if (err.response.data.username) {
                     this.setState({
-                        message: err.response.data.username.toString()
+                        message: 'A user with that username already exists'
                     })
                 }
             })

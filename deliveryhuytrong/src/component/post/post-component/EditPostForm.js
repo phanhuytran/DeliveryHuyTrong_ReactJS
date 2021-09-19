@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../post.css';
-import cookies from 'react-cookies';
+// import cookies from 'react-cookies';
 import { AuthAPI, endpoints } from '../../API';
 
 export default function EditPostForm(props) {
