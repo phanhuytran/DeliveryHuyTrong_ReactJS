@@ -6,7 +6,7 @@ import GavelIcon from '@mui/icons-material/Gavel';
 
 export default function AuctionForm(props) {
     const [cost, setCost] = useState(0);
-    const [messageCreate, setMessageCreate] = useState('');
+    const [message, setMessage] = useState('');
 
     async function onSubmit(e) {
         e.preventDefault();
@@ -23,21 +23,21 @@ export default function AuctionForm(props) {
             }
         }).then((res) => {
             console.log(res);
-            window.location.reload();
+            setMessage('');
         }).catch((err) => {
             console.log(err.response.data);
             if (err.response.data.non_field_errors) {
-                setMessageCreate('You can only auction once')
+                setMessage('You can only auction once')
             }
             if (err.response.data.cost) {
-                setMessageCreate('Ensure this cost has no more than 10 digits in total')
+                setMessage('Ensure this cost has no more than 10 digits in total')
             }
         })
     }
 
     return (
         <>
-            <p className="cmt-message">{messageCreate}</p>
+            <p className="cmt-message">{message}</p>
             <form onSubmit={onSubmit}>
                 <div className="auction-area-comment-flex">
                     <div className="auction-area-comment-flex-left">

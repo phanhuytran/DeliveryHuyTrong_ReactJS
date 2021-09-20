@@ -4,7 +4,6 @@ import '../home.css';
 export default function Introduction() {
     return (
         <div className="introduction">
-            {/* https://www.youtube.com/watch?v=PhPKAvFfLEE */}
             <div className="introduction-content">
                 <h1>DELIVERY HUY TRONG</h1>
                 <hr />

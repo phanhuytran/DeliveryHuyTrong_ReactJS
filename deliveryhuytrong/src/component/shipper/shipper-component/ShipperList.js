@@ -25,7 +25,7 @@ export default function ShipperList() {
             setShipperList(res.data);
         }
         getShipperList();
-    }, []);
+    }, [shipperList]);
 
     let shipper = [], result, i = 0;
     let isDisplayClear = isDisplayClearFilter;

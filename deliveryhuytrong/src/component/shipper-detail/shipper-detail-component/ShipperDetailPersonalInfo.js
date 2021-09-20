@@ -11,7 +11,7 @@ export default function ShipperDetailPersonalInfo(props) {
             setShipperList(res.data);
         }
         getShipperList();
-    }, []);
+    }, [shipperList]);
 
     return (
         <>

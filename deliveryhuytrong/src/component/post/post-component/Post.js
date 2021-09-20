@@ -3,6 +3,7 @@ import '../post.css';
 import cookies from 'react-cookies';
 import { Link } from 'react-router-dom';
 import * as _ from "lodash";
+import moment from 'moment';
 import swal from 'sweetalert';
 import Slider from "react-slick";
 import axios from 'axios';
@@ -33,7 +34,7 @@ export default function Post() {
             setPostList(res.data.results);
         }
         getPostList();
-    }, []);
+    }, [postList]);
 
     async function createPost(data) {
         let post = postList;
@@ -48,7 +49,6 @@ export default function Post() {
         })
         console.log(data);
         setPostList(post);
-        window.location.reload();
     }
 
     function removePost(id) {
@@ -63,9 +63,7 @@ export default function Post() {
                 AuthAPI.delete(endpoints['posts'] + id)
                 setPostList(post);
                 swal("This order was removed successfully!", { icon: "success" });
-                setTimeout(() => {
-                    window.location.reload();
-                }, 500);
+                setHiddenPostOption({});
             } else {
                 swal("You pressed cancel!", { icon: "warning" });
             }
@@ -113,7 +111,8 @@ export default function Post() {
                                                     <img src={post.customer.avatar} alt="img" />
                                                 </div>
                                                 <div className="post-content-header-center">
-                                                    <p><strong>{post.customer.username}</strong><br /><span>{(post.created_date).slice(0, 10)}</span></p>
+                                                    <p><strong>{post.customer.username}</strong><br /><span>{moment(post.created_date, "YYYYMMDD").fromNow()}</span></p>
+                                                    {/* <p><strong>{post.customer.username}</strong><br /><span>{(post.created_date).slice(0, 10)}</span></p> */}
                                                 </div>
                                                 <div className="post-content-header-right">
                                                     <p onClick={() => onTogglePostOption(index)}>

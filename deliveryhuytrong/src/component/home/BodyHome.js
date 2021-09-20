@@ -5,7 +5,7 @@ import HomeAbout from './home-component/HomeAbout';
 import HomeInitiatory from './home-component/HomeInitiatory';
 import HomeStatistic from './home-component/HomeStatistic';
 import Introduction from './home-component/Introduction';
-import OrderNotYetAuctionedList from './../list-orders/list-orders-component/OrderNotYetAuctionedList.js';
+import StatisticOrderList from './../statistic/statistic-component/StatisticOrderList';
 
 export default function BodyHome() {
     const auth = useContext(UserContext);
@@ -21,7 +21,7 @@ export default function BodyHome() {
             {
                 user ? <>
                     {
-                        cookies.load("user").username === 'admin' ? <OrderNotYetAuctionedList /> : <></>
+                        cookies.load("user").username === 'admin' ? <StatisticOrderList /> : <></>
                     }
                 </> : <></>
             }

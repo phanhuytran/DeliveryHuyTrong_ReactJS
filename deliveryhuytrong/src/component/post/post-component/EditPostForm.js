@@ -18,7 +18,7 @@ export default function EditPostForm(props) {
             setStockList(res.data);
         }
         getStockList();
-    }, []);
+    }, [stockList]);
 
     const handleImageChange = e => {
         setSelectedFiles([]);

@@ -3,6 +3,7 @@ import "../post-detail.css";
 import "../slick-carousel/slick/slick.css";
 import "../slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import moment from 'moment';
 import axios from 'axios';
 import cookies from 'react-cookies';
 import Modal from 'react-modal';
@@ -43,9 +44,7 @@ export default function PostDetail(props) {
                 AuthAPI.delete(endpoints['posts'] + id)
                 setPostList(post);
                 swal("This order was removed successfully!", { icon: "success" });
-                setTimeout(() => {
-                    window.location.href = "/post";
-                }, 500);
+                setIsDisplayPostOption(false);
             } else {
                 swal("You pressed cancel!", { icon: "warning" });
             }
@@ -86,7 +85,7 @@ export default function PostDetail(props) {
                                                 <p>
                                                     <span style={{ fontSize: 16 }}>{post.customer.username}</span>
                                                     <span onClick={onTogglePostOption}><i className="fas fa-ellipsis-h"></i></span><br />
-                                                    <span>{(post.created_date).slice(0, 10)}</span>
+                                                    <span>{moment(post.created_date, "YYYYMMDD").fromNow()}</span>
                                                 </p>
                                             </div>
                                             {

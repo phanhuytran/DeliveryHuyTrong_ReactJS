@@ -16,7 +16,7 @@ export default function ShipperDetailInfo(props) {
             setShipperList(res.data);
         }
         getShipperList();
-    }, []);
+    }, [shipperList]);
 
     return (
         <section className="about_top">

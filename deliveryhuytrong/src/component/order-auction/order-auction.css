@@ -116,8 +116,8 @@
 }
 
 .auction-area-comment-info button {
-    position: absolute;
-    top: 1000px;
+    /* position: absolute;
+    top: 1000px; */
     background-color: none;
     border: none;
     transition: 0.4s;

@@ -3,6 +3,7 @@ import "../order-auction.css";
 import "../slick-carousel/slick/slick.css";
 import "../slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import OrderAuctionComment from './OrderAuctionComment';
 import { AuthAPI, endpoints } from '../../API';
@@ -36,7 +37,8 @@ export default function OrderAuctionPost(props) {
                                             <div className="auction-customer-info-right">
                                                 <p>
                                                     <span style={{fontSize: 16}}>{post.customer.username}</span><br />
-                                                    <span>{(post.created_date).slice(0, 10)}</span>
+                                                    {/* <span>{(post.created_date).slice(0, 10)}</span> */}
+                                                    <span>{moment(post.created_date, "YYYYMMDD").fromNow()}</span>
                                                 </p>
                                             </div>
                                         </div>

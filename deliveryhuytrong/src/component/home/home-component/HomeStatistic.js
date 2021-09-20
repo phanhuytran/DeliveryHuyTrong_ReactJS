@@ -16,7 +16,7 @@ export default function HomeStatistic() {
         }
         getPostList();
         getShipperList();
-    }, []);
+    }, [postList]);
 
     return (
         <section className="couter-up-area" id="shipper">

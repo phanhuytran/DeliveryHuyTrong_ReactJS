@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../statistic.css';
+import * as _ from "lodash";
 import { AuthAPI, endpoints } from '../../API';
 
 export default function StatisticOrderList() {
@@ -35,7 +36,7 @@ export default function StatisticOrderList() {
             setOrderList(res.data.results);
         }
         getOrderList();
-    }, []);
+    }, [orderList]);
 
     function onClearDescriptionFilter() { setDescriptionFilter(''); }
     function onClearCreatedDateFilter() { setCreatedDateFilter(''); }
@@ -115,7 +116,7 @@ export default function StatisticOrderList() {
                             <td></td>
                         </tr>
                         {
-                            order.map((ord, index) => {
+                            _.sortBy(order).reverse().map((ord, index) => {
                                 i++;
                                 return <tr key={index}>
                                     <td>{i}</td>

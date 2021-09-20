@@ -24,7 +24,7 @@ export default function PostForm(props) {
             setStockList(res.data);
         }
         getStockList();
-    }, []);
+    }, [stockList]);
 
     const handleImageChange = e => {
         setSelectedFiles([]);
@@ -43,6 +43,7 @@ export default function PostForm(props) {
     }
 
     function onSubmit(e) {
+        e.preventDefault();
         let formData = new FormData();
         let files = image.current.files;
         for (let i = 0; i < files.length; i++) {

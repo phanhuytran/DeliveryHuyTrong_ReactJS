@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "../order-auction.css";
 import axios from 'axios';
+import moment from 'moment';
 import cookies from 'react-cookies';
 import GavelIcon from '@mui/icons-material/Gavel';
 import AuctionForm from './AuctionForm'
@@ -9,7 +10,7 @@ import { AuthAPI, endpoints } from '../../API';
 export default function OrderAuctionComment(props) {
     const [auction, setAuction] = useState([]);
     const [isDisplayPostOption, setIsDisplayPostOption] = useState(false);
-    const [messageRemove, setMessageRemove] = useState('');
+    const [message, setMessage] = useState('');
     const [editCost, setEditCost] = useState(0);
     const [isDisplayAuctionInfo, setIsDisplayAuctionInfo] = useState(true);
     const [isDisplayEditAuction, setIsDisplayEditAuction] = useState(false);
@@ -20,12 +21,7 @@ export default function OrderAuctionComment(props) {
             setAuction(res.data);
         }
         getAuction();
-    }, []);
-
-    // let result;
-    // if (auction.length === 0) {
-    //     result = <div className="no-comment-found"><p>Auction information not found</p></div>
-    // }
+    }, [auction]);
 
     const onTogglePostOption = () => {
         setIsDisplayPostOption(toggle => !toggle);
@@ -41,26 +37,30 @@ export default function OrderAuctionComment(props) {
             }
         }).then((res) => {
             console.log(res);
-            window.location.reload();
+            setMessage('');
         }).catch((err) => {
             console.log(err.response.data);
-            setMessageRemove('This auction has ended. You cannot remove this auction');
+            setIsDisplayPostOption(false);
+            setMessage('This auction has ended. You cannot remove this auction');
         })
         setAuction(auc);
     }
 
     const showEditForm = () => {
+        setMessage('');
         setIsDisplayAuctionInfo(false);
         setIsDisplayEditAuction(true);
         setIsDisplayPostOption(false);
     }
 
     const cancelEditAuction = () => {
+        setMessage('');
         setIsDisplayAuctionInfo(true);
         setIsDisplayEditAuction(false);
     }
 
-    async function editAuction(id) {
+    async function editAuction(id, e) {
+        e.preventDefault();
         let auc = auction;
         await axios({
             method: "PATCH",
@@ -73,9 +73,17 @@ export default function OrderAuctionComment(props) {
             }
         }).then((res) => {
             console.log(res);
-            window.location.reload();
+            setMessage('');
+            setIsDisplayAuctionInfo(true);
+            setIsDisplayEditAuction(false);
         }).catch((err) => {
             console.log(err.response.data);
+            if (err.response.data.cost) {
+                setMessage('Ensure this cost has no more than 10 digits in total')
+            }
+            if (err.response.data.detail) {
+                setMessage('This auction has ended. You cannot remove this auction')
+            }
         })
         setAuction(auc);
     }
@@ -83,7 +91,7 @@ export default function OrderAuctionComment(props) {
     return (
         <div className="auction-area-comment">
             <hr />
-            <p className="cmt-message">{messageRemove}</p>
+            <p className="cmt-message">{message}</p>
             {
                 auction.map((auction, index) => {
                     if (auction.post === props.post.id) {
@@ -101,7 +109,7 @@ export default function OrderAuctionComment(props) {
                                 }
                                 {
                                     isDisplayEditAuction
-                                        ? <form onSubmit={() => editAuction(auction.id)}>
+                                        ? <form onSubmit={(e) => editAuction(auction.id, e)}>
                                             <div className="auction-area-comment-info">
                                                 <strong style={{ fontSize: 16 }}>{auction.shipper.username}</strong>
                                                 <span style={{ marginLeft: '10px' }}></span>
@@ -112,7 +120,7 @@ export default function OrderAuctionComment(props) {
                                         </form> : <></>
                                 }
                                 <div className="auction-area-comment-date">
-                                    <p>{(auction.created_date).slice(0, 10)}</p>
+                                    <p>{moment(auction.created_date, "YYYYMMDD").fromNow()}</p>
                                 </div>
                             </div>
                             <div className="auction-area-comment-flex-right">
@@ -131,7 +139,6 @@ export default function OrderAuctionComment(props) {
                     return <React.Fragment key={index}></React.Fragment>
                 })
             }
-            {/* {result} */}
             <hr />
             <AuctionForm props={props} />
         </div>

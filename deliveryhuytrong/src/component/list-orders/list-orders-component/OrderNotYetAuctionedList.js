@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import * as _ from "lodash";
 import GavelIcon from '@mui/icons-material/Gavel';
 import { AuthAPI, endpoints } from '../../API';
 
@@ -95,7 +96,7 @@ export default function OrderNotYetAuctionedList() {
                                     <td></td>
                                 </tr>
                                 {
-                                    orderPost.map((order, index) => {
+                                    _.sortBy(orderPost).reverse().map((order, index) => {
                                         i++;
                                         return <tr key={index}>
                                             <td>{i}</td>

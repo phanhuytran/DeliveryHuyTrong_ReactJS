@@ -7,8 +7,8 @@ export default function SignInForm() {
     const auth = useContext(UserContext);
 
     const login = async (e) => {
-        auth.login(username, password);
         e.preventDefault();
+        auth.login(username, password);
     }
 
     return (
