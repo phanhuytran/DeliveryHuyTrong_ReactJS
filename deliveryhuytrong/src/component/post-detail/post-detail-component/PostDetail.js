@@ -132,7 +132,7 @@ export default function PostDetail(props) {
                                                     })
                                                 }
                                             </Slider>
-                                            <PostDetailComment />
+                                            <PostDetailComment post={post} />
                                         </div>
                                     </React.Fragment>
                                 }

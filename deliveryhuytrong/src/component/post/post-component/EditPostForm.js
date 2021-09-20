@@ -27,6 +27,7 @@ export default function EditPostForm(props) {
             setSelectedFiles((prevImages) => prevImages.concat(filesArray));
             Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
         }
+        console.log(props)
     }
 
     const renderImages = source => {
@@ -42,7 +43,6 @@ export default function EditPostForm(props) {
         for (let i = 0; i < files.length; i++) {
             formData.append("image_items", files[i])
         }
-        // formData.append("customer", cookies.load("user").id);
         formData.append("description", description);
         formData.append("weight", weight);
         formData.append("receive_stock", receivingAddress);

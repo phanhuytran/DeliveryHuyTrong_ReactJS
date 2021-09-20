@@ -9,7 +9,7 @@ import Slider from "react-slick";
 import axios from 'axios';
 import Modal from 'react-modal';
 import PostForm from './PostForm';
-import PostComment from './PostComment';
+// import PostComment from './PostComment';
 import PersonalInformation from './PersonalInformation';
 import { AuthAPI, endpoints } from '../../API';
 import EditPostForm from './EditPostForm';
@@ -168,7 +168,8 @@ export default function Post() {
                                                         }
                                                     </Slider>
                                                 </div>
-                                                <PostComment /><br />
+                                                {/* <PostComment post={post} /> */}
+                                                <br /><br />
                                                 <Link className="click-auction-confirm" to={"post-detail/" + post.id}>Click to auction confirmation</Link>
                                             </div>
                                         </div>

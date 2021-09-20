@@ -24,8 +24,8 @@ export default class EditCurrentUserForm extends React.Component {
         })
     }
 
-    editInfo = event => {
-        event.preventDefault();
+    editInfo = (e) => {
+        e.preventDefault();
         let formData = new FormData();
         for (let k in this.state.user) {
             if (k !== 'avatar') {

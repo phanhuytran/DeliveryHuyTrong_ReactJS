@@ -104,7 +104,7 @@ export default function OrderAuctionComment(props) {
                                     isDisplayAuctionInfo
                                         ? <div className="auction-area-comment-info">
                                             <strong style={{ fontSize: 16 }}>{auction.shipper.username}</strong><br />
-                                            <span>{auction.cost} VND</span>
+                                            <span>{currencyFormat((auction.cost).slice(0, -3))} VND</span>
                                         </div> : <></>
                                 }
                                 {
@@ -143,4 +143,10 @@ export default function OrderAuctionComment(props) {
             <AuctionForm props={props} />
         </div>
     );
+
+    function currencyFormat(num) {
+        return num.split('').reverse().reduce((prev, next, index) => {
+            return ((index % 3) ? next : (next + ',')) + prev;
+        })
+    }
 }
