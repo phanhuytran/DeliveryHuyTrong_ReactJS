@@ -363,18 +363,18 @@ p.created-date-comment {
     margin-top: 15px;
 }
 
-.add-stock {
+.create-stock {
     position: absolute;
     top: 303px;
     left: 700px;
 }
 
-.add-stock .add-stock-icon {
+.create-stock .create-stock-icon {
     font-weight: bold;
     color:#f9bf3b;
 }
 
-.add-stock-icon:hover {
+.create-stock-icon:hover {
     background-color: #f9bf3b;
     color:#fff;
     border-radius: 50%;
@@ -382,10 +382,10 @@ p.created-date-comment {
     transition: 0.4s;
 }
 
-.add-stock span {
+.create-stock span {
     position: absolute;
     left: 125%;
-    width: 70px;
+    width: 85px;
     margin-top: 0.15%;
 }
 

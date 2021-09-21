@@ -36,7 +36,7 @@ export default function StockForm(props) {
                     </tr>
                     <tr>
                         <td colSpan={2}>
-                            <button type="submit">Add</button>
+                            <button type="submit">Create</button>
                         </td>
                     </tr>
                 </tbody>

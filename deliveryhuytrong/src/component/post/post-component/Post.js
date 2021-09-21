@@ -80,13 +80,13 @@ export default function Post() {
                 'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
                 'Authorization': `Bearer ${cookies.load('access_token')}`
             }
+        }).then((res) => {
+            console.log(res);
+            setPostList(post);
+            setHiddenPostOption(false);
         }).catch((err) => {
             console.log(err.response.data)
         })
-        console.log(data);
-        setPostList(post);
-        setHiddenPostOption(false);
-        // window.location.reload();
     }
 
     let result;
@@ -123,7 +123,7 @@ export default function Post() {
                                                             <p onClick={() => setModalEditIsOpen(true)}>Edit</p>
                                                             <Modal className="modal-edit-post-form" isOpen={modalEditIsOpen} ariaHideApp={false}>
                                                                 <EditPostForm
-                                                                    onSubmit={() => editPost(post.id, post)}
+                                                                    onSubmit={(p) => editPost(post.id, p)}
                                                                     props={post}
                                                                     description={post.description}
                                                                     weight={post.weight}

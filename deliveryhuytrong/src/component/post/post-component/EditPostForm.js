@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import '../post.css';
-// import cookies from 'react-cookies';
 import { AuthAPI, endpoints } from '../../API';
 
 export default function EditPostForm(props) {
@@ -64,7 +63,7 @@ export default function EditPostForm(props) {
             <select value={sendingAddress.id} onChange={e => setSendingAddress(e.target.value)} required>
                 <option value="" disabled hidden></option>
                 {
-                    stockList.map((option_send, index) => {
+                    stockList && stockList.map((option_send, index) => {
                         return <option key={index} value={option_send.id}>{option_send.address}</option>
                     })
                 }
@@ -73,7 +72,7 @@ export default function EditPostForm(props) {
             <select value={receivingAddress.id} onChange={e => setReceivingAddress(e.target.value)} required>
                 <option value="" disabled hidden></option>
                 {
-                    stockList.map((option_receive, index) => {
+                    stockList && stockList.map((option_receive, index) => {
                         return <option key={index} value={option_receive.id}>{option_receive.address}</option>
                     })
                 }

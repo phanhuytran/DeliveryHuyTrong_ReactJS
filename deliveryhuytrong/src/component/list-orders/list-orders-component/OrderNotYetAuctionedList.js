@@ -6,6 +6,7 @@ import { AuthAPI, endpoints } from '../../API';
 
 export default function OrderNotYetAuctionedList() {
     const [orderPostList, setOrderPostList] = useState([]);
+    // const [auction, setAuction] = useState([]);
     const [customerFilter, setCustomerFilter] = useState('');
     const [sendingAddressFilter, setSendingAddressFilter] = useState('');
     const [receivingAddressFilter, setReceivingAddressFilter] = useState('');
@@ -28,7 +29,13 @@ export default function OrderNotYetAuctionedList() {
             let res = await AuthAPI.get(endpoints['posts']);
             setOrderPostList(res.data.results);
         }
+
+        // async function getAuction() {
+        //     let res = await AuthAPI.get(endpoints['auctions']);
+        //     setAuction(res.data.results);
+        // }
         getOrderPostList();
+        // getAuction();
     }, []);
 
     function onClearCustomerFilter() { setCustomerFilter(''); }
@@ -40,7 +47,6 @@ export default function OrderNotYetAuctionedList() {
             if ((item.customer.first_name + " " + item.customer.last_name).toLowerCase().indexOf(customer) !== -1
                 && item.send_stock.address.toLowerCase().indexOf(sendingAddress) !== -1
                 && item.receive_stock.address.toLowerCase().indexOf(receivingAddress) !== -1) {
-                // && item.isWin === false) {
                 orderPost.push(item);
             }
         });
@@ -95,20 +101,32 @@ export default function OrderNotYetAuctionedList() {
                                     </td>
                                     <td></td>
                                 </tr>
+                                {/* {
+                                    auction && auction.map((auction, index) => {
+                                        if (auction.is_win === true) {
+                                            return <React.Fragment key={index}> */}
                                 {
                                     _.sortBy(orderPost).reverse().map((order, index) => {
-                                        i++;
-                                        return <tr key={index}>
-                                            <td>{i}</td>
-                                            <td>{order.customer.first_name} {order.customer.last_name}</td>
-                                            <td><img src={order.image_items[0].image} alt="img" /></td>
-                                            <td>{order.weight}</td>
-                                            <td>{order.send_stock.address}</td>
-                                            <td>{order.receive_stock.address}</td>
-                                            <td><Link to={"order/" + order.id + "/auction"} className="see-another-page-2">Click to auction <GavelIcon /></Link></td>
-                                        </tr>
+                                        if (order.is_finish === false) {
+                                            i++;
+                                            return <tr key={index}>
+                                                <td>{i}</td>
+                                                <td>{order.customer.first_name} {order.customer.last_name}</td>
+                                                <td><img src={order.image_items[0].image} alt="img" /></td>
+                                                <td>{order.weight}</td>
+                                                <td>{order.send_stock.address}</td>
+                                                <td>{order.receive_stock.address}</td>
+                                                <td><Link to={"order/" + order.id + "/auction"} className="see-another-page-2">Click to auction <GavelIcon /></Link></td>
+                                            </tr>
+                                        }
+                                        return <React.Fragment key={index}></React.Fragment>
                                     })
                                 }
+                                {/* </React.Fragment>
+                                        }
+                                        return <React.Fragment key={index}></React.Fragment>
+                                    })
+                                } */}
                                 <tr>{result}</tr>
                             </tbody>
                         </table>

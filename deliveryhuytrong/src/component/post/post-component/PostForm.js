@@ -70,12 +70,12 @@ export default function PostForm(props) {
             <button onClick={onTogglePostForm}>
                 {!isDisplayPostForm ? <span>Create a new post</span> : <span>Close</span>}
             </button>
-            <span className="add-stock">
+            <span className="create-stock">
                 {
-                    !isDisplayStockForm ? <AddCircleOutlineIcon onClick={onToggleStockForm} style={{ fontSize: 20 }} className="add-stock-icon" />
-                        : <RemoveCircleOutlineSharpIcon onClick={onToggleStockForm} style={{ fontSize: 20 }} className="add-stock-icon" />
+                    !isDisplayStockForm ? <AddCircleOutlineIcon onClick={onToggleStockForm} style={{ fontSize: 20 }} className="create-stock-icon" />
+                        : <RemoveCircleOutlineSharpIcon onClick={onToggleStockForm} style={{ fontSize: 20 }} className="create-stock-icon" />
                 }
-                <span>Add stock</span>
+                <span>Create stock</span>
             </span>
             {isDisplayPostForm ? <form onSubmit={onSubmit} encType="multipart/form-data">
                 <table>

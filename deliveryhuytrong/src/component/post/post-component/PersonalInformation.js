@@ -5,10 +5,9 @@ import cookies from 'react-cookies';
 import Modal from 'react-modal';
 import EditCurrentUserForm from './EditCurrentUserForm';
 import { AuthAPI, endpoints } from '../../API';
-import avatarIMG from '../image/user.png'
+import avatarNullIMG from '../image/avatar-null.png'
 
 export default function PersonalInformation() {
-    const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
     const [modalChooseAvatar, setModalChooseAvatar] = useState(false);
     const [selectedAvatar, setSelectedAvatar] = useState([]);
     const [isAvatar, setIsAvatar] = useState(false);
@@ -25,9 +24,10 @@ export default function PersonalInformation() {
             }
         }).then((res) => {
             cookies.save("user", res.data);
+            setModalChooseAvatar(false);
             window.location.reload();
         }).catch((err) => {
-            console.log(err.response.data)
+            console.log(err.response.data);
         })
     }
 
@@ -51,15 +51,7 @@ export default function PersonalInformation() {
         <>
             <div className="post-body-left">
                 <h5>Personal Information</h5>
-                <span className="edit-curent-user">
-                    <i className="fas fa-user-edit" onClick={() => setModalEditIsOpen(true)}></i>
-                    <Modal className="modal-edit-post-form" isOpen={modalEditIsOpen} ariaHideApp={false}>
-                        <EditCurrentUserForm />
-                        <div className="close-modal-edit-post-form" onClick={() => setModalEditIsOpen(false)}>
-                            <i className="fas fa-times-circle"></i>
-                        </div>
-                    </Modal>
-                </span>
+                <EditCurrentUserForm />
                 <hr />
                 {
                     user ? <>
@@ -67,7 +59,7 @@ export default function PersonalInformation() {
                             <button onClick={() => setModalChooseAvatar(true)}>
                                 {
                                     cookies.load("user").avatar !== null ? <img src={user.avatar} alt="avatar" />
-                                    : <img src={avatarIMG} alt="avatar" />
+                                        : <img src={avatarNullIMG} alt="avatar" />
                                 }
                                 <div className="middle-upload-avatar">
                                     <FileUploadIcon style={{ fontSize: 45 }} />
