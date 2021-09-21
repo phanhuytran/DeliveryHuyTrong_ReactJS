@@ -123,15 +123,13 @@ export default function Post() {
                                                             <p onClick={() => setModalEditIsOpen(true)}>Edit</p>
                                                             <Modal className="modal-edit-post-form" isOpen={modalEditIsOpen} ariaHideApp={false}>
                                                                 <EditPostForm
-                                                                    onSubmit={(p) => editPost(post.id, p)}
+                                                                    onSubmit={(data) => editPost(post.id, data)}
                                                                     props={post}
                                                                     description={post.description}
                                                                     weight={post.weight}
                                                                     receivingAddress={post.receive_stock}
                                                                     sendingAddress={post.send_stock}
-                                                                    image={post.image_items.map((i, ix) => {
-                                                                        return <img key={ix} src={i.image} alt="img" />
-                                                                    })}
+                                                                    image={post.image_items}
                                                                 />
                                                                 <div className="close-modal-edit-post-form" onClick={() => setModalEditIsOpen(false)}>
                                                                     <i className="fas fa-times-circle"></i>

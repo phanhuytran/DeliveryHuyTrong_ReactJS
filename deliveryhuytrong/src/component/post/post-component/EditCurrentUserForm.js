@@ -75,7 +75,6 @@ export default class EditCurrentUserForm extends React.Component {
                         <input type="date" value={this.state.user.date_of_birth} onChange={this.change.bind(this, 'date_of_birth')} required />
                         <p>Gender:</p>
                         <select value={this.state.user.gender} onChange={this.change.bind(this, 'gender')} required>
-                            <option value="" disabled hidden></option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Other">Other</option>

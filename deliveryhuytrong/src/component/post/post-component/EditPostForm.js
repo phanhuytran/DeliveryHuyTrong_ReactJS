@@ -6,10 +6,15 @@ export default function EditPostForm(props) {
     const [stockList, setStockList] = useState([]);
     const [description, setDescription] = useState(props.description);
     const [weight, setWeight] = useState(props.weight);
-    const [receivingAddress, setReceivingAddress] = useState(props.receivingAddress);
-    const [sendingAddress, setSendingAddress] = useState(props.sendingAddress);
+    const [receivingAddress, setReceivingAddress] = useState(props.receivingAddress.id);
+    const [sendingAddress, setSendingAddress] = useState(props.sendingAddress.id);
     const [selectedFiles, setSelectedFiles] = useState([]);
+    const [currentImage, setCurrentImage] = useState(false);
     const image = React.createRef();
+    const [changeSendingAdress, setChangeSendingAdress] = useState(props.sendingAddress.id);
+    const [changeReceivingAddress, setChangeReceivingAddress] = useState(props.receivingAddress.id);
+
+
 
     useEffect(() => {
         async function getStockList() {
@@ -20,13 +25,13 @@ export default function EditPostForm(props) {
     }, [stockList]);
 
     const handleImageChange = e => {
+        setCurrentImage(true)
         setSelectedFiles([]);
         if (e.target.files) {
             const filesArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file));
             setSelectedFiles((prevImages) => prevImages.concat(filesArray));
             Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
         }
-        console.log(props)
     }
 
     const renderImages = source => {
@@ -40,7 +45,9 @@ export default function EditPostForm(props) {
         let formData = new FormData();
         let files = image.current.files;
         for (let i = 0; i < files.length; i++) {
-            formData.append("image_items", files[i])
+            if (currentImage === true) {
+                formData.append("image_items", files[i])
+            }
         }
         formData.append("description", description);
         formData.append("weight", weight);
@@ -49,35 +56,54 @@ export default function EditPostForm(props) {
         props.onSubmit(formData);
     }
 
+    const changeSending = (e) => {
+        setSendingAddress(e.target.value);
+        setChangeSendingAdress(e.target.value);
+    }
+
+    const changeReceiving = (e) => {
+        setReceivingAddress(e.target.value);
+        setChangeReceivingAddress(e.target.value);
+    }
+
+    const place = (id) => {
+        return stockList && stockList.filter(d => d.id !== id).map((option, index) => {
+            return <option key={index} value={option.id} defaultValue={sendingAddress === option.id}>{option.address}</option>
+        })
+    }
+
     return (
         <form className="edit-form" onSubmit={onSubmit} encType="multipart/form-data">
             <h1 style={{ marginBottom: '11%' }}>EDIT POST</h1>
             <p>Order description:</p>
             <textarea cols={46} rows={5} placeholder="Please describe your order..." value={description} onChange={e => setDescription(e.target.value)} required />
             <p>Image:</p>
-            <input type="file" ref={image} multiple onChange={handleImageChange} required />
+            <input type="file" ref={image} multiple onChange={handleImageChange} />
             <div>{renderImages(selectedFiles)}</div>
+            {
+                currentImage === false ? <div>
+                    {
+                        props.image.map((img, index) => {
+                            return <img className="edit-upload-image-file" src={img.image} alt="img" key={index} />
+                        })
+                    }
+                </div> : <></>
+            }
             <p>Weight:</p>
             <input type="number" min="0" step="0.01" placeholder="Weight..." value={weight} onChange={e => setWeight(e.target.value)} required />
             <p>Sending address:</p>
-            <select value={sendingAddress.id} onChange={e => setSendingAddress(e.target.value)} required>
-                <option value="" disabled hidden></option>
+            <select value={sendingAddress} onChange={changeSending} required>
                 {
-                    stockList && stockList.map((option_send, index) => {
-                        return <option key={index} value={option_send.id}>{option_send.address}</option>
-                    })
+                    place(changeReceivingAddress)
                 }
             </select>
             <p>Receiving address:</p>
-            <select value={receivingAddress.id} onChange={e => setReceivingAddress(e.target.value)} required>
-                <option value="" disabled hidden></option>
+            <select value={receivingAddress} onChange={changeReceiving} required>
                 {
-                    stockList && stockList.map((option_receive, index) => {
-                        return <option key={index} value={option_receive.id}>{option_receive.address}</option>
-                    })
+                    place(changeSendingAdress)
                 }
             </select><br />
-            <button type="submit">Post</button><div style={{ marginBottom: '70px' }}></div>
+            <button type="submit">Edit</button><div style={{ marginBottom: '70px' }}></div>
         </form>
     );
 }

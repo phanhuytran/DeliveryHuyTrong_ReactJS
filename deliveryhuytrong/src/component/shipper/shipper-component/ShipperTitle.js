@@ -18,7 +18,7 @@ export default function ShipperTitle() {
                 <div className="col-md-6 col-sm-6 col-xs-6 text-right">
                     <div className="shipper_content_title">
                         <ul className="breadcrumbs breadcrumbs-sp">
-                            <li><Link to="/list-orders">order</Link></li>
+                            <li><Link to="/about">about</Link></li>
                             <li><Link to="/pricing">pricing</Link></li>
                         </ul>
                     </div>

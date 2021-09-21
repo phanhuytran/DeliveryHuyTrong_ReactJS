@@ -8,7 +8,7 @@ import axios from 'axios';
 import cookies from 'react-cookies';
 import Modal from 'react-modal';
 import swal from 'sweetalert';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { AuthAPI, endpoints } from '../../API';
 import PostDetailComment from './PostDetailComment';
 import EditPostDetailForm from './EditPostDetailForm';
@@ -19,6 +19,7 @@ export default function PostDetail(props) {
     const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
     const orderID = parseInt(props.props.match.params.id, 10);
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
+    const history = useHistory();
 
     useEffect(() => {
         const getOrderPostList = async () => {
@@ -26,7 +27,7 @@ export default function PostDetail(props) {
             setPostList(res.data.results);
         }
         getOrderPostList();
-    }, []);
+    }, [postList]);
 
     function onTogglePostOption() {
         setIsDisplayPostOption(toggle => !toggle);
@@ -45,27 +46,31 @@ export default function PostDetail(props) {
                 setPostList(post);
                 swal("This order was removed successfully!", { icon: "success" });
                 setIsDisplayPostOption(false);
+                history.push('/post');
             } else {
                 swal("You pressed cancel!", { icon: "warning" });
             }
         });
     }
 
-    async function editPost(data) {
+    async function editPost(id, data) {
         let post = postList;
         await axios({
-            method: "POST",
-            url: "http://127.0.0.1:8000/posts/",
+            method: "PATCH",
+            url: "http://127.0.0.1:8000/posts/" + id + "/",
             data: data,
             headers: {
-                'Content-Type': 'multipart/form-data',
+                'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
                 'Authorization': `Bearer ${cookies.load('access_token')}`
             }
-        });
-        console.log(data);
-        setPostList(post);
-        setIsDisplayPostOption(false);
-        // window.location.reload();
+        }).then((res) => {
+            console.log(res);
+            setPostList(post);
+            setModalEditIsOpen(false);
+            setIsDisplayPostOption(false);
+        }).catch((err) => {
+            console.log(err.response.data)
+        })
     }
 
     return (
@@ -93,15 +98,13 @@ export default function PostDetail(props) {
                                                     <p onClick={() => setModalEditIsOpen(true)}>Edit</p>
                                                     <Modal className="modal-edit-post-form" isOpen={modalEditIsOpen} ariaHideApp={false}>
                                                         <EditPostDetailForm
-                                                            onSubmit={() => editPost(orderID)}
+                                                            onSubmit={(data) => editPost(post.id, data)}
                                                             props={post}
                                                             description={post.description}
                                                             weight={post.weight}
                                                             receivingAddress={post.receive_stock}
                                                             sendingAddress={post.send_stock}
-                                                            image={post.image_items.map((i, ix) => {
-                                                                return <img key={ix} src={i.image} alt="img" />
-                                                            })}
+                                                            image={post.image_items}
                                                         />
                                                         <div className="close-modal-edit-post-form" onClick={() => setModalEditIsOpen(false)}>
                                                             <i className="fas fa-times-circle"></i>

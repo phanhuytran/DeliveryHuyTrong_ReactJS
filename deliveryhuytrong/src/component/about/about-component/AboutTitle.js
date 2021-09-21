@@ -13,8 +13,8 @@ export default function AboutTitle() {
             <div className="col-md-6 col-sm-6 col-xs-6 text-right">
                 <div className="about_us_content_title">
                     <ul className="breadcrumbs">
-                        <li><Link to="/statistic">statistic</Link></li>
-                        <li><Link to="/list-orders">order</Link></li>
+                        <li><Link to="/">home</Link></li>
+                        <li><Link to="/pricing">pricing</Link></li>
                     </ul>
                 </div>
             </div>
