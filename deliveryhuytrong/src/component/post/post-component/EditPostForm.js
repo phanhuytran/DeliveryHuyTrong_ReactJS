@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import '../post.css';
+import swal from 'sweetalert';
 import { AuthAPI, endpoints } from '../../API';
 
 export default function EditPostForm(props) {
     const [stockList, setStockList] = useState([]);
     const [description, setDescription] = useState(props.description);
     const [weight, setWeight] = useState(props.weight);
-    const [receivingAddress, setReceivingAddress] = useState(props.receivingAddress.id);
-    const [sendingAddress, setSendingAddress] = useState(props.sendingAddress.id);
+    const [receivingAddress, setReceivingAddress] = useState(props.receivingAddress.id + "");
+    const [sendingAddress, setSendingAddress] = useState(props.sendingAddress.id + "");
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [currentImage, setCurrentImage] = useState(false);
     const image = React.createRef();
-    const [changeSendingAdress, setChangeSendingAdress] = useState(props.sendingAddress.id);
-    const [changeReceivingAddress, setChangeReceivingAddress] = useState(props.receivingAddress.id);
-
-
 
     useEffect(() => {
         async function getStockList() {
             let res = await AuthAPI.get(endpoints['stocks']);
             setStockList(res.data);
         }
-        getStockList();
+        if (stockList.length === 0)
+            getStockList();
     }, [stockList]);
 
     const handleImageChange = e => {
@@ -57,18 +55,24 @@ export default function EditPostForm(props) {
     }
 
     const changeSending = (e) => {
-        setSendingAddress(e.target.value);
-        setChangeSendingAdress(e.target.value);
+        if (e.target.value !== receivingAddress) {
+            setSendingAddress(e.target.value)
+        } else {
+            swal("", "The sending and receiving addresses are not allowed to be the same!", "error")
+        }
     }
 
     const changeReceiving = (e) => {
-        setReceivingAddress(e.target.value);
-        setChangeReceivingAddress(e.target.value);
+        if (e.target.value !== sendingAddress) {
+            setReceivingAddress(e.target.value)
+        } else {
+            swal("", "The sending and receiving addresses are not allowed to be the same!", "error")
+        }
     }
 
-    const place = (id) => {
-        return stockList && stockList.filter(d => d.id !== id).map((option, index) => {
-            return <option key={index} value={option.id} defaultValue={sendingAddress === option.id}>{option.address}</option>
+    const place = (id, get) => {
+        return stockList && stockList.map((option, index) => {
+            return <option key={index} value={option.id}>{option.address}</option>
         })
     }
 
@@ -94,13 +98,13 @@ export default function EditPostForm(props) {
             <p>Sending address:</p>
             <select value={sendingAddress} onChange={changeSending} required>
                 {
-                    place(changeReceivingAddress)
+                    place(sendingAddress, "sendingAddress")
                 }
             </select>
             <p>Receiving address:</p>
             <select value={receivingAddress} onChange={changeReceiving} required>
                 {
-                    place(changeSendingAdress)
+                    place(receivingAddress, "receivingAddress")
                 }
             </select><br />
             <button type="submit">Edit</button><div style={{ marginBottom: '70px' }}></div>
