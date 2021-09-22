@@ -7,16 +7,27 @@ import Slider from "react-slick";
 import moment from 'moment';
 import axios from 'axios';
 import Modal from 'react-modal';
-import swal from 'sweetalert';
 import { Link, useHistory } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
 import { AuthAPI, endpoints } from '../../API';
 import PostDetailComment from './PostDetailComment';
 import EditPostDetailForm from './EditPostDetailForm';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function PostDetail(props) {
     const [postList, setPostList] = useState([]);
     const [isDisplayPostOption, setIsDisplayPostOption] = useState(false);
     const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
+    const [isDisplayOpenRemovePostDialog, setIsDisplayOpenRemovePostDialog] = useState(false);
     const orderID = parseInt(props.props.match.params.id, 10);
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
     const history = useHistory();
@@ -33,24 +44,25 @@ export default function PostDetail(props) {
         setIsDisplayPostOption(toggle => !toggle);
     }
 
+    const openRemovePostDialog = () => {
+        setIsDisplayOpenRemovePostDialog(true);
+    }
+
+    const closeRemovePostDialog = () => {
+        setIsDisplayOpenRemovePostDialog(false);
+        setIsDisplayPostOption(false);
+    }
+
     function removePost(id) {
         let post = postList;
-        swal({
-            title: "Do you want to remove this order?",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true
-        }).then((willRemove) => {
-            if (willRemove) {
-                AuthAPI.delete(endpoints['posts'] + id)
-                setPostList(post);
-                swal("This order was removed successfully!", { icon: "success" });
-                setIsDisplayPostOption(false);
-                history.push('/post');
-            } else {
-                swal("You pressed cancel!", { icon: "warning" });
-            }
-        });
+        AuthAPI.delete(endpoints['posts'] + id).then((res) => {
+            console.log(res);
+            setPostList(post);
+            setIsDisplayPostOption(false);
+            history.push('/post');
+        }).catch((err) => {
+            console.log(err.response.data);
+        })
     }
 
     async function editPost(id, data) {
@@ -71,6 +83,11 @@ export default function PostDetail(props) {
         }).catch((err) => {
             console.log(err.response.data)
         })
+    }
+
+    const closeEditPostModal = () => {
+        setModalEditIsOpen(false);
+        setIsDisplayPostOption(false);
     }
 
     return (
@@ -106,12 +123,30 @@ export default function PostDetail(props) {
                                                             sendingAddress={post.send_stock}
                                                             image={post.image_items}
                                                         />
-                                                        <div className="close-modal-edit-post-form" onClick={() => setModalEditIsOpen(false)}>
+                                                        <div className="close-modal-edit-post-form" onClick={closeEditPostModal}>
                                                             <i className="fas fa-times-circle"></i>
                                                         </div>
                                                     </Modal>
-                                                    <p onClick={() => removePost(orderID)}>Remove</p>
-                                                </div> : ''
+                                                    <p onClick={openRemovePostDialog}>Remove</p>
+                                                    <Dialog
+                                                        open={isDisplayOpenRemovePostDialog}
+                                                        TransitionComponent={Transition}
+                                                        keepMounted
+                                                        onClose={closeRemovePostDialog}
+                                                        aria-describedby="alert-dialog-slide-description"
+                                                    >
+                                                        <DialogTitle style={{color: '#5D5D5D'}}>{"Do you want to remove this post?"}</DialogTitle>
+                                                        <DialogContent>
+                                                            <DialogContentText id="alert-dialog-slide-description" style={{ fontSize: 14 }}>
+                                                                You will no longer see this post if you press REMOVE.
+                                                            </DialogContentText>
+                                                        </DialogContent>
+                                                        <DialogActions>
+                                                            <Button style={{ fontSize: 14 }} onClick={closeRemovePostDialog}>Cancel</Button>
+                                                            <Button style={{ fontSize: 14 }} onClick={() => removePost(post.id)}>Remove</Button>
+                                                        </DialogActions>
+                                                    </Dialog>
+                                                </div> : <></>
                                             }
                                         </div>
                                         <div className="auction-order-info">

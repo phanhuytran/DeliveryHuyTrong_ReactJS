@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import '../../post/post.css';
-import swal from 'sweetalert';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { AuthAPI, endpoints } from '../../API';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function EditPostDetailForm(props) {
     const [stockList, setStockList] = useState([]);
@@ -10,6 +21,7 @@ export default function EditPostDetailForm(props) {
     const [receivingAddress, setReceivingAddress] = useState(props.receivingAddress.id + '');
     const [sendingAddress, setSendingAddress] = useState(props.sendingAddress.id + '');
     const [selectedFiles, setSelectedFiles] = useState([]);
+    const [isDisPlayMessageStockError, setIsDisPlayMessageStockError] = useState(false);
     const [currentImage, setCurrentImage] = useState(false);
     const image = React.createRef();
 
@@ -55,11 +67,15 @@ export default function EditPostDetailForm(props) {
         props.onSubmit(formData);
     }
 
+    const closeMessageStockErrorDialog = () => {
+        setIsDisPlayMessageStockError(false);
+    }
+
     const changeSendingAddress = (e) => {
         if (e.target.value !== receivingAddress) {
             setSendingAddress(e.target.value)
         } else {
-            swal('', 'The sending and receiving addresses are not allowed to be the same. Please select again!', 'error')
+            setIsDisPlayMessageStockError(true);
         }
     }
 
@@ -67,7 +83,7 @@ export default function EditPostDetailForm(props) {
         if (e.target.value !== sendingAddress) {
             setReceivingAddress(e.target.value)
         } else {
-            swal('', 'The sending and receiving addresses are not allowed to be the same. Please select again!', 'error')
+            setIsDisPlayMessageStockError(true);
         }
     }
 
@@ -101,6 +117,25 @@ export default function EditPostDetailForm(props) {
             <p>Receiving address:</p>
             <select value={receivingAddress} onChange={changeReceivingAddress} required>{selectOptionAddress()}</select><br />
             <button type="submit">Edit</button><div style={{ marginBottom: '100px' }}></div>
+            {
+                isDisPlayMessageStockError ? <Dialog
+                    open={isDisPlayMessageStockError}
+                    TransitionComponent={Transition}
+                    keepMounted
+                    onClose={closeMessageStockErrorDialog}
+                    aria-describedby="alert-dialog-slide-description"
+                >
+                    <DialogTitle style={{ textAlign: 'center' }}><HighlightOffIcon style={{ fontSize: 50, color: '#dc3545' }} /></DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-slide-description" style={{ fontSize: 14 }}>
+                            The sending and receiving addresses are not allowed to be the same.
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button style={{ fontSize: 14 }} onClick={closeMessageStockErrorDialog}>Ok</Button>
+                    </DialogActions>
+                </Dialog> : <></>
+            }
         </form>
     );
 }

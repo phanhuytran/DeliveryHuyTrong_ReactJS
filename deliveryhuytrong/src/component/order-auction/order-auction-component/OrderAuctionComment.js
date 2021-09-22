@@ -3,9 +3,20 @@ import "../order-auction.css";
 import cookies from 'react-cookies';
 import axios from 'axios';
 import moment from 'moment';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
 import GavelIcon from '@mui/icons-material/Gavel';
 import AuctionForm from './AuctionForm'
 import { AuthAPI, endpoints } from '../../API';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function OrderAuctionComment(props) {
     const [auction, setAuction] = useState([]);
@@ -14,6 +25,7 @@ export default function OrderAuctionComment(props) {
     const [editCost, setEditCost] = useState(0);
     const [isDisplayAuctionInfo, setIsDisplayAuctionInfo] = useState(true);
     const [isDisplayEditAuction, setIsDisplayEditAuction] = useState(false);
+    const [openRemoveAuctionDialog, setOpenRemoveAuctionDialog] = useState(false);
 
     useEffect(() => {
         const getAuction = async () => {
@@ -27,6 +39,15 @@ export default function OrderAuctionComment(props) {
         setIsDisplayPostOption(toggle => !toggle);
     }
 
+    const openAuctionDialog = () => {
+        setOpenRemoveAuctionDialog(true);
+    }
+
+    const closeRemoveAuctionDialog = () => {
+        setOpenRemoveAuctionDialog(false);
+        setIsDisplayPostOption(false);
+    }
+
     async function removeAuction(id) {
         let auc = auction;
         await axios({
@@ -38,6 +59,7 @@ export default function OrderAuctionComment(props) {
         }).then((res) => {
             console.log(res);
             setMessage('');
+            setIsDisplayPostOption(false);
         }).catch((err) => {
             console.log(err.response.data);
             setIsDisplayPostOption(false);
@@ -130,7 +152,25 @@ export default function OrderAuctionComment(props) {
                                 {
                                     isDisplayPostOption ? <div className="cmt-auction-action">
                                         <p onClick={showEditForm}>Edit</p>
-                                        <p onClick={() => removeAuction(auction.id)}>Remove</p>
+                                        <p onClick={openAuctionDialog}>Remove</p>
+                                        <Dialog
+                                            open={openRemoveAuctionDialog}
+                                            TransitionComponent={Transition}
+                                            keepMounted
+                                            onClose={closeRemoveAuctionDialog}
+                                            aria-describedby="alert-dialog-slide-description"
+                                        >
+                                            <DialogTitle style={{ color: '#5D5D5D' }}>{"Do you want to remove this auction?"}</DialogTitle>
+                                            <DialogContent>
+                                                <DialogContentText id="alert-dialog-slide-description" style={{ fontSize: 14 }}>
+                                                    You will no longer see this auction if you press REMOVE.
+                                                </DialogContentText>
+                                            </DialogContent>
+                                            <DialogActions>
+                                                <Button style={{ fontSize: 14 }} onClick={closeRemoveAuctionDialog}>Cancel</Button>
+                                                <Button style={{ fontSize: 14 }} onClick={() => removeAuction(auction.id)}>Remove</Button>
+                                            </DialogActions>
+                                        </Dialog>
                                     </div> : <></>
                                 }
                             </div>

@@ -4,21 +4,32 @@ import cookies from 'react-cookies';
 import { Link } from 'react-router-dom';
 import * as _ from "lodash";
 import moment from 'moment';
-import swal from 'sweetalert';
 import Slider from "react-slick";
 import axios from 'axios';
 import Modal from 'react-modal';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
 import PostForm from './PostForm';
-// import PostComment from './PostComment';
 import PersonalInformation from './PersonalInformation';
 import { AuthAPI, endpoints } from '../../API';
 import EditPostForm from './EditPostForm';
+// import PostComment from './PostComment';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function Post() {
     const [postList, setPostList] = useState([]);
     const [hiddenContent, setHiddenContent] = useState({});
     const [hiddenPostOption, setHiddenPostOption] = useState({});
     const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
+    const [isDisplayRemovePostDialog, setIsDisplayOpenRemovePostDialog] = useState(false);
 
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
     const onToggleHideContent = index => {
@@ -51,23 +62,24 @@ export default function Post() {
         setPostList(post);
     }
 
+    const openRemovePostDialog = () => {
+        setIsDisplayOpenRemovePostDialog(true);
+    }
+
+    const closeRemovePostDialog = () => {
+        setIsDisplayOpenRemovePostDialog(false);
+        setHiddenPostOption({});
+    }
+
     function removePost(id) {
         let post = postList;
-        swal({
-            title: "Do you want to remove this order?",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true
-        }).then((willRemove) => {
-            if (willRemove) {
-                AuthAPI.delete(endpoints['posts'] + id)
-                setPostList(post);
-                swal("This order was removed successfully!", { icon: "success" });
-                setHiddenPostOption({});
-            } else {
-                swal("You pressed cancel!", { icon: "warning" });
-            }
-        });
+        AuthAPI.delete(endpoints['posts'] + id).then((res) => {
+            console.log(res);
+            setPostList(post);
+            setHiddenPostOption({});
+        }).catch((err) => {
+            console.log(err.response.data);
+        })
     }
 
     async function editPost(id, data) {
@@ -87,6 +99,11 @@ export default function Post() {
         }).catch((err) => {
             console.log(err.response.data)
         })
+    }
+
+    const closeEditPostModal = () => {
+        setModalEditIsOpen(false);
+        setHiddenPostOption({});
     }
 
     let result;
@@ -112,7 +129,6 @@ export default function Post() {
                                                 </div>
                                                 <div className="post-content-header-center">
                                                     <p><strong>{post.customer.username}</strong><br /><span>{moment(post.created_date, "YYYYMMDD").fromNow()}</span></p>
-                                                    {/* <p><strong>{post.customer.username}</strong><br /><span>{(post.created_date).slice(0, 10)}</span></p> */}
                                                 </div>
                                                 <div className="post-content-header-right">
                                                     <p onClick={() => onTogglePostOption(index)}>
@@ -131,11 +147,29 @@ export default function Post() {
                                                                     sendingAddress={post.send_stock}
                                                                     image={post.image_items}
                                                                 />
-                                                                <div className="close-modal-edit-post-form" onClick={() => setModalEditIsOpen(false)}>
+                                                                <div className="close-modal-edit-post-form" onClick={closeEditPostModal}>
                                                                     <i className="fas fa-times-circle"></i>
                                                                 </div>
                                                             </Modal>
-                                                            <p onClick={() => removePost(post.id)}>Remove</p>
+                                                            <p onClick={openRemovePostDialog}>Remove</p>
+                                                            <Dialog
+                                                                open={isDisplayRemovePostDialog}
+                                                                TransitionComponent={Transition}
+                                                                keepMounted
+                                                                onClose={closeRemovePostDialog}
+                                                                aria-describedby="alert-dialog-slide-description"
+                                                            >
+                                                                <DialogTitle style={{ color: '#5D5D5D' }}>{"Do you want to remove this post?"}</DialogTitle>
+                                                                <DialogContent>
+                                                                    <DialogContentText id="alert-dialog-slide-description" style={{ fontSize: 14 }}>
+                                                                        You will no longer see this post if you press REMOVE.
+                                                                    </DialogContentText>
+                                                                </DialogContent>
+                                                                <DialogActions>
+                                                                    <Button style={{ fontSize: 14 }} onClick={closeRemovePostDialog}>Cancel</Button>
+                                                                    <Button style={{ fontSize: 14 }} onClick={() => removePost(post.id)}>Remove</Button>
+                                                                </DialogActions>
+                                                            </Dialog>
                                                         </div>
                                                     }
                                                 </div>

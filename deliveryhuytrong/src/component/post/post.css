@@ -10,8 +10,8 @@
 
 .post-body-left {
     width: 30%;
-    box-shadow: 0 0 5px rgba(33,33,33,.2);
-    border-radius: 8px;
+    border: 1px solid #e3e3e3;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .post-body-center {
@@ -117,10 +117,9 @@
     position: absolute;
     width: 8%;
     margin: 3% 0 0 -2%;
-    border-radius: 5px;
     font-weight: bold;
     background-color: #fff;
-    box-shadow: 0 0 5px rgba(33,33,33,.2);
+    box-shadow: 0 0 5px rgb(33 33 33 / 20%);
     animation: fadeIn linear 0.1s;
     animation: growth linear 0.1s;
     --growth-from: 0;
@@ -206,15 +205,15 @@
 .post-form {
     margin: 0 0 3% 0;
     padding: 3% 4%;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(33,33,33,.2);
+    border: 1px solid #e3e3e3;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .post-item {
     margin: 3% 0 0 0;
     padding: 2% 0 5% 0;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(33,33,33,.2);
+    border: 1px solid #e3e3e3;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .post-form button {
@@ -400,8 +399,8 @@ p.created-date-comment {
     margin: 16.85% auto;
     width: 30%;
     height: 30%;
-    /* border-radius: 8px; */
-    box-shadow: 0 0 5px rgb(33 33 33 / 20%);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    /* box-shadow: 0 0 5px rgb(33 33 33 / 20%); */
     background-color: #fff;
     outline: none;
     animation: growth linear 0.2s;
@@ -413,7 +412,6 @@ p.created-date-comment {
     margin: 2% auto;
     width: 30%;
     height: 91%;
-    /* border-radius: 8px; */
     box-shadow: 0 0 5px rgb(33 33 33 / 20%);
     background-color: #fff;
     overflow-y: scroll;
@@ -612,8 +610,8 @@ p.created-date-comment {
 }
 
 .post-list-null {
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgb(33 33 33 / 20%);
+    border: 1px solid #e3e3e3;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .post-list-null p {

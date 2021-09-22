@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import '../post.css';
 import cookies from 'react-cookies';
-import swal from 'sweetalert';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineSharpIcon from '@material-ui/icons/RemoveCircleOutlineSharp';
 import { AuthAPI, endpoints } from '../../API';
 import StockForm from './StockForm';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function PostForm(props) {
     const [stockList, setStockList] = useState([]);
@@ -16,6 +27,7 @@ export default function PostForm(props) {
     const [isDisplayPostForm, setIsDisplayPostForm] = useState(false);
     const [isDisplayStockForm, setIsDisplayStockForm] = useState(false);
     const [selectedFiles, setSelectedFiles] = useState([]);
+    const [isDisPlayMessageStockError, setIsDisPlayMessageStockError] = useState(false);
     const [isImage, setIsImage] = useState(false);
     const image = React.createRef();
 
@@ -59,19 +71,23 @@ export default function PostForm(props) {
         props.onSubmit(formData);
     }
 
-    const changeSendingAddress = (e) => {
-        if (e.target.value !== receivingAddress) {
-            setSendingAddress(e.target.value)
-        } else {
-            swal('', 'The sending and receiving addresses are not allowed to be the same. Please select again!', 'error')
-        }
+    const closeMessageStockErrorDialog = () => {
+        setIsDisPlayMessageStockError(false);
     }
 
     const changeReceivingAddress = (e) => {
         if (e.target.value !== sendingAddress) {
             setReceivingAddress(e.target.value)
         } else {
-            swal('', 'The sending and receiving addresses are not allowed to be the same. Please select again!', 'error')
+            setIsDisPlayMessageStockError(true);
+        }
+    }
+
+    const changeSendingAddress = (e) => {
+        if (e.target.value !== receivingAddress) {
+            setSendingAddress(e.target.value)
+        } else {
+            setIsDisPlayMessageStockError(true);
         }
     }
 
@@ -140,9 +156,28 @@ export default function PostForm(props) {
                         <tr><td colSpan={2}><button type="submit">Post</button></td></tr>
                     </tbody>
                 </table>
-            </form> : ''
+            </form> : <></>
             }
-            {isDisplayStockForm ? <StockForm onSubmit={createStock} /> : ''}
+            {isDisplayStockForm ? <StockForm onSubmit={createStock} /> : <></>}
+            {
+                isDisPlayMessageStockError ? <Dialog
+                    open={isDisPlayMessageStockError}
+                    TransitionComponent={Transition}
+                    keepMounted
+                    onClose={closeMessageStockErrorDialog}
+                    aria-describedby="alert-dialog-slide-description"
+                >
+                    <DialogTitle style={{ textAlign: 'center' }}><HighlightOffIcon style={{ fontSize: 50, color: '#dc3545' }} /></DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-slide-description" style={{ fontSize: 14 }}>
+                            The sending and receiving addresses are not allowed to be the same.
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button style={{ fontSize: 14 }} onClick={closeMessageStockErrorDialog}>Ok</Button>
+                    </DialogActions>
+                </Dialog> : <></>
+            }
         </div>
     );
 
