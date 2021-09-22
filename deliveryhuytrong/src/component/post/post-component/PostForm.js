@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../post.css';
+import swal from 'sweetalert';
 import cookies from 'react-cookies';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineSharpIcon from '@material-ui/icons/RemoveCircleOutlineSharp';
@@ -58,12 +59,35 @@ export default function PostForm(props) {
         props.onSubmit(formData);
     }
 
+    const changeSendingAddress = (e) => {
+        if (e.target.value !== receivingAddress) {
+            setSendingAddress(e.target.value)
+        } else {
+            swal('', 'The sending and receiving addresses are not allowed to be the same. Please select again!', 'error')
+        }
+    }
+
+    const changeReceivingAddress = (e) => {
+        if (e.target.value !== sendingAddress) {
+            setReceivingAddress(e.target.value)
+        } else {
+            swal('', 'The sending and receiving addresses are not allowed to be the same. Please select again!', 'error')
+        }
+    }
+
+    const selectOptionAddress = () => {
+        return stockList && stockList.map((option, index) => {
+            return <option key={index} value={option.id}>{option.address}</option>
+        })
+    }
+
     async function createStock(data) {
         let stock = stockList;
         await AuthAPI.post(endpoints['stocks'], data);
         setStockList(stock);
         setIsDisplayStockForm(false);
     }
+
 
     return (
         <div className="post-form">
@@ -98,26 +122,18 @@ export default function PostForm(props) {
                         <tr>
                             <td>Sending address:</td>
                             <td>
-                                <select value={sendingAddress} onChange={e => setSendingAddress(e.target.value)} required>
+                                <select value={sendingAddress} onChange={changeSendingAddress} required>
                                     <option value="" disabled hidden></option>
-                                    {
-                                        stockList && stockList.map((option_send, index) => {
-                                            return <option key={index} value={option_send.id}>{option_send.address}</option>
-                                        })
-                                    }
+                                    {selectOptionAddress()}
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td>Receiving address:</td>
                             <td>
-                                <select value={receivingAddress} onChange={e => setReceivingAddress(e.target.value)} required>
+                                <select value={receivingAddress} onChange={changeReceivingAddress} required>
                                     <option value="" disabled hidden></option>
-                                    {
-                                        stockList && stockList.map((option_receive, index) => {
-                                            return <option key={index} value={option_receive.id}>{option_receive.address}</option>
-                                        })
-                                    }
+                                    {selectOptionAddress()}
                                 </select>
                             </td>
                         </tr>

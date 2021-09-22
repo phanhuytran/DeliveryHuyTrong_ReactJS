@@ -7,8 +7,8 @@ export default function EditPostForm(props) {
     const [stockList, setStockList] = useState([]);
     const [description, setDescription] = useState(props.description);
     const [weight, setWeight] = useState(props.weight);
-    const [receivingAddress, setReceivingAddress] = useState(props.receivingAddress.id + "");
-    const [sendingAddress, setSendingAddress] = useState(props.sendingAddress.id + "");
+    const [receivingAddress, setReceivingAddress] = useState(props.receivingAddress.id + '');
+    const [sendingAddress, setSendingAddress] = useState(props.sendingAddress.id + '');
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [currentImage, setCurrentImage] = useState(false);
     const image = React.createRef();
@@ -18,8 +18,9 @@ export default function EditPostForm(props) {
             let res = await AuthAPI.get(endpoints['stocks']);
             setStockList(res.data);
         }
-        if (stockList.length === 0)
+        if (stockList.length === 0) {
             getStockList();
+        }
     }, [stockList]);
 
     const handleImageChange = e => {
@@ -54,23 +55,23 @@ export default function EditPostForm(props) {
         props.onSubmit(formData);
     }
 
-    const changeSending = (e) => {
+    const changeSendingAddress = (e) => {
         if (e.target.value !== receivingAddress) {
             setSendingAddress(e.target.value)
         } else {
-            swal("", "The sending and receiving addresses are not allowed to be the same!", "error")
+            swal('', 'The sending and receiving addresses are not allowed to be the same. Please select again!', 'error')
         }
     }
 
-    const changeReceiving = (e) => {
+    const changeReceivingAddress = (e) => {
         if (e.target.value !== sendingAddress) {
             setReceivingAddress(e.target.value)
         } else {
-            swal("", "The sending and receiving addresses are not allowed to be the same!", "error")
+            swal('', 'The sending and receiving addresses are not allowed to be the same. Please select again!', 'error')
         }
     }
 
-    const place = (id, get) => {
+    const selectOptionAddress = () => {
         return stockList && stockList.map((option, index) => {
             return <option key={index} value={option.id}>{option.address}</option>
         })
@@ -96,17 +97,9 @@ export default function EditPostForm(props) {
             <p>Weight:</p>
             <input type="number" min="0" step="0.01" placeholder="Weight..." value={weight} onChange={e => setWeight(e.target.value)} required />
             <p>Sending address:</p>
-            <select value={sendingAddress} onChange={changeSending} required>
-                {
-                    place(sendingAddress, "sendingAddress")
-                }
-            </select>
+            <select value={sendingAddress} onChange={changeSendingAddress} required>{selectOptionAddress()}</select>
             <p>Receiving address:</p>
-            <select value={receivingAddress} onChange={changeReceiving} required>
-                {
-                    place(receivingAddress, "receivingAddress")
-                }
-            </select><br />
+            <select value={receivingAddress} onChange={changeReceivingAddress} required>{selectOptionAddress()}</select><br />
             <button type="submit">Edit</button><div style={{ marginBottom: '70px' }}></div>
         </form>
     );

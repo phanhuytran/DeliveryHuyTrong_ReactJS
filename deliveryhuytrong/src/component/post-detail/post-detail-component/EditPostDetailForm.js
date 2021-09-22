@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import '../../post/post.css';
+import swal from 'sweetalert';
 import { AuthAPI, endpoints } from '../../API';
 
 export default function EditPostDetailForm(props) {
     const [stockList, setStockList] = useState([]);
     const [description, setDescription] = useState(props.description);
     const [weight, setWeight] = useState(props.weight);
-    const [receivingAddress, setReceivingAddress] = useState(props.receivingAddress.id);
-    const [sendingAddress, setSendingAddress] = useState(props.sendingAddress.id);
+    const [receivingAddress, setReceivingAddress] = useState(props.receivingAddress.id + '');
+    const [sendingAddress, setSendingAddress] = useState(props.sendingAddress.id + '');
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [currentImage, setCurrentImage] = useState(false);
     const image = React.createRef();
@@ -17,7 +18,9 @@ export default function EditPostDetailForm(props) {
             let res = await AuthAPI.get(endpoints['stocks']);
             setStockList(res.data);
         }
-        getStockList();
+        if (stockList.length === 0) {
+            getStockList();
+        }
     }, [stockList]);
 
     const handleImageChange = e => {
@@ -52,6 +55,28 @@ export default function EditPostDetailForm(props) {
         props.onSubmit(formData);
     }
 
+    const changeSendingAddress = (e) => {
+        if (e.target.value !== receivingAddress) {
+            setSendingAddress(e.target.value)
+        } else {
+            swal('', 'The sending and receiving addresses are not allowed to be the same. Please select again!', 'error')
+        }
+    }
+
+    const changeReceivingAddress = (e) => {
+        if (e.target.value !== sendingAddress) {
+            setReceivingAddress(e.target.value)
+        } else {
+            swal('', 'The sending and receiving addresses are not allowed to be the same. Please select again!', 'error')
+        }
+    }
+
+    const selectOptionAddress = () => {
+        return stockList && stockList.map((option, index) => {
+            return <option key={index} value={option.id}>{option.address}</option>
+        })
+    }
+
     return (
         <form className="edit-form" onSubmit={onSubmit} encType="multipart/form-data">
             <h1 style={{ marginBottom: '11%' }}>EDIT POST</h1>
@@ -72,21 +97,9 @@ export default function EditPostDetailForm(props) {
             <p>Weight:</p>
             <input type="number" min="0" step="0.01" placeholder="Weight..." value={weight} onChange={e => setWeight(e.target.value)} required />
             <p>Sending address:</p>
-            <select value={sendingAddress} onChange={e => setSendingAddress(e.target.value)} required>
-                {
-                    stockList && stockList.map((option_send, index) => {
-                        return <option key={index} value={option_send.id} defaultValue={sendingAddress === option_send.id}>{option_send.address}</option>
-                    })
-                }
-            </select>
+            <select value={sendingAddress} onChange={changeSendingAddress} required>{selectOptionAddress()}</select>
             <p>Receiving address:</p>
-            <select value={receivingAddress} onChange={e => setReceivingAddress(e.target.value)} required>
-                {
-                    stockList && stockList.map((option_receive, index) => {
-                        return <option key={index} value={option_receive.id} defaultValue={receivingAddress === option_receive.id}>{option_receive.address}</option>
-                    })
-                }
-            </select><br />
+            <select value={receivingAddress} onChange={changeReceivingAddress} required>{selectOptionAddress()}</select><br />
             <button type="submit">Edit</button><div style={{ marginBottom: '100px' }}></div>
         </form>
     );
