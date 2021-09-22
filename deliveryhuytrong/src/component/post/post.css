@@ -370,6 +370,7 @@ p.created-date-comment {
 }
 
 .create-stock .create-stock-icon {
+    font-size: 20px;
     font-weight: bold;
     color:#f9bf3b;
 }

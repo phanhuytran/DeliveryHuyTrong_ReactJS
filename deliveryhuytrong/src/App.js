@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import cookies from 'react-cookies';
+import axios from 'axios';
 import qs from 'qs';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Footer from './component/item-base/Footer';
 import Header from './component/item-base/Header';
 import API, { endpoints } from './component/API';
@@ -10,16 +11,15 @@ import BodyOrder from './component/list-orders/BodyOrder';
 import BodyOrderAuction from './component/order-auction/BodyOrderAuction';
 import BodyStatistic from './component/statistic/BodyStatistic';
 import BodyAbout from './component/about/BodyAbout';
-import PageNotFound_404 from './component/item-base/404_PageNotFound';
 import AuthorizationRequired_401 from './component/item-base/401_AuthorizationRequired';
+import PermissionDenied_403 from './component/item-base/403_PermissionDenied';
+import PageNotFound_404 from './component/item-base/404_PageNotFound';
 import BodyShipper from './component/shipper/BodyShipper';
 import BodyPricing from './component/pricing/BodyPricing';
 import BodyContact from './component/contact/BodyContact';
 import BodyShipperDetail from './component/shipper-detail/BodyShipperDetail';
 import BodyPost from './component/post/BodyPost';
 import BodyPostDetail from './component/post-detail/BodyPostDetail';
-import axios from 'axios';
-import Forbidden_403 from './component/item-base/403_Forbidden';
 
 export let UserContext = React.createContext();
 
@@ -96,30 +96,29 @@ export default function App() {
               {
                 cookies.load("user").username === 'admin'
                   ? <Route path="/statistic" exact={true} component={BodyStatistic} />
-                  : <Route path="/statistic" exact={true} component={Forbidden_403} />
+                  : <Route path="/statistic" exact={true} component={PermissionDenied_403} />
               }
               {
                 cookies.load("user").groups[0] === 2 || cookies.load("user").username === 'admin'
                   ? <Route path="/list-orders" exact={true} component={BodyOrder} />
-                  : <Route path="/list-orders" exact={true} component={Forbidden_403} />
+                  : <Route path="/list-orders" exact={true} component={PermissionDenied_403} />
               }
               {
                 cookies.load("user").groups[0] === 2 || cookies.load("user").username === 'admin'
                   ? <Route path="/order/:id/auction" exact={true} component={(props) => (<BodyOrderAuction props={props} />)} />
-                  : <Route path="/order/:id/auction" exact={true} component={Forbidden_403} />
+                  : <Route path="/order/:id/auction" exact={true} component={PermissionDenied_403} />
               }
               <Route path="/shipper" exact={true} component={BodyShipper} />
-              <Route path="/shipper-detail/:id" exact={true} component={(props) => (<BodyShipperDetail props={props} />)} />
-              {/* {
+              {
                 cookies.load("user").groups[0] === 1
-                  ? <Route path="/post" exact={true} component={BodyPost} />
-                  : <Route path="/post" exact={true} component={Forbidden_403} />
-              } */}
+                  ? <Route path="/shipper-detail/:id" exact={true} component={(props) => (<BodyShipperDetail props={props} />)} />
+                  : <Route path="/shipper-detail/:id" exact={true} component={PermissionDenied_403} />
+              }
               <Route path="/post" exact={true} component={BodyPost} />
               {
                 cookies.load("user").groups[0] === 1
                   ? <Route path="/post-detail/:id" exact={true} component={(props) => (<BodyPostDetail props={props} />)} />
-                  : <Route path="/post-detail/:id" exact={true} component={Forbidden_403} />
+                  : <Route path="/post-detail/:id" exact={true} component={PermissionDenied_403} />
               }
               <Route path="" exact={true} component={PageNotFound_404} />
             </Switch> : <Switch>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "../order-auction.css";
+import cookies from 'react-cookies';
 import "../slick-carousel/slick/slick.css";
 import "../slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -24,7 +25,7 @@ export default function OrderAuctionPost(props) {
     return (
         <section className="order-bottom-area">
             <div className="container">
-                <div className="row">
+                <div className="row" style={{ marginBottom: '5%' }}>
                     <div className="auction-area">
                         {
                             orderPostList.map((post, index) => {
@@ -36,7 +37,7 @@ export default function OrderAuctionPost(props) {
                                             </div>
                                             <div className="auction-customer-info-right">
                                                 <p>
-                                                    <span style={{fontSize: 16}}>{post.customer.username}</span><br />
+                                                    <span style={{ fontSize: 16 }}>{post.customer.username}</span><br />
                                                     {/* <span>{(post.created_date).slice(0, 10)}</span> */}
                                                     <span>{moment(post.created_date, "YYYYMMDD").fromNow()}</span>
                                                 </p>
@@ -64,14 +65,16 @@ export default function OrderAuctionPost(props) {
                                                 }
                                             </Slider>
                                         </div>
-                                        <OrderAuctionComment post={post} />
+                                        {
+                                            cookies.load("user").groups[0] === 2 ? <OrderAuctionComment post={post} /> : <></>
+                                        }
                                     </React.Fragment>
                                 }
                                 return '';
                             })
                         }
                     </div>
-                </div><br />
+                </div>
                 <Link to="/list-orders" className="see-another-page">SEE LIST OF ORDERS</Link>
             </div>
         </section>

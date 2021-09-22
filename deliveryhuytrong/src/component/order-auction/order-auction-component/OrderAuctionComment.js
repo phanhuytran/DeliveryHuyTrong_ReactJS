@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import "../order-auction.css";
+import cookies from 'react-cookies';
 import axios from 'axios';
 import moment from 'moment';
-import cookies from 'react-cookies';
 import GavelIcon from '@mui/icons-material/Gavel';
 import AuctionForm from './AuctionForm'
 import { AuthAPI, endpoints } from '../../API';

@@ -10,12 +10,12 @@ export default function BodyPricing() {
                 <div className="container">
                     <PricingTitle />
                     <div className="row">
-                        <div className="col-md-4 col-lg-4 col-sm-4 col-xs-12 text-center">
+                        <div className="col-md-4 col-lg-4 col-sm-4 col-xs-12 text-center" style={{ marginBottom: '2.5%' }}>
                             <div className="single-pricing-table">
                                 <div className="pricing-title">
                                     <h6>standard</h6>
                                     <h1>50$</h1>
-                                    <h5>for a delivery</h5>
+                                    <h5>For a delivery</h5>
                                 </div>
                                 <ul className="price-list">
                                     <li>Full website maintance</li>
@@ -28,12 +28,12 @@ export default function BodyPricing() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-4 col-lg-4 col-sm-4 col-xs-12 text-center">
+                        <div className="col-md-4 col-lg-4 col-sm-4 col-xs-12 text-center" style={{ marginBottom: '2.5%' }}>
                             <div className="single-pricing-table">
                                 <div className="pricing-title">
                                     <h6>premium</h6>
                                     <h1>250$</h1>
-                                    <h5>for a delivery</h5>
+                                    <h5>For a delivery</h5>
                                 </div>
                                 <ul className="price-list">
                                     <li>Full website maintance</li>
@@ -46,12 +46,12 @@ export default function BodyPricing() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-4 col-lg-4 col-sm-4 col-xs-12 text-center">
+                        <div className="col-md-4 col-lg-4 col-sm-4 col-xs-12 text-center" style={{ marginBottom: '2.5%' }}>
                             <div className="single-pricing-table">
                                 <div className="pricing-title">
                                     <h6>Basic</h6>
                                     <h1>50$</h1>
-                                    <h5>for a delivery</h5>
+                                    <h5>For a delivery</h5>
                                 </div>
                                 <ul className="price-list">
                                     <li>Full website maintance</li>

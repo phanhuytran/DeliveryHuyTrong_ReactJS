@@ -8,8 +8,8 @@ export default function OrderAuctionTitle() {
                 <div className="row page-title">
                     <div className="col-md-6 col-sm-6 col-xs-6 text-left">
                         <div className="order_us_content_title">
-                            <h2>order auction</h2>
-                            <h5>Auction compete for orders</h5>
+                            <h2>order details</h2>
+                            <h5>View order details</h5>
                         </div>
                     </div>
                     <div className="col-md-6 col-sm-6 col-xs-6 text-right">

@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import "../item-base.css";
+import cookies from 'react-cookies';
 import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
 import Modal from 'react-modal';
-import cookies from 'react-cookies';
 import SignInSignUp from './SignInSignUp';
 import { UserContext } from '../../../App';
 import { Link } from 'react-router-dom';

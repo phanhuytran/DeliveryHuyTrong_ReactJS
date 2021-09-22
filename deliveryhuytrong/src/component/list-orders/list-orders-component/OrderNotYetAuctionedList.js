@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import cookies from 'react-cookies';
 import { Link } from 'react-router-dom';
 import * as _ from "lodash";
 import GavelIcon from '@mui/icons-material/Gavel';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import { AuthAPI, endpoints } from '../../API';
 
 export default function OrderNotYetAuctionedList() {
@@ -101,10 +103,6 @@ export default function OrderNotYetAuctionedList() {
                                     </td>
                                     <td></td>
                                 </tr>
-                                {/* {
-                                    auction && auction.map((auction, index) => {
-                                        if (auction.is_win === true) {
-                                            return <React.Fragment key={index}> */}
                                 {
                                     _.sortBy(orderPost).reverse().map((order, index) => {
                                         if (order.is_finish === false) {
@@ -116,17 +114,16 @@ export default function OrderNotYetAuctionedList() {
                                                 <td>{order.weight}</td>
                                                 <td>{order.send_stock.address}</td>
                                                 <td>{order.receive_stock.address}</td>
-                                                <td><Link to={"order/" + order.id + "/auction"} className="see-another-page-2">Click to auction <GavelIcon /></Link></td>
+                                                {
+                                                    cookies.load("user").username === 'admin'
+                                                    ? <td><Link to={"order/" + order.id + "/auction"} className="see-another-page-2">Order details <VisibilityIcon /></Link></td>
+                                                    : <td><Link to={"order/" + order.id + "/auction"} className="see-another-page-2">Click to auction <GavelIcon /></Link></td>
+                                                }
                                             </tr>
                                         }
                                         return <React.Fragment key={index}></React.Fragment>
                                     })
                                 }
-                                {/* </React.Fragment>
-                                        }
-                                        return <React.Fragment key={index}></React.Fragment>
-                                    })
-                                } */}
                                 <tr>{result}</tr>
                             </tbody>
                         </table>

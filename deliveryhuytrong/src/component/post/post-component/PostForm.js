@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../post.css';
-import swal from 'sweetalert';
 import cookies from 'react-cookies';
+import swal from 'sweetalert';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineSharpIcon from '@material-ui/icons/RemoveCircleOutlineSharp';
 import { AuthAPI, endpoints } from '../../API';
@@ -96,8 +96,8 @@ export default function PostForm(props) {
             </button>
             <span className="create-stock">
                 {
-                    !isDisplayStockForm ? <AddCircleOutlineIcon onClick={onToggleStockForm} style={{ fontSize: 20 }} className="create-stock-icon" />
-                        : <RemoveCircleOutlineSharpIcon onClick={onToggleStockForm} style={{ fontSize: 20 }} className="create-stock-icon" />
+                    !isDisplayStockForm ? <AddCircleOutlineIcon onClick={onToggleStockForm} className="create-stock-icon" />
+                        : <RemoveCircleOutlineSharpIcon onClick={onToggleStockForm} className="create-stock-icon" />
                 }
                 <span>Create stock</span>
             </span>

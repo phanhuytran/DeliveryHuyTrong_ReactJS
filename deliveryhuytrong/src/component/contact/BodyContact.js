@@ -22,7 +22,7 @@ export default function BodyContact() {
                                 </form>
                             </div>
                         </div>
-                        <div className="col-md-5 col-md-offset-1 col-sm-6  wow bounceIn">
+                        <div className="col-md-5 col-md-offset-1 col-sm-6  wow bounceIn" style={{ marginLeft: '5%' }}>
                             <div className="google-map">
                                 <div id="googleMap">
                                     <img src="img/map.jpg" alt="" />

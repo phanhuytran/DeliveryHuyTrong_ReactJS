@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import "../post-detail.css";
+import cookies from 'react-cookies';
 import "../slick-carousel/slick/slick.css";
 import "../slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import moment from 'moment';
 import axios from 'axios';
-import cookies from 'react-cookies';
 import Modal from 'react-modal';
 import swal from 'sweetalert';
 import { Link, useHistory } from 'react-router-dom';

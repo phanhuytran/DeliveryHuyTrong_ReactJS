@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
-import '../post.css'
-import FileUploadIcon from '@mui/icons-material/FileUpload';
+import '../post.css';
 import cookies from 'react-cookies';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 import Modal from 'react-modal';
 import EditCurrentUserForm from './EditCurrentUserForm';
 import { AuthAPI, endpoints } from '../../API';
