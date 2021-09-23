@@ -72,7 +72,7 @@ export default function StatisticOrderList() {
 
     return (
         <div className="statistic-order">
-            <h2>Order List</h2>
+            <h2>List of Orders</h2>
             <div className="table-list-area">
                 <table className="table-list">
                     <thead>

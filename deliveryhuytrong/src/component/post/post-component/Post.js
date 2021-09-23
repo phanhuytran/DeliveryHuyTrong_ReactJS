@@ -18,6 +18,7 @@ import PostForm from './PostForm';
 import PersonalInformation from './PersonalInformation';
 import { AuthAPI, endpoints } from '../../API';
 import EditPostForm from './EditPostForm';
+import OrderAuctionedList from './OrderAuctionedList';
 // import PostComment from './PostComment';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -32,6 +33,7 @@ export default function Post() {
     const [isDisplayRemovePostDialog, setIsDisplayOpenRemovePostDialog] = useState(false);
 
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
+    
     const onToggleHideContent = index => {
         setHiddenContent({ ...hiddenContent, [index]: !hiddenContent[index] });
     };
@@ -231,7 +233,7 @@ export default function Post() {
                                 })
                             }
                             {result}
-                        </> : <></>
+                        </> : <OrderAuctionedList />
                     }
                 </div>
             </div >

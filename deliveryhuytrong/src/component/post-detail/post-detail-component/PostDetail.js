@@ -201,7 +201,7 @@ export default function PostDetail(props) {
                         }
                     </div>
                 </div><br />
-                <Link to="/post" className="see-another-page">SEE MY POSTS</Link>
+                <Link to="/post" className="see-another-page">SEE MY POST</Link>
             </div>
         </section>
     );

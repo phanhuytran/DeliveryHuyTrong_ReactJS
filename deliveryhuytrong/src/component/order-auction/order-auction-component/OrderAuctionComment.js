@@ -14,6 +14,8 @@ import GavelIcon from '@mui/icons-material/Gavel';
 import AuctionForm from './AuctionForm'
 import { AuthAPI, endpoints } from '../../API';
 
+export let MessageContext = React.createContext();
+
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -60,6 +62,7 @@ export default function OrderAuctionComment(props) {
             console.log(res);
             setMessage('');
             setIsDisplayPostOption(false);
+            setOpenRemoveAuctionDialog(false);
         }).catch((err) => {
             console.log(err.response.data);
             setIsDisplayPostOption(false);

@@ -1,3 +1,17 @@
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #eee;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: #f9bf3b;
+    border: 2px solid #f9bf3b;
+    border-radius: 10px;
+}
+
 @media screen and (max-device-width: 800px) {
     #bgvid {
         display: none;
@@ -20,20 +34,6 @@
     to {
         transform: scale(var(--growth-to));
     }
-}
-
-::-webkit-scrollbar {
-    width: 5px;
-}
-
-::-webkit-scrollbar-track {
-    background-color: #eee;
-}
-  
-::-webkit-scrollbar-thumb {
-    background-color: #f9bf3b;
-    border: 2px solid #f9bf3b;
-    border-radius: 10px;
 }
 
 .header_area {

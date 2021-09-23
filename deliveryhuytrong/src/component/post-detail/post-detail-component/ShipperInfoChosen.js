@@ -29,12 +29,12 @@ export default function ShipperInfoChosen(props) {
                                 <p>Cost:<span style={{ fontSize: 20 }}>{currencyFormat((order.auction_win.cost).slice(0, -3))} VND</span></p>
                                 <p>Status:
                                     <span className={
-                                        order.status === 'shipper' ? 'order-auction-status-shipped' : '' ||
+                                        order.status === 'shipped' ? 'order-auction-status-shipped' : '' ||
                                             order.status === 'shipping' ? 'order-auction-status-shipping' : '' ||
                                                 order.status === 'not yet shipped' ? 'order-auction-status-not-yet-shipped' : ''
                                     }>
                                         {
-                                            order.status === 'shipper' ? 'Shipped' : '' ||
+                                            order.status === 'shipped' ? 'Shipped' : '' ||
                                                 order.status === 'shipping' ? 'Shipping' : '' ||
                                                     order.status === 'not yet shipped' ? 'Not yet shipped' : ''
                                         }
