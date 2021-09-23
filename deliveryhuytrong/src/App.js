@@ -59,7 +59,6 @@ export default function App() {
       console.log(err.response.data);
       setMessage(false);
     })
-
     let user = await API.get(endpoints['current-user'], {
       headers: {
         'Authorization': `Bearer ${cookies.load('access_token')}`

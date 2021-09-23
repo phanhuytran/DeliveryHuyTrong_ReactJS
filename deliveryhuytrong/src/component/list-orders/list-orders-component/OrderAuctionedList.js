@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "../list-orders.css";
-import orderPostListData from './OrderPostListData';
+import * as _ from "lodash";
+import { AuthAPI, endpoints } from '../../API';
 
 export default function OrdertAuctionedList() {
-    const [orderPostList] = useState(orderPostListData);
+    const [orderList, setOrderList] = useState([]);
     const [customerFilter, setCustomerFilter] = useState('');
     const [sendingAddressFilter, setSendingAddressFilter] = useState('');
     const [receivingAddressFilter, setReceivingAddressFilter] = useState('');
@@ -12,28 +13,36 @@ export default function OrdertAuctionedList() {
     const customer = customerFilter;
     const sendingAddress = sendingAddressFilter;
     const receivingAddress = receivingAddressFilter;
-    const itemsOrigin = orderPostList;
+    const itemsOrigin = orderList;
 
-    let orderPost = [], result;
+    let orders = [], result;
     let isDisplayClear = isDisplayClearFilter;
+
+    useEffect(() => {
+        async function getOrderList() {
+            let res = await AuthAPI.get(endpoints['orders']);
+            setOrderList(res.data);
+        }
+        getOrderList();
+        console.log(orderList)
+    }, [orderList]);
 
     function onClear() { setCustomerFilter(''); setSendingAddressFilter(''); setReceivingAddressFilter(''); }
 
     if (customer.length > 0 || sendingAddress.length > 0 || receivingAddress.length > 0) {
         isDisplayClear = true;
         itemsOrigin.forEach((item) => {
-            if (item.customer.toLowerCase().indexOf(customer) !== -1
-                && item.sendingAddress.toLowerCase().indexOf(sendingAddress) !== -1
-                && item.receivingAddress.toLowerCase().indexOf(receivingAddress) !== -1
-                && item.isWin === true) {
-                orderPost.push(item);
+            if ((item.auction_win.post.customer.first_name + " " + item.auction_win.post.customer.last_name).toLowerCase().indexOf(customer) !== -1
+                && item.auction_win.post.send_stock.address.toLowerCase().indexOf(sendingAddress) !== -1
+                && item.auction_win.post.receive_stock.address.toLowerCase().indexOf(receivingAddress) !== -1) {
+                orders.push(item);
             }
         });
     } else {
-        orderPost = itemsOrigin;
+        orders = itemsOrigin;
     }
 
-    if (orderPost.length === 0) {
+    if (orders.length === 0) {
         result = <div className="no-data-found">
             <h1>Order not found</h1>
         </div>
@@ -51,32 +60,31 @@ export default function OrdertAuctionedList() {
                 </div>
                 <div className="row scroll-order-list">
                     {
-                        orderPost.map((order, index) => {
-                            if (order.isWin === true) {
-                                return <div className="col-md-4 col-sm-4 col-xs-12 col-lg-4" key={index}>
-                                    <div className="single-order-us-bottom">
-                                        <h4>{order.customer}</h4>
-                                        <p>Order description:</p>
-                                        <p className="title-info-order-auction">{order.description}</p>
-                                        <p>Sending address:<span>{order.sendingAddress}</span></p>
-                                        <p>Receiving address:<span>{order.receivingAddress}</span></p>
-                                        <p>Status:
-                                            <span className={
-                                                order.status === 'SHIPPED' ? 'order-auction-status-shipped' : '' ||
-                                                    order.status === 'SHIPPING' ? 'order-auction-status-shipping' : '' ||
-                                                        order.status === 'NOTYETSHIPPED' ? 'order-auction-status-not-yet-shipped' : ''
-                                            }>
-                                                {
-                                                    order.status === 'SHIPPED' ? 'Shipped' : '' ||
-                                                        order.status === 'SHIPPING' ? 'Shipping' : '' ||
-                                                            order.status === 'NOTYETSHIPPED' ? 'Not yet shipped' : ''
-                                                }
-                                            </span>
-                                        </p>
+                        _.sortBy(orders).reverse().map((order, index) => {
+                            return <div className="col-md-4 col-sm-4 col-xs-12 col-lg-4" key={index}>
+                                <div className="single-order-us-bottom">
+                                    <h4>{order.auction_win.post.customer.first_name} {order.auction_win.post.customer.last_name}</h4>
+                                    <p>Order description:</p>
+                                    <p className="title-info-order-auction">{order.auction_win.post.description}</p>
+                                    <div style={{ height: '72px' }}>
+                                        <p>Sending address:<span>{order.auction_win.post.send_stock.address}</span></p>
+                                        <p>Receiving address:<span>{order.auction_win.post.receive_stock.address}</span></p>
                                     </div>
+                                    <p style={{ marginTop: '15px' }}>Status:
+                                        <span className={
+                                            order.status === 'shipper' ? 'order-auction-status-shipped' : '' ||
+                                                order.status === 'shipping' ? 'order-auction-status-shipping' : '' ||
+                                                    order.status === 'not yet shipped' ? 'order-auction-status-not-yet-shipped' : ''
+                                        }>
+                                            {
+                                                order.status === 'shipper' ? 'Shipped' : '' ||
+                                                    order.status === 'shipping' ? 'Shipping' : '' ||
+                                                        order.status === 'not yet shipped' ? 'Not yet shipped' : ''
+                                            }
+                                        </span>
+                                    </p>
                                 </div>
-                            }
-                            return '';
+                            </div>
                         })
                     }
                     {result}

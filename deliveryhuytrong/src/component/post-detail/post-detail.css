@@ -21,3 +21,47 @@
     background-color: #fff;
     color: #f9bf3b;
 }
+
+.shipper-info-chosen {
+    width: 92%;
+    margin: 5% auto 2% auto;
+    height: 450px;
+}
+
+.shipper-info-chosen p {
+    margin: 5px;
+}
+
+.shipper-info-chosen-body {
+    display: flex;
+    margin-top: 2%;
+    padding: 5% 10% 3% 0%;
+    border: 1px solid #e3e3e3;
+}
+
+.shipper-info-chosen-left {
+    width: 60%;
+    text-align: center;
+    padding-right: 8%;
+}
+
+.shipper-info-chosen-right {
+    width: 40%;
+    padding-top: 10px;
+}
+
+.shipper-info-chosen-left img {
+    margin-bottom: 30px;
+    width: 200px !important;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.shipper-info-chosen-right p {
+    margin-bottom: 30px;
+}
+
+.shipper-info-chosen-right p span {
+    float: right;
+}

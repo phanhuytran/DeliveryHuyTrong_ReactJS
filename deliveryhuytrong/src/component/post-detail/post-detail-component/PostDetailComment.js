@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import "../post-detail.css";
+import cookies from 'react-cookies';
+import axios from 'axios';
 import moment from 'moment';
 import { AuthAPI, endpoints } from '../../API';
+import { DisplayPostOptionContext } from './PostDetail';
 
 export default function PostDetailComment(props) {
     const [auction, setAuction] = useState([]);
+    const [orderList, setOrderList] = useState([]);
+    const [chooseShipper, setChooseShipper] = useState(0);
+    const option = useContext(DisplayPostOptionContext);
 
     useEffect(() => {
         const getAuction = async () => {
@@ -12,10 +18,37 @@ export default function PostDetailComment(props) {
             setAuction(res.data);
         }
         getAuction();
+
+        const getOrderList = async () => {
+            let res = await AuthAPI.get(endpoints['orders']);
+            setOrderList(res.data);
+        }
+        getOrderList();
     }, [auction]);
 
+    async function confirmShipper(e) {
+        e.preventDefault();
+        let order = orderList;
+        await axios({
+            method: "POST",
+            url: "http://127.0.0.1:8000/orders/",
+            data: {
+                auction_win: chooseShipper
+            },
+            headers: {
+                'Authorization': `Bearer ${cookies.load('access_token')}`
+            }
+        }).then((res) => {
+            console.log(res);
+            option.setIsDisplayPostOption(false);
+        }).catch((err) => {
+            console.log(err.response.data)
+        })
+        setOrderList(order);
+    }
+
     return (
-        <form>
+        <form onSubmit={confirmShipper}>
             <div className="auction-area-comment">
                 <hr />
                 {
@@ -35,7 +68,13 @@ export default function PostDetailComment(props) {
                                     </div>
                                 </div>
                                 <div className="auction-area-comment-flex-right">
-                                    <input className="radio-select-shipper" name="radio-select-shipper" type="radio" required />
+                                    <input className="radio-select-shipper"
+                                        type="radio"
+                                        name="radio-select-shipper"
+                                        value={auction.id}
+                                        onChange={e => setChooseShipper(e.target.value)}
+                                        required
+                                    />
                                 </div>
                             </div>
                         }

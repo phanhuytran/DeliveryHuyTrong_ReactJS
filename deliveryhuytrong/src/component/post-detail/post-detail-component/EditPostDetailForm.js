@@ -128,7 +128,7 @@ export default function EditPostDetailForm(props) {
                     <DialogTitle style={{ textAlign: 'center' }}><HighlightOffIcon style={{ fontSize: 50, color: '#dc3545' }} /></DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-slide-description" style={{ fontSize: 14 }}>
-                            The sending and receiving addresses are not allowed to be the same.
+                            The sending and receiving addresses are not allowed to be the same
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>

@@ -71,11 +71,11 @@
 }
 
 .page-not-found, .authorization-required, .permission-denied {
+    position: relative;
     background: url(image/shipper.jpg);
     background-color: #22313f;
     height: 238px;
     width: 98.5%;
-    position: relative;
     margin: 0.8% auto 0.8% auto;
 }
 

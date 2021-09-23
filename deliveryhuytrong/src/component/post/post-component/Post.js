@@ -77,6 +77,7 @@ export default function Post() {
             console.log(res);
             setPostList(post);
             setHiddenPostOption({});
+            setIsDisplayOpenRemovePostDialog(false);
         }).catch((err) => {
             console.log(err.response.data);
         })
@@ -95,7 +96,8 @@ export default function Post() {
         }).then((res) => {
             console.log(res);
             setPostList(post);
-            setHiddenPostOption(false);
+            setModalEditIsOpen(false);
+            setHiddenPostOption({});
         }).catch((err) => {
             console.log(err.response.data)
         })
@@ -128,12 +130,26 @@ export default function Post() {
                                                     <img src={post.customer.avatar} alt="img" />
                                                 </div>
                                                 <div className="post-content-header-center">
-                                                    <p><strong>{post.customer.username}</strong><br /><span>{moment(post.created_date, "YYYYMMDD").fromNow()}</span></p>
+                                                    <p>
+                                                        <strong>{post.customer.username}</strong>
+                                                        {
+                                                            post.is_finish === true
+                                                                ? <>
+                                                                    <i className="fas fa-check-circle credited-order">
+                                                                        <span className="tool-tip-text">This order has been have the shipper</span>
+                                                                    </i>
+                                                                </> : <></>
+                                                        }
+                                                        <br />
+                                                        <span>{moment(post.created_date, "YYYYMMDD").fromNow()}</span>
+                                                    </p>
                                                 </div>
                                                 <div className="post-content-header-right">
-                                                    <p onClick={() => onTogglePostOption(index)}>
-                                                        <span><i className="fas fa-ellipsis-h"></i></span>
-                                                    </p>
+                                                    {
+                                                        post.is_finish === false ? <p onClick={() => onTogglePostOption(index)}>
+                                                            <span><i className="fas fa-ellipsis-h"></i></span>
+                                                        </p> : <></>
+                                                    }
                                                     {!hiddenPostOption[index] && <></>} {
                                                         hiddenPostOption[index] && <div className="post-option">
                                                             <p onClick={() => setModalEditIsOpen(true)}>Edit</p>
@@ -202,7 +218,13 @@ export default function Post() {
                                                 </div>
                                                 {/* <PostComment post={post} /> */}
                                                 <br /><br />
-                                                <Link className="click-auction-confirm" to={"post-detail/" + post.id}>Click to auction confirmation</Link>
+                                                <div style={{ textAlign: 'center', margin: '0 auto' }}>
+                                                    <Link className="click-auction-confirm" to={"post-detail/" + post.id}>
+                                                        {
+                                                            post.is_finish === false ? <>Click to auction confirmation</> : <>Order details</>
+                                                        }
+                                                    </Link>
+                                                </div>
                                             </div>
                                         </div>
                                     </React.Fragment>
@@ -212,7 +234,7 @@ export default function Post() {
                         </> : <></>
                     }
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }

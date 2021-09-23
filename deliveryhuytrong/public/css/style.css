@@ -1,3 +1,27 @@
+@media screen and (max-device-width: 800px) {
+    #bgvid {
+        display: none;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes growth {
+    from {
+        transform: scale(var(--growth-from));
+    }
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
+
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -52,10 +76,6 @@ nav.navbar {
     margin: 0 12px;
 }
 
-/* .container {
-    z-index: 1000;
-} */
-
 .mean-container .mean-bar {
   background: transparent none repeat scroll 0 0;
 }
@@ -72,6 +92,7 @@ nav.navbar {
     -webkit-transition: .4s;
     transition: .4s
 }
+
 .caret {
   margin-left: 5px;
 }
@@ -614,13 +635,6 @@ video#bgvid {
     transition: .4s
 }
 
-@media screen and (max-device-width: 800px) {
-    #bgvid {
-        display: none;
-    }
-}
-
-
 .bgslider {
     height: 100%;
     left: 0;
@@ -837,7 +851,8 @@ video#bgvid {
 }
 
 .single-order-us-bottom {
-    margin-bottom: 10%;
+    height: 280px;
+    margin-bottom: 7.8%;
 }
 
 .single-about-us-bottom:hover, .single-order-us-bottom:hover {
@@ -846,7 +861,7 @@ video#bgvid {
 
 .single-order-us-bottom span {
     font-size: 16px;
-    float: right;
+    margin-left: 10px;
 }
 
 .single-about-us-bottom:before, .single-order-us-bottom:before {
@@ -1062,24 +1077,6 @@ div.create-post-right {
     animation: growth linear 0.3s;
     --growth-from: 0;
     --growth-to: 1;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes growth {
-    from {
-        transform: scale(var(--growth-from));
-    }
-    to {
-        transform: scale(var(--growth-to));
-    }
 }
 
 div.shipper-list-filter {

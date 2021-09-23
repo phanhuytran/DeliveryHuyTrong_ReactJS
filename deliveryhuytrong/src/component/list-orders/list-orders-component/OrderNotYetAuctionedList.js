@@ -8,7 +8,6 @@ import { AuthAPI, endpoints } from '../../API';
 
 export default function OrderNotYetAuctionedList() {
     const [orderPostList, setOrderPostList] = useState([]);
-    // const [auction, setAuction] = useState([]);
     const [customerFilter, setCustomerFilter] = useState('');
     const [sendingAddressFilter, setSendingAddressFilter] = useState('');
     const [receivingAddressFilter, setReceivingAddressFilter] = useState('');
@@ -31,13 +30,7 @@ export default function OrderNotYetAuctionedList() {
             let res = await AuthAPI.get(endpoints['posts']);
             setOrderPostList(res.data.results);
         }
-
-        // async function getAuction() {
-        //     let res = await AuthAPI.get(endpoints['auctions']);
-        //     setAuction(res.data.results);
-        // }
         getOrderPostList();
-        // getAuction();
     }, []);
 
     function onClearCustomerFilter() { setCustomerFilter(''); }
@@ -116,8 +109,8 @@ export default function OrderNotYetAuctionedList() {
                                                 <td>{order.receive_stock.address}</td>
                                                 {
                                                     cookies.load("user").username === 'admin'
-                                                    ? <td><Link to={"order/" + order.id + "/auction"} className="see-another-page-2">Order details <VisibilityIcon /></Link></td>
-                                                    : <td><Link to={"order/" + order.id + "/auction"} className="see-another-page-2">Click to auction <GavelIcon /></Link></td>
+                                                        ? <td><Link to={"order/" + order.id + "/auction"} className="see-another-page-2">Order details <VisibilityIcon /></Link></td>
+                                                        : <td><Link to={"order/" + order.id + "/auction"} className="see-another-page-2">Click to auction <GavelIcon /></Link></td>
                                                 }
                                             </tr>
                                         }

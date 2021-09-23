@@ -18,6 +18,9 @@ import Slide from '@mui/material/Slide';
 import { AuthAPI, endpoints } from '../../API';
 import PostDetailComment from './PostDetailComment';
 import EditPostDetailForm from './EditPostDetailForm';
+import ShipperInfoChosen from './ShipperInfoChosen';
+
+export let DisplayPostOptionContext = React.createContext();
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -105,8 +108,22 @@ export default function PostDetail(props) {
                                             </div>
                                             <div className="auction-customer-info-right">
                                                 <p>
-                                                    <span style={{ fontSize: 16 }}>{post.customer.username}</span>
-                                                    <span onClick={onTogglePostOption}><i className="fas fa-ellipsis-h"></i></span><br />
+                                                    <span style={{ fontSize: 16 }}>{post.customer.username}
+                                                        {
+                                                            post.is_finish === true
+                                                                ? <>
+                                                                    <i className="fas fa-check-circle credited-order">
+                                                                        <span className="tool-tip-text">This order has been have the shipper</span>
+                                                                    </i>
+                                                                </> : <></>
+                                                        }
+                                                    </span>
+                                                    {
+                                                        post.is_finish === false ? <>
+                                                            <span onClick={onTogglePostOption}><i className="fas fa-ellipsis-h"></i></span>
+                                                        </> : <></>
+                                                    }
+                                                    <br />
                                                     <span>{moment(post.created_date, "YYYYMMDD").fromNow()}</span>
                                                 </p>
                                             </div>
@@ -135,7 +152,7 @@ export default function PostDetail(props) {
                                                         onClose={closeRemovePostDialog}
                                                         aria-describedby="alert-dialog-slide-description"
                                                     >
-                                                        <DialogTitle style={{color: '#5D5D5D'}}>{"Do you want to remove this post?"}</DialogTitle>
+                                                        <DialogTitle style={{ color: '#5D5D5D' }}>{"Do you want to remove this post?"}</DialogTitle>
                                                         <DialogContent>
                                                             <DialogContentText id="alert-dialog-slide-description" style={{ fontSize: 14 }}>
                                                                 You will no longer see this post if you press REMOVE.
@@ -170,7 +187,12 @@ export default function PostDetail(props) {
                                                     })
                                                 }
                                             </Slider>
-                                            <PostDetailComment post={post} />
+                                            {
+                                                post.is_finish === false
+                                                    ? <DisplayPostOptionContext.Provider value={{ setIsDisplayPostOption }}>
+                                                        <PostDetailComment post={post} />
+                                                    </DisplayPostOptionContext.Provider> : <ShipperInfoChosen post={post} />
+                                            }
                                         </div>
                                     </React.Fragment>
                                 }

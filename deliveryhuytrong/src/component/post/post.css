@@ -1,3 +1,21 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes growth {
+    from {
+        transform: scale(var(--growth-from));
+    }
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
+
 .post {
     width: 84%;
     margin: 1% auto 5% auto;
@@ -141,24 +159,6 @@
     border-radius: 0;
     padding: 10px 15px;
     background-color: #eee;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes growth {
-    from {
-        transform: scale(var(--growth-from));
-    }
-    to {
-        transform: scale(var(--growth-to));
-    }
 }
 
 .post-content {
@@ -309,10 +309,9 @@
     justify-content: center;
     background-color: #f9bf3b;
     color: #fff;
-    margin: 0 33.6%;
+    /* margin: 0 33.6%; */
     padding: 5px 10px;
-    border: 2px solid #eee;
-    border-radius: 5px;
+    border: 1px solid #eee;
     transition: 0.4s;
 }
 
@@ -620,4 +619,31 @@ p.created-date-comment {
     margin: 0;
     padding: 10% 0 40.3% 0;
     color: #dc3545;
+}
+
+.credited-order {
+    font-size: 15px;
+    color: rgb(28, 179, 60);
+    margin: 0 0 0 10px;
+    cursor: pointer;
+}
+
+.credited-order .tool-tip-text {
+    position: absolute;
+    visibility: hidden;
+    font-weight: normal !important;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    margin-left: 5px;
+    padding: 5px 8px;
+    z-index: 1;
+}
+
+.credited-order:hover .tool-tip-text {
+    visibility: visible;
+    animation: fadeIn linear 0.15s;
+    animation: growth linear 0.15s;
+    --growth-from: 0;
+    --growth-to: 1;
 }

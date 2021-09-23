@@ -10,7 +10,8 @@ export let endpoints = {
     'posts': '/posts/',
     'stocks': '/stocks/',
     'image-item': '/image-item/',
-    'auctions': '/auctions/'
+    'auctions': '/auctions/',
+    'orders': '/orders/'
 }
 
 export let AuthAPI = axios.create({
