@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import '../post.css';
+import Modal from 'react-modal';
 import * as _ from "lodash";
 import moment from 'moment';
-import Slider from "react-slick";
 import { AuthAPI, endpoints } from '../../API';
+import ChangeShippingStatus from './ChangeShippingStatus';
+import OrderInformation from './OrderInformation';
+
+export let OrderInformationContext = React.createContext();
 
 export default function OrderAuctionedList() {
     const [orderList, setOrderList] = useState([]);
-    const [hiddenContent, setHiddenContent] = useState({});
     const [hiddenOrderOption, setHiddenOrderOption] = useState({});
+    const [changeStatusModal, setChangeStatusModal] = useState(false);
 
-    const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
-
-    const onToggleHideContent = index => {
-        setHiddenContent({ ...hiddenContent, [index]: !hiddenContent[index] });
-    };
     const onTogglePostOption = index => {
         setHiddenOrderOption({ ...hiddenOrderOption, [index]: !hiddenOrderOption[index] });
     };
@@ -30,6 +29,11 @@ export default function OrderAuctionedList() {
     let result;
     if (orderList.length === 0) {
         result = <div className="post-list-null" style={{ marginTop: "3%", padding: '8% 0' }}><p>Order not found</p></div>
+    }
+
+    const closeChangeStatusModal = () => {
+        setChangeStatusModal(false);
+        setHiddenOrderOption({});
     }
 
     return (
@@ -58,53 +62,22 @@ export default function OrderAuctionedList() {
                                         <span><i className="fas fa-ellipsis-h"></i></span>
                                     </p>
                                     {!hiddenOrderOption[index] && <></>} {
-                                        hiddenOrderOption[index] && <div className="post-option" style={{ width: '9.4%', margin: '3% 0 0 -3%' }}>
-                                            <p>Change status</p>
+                                        hiddenOrderOption[index] && <div className="post-option" style={{ width: '13.886%', margin: '3% 0 0 -7%' }}>
+                                            <p onClick={() => setChangeStatusModal(true)}>Change shipping status</p>
+                                            <Modal className="modal-change-status" isOpen={changeStatusModal} ariaHideApp={false}>
+                                                <ChangeShippingStatus />
+                                                <div className="close-modal-change-status" onClick={closeChangeStatusModal}>
+                                                    <i className="fas fa-times-circle"></i>
+                                                </div>
+                                            </Modal>
                                         </div>
                                     }
                                 </div>
                             </div>
                             <div className="post-content">
-                                {
-                                    !hiddenContent[index] && <div>
-                                        <p>Customer:<span>{order.auction_win.post.customer.first_name} {order.auction_win.post.customer.last_name}</span></p>
-                                    </div>
-                                } {
-                                    hiddenContent[index] && <div className="show-post-content">
-                                        <p>Customer:<span>{order.auction_win.post.customer.first_name} {order.auction_win.post.customer.last_name}</span></p>
-                                        <p>Description:<span>{order.auction_win.post.description}</span></p>
-                                        <p>Weight:<span>{order.auction_win.post.weight} kilograms</span></p>
-                                        <p>Sending address:<span>{order.auction_win.post.send_stock.address}</span></p>
-                                        <p>Sending address information:<span>{order.auction_win.post.send_stock.name_represent_man} - {order.auction_win.post.send_stock.phone}</span></p>
-                                        <p>Receiving address:<span>{order.auction_win.post.receive_stock.address}</span></p>
-                                        <p>Receiving address information:<span>{order.auction_win.post.receive_stock.name_represent_man} - {order.auction_win.post.receive_stock.phone}</span></p>
-                                        <hr style={{ width: '50%', margin: '15px auto 10px auto' }} />
-                                        <p style={{ margin: '8px 0' }}>Cost:<span style={{ fontSize: 18 }}>{currencyFormat((order.auction_win.cost).slice(0, -3))} VND</span></p>
-                                        <p style={{ margin: '8px 0' }}>Status:
-                                            <span className={
-                                                order.status === 'shipped' ? 'order-auction-status-shipped' : '' ||
-                                                    order.status === 'shipping' ? 'order-auction-status-shipping' : '' ||
-                                                        order.status === 'not yet shipped' ? 'order-auction-status-not-yet-shipped' : ''
-                                            }>
-                                                {
-                                                    order.status === 'shipped' ? 'Shipped' : '' ||
-                                                        order.status === 'shipping' ? 'Shipping' : '' ||
-                                                            order.status === 'not yet shipped' ? 'Not yet shipped' : ''
-                                                }
-                                            </span>
-                                        </p>
-                                    </div>
-                                }
-                                <p className="show-hide-content"><i className="fas fa-ellipsis-h" onClick={() => onToggleHideContent(index)}></i></p>
-                                <div className="order-image">
-                                    <Slider className="auction-info-carousel" {...settingSlider}>
-                                        {
-                                            order.auction_win.post.image_items.map((i, ix) => {
-                                                return <img key={ix} src={i.image} alt="img" />
-                                            })
-                                        }
-                                    </Slider>
-                                </div>
+                                <OrderInformationContext.Provider value={{ order, index }}>
+                                    <OrderInformation />
+                                </OrderInformationContext.Provider>
                             </div>
                         </div>
                     </React.Fragment>
@@ -113,10 +86,4 @@ export default function OrderAuctionedList() {
             {result}
         </>
     );
-
-    function currencyFormat(num) {
-        return num.split('').reverse().reduce((prev, next, index) => {
-            return ((index % 3) ? next : (next + ',')) + prev;
-        })
-    }
 }

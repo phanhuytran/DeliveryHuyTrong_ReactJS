@@ -1,18 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import '../post.css';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { AuthAPI, endpoints } from '../../API';
+import EditPostFormStockErrorDialog from './EditPostFormStockErrorDialog';
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-});
+export let StockErrorContext = React.createContext();
 
 export default function EditPostForm(props) {
     const [stockList, setStockList] = useState([]);
@@ -118,23 +109,10 @@ export default function EditPostForm(props) {
             <select value={receivingAddress} onChange={changeReceivingAddress} required>{selectOptionAddress()}</select><br />
             <button type="submit">Edit</button><div style={{ marginBottom: '70px' }}></div>
             {
-                isDisPlayMessageStockError ? <Dialog
-                    open={isDisPlayMessageStockError}
-                    TransitionComponent={Transition}
-                    keepMounted
-                    onClose={closeMessageStockErrorDialog}
-                    aria-describedby="alert-dialog-slide-description"
-                >
-                    <DialogTitle style={{ textAlign: 'center' }}><HighlightOffIcon style={{ fontSize: 50, color: '#dc3545' }} /></DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-slide-description" style={{ fontSize: 14 }}>
-                            The sending and receiving addresses are not allowed to be the same
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button style={{ fontSize: 14 }} onClick={closeMessageStockErrorDialog}>Ok</Button>
-                    </DialogActions>
-                </Dialog> : <></>
+                isDisPlayMessageStockError
+                    ? <StockErrorContext.Provider value={{ isDisPlayMessageStockError, closeMessageStockErrorDialog }}>
+                        <EditPostFormStockErrorDialog />
+                    </StockErrorContext.Provider> : <></>
             }
         </form>
     );

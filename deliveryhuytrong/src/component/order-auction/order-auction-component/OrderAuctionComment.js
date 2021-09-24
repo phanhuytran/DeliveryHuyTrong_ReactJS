@@ -14,8 +14,6 @@ import GavelIcon from '@mui/icons-material/Gavel';
 import AuctionForm from './AuctionForm'
 import { AuthAPI, endpoints } from '../../API';
 
-export let MessageContext = React.createContext();
-
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });

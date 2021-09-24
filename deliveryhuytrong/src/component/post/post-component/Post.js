@@ -4,7 +4,6 @@ import cookies from 'react-cookies';
 import { Link } from 'react-router-dom';
 import * as _ from "lodash";
 import moment from 'moment';
-import Slider from "react-slick";
 import axios from 'axios';
 import Modal from 'react-modal';
 import Button from '@mui/material/Button';
@@ -19,7 +18,12 @@ import PersonalInformation from './PersonalInformation';
 import { AuthAPI, endpoints } from '../../API';
 import EditPostForm from './EditPostForm';
 import OrderAuctionedList from './OrderAuctionedList';
+import EditPostErrorDialog from './EditPostErrorDialog';
+import PostInformation from './PostInformation';
 // import PostComment from './PostComment';
+
+export let EditPostErrorDialogContext = React.createContext();
+export let PostInformationContext = React.createContext();
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -27,16 +31,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function Post() {
     const [postList, setPostList] = useState([]);
-    const [hiddenContent, setHiddenContent] = useState({});
     const [hiddenPostOption, setHiddenPostOption] = useState({});
     const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
     const [isDisplayRemovePostDialog, setIsDisplayOpenRemovePostDialog] = useState(false);
+    const [isDisplayMessageEditError, setIsDisplayMessageEditError] = useState(false);
 
-    const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
-    
-    const onToggleHideContent = index => {
-        setHiddenContent({ ...hiddenContent, [index]: !hiddenContent[index] });
-    };
     const onTogglePostOption = index => {
         setHiddenPostOption({ ...hiddenPostOption, [index]: !hiddenPostOption[index] });
     };
@@ -48,6 +47,11 @@ export default function Post() {
         }
         getPostList();
     }, [postList]);
+
+    let result;
+    if (postList.length === 0) {
+        result = <div className="post-list-null"><p>Post not found</p></div>
+    }
 
     async function createPost(data) {
         let post = postList;
@@ -85,6 +89,10 @@ export default function Post() {
         })
     }
 
+    const closeMessageEditErrorDialog = () => {
+        setIsDisplayMessageEditError(false);
+    }
+
     async function editPost(id, data) {
         let post = postList;
         await axios({
@@ -101,18 +109,16 @@ export default function Post() {
             setModalEditIsOpen(false);
             setHiddenPostOption({});
         }).catch((err) => {
-            console.log(err.response.data)
+            console.log(err.response.data);
+            if (err.response.data.detail) {
+                setIsDisplayMessageEditError(true);
+            }
         })
     }
 
     const closeEditPostModal = () => {
         setModalEditIsOpen(false);
         setHiddenPostOption({});
-    }
-
-    let result;
-    if (postList.length === 0) {
-        result = <div className="post-list-null"><p>Post not found</p></div>
     }
 
     return (
@@ -193,31 +199,9 @@ export default function Post() {
                                                 </div>
                                             </div>
                                             <div className="post-content">
-                                                {
-                                                    !hiddenContent[index] && <div>
-                                                        <p>Customer:<span>{post.customer.first_name} {post.customer.last_name}</span></p>
-                                                    </div>
-                                                } {
-                                                    hiddenContent[index] && <div className="show-post-content">
-                                                        <p>Customer:<span>{post.customer.first_name} {post.customer.last_name}</span></p>
-                                                        <p>Description:<span>{post.description}</span></p>
-                                                        <p>Weight:<span>{post.weight} kilograms</span></p>
-                                                        <p>Sending address:<span>{post.send_stock.address}</span></p>
-                                                        <p>Sending address information:<span>{post.send_stock.name_represent_man} - {post.send_stock.phone}</span></p>
-                                                        <p>Receiving address:<span>{post.receive_stock.address}</span></p>
-                                                        <p>Receiving address information:<span>{post.receive_stock.name_represent_man} - {post.receive_stock.phone}</span></p>
-                                                    </div>
-                                                }
-                                                <p className="show-hide-content"><i className="fas fa-ellipsis-h" onClick={() => onToggleHideContent(index)}></i></p>
-                                                <div className="order-image">
-                                                    <Slider className="auction-info-carousel" {...settingSlider}>
-                                                        {
-                                                            post.image_items.map((i, ix) => {
-                                                                return <img key={ix} src={i.image} alt="img" />
-                                                            })
-                                                        }
-                                                    </Slider>
-                                                </div>
+                                                <PostInformationContext.Provider value={{ post, index }}>
+                                                    <PostInformation />
+                                                </PostInformationContext.Provider>
                                                 {/* <PostComment post={post} /> */}
                                                 <br /><br />
                                                 <div style={{ textAlign: 'center', margin: '0 auto' }}>
@@ -236,7 +220,13 @@ export default function Post() {
                         </> : <OrderAuctionedList />
                     }
                 </div>
-            </div >
-        </div >
+            </div>
+            {
+                isDisplayMessageEditError
+                    ? <EditPostErrorDialogContext.Provider value={{ isDisplayMessageEditError, closeMessageEditErrorDialog }}>
+                        <EditPostErrorDialog />
+                    </EditPostErrorDialogContext.Provider> : <></>
+            }
+        </div>
     );
 }

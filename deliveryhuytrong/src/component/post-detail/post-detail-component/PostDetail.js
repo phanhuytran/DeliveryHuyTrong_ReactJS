@@ -19,8 +19,10 @@ import { AuthAPI, endpoints } from '../../API';
 import PostDetailComment from './PostDetailComment';
 import EditPostDetailForm from './EditPostDetailForm';
 import ShipperInfoChosen from './ShipperInfoChosen';
+import EditPostDetailErrorDialog from './EditPostDetailErrorDialog';
 
 export let DisplayPostOptionContext = React.createContext();
+export let EditPostDetailErrorDialogContext = React.createContext();
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -31,6 +33,8 @@ export default function PostDetail(props) {
     const [isDisplayPostOption, setIsDisplayPostOption] = useState(false);
     const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
     const [isDisplayOpenRemovePostDialog, setIsDisplayOpenRemovePostDialog] = useState(false);
+    const [isDisplayMessageEditError, setIsDisplayMessageEditError] = useState(false);
+
     const orderID = parseInt(props.props.match.params.id, 10);
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
     const history = useHistory();
@@ -68,6 +72,10 @@ export default function PostDetail(props) {
         })
     }
 
+    const closeMessageEditErrorDialog = () => {
+        setIsDisplayMessageEditError(false);
+    }
+
     async function editPost(id, data) {
         let post = postList;
         await axios({
@@ -84,7 +92,10 @@ export default function PostDetail(props) {
             setModalEditIsOpen(false);
             setIsDisplayPostOption(false);
         }).catch((err) => {
-            console.log(err.response.data)
+            console.log(err.response.data);
+            if (err.response.data.detail) {
+                setIsDisplayMessageEditError(true);
+            }
         })
     }
 
@@ -203,6 +214,12 @@ export default function PostDetail(props) {
                 </div><br />
                 <Link to="/post" className="see-another-page">SEE MY POST</Link>
             </div>
+            {
+                isDisplayMessageEditError
+                    ? <EditPostDetailErrorDialogContext.Provider value={{ isDisplayMessageEditError, closeMessageEditErrorDialog }}>
+                        <EditPostDetailErrorDialog />
+                    </EditPostDetailErrorDialogContext.Provider> : <></>
+            }
         </section>
     );
 

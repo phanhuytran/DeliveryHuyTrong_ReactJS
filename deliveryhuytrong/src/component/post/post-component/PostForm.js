@@ -1,22 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import '../post.css';
 import cookies from 'react-cookies';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineSharpIcon from '@material-ui/icons/RemoveCircleOutlineSharp';
 import { AuthAPI, endpoints } from '../../API';
 import StockForm from './StockForm';
+import PostFormStockErrorDialog from './PostFormStockErrorDialog';
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-});
+export let StockErrorContext = React.createContext();
 
 export default function PostForm(props) {
     const [stockList, setStockList] = useState([]);
@@ -160,23 +151,10 @@ export default function PostForm(props) {
             }
             {isDisplayStockForm ? <StockForm onSubmit={createStock} /> : <></>}
             {
-                isDisPlayMessageStockError ? <Dialog
-                    open={isDisPlayMessageStockError}
-                    TransitionComponent={Transition}
-                    keepMounted
-                    onClose={closeMessageStockErrorDialog}
-                    aria-describedby="alert-dialog-slide-description"
-                >
-                    <DialogTitle style={{ textAlign: 'center' }}><HighlightOffIcon style={{ fontSize: 50, color: '#dc3545' }} /></DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-slide-description" style={{ fontSize: 14 }}>
-                            The sending and receiving addresses are not allowed to be the same
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button style={{ fontSize: 14 }} onClick={closeMessageStockErrorDialog}>Ok</Button>
-                    </DialogActions>
-                </Dialog> : <></>
+                isDisPlayMessageStockError
+                    ? <StockErrorContext.Provider value={{ isDisPlayMessageStockError, closeMessageStockErrorDialog }}>
+                        <PostFormStockErrorDialog />
+                    </StockErrorContext.Provider> : <></>
             }
         </div>
     );

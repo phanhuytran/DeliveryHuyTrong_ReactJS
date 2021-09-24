@@ -6,7 +6,7 @@ export default function StockForm(props) {
     const [address, setAddress] = useState('');
     const [representative, setRepresentative] = useState('');
     const [phone, setPhone] = useState('');
-
+    
     function onSubmit(e) {
         e.preventDefault();
         let item = {

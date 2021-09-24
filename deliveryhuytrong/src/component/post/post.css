@@ -394,6 +394,19 @@ p.created-date-comment {
     color: #dc3545;
 }
 
+.modal-edit-post-form {
+    margin: 2% auto;
+    width: 30%;
+    height: 91%;
+    box-shadow: 0 0 5px rgb(33 33 33 / 20%);
+    background-color: #fff;
+    overflow-y: scroll;
+    outline: none;
+    animation: growth linear 0.25s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
 .modal-choose-avatar {
     margin: 16.85% auto;
     width: 30%;
@@ -407,13 +420,12 @@ p.created-date-comment {
     --growth-to: 1;
 }
 
-.modal-edit-post-form {
-    margin: 2% auto;
+.modal-change-status {
+    margin: 11% auto;
     width: 30%;
-    height: 91%;
+    height: 55%;
     box-shadow: 0 0 5px rgb(33 33 33 / 20%);
     background-color: #fff;
-    overflow-y: scroll;
     outline: none;
     animation: growth linear 0.25s;
     --growth-from: 0;
@@ -515,6 +527,16 @@ p.created-date-comment {
     color: #f9bf3b;
 }
 
+.close-modal-edit-post-form {
+    font-size: 20px !important;
+    position: fixed;
+    top: 3.8%;
+    left: 66%;
+    font-size: 30px;
+    color: #22313f;
+    cursor: pointer;
+}
+
 .close-modal-choose-avatar {
     font-size: 20px !important;
     position: fixed;
@@ -525,10 +547,10 @@ p.created-date-comment {
     cursor: pointer;
 }
 
-.close-modal-edit-post-form {
+.close-modal-change-status {
     font-size: 20px !important;
     position: fixed;
-    top: 3.8%;
+    top: 22.2%;
     left: 66%;
     font-size: 30px;
     color: #22313f;
@@ -646,4 +668,33 @@ p.created-date-comment {
     animation: growth linear 0.15s;
     --growth-from: 0;
     --growth-to: 1;
+}
+
+.table-change-shipping-status {
+    width: 100%;
+    text-align: center;
+}
+
+.table-change-shipping-status tbody tr td:first-child {
+    width: 35%;
+    padding: 5%;
+}
+
+.table-change-shipping-status tbody tr td:last-child {
+    width: 65%;
+    padding: 5%;
+}
+
+.table-change-shipping-status input {
+    width: auto;
+    margin: 0;
+}
+
+.table-change-shipping-status span {
+    float: none;
+}
+
+.table-change-shipping-status button {
+    float: none;
+    margin-top: 5%;
 }
