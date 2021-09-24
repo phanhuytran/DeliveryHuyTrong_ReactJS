@@ -11,7 +11,8 @@ export let endpoints = {
     'stocks': '/stocks/',
     'image-item': '/image-item/',
     'auctions': '/auctions/',
-    'orders': '/orders/'
+    'orders': '/orders/',
+    'vouchers': '/vouchers/'
 }
 
 export let AuthAPI = axios.create({

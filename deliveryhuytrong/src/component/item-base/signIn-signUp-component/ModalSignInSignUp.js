@@ -10,13 +10,13 @@ import { UserContext } from '../../../App';
 import { Link } from 'react-router-dom';
 
 export default function ModalSignInSignUp() {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [isDisplaySignInSignUpModal, setIsDisplaySignInSignUpModal] = useState(false);
     const auth = useContext(UserContext);
 
     let user = auth.user;
     let r = <>
-        <li onClick={() => setModalIsOpen(true)}><p>log in</p></li>
-        <li onClick={() => setModalIsOpen(true)}><p>sign up</p></li>
+        <li onClick={() => setIsDisplaySignInSignUpModal(true)}><p>log in</p></li>
+        <li onClick={() => setIsDisplaySignInSignUpModal(true)}><p>sign up</p></li>
     </>
 
     if (cookies.load("user") != null) {
@@ -77,9 +77,9 @@ export default function ModalSignInSignUp() {
             </div>
             {
                 !user ? <>
-                    <Modal className="modal-signin-signup" isOpen={modalIsOpen} ariaHideApp={false}>
+                    <Modal className="modal-signin-signup" isOpen={isDisplaySignInSignUpModal} ariaHideApp={false}>
                         <SignInSignUp />
-                        <div className="close-modal-signin-signup" onClick={() => setModalIsOpen(false)}>
+                        <div className="close-modal-signin-signup" onClick={() => setIsDisplaySignInSignUpModal(false)}>
                             <i className="fas fa-times-circle"></i>
                         </div>
                     </Modal>

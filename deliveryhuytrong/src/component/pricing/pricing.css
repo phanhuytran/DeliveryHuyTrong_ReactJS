@@ -1,0 +1,14 @@
+.price-list {
+    margin-bottom: 0 !important;
+    border-bottom: 0px;
+}
+
+.price-list span {
+    font-family: 'price-list';
+    margin-left: 10px;
+    color: #5d5d5d;
+}
+
+.price-list span:first-child {
+    font-weight: bold;
+}
