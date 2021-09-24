@@ -35,9 +35,9 @@ export default function OrderInformation() {
                                     context.order.status === 'not yet shipped' ? 'order-auction-status-not-yet-shipped' : ''
                         }>
                             {
-                                context.order.status === 'shipped' ? 'Shipped' : '' ||
-                                    context.order.status === 'shipping' ? 'Shipping' : '' ||
-                                        context.order.status === 'not yet shipped' ? 'Not yet shipped' : ''
+                                context.order.status === 'shipped' ? <span><i class="fas fa-exclamation-triangle"></i>Not yet shipped</span> : <></> ||
+                                    context.order.status === 'shipping' ? <span><i class="fas fa-times-circle"></i>Shipping</span> : <></> ||
+                                        context.order.status === 'shipped' ? <span><i class="fas fa-check-circle"></i>Shipped</span> : <></>
                             }
                         </span>
                     </p>

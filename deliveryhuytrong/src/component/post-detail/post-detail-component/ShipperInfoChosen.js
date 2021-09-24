@@ -34,9 +34,9 @@ export default function ShipperInfoChosen(props) {
                                                 order.status === 'not yet shipped' ? 'order-auction-status-not-yet-shipped' : ''
                                     }>
                                         {
-                                            order.status === 'shipped' ? 'Shipped' : '' ||
-                                                order.status === 'shipping' ? 'Shipping' : '' ||
-                                                    order.status === 'not yet shipped' ? 'Not yet shipped' : ''
+                                            order.status === 'shipped' ? <span><i class="fas fa-exclamation-triangle"></i>Not yet shipped</span> : <></> ||
+                                                order.status === 'shipping' ? <span><i class="fas fa-times-circle"></i>Shipping</span> : <></> ||
+                                                    order.status === 'shipped' ? <span><i class="fas fa-check-circle"></i>Shipped</span> : <></>
                                         }
                                     </span>
                                 </p>

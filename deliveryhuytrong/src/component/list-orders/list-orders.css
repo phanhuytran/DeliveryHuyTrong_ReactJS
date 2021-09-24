@@ -41,6 +41,10 @@
     color: #fff;
 }
 
+.order-auction-status-shipped i, .order-auction-status-shipping i, .order-auction-status-not-yet-shipped i {
+    margin-right: 5px;
+}
+
 .order-auction-status-shipped {
     background-color: #28a745;
 }
