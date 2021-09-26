@@ -3,18 +3,6 @@ import "../about.css";
 import AboutTitle from './AboutTitle';
 
 export default function AboutDetail() {
-    function showAboutContent() {
-        document.getElementById("show-about-content").style.display = "block";
-        document.getElementById("hide-away").style.display = "block";
-        document.getElementById("show-read-more").style.display = "none";
-    }
-
-    function hideAboutContent() {
-        document.getElementById("show-about-content").style.display = "none";
-        document.getElementById("hide-away").style.display = "none";
-        document.getElementById("show-read-more").style.display = "block";
-    }
-
     return (
         <section className="about_us_area" id="about">
             <div className="container">
@@ -46,4 +34,16 @@ export default function AboutDetail() {
             </div>
         </section>
     );
+    
+    function showAboutContent() {
+        document.getElementById("show-about-content").style.display = "block";
+        document.getElementById("hide-away").style.display = "block";
+        document.getElementById("show-read-more").style.display = "none";
+    }
+
+    function hideAboutContent() {
+        document.getElementById("show-about-content").style.display = "none";
+        document.getElementById("hide-away").style.display = "none";
+        document.getElementById("show-read-more").style.display = "block";
+    }
 }

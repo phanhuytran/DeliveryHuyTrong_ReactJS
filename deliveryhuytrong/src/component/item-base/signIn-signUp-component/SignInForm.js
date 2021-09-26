@@ -22,9 +22,9 @@ export default function SignInForm() {
                 </div>
                 {
                     auth.message === true
-                    ? <span className="success">Logged in successfully</span> :
-                    auth.message === false
-                    ? <span className="error">Username or password is incorrect</span> : <></>
+                        ? <span className="success">Logged in successfully</span> :
+                        auth.message === false
+                            ? <span className="error">Username or password is incorrect</span> : <></>
                 }
                 <p>Username:</p>
                 <input type="text" placeholder="Username" id="username" onChange={e => setUsername(e.target.value)} required />

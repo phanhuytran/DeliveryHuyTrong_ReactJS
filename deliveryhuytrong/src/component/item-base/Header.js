@@ -10,7 +10,7 @@ import { UserContext } from '../../App';
 export default function Header() {
     const auth = useContext(UserContext);
     let user = auth.user;
-    
+
     if (cookies.load("user") != null) {
         user = cookies.load("user");
     }

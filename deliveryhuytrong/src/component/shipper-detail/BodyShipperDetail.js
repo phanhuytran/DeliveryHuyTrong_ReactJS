@@ -6,7 +6,7 @@ export default function BodyShipperDetail(props) {
     return (
         <>
             <NotificationBell />
-            <ShipperDetailInfo props = {props.props} />
+            <ShipperDetailInfo props={props.props} />
         </>
     );
 }
