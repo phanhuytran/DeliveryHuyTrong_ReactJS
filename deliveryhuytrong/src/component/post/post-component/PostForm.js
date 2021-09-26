@@ -8,6 +8,7 @@ import StockForm from './StockForm';
 import PostFormStockErrorDialog from './PostFormStockErrorDialog';
 
 export let StockErrorContext = React.createContext();
+export let PhoneStockErrorContext = React.createContext();
 
 export default function PostForm(props) {
     const [stockList, setStockList] = useState([]);
@@ -19,6 +20,7 @@ export default function PostForm(props) {
     const [isDisplayStockForm, setIsDisplayStockForm] = useState(false);
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [isDisPlayMessageStockError, setIsDisPlayMessageStockError] = useState(false);
+    const [messagePhoneStockError, setMessagePhoneStockError] = useState('');
     const [isImage, setIsImage] = useState(false);
     const image = React.createRef();
 
@@ -90,11 +92,17 @@ export default function PostForm(props) {
 
     async function createStock(data) {
         let stock = stockList;
-        await AuthAPI.post(endpoints['stocks'], data);
-        setStockList(stock);
-        setIsDisplayStockForm(false);
+        await AuthAPI.post(endpoints['stocks'], data).then((res) => {
+            console.log(res)
+        }).then((res) => {
+            console.log(res);
+            setIsDisplayStockForm(false);
+            setStockList(stock);
+        }).catch((err) => {
+            console.log(err.response.data);
+            setMessagePhoneStockError('Ensure this phone has no more than 10 digits in total');
+        });
     }
-
 
     return (
         <div className="post-form">
@@ -149,7 +157,9 @@ export default function PostForm(props) {
                 </table>
             </form> : <></>
             }
-            {isDisplayStockForm ? <StockForm onSubmit={createStock} /> : <></>}
+            {isDisplayStockForm ? <PhoneStockErrorContext.Provider value={{ messagePhoneStockError }}>
+                <StockForm onSubmit={createStock} />
+            </PhoneStockErrorContext.Provider> : <></>}
             {
                 isDisPlayMessageStockError
                     ? <StockErrorContext.Provider value={{ isDisPlayMessageStockError, closeMessageStockErrorDialog }}>
@@ -162,10 +172,12 @@ export default function PostForm(props) {
     function onTogglePostForm() {
         setIsDisplayPostForm(toggle => !toggle);
         setIsDisplayStockForm(false);
+        setMessagePhoneStockError('');
     }
 
     function onToggleStockForm() {
         setIsDisplayStockForm(toggle => !toggle);
         setIsDisplayPostForm(false);
+        setMessagePhoneStockError('');
     }
 }

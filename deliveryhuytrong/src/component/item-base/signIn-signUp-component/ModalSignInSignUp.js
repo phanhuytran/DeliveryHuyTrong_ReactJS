@@ -14,14 +14,14 @@ export default function ModalSignInSignUp() {
     const auth = useContext(UserContext);
 
     let user = auth.user;
+    if (cookies.load("user") != null) {
+        user = cookies.load("user");
+    }
+    
     let r = <>
         <li onClick={() => setIsDisplaySignInSignUpModal(true)}><p>log in</p></li>
         <li onClick={() => setIsDisplaySignInSignUpModal(true)}><p>sign up</p></li>
     </>
-
-    if (cookies.load("user") != null) {
-        user = cookies.load("user");
-    }
 
     const StyledBadge = withStyles((theme) => ({
         badge: {

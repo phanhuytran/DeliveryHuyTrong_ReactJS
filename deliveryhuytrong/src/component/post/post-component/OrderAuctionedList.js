@@ -62,8 +62,8 @@ export default function OrderAuctionedList() {
                                         <span><i className="fas fa-ellipsis-h"></i></span>
                                     </p>
                                     {!hiddenOrderOption[index] && <></>} {
-                                        hiddenOrderOption[index] && <div className="post-option" style={{ width: '13.886%', margin: '3% 0 0 -7%' }}>
-                                            <p onClick={() => setChangeStatusModal(true)}>Change shipping status</p>
+                                        hiddenOrderOption[index] && <div className="post-option" style={{ width: '15.429%', margin: '3% 0 0 -9%' }}>
+                                            <p onClick={() => setChangeStatusModal(true)}><i className="fas fa-edit" style={{ marginRight: '5px' }}></i>Change shipping status</p>
                                             <Modal className="modal-change-status" isOpen={changeStatusModal} ariaHideApp={false}>
                                                 <ChangeShippingStatus />
                                                 <div className="close-modal-change-status" onClick={closeChangeStatusModal}>

@@ -4,7 +4,6 @@ import cookies from 'react-cookies';
 import { Link } from 'react-router-dom';
 import * as _ from "lodash";
 import moment from 'moment';
-import axios from 'axios';
 import Modal from 'react-modal';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -55,14 +54,14 @@ export default function Post() {
 
     async function createPost(data) {
         let post = postList;
-        await axios({
-            method: "POST",
-            url: "http://127.0.0.1:8000/posts/",
-            data: data,
+        AuthAPI.post(endpoints['posts'], data, {
             headers: {
-                'Content-Type': 'multipart/form-data',
-                'Authorization': `Bearer ${cookies.load('access_token')}`
+                'Content-Type': 'multipart/form-data'
             }
+        }).then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.log(err.response.data);
         })
         console.log(data);
         setPostList(post);
@@ -95,13 +94,9 @@ export default function Post() {
 
     async function editPost(id, data) {
         let post = postList;
-        await axios({
-            method: "PATCH",
-            url: "http://127.0.0.1:8000/posts/" + id + "/",
-            data: data,
+        AuthAPI.patch(endpoints['posts'] + id + '/', data, {
             headers: {
-                'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
-                'Authorization': `Bearer ${cookies.load('access_token')}`
+                'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
             }
         }).then((res) => {
             console.log(res);
@@ -160,7 +155,7 @@ export default function Post() {
                                                     }
                                                     {!hiddenPostOption[index] && <></>} {
                                                         hiddenPostOption[index] && <div className="post-option">
-                                                            <p onClick={() => setModalEditIsOpen(true)}>Edit</p>
+                                                            <p onClick={() => setModalEditIsOpen(true)}><i className="fas fa-edit" style={{ marginRight: '5px' }}></i>Edit</p>
                                                             <Modal className="modal-edit-post-form" isOpen={modalEditIsOpen} ariaHideApp={false}>
                                                                 <EditPostForm
                                                                     onSubmit={(data) => editPost(post.id, data)}
@@ -175,7 +170,7 @@ export default function Post() {
                                                                     <i className="fas fa-times-circle"></i>
                                                                 </div>
                                                             </Modal>
-                                                            <p onClick={openRemovePostDialog}>Remove</p>
+                                                            <p onClick={openRemovePostDialog}><i className="fas fa-trash-alt" style={{ margin: ' 0 8px 0 1px' }}></i>Remove</p>
                                                             <Dialog
                                                                 open={isDisplayRemovePostDialog}
                                                                 TransitionComponent={Transition}

@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../post.css';
 import cookies from 'react-cookies';
+import { PhoneStockErrorContext } from './PostForm';
 
 export default function StockForm(props) {
+    const message = useContext(PhoneStockErrorContext);
     const [address, setAddress] = useState('');
     const [representative, setRepresentative] = useState('');
     const [phone, setPhone] = useState('');
-    
+
     function onSubmit(e) {
         e.preventDefault();
         let item = {
@@ -32,7 +34,10 @@ export default function StockForm(props) {
                     </tr>
                     <tr>
                         <td>Phone:</td>
-                        <td><input type="text" placeholder="Phone..." value={phone} onChange={e => setPhone(e.target.value)} required /></td>
+                        <td>
+                            <input type="text" placeholder="Phone..." value={phone} onChange={e => setPhone(e.target.value)} required />
+                            <p className="phone-stock-error">{message.messagePhoneStockError}</p>
+                        </td>
                     </tr>
                     <tr>
                         <td colSpan={2}>

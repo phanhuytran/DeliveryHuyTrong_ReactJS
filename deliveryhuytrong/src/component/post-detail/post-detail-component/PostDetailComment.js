@@ -1,10 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import "../post-detail.css";
-import cookies from 'react-cookies';
-import axios from 'axios';
 import moment from 'moment';
 import { AuthAPI, endpoints } from '../../API';
-import { DisplayPostOptionContext } from './PostDetail';
+import { DisplayPostOptionContext } from './PostInformation';
 
 export default function PostDetailComment(props) {
     const [auction, setAuction] = useState([]);
@@ -29,20 +27,13 @@ export default function PostDetailComment(props) {
     async function confirmShipper(e) {
         e.preventDefault();
         let order = orderList;
-        await axios({
-            method: "POST",
-            url: "http://127.0.0.1:8000/orders/",
-            data: {
-                auction_win: chooseShipper
-            },
-            headers: {
-                'Authorization': `Bearer ${cookies.load('access_token')}`
-            }
-        }).then((res) => {
+        let formData = new FormData();
+        formData.append('auction_win', chooseShipper);
+        AuthAPI.post(endpoints['orders'], formData).then((res) => {
             console.log(res);
             option.setIsDisplayPostOption(false);
         }).catch((err) => {
-            console.log(err.response.data)
+            console.log(err.response)
         })
         setOrderList(order);
     }

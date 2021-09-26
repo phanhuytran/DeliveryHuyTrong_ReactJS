@@ -35,11 +35,7 @@ export default class EditCurrentUserForm extends React.Component {
                 formData.append(k, this.state.user[k])
             }
         }
-        AuthAPI.patch(endpoints['users'] + cookies.load("user").id + '/', formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        }).then((res) => {
+        AuthAPI.patch(endpoints['users'] + cookies.load("user").id + '/', formData).then((res) => {
             console.log(res);
             cookies.save('user', res.data);
             this.setState({

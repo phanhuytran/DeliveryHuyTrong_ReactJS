@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import "../order-auction.css";
-import cookies from 'react-cookies';
-import axios from 'axios';
 import moment from 'moment';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -50,13 +48,7 @@ export default function OrderAuctionComment(props) {
 
     async function removeAuction(id) {
         let auc = auction;
-        await axios({
-            method: "DELETE",
-            url: "http://127.0.0.1:8000/auctions/" + id,
-            headers: {
-                'Authorization': `Bearer ${cookies.load('access_token')}`
-            }
-        }).then((res) => {
+        AuthAPI.delete(endpoints['auctions'] + id).then((res) => {
             console.log(res);
             setMessage('');
             setIsDisplayPostOption(false);
@@ -85,27 +77,22 @@ export default function OrderAuctionComment(props) {
     async function editAuction(id, e) {
         e.preventDefault();
         let auc = auction;
-        await axios({
-            method: "PATCH",
-            url: "http://127.0.0.1:8000/auctions/" + id + "/",
-            data: {
-                cost: editCost
-            },
-            headers: {
-                'Authorization': `Bearer ${cookies.load('access_token')}`
-            }
-        }).then((res) => {
+        let formData = new FormData();
+        formData.append('cost', editCost);
+        AuthAPI.patch(endpoints['auctions'] + id + '/', formData).then((res) => {
             console.log(res);
             setMessage('');
             setIsDisplayAuctionInfo(true);
             setIsDisplayEditAuction(false);
+        }).then((res) => {
+            console.log(res);
         }).catch((err) => {
             console.log(err.response.data);
             if (err.response.data.cost) {
                 setMessage('Ensure this cost has no more than 10 digits in total')
             }
             if (err.response.data.detail) {
-                setMessage('This auction has ended. You cannot remove this auction')
+                setMessage('This auction has ended. You cannot edit this auction')
             }
         })
         setAuction(auc);
@@ -152,8 +139,8 @@ export default function OrderAuctionComment(props) {
                                 </p>
                                 {
                                     isDisplayPostOption ? <div className="cmt-auction-action">
-                                        <p onClick={showEditForm}>Edit</p>
-                                        <p onClick={openAuctionDialog}>Remove</p>
+                                        <p onClick={showEditForm}><i className="fas fa-edit" style={{ marginRight: '5px' }}></i>Edit</p>
+                                        <p onClick={openAuctionDialog}><i className="fas fa-trash-alt" style={{ margin: ' 0 8px 0 1px' }}></i>Remove</p>
                                         <Dialog
                                             open={openRemoveAuctionDialog}
                                             TransitionComponent={Transition}

@@ -2,9 +2,9 @@ import React, { useContext, useState } from 'react';
 import { UserContext } from '../../../App';
 
 export default function SignInForm() {
+    const auth = useContext(UserContext);
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
-    const auth = useContext(UserContext);
 
     const login = async (e) => {
         e.preventDefault();

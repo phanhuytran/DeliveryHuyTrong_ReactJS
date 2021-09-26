@@ -10,6 +10,7 @@ export let endpoints = {
     'posts': '/posts/',
     'stocks': '/stocks/',
     'image-item': '/image-item/',
+    'post-auctions': (id) => `/posts/${id}/auctions/`,
     'auctions': '/auctions/',
     'orders': '/orders/',
     'vouchers': '/vouchers/'

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import "../order-auction.css";
-import axios from 'axios';
 import cookies from 'react-cookies';
 import GavelIcon from '@mui/icons-material/Gavel';
+import { AuthAPI, endpoints } from '../../API';
 
 export default function AuctionForm(props) {
     const [cost, setCost] = useState(0);
@@ -10,16 +10,14 @@ export default function AuctionForm(props) {
 
     async function onSubmit(e) {
         e.preventDefault();
-        await axios({
-            method: "POST",
-            url: "http://127.0.0.1:8000/posts/" + props.props.post.id + "/auctions/",
-            data: {
-                post: props.props.post.id,
-                shipper: cookies.load('user').id,
-                cost: cost
-            },
+        let formData = new FormData();
+        formData.append('post', props.props.post.id);
+        formData.append('shipper', cookies.load('user').id);
+        formData.append('cost', cost);
+
+        AuthAPI.post(endpoints['post-auctions'](props.props.post.id), formData, {
             headers: {
-                'Authorization': `Bearer ${cookies.load('access_token')}`
+                'Content-Type': 'multipart/form-data'
             }
         }).then((res) => {
             console.log(res);
