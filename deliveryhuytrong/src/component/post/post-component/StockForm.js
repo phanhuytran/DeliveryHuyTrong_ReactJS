@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
-import '../post.css';
 import cookies from 'react-cookies';
 import { PhoneStockErrorContext } from './PostForm';
+import '../post.css';
 
 export default function StockForm(props) {
     const message = useContext(PhoneStockErrorContext);

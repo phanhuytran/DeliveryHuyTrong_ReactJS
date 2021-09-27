@@ -1,7 +1,7 @@
 import React from 'react';
-import '../statistic.css';
 import { Line } from "react-chartjs-2";
 import moment from "moment";
+import '../statistic.css';
 
 const startDate = new Date(2021, 7, 1);
 const labels = [];

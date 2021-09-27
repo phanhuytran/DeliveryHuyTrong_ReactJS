@@ -1,32 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import '../post.css';
-import cookies from 'react-cookies';
 import { Link } from 'react-router-dom';
+import cookies from 'react-cookies';
 import * as _ from "lodash";
 import moment from 'moment';
 import Modal from 'react-modal';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
+import { AuthAPI, endpoints } from '../../API';
 import PostForm from './PostForm';
 import PersonalInformation from './PersonalInformation';
-import { AuthAPI, endpoints } from '../../API';
 import EditPostForm from './EditPostForm';
 import OrderAuctionedList from './OrderAuctionedList';
-import EditPostErrorDialog from './EditPostErrorDialog';
+import EditPostErrorDialog from './post-dialog-component/EditPostErrorDialog';
 import PostInformation from './PostInformation';
-// import PostComment from './PostComment';
+import RemovePostDialog from './post-dialog-component/RemovePostDialog';
+import '../post.css';
 
-export let EditPostErrorDialogContext = React.createContext();
 export let PostInformationContext = React.createContext();
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-});
+export let RemovePostContext = React.createContext();
+export let EditPostErrorDialogContext = React.createContext();
 
 export default function Post() {
     const [postList, setPostList] = useState([]);
@@ -74,18 +64,6 @@ export default function Post() {
     const closeRemovePostDialog = () => {
         setIsDisplayOpenRemovePostDialog(false);
         setHiddenPostOption({});
-    }
-
-    function removePost(id) {
-        let post = postList;
-        AuthAPI.delete(endpoints['posts'] + id).then((res) => {
-            console.log(res);
-            setPostList(post);
-            setHiddenPostOption({});
-            setIsDisplayOpenRemovePostDialog(false);
-        }).catch((err) => {
-            console.log(err.response.data);
-        })
     }
 
     const closeMessageEditErrorDialog = () => {
@@ -144,7 +122,7 @@ export default function Post() {
                                                                 </> : <></>
                                                         }
                                                         <br />
-                                                        <span>{moment(post.created_date, "YYYYMMDD").fromNow()}</span>
+                                                        <span>{moment(new Date(post.created_date), "YYYYMMDD").fromNow()}</span>
                                                     </p>
                                                 </div>
                                                 <div className="post-content-header-right">
@@ -171,24 +149,9 @@ export default function Post() {
                                                                 </div>
                                                             </Modal>
                                                             <p onClick={openRemovePostDialog}><i className="fas fa-trash-alt" style={{ margin: ' 0 8px 0 1px' }}></i>Remove</p>
-                                                            <Dialog
-                                                                open={isDisplayRemovePostDialog}
-                                                                TransitionComponent={Transition}
-                                                                keepMounted
-                                                                onClose={closeRemovePostDialog}
-                                                                aria-describedby="alert-dialog-slide-description"
-                                                            >
-                                                                <DialogTitle style={{ color: '#5D5D5D' }}>{"Do you want to remove this post?"}</DialogTitle>
-                                                                <DialogContent>
-                                                                    <DialogContentText id="alert-dialog-slide-description" style={{ fontSize: 14 }}>
-                                                                        You will no longer see this post if you press REMOVE.
-                                                                    </DialogContentText>
-                                                                </DialogContent>
-                                                                <DialogActions>
-                                                                    <Button style={{ fontSize: 14 }} onClick={closeRemovePostDialog}>Cancel</Button>
-                                                                    <Button style={{ fontSize: 14 }} onClick={() => removePost(post.id)}>Remove</Button>
-                                                                </DialogActions>
-                                                            </Dialog>
+                                                            <RemovePostContext.Provider value={{ postList, post, setPostList, setHiddenPostOption, setIsDisplayOpenRemovePostDialog, isDisplayRemovePostDialog, closeRemovePostDialog }}>
+                                                                <RemovePostDialog />
+                                                            </RemovePostContext.Provider>
                                                         </div>
                                                     }
                                                 </div>

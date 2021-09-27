@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import '../shipper-detail.css';
 import { Link } from 'react-router-dom';
+import { AuthAPI, endpoints } from '../../API';
 import ShipperDetailPersonalInfo from './ShipperDetailPersonalInfo';
 import ShipperDetailRating from './ShipperDetailRating';
 import ShipperDetailTitle from './ShipperDetailTitle';
-import { AuthAPI, endpoints } from '../../API';
+import '../shipper-detail.css';
 
 export default function ShipperDetailInfo(props) {
     const [shipperList, setShipperList] = useState([]);

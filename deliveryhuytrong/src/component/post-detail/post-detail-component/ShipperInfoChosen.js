@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import '../post-detail.css';
 import { AuthAPI, endpoints } from '../../API';
+import '../post-detail.css';
 
 export default function ShipperInfoChosen(props) {
     const [orderList, setOrderList] = useState([]);

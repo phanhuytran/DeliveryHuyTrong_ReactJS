@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import cookies from 'react-cookies';
 import { Link } from 'react-router-dom';
+import cookies from 'react-cookies';
 import { UserContext } from '../../App';
 import shipperIMG from './image/shipper.jpg'
 

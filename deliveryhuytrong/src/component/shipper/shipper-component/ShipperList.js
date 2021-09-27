@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import '../shipper.css';
 import cookies from 'react-cookies';
 import { Link } from 'react-router-dom';
 import StarRateIcon from '@mui/icons-material/StarRate';
+import { AuthAPI, endpoints } from '../../API';
 import ShipperTitle from './ShipperTitle';
 // import ShipperInfoForm from './ShipperInfoForm';
-import { AuthAPI, endpoints } from '../../API';
+import '../shipper.css';
 
 export default function ShipperList() {
     const [shipperList, setShipperList] = useState([]);

@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import '../post.css';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -8,13 +7,13 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import { StockErrorContext } from './EditPostForm';
+import { StockErrorContext } from '../EditPostDetailForm';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function EditPostFormStockErrorDialog() {
+export default function MessageStockErrorDialog() {
     const message = useContext(StockErrorContext);
 
     return (

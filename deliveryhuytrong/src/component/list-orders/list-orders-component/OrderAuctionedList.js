@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import "../list-orders.css";
 import * as _ from "lodash";
 import Slider from "react-slick";
 import { AuthAPI, endpoints } from '../../API';
+import "../list-orders.css";
 
 export default function OrdertAuctionedList() {
     const [orderList, setOrderList] = useState([]);

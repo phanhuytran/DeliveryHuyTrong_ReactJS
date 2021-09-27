@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import '../pricing.css'
 import Modal from 'react-modal';
+import API, { endpoints } from '../../API';
 import { UserContext } from '../../../App';
 import SignInSignUp from './../../item-base/signIn-signUp-component/SignInSignUp';
-import API, { endpoints } from '../../API';
+import '../pricing.css'
 
 export default function Pricing() {
     const auth = useContext(UserContext);

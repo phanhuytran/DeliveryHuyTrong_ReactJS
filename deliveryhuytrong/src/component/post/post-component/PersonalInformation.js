@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
-import '../post.css';
 import cookies from 'react-cookies';
+import { AuthAPI, endpoints } from '../../API';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import Modal from 'react-modal';
 import EditCurrentUserForm from './EditCurrentUserForm';
-import { AuthAPI, endpoints } from '../../API';
-import avatarNullIMG from '../image/avatar-null.png'
+import '../post.css';
+import avatarNullIMG from '../image/avatar-null.png';
 
 export default function PersonalInformation() {
     const [modalChooseAvatar, setModalChooseAvatar] = useState(false);

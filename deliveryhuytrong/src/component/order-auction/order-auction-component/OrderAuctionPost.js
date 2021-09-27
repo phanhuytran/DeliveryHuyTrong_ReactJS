@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import "../order-auction.css";
+import { Link } from 'react-router-dom';
 import cookies from 'react-cookies';
 import moment from 'moment';
-import { Link } from 'react-router-dom';
+import { AuthAPI, endpoints } from '../../API';
 import OrderInformation from './OrderInformation';
 import OrderAuctionComment from './OrderAuctionComment';
-import { AuthAPI, endpoints } from '../../API';
+import "../order-auction.css";
 
 export default function OrderAuctionPost(props) {
     const [orderPostList, setOrderPostList] = useState([]);
@@ -35,7 +35,7 @@ export default function OrderAuctionPost(props) {
                                             <div className="auction-customer-info-right">
                                                 <p>
                                                     <span style={{ fontSize: 16 }}>{post.customer.username}</span><br />
-                                                    <span>{moment(post.created_date, "YYYYMMDD").fromNow()}</span>
+                                                    <span>{moment(new Date(post.created_date), "YYYYMMDD").fromNow()}</span>
                                                 </p>
                                             </div>
                                         </div>

@@ -1,3 +1,12 @@
+@keyframes growth {
+    from {
+        transform: scale(var(--growth-from));
+    }
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
+
 .modal-signin-signup {
     margin: 0 auto;
     width: 80%;
@@ -9,15 +18,6 @@
 
 .modal-signin-signup:focus-visible {
     outline: none;
-}
-
-@keyframes growth {
-    from {
-        transform: scale(var(--growth-from));
-    }
-    to {
-        transform: scale(var(--growth-to));
-    }
 }
 
 .close-modal-signin-signup {

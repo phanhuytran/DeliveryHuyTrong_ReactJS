@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
-import "../post-detail.css";
 import moment from 'moment';
 import { AuthAPI, endpoints } from '../../API';
 import { DisplayPostOptionContext } from './PostInformation';
+import "../post-detail.css";
 
 export default function PostDetailComment(props) {
     const [auction, setAuction] = useState([]);
@@ -55,7 +55,7 @@ export default function PostDetailComment(props) {
                                         <span>{currencyFormat((auction.cost).slice(0, -3))} VND</span>
                                     </div>
                                     <div className="auction-area-comment-date">
-                                        <p>{moment(auction.created_date, "YYYYMMDD").fromNow()}</p>
+                                        <p>{moment(new Date(auction.created_date), "YYYYMMDD").fromNow()}</p>
                                     </div>
                                 </div>
                                 <div className="auction-area-comment-flex-right">

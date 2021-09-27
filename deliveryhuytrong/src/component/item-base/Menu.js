@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import "./item-base.css";
-import cookies from 'react-cookies';
 import { NavLink } from "react-router-dom";
-import ModalSignInSignUp from './signIn-signUp-component/ModalSignInSignUp';
+import cookies from 'react-cookies';
 import { UserContext } from '../../App';
+import ModalSignInSignUp from './signIn-signUp-component/ModalSignInSignUp';
+import "./item-base.css";
 
 export default function Menu() {
     const auth = useContext(UserContext);

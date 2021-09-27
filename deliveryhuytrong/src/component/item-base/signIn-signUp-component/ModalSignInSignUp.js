@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
-import "../item-base.css";
+import { Link } from 'react-router-dom';
 import cookies from 'react-cookies';
+import Modal from 'react-modal';
 import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
-import Modal from 'react-modal';
-import SignInSignUp from './SignInSignUp';
 import { UserContext } from '../../../App';
-import { Link } from 'react-router-dom';
+import SignInSignUp from './SignInSignUp';
+import "../item-base.css";
 
 export default function ModalSignInSignUp() {
     const [isDisplaySignInSignUpModal, setIsDisplaySignInSignUpModal] = useState(false);

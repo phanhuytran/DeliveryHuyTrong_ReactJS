@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import "../order-auction.css";
 import cookies from 'react-cookies';
 import GavelIcon from '@mui/icons-material/Gavel';
 import { AuthAPI, endpoints } from '../../API';
+import "../order-auction.css";
 
 export default function AuctionForm(props) {
     const [cost, setCost] = useState(0);

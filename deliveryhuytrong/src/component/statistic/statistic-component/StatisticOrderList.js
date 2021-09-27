@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import '../statistic.css';
 import * as _ from "lodash";
 import { AuthAPI, endpoints } from '../../API';
+import '../statistic.css';
 
 export default function StatisticOrderList() {
     const [orderList, setOrderList] = useState([]);

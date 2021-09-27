@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import '../post.css';
 import { AuthAPI, endpoints } from '../../API';
-import EditPostFormStockErrorDialog from './EditPostFormStockErrorDialog';
+import EditPostFormStockErrorDialog from './post-dialog-component/EditPostFormStockErrorDialog';
+import '../post.css';
 
 export let StockErrorContext = React.createContext();
 

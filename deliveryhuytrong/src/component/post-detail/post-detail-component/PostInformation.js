@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
-import "../post-detail.css";
-import "../slick-carousel/slick/slick.css";
-import "../slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import PostDetailComment from './PostDetailComment';
 import ShipperInfoChosen from './ShipperInfoChosen';
-import { PostInfoContext } from './PostDetail';
+import { PostInformationContext } from './PostDetail';
+import "../post-detail.css";
+import "../slick-carousel/slick/slick.css";
+import "../slick-carousel/slick/slick-theme.css";
 
 export let DisplayPostOptionContext = React.createContext();
 
 export default function PostInformation() {
-    const option = useContext(PostInfoContext);
+    const option = useContext(PostInformationContext);
     const setIsDisplayPostOption = option.setIsDisplayPostOption;
     const settingSlider = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 };
 

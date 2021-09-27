@@ -1,38 +1,39 @@
 import React, { useContext } from 'react';
-import '../post.css';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import { StockErrorContext } from './PostForm';
+import Slide from '@mui/material/Slide';
+import { EditPostErrorDialogContext } from '../Post';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function PostFormStockErrorDialog() {
-    const message = useContext(StockErrorContext);
+export default function EditPostErrorDialog() {
+    const message = useContext(EditPostErrorDialogContext);
 
     return (
         <Dialog
-            open={message.isDisPlayMessageStockError}
+            open={message.isDisplayMessageEditError}
             TransitionComponent={Transition}
             keepMounted
-            onClose={message.closeMessageStockErrorDialog}
+            onClose={message.closeMessageEditErrorDialog}
             aria-describedby="alert-dialog-slide-description"
         >
-            <DialogTitle style={{ textAlign: 'center' }}><HighlightOffIcon style={{ fontSize: 50, color: '#dc3545' }} /></DialogTitle>
+            <DialogTitle style={{ textAlign: 'center' }}>
+                <HighlightOffIcon style={{ fontSize: 50, color: '#dc3545' }} />
+            </DialogTitle>
             <DialogContent>
                 <DialogContentText id="alert-dialog-slide-description" style={{ fontSize: 14 }}>
-                    The sending and receiving addresses are not allowed to be the same
+                    Your order has been auctioned by the shipper. You cannot edit this order
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button style={{ fontSize: 14 }} onClick={message.closeMessageStockErrorDialog}>Ok</Button>
+                <Button style={{ fontSize: 14 }} onClick={message.closeMessageEditErrorDialog}>Ok</Button>
             </DialogActions>
         </Dialog>
     );

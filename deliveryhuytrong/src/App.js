@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import cookies from 'react-cookies';
 import axios from 'axios';
 import qs from 'qs';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Footer from './component/item-base/Footer';
 import Header from './component/item-base/Header';
 import API, { endpoints } from './component/API';
@@ -11,15 +11,15 @@ import BodyOrder from './component/list-orders/BodyOrder';
 import BodyOrderAuction from './component/order-auction/BodyOrderAuction';
 import BodyStatistic from './component/statistic/BodyStatistic';
 import BodyAbout from './component/about/BodyAbout';
-import AuthorizationRequired_401 from './component/item-base/401_AuthorizationRequired';
-import PermissionDenied_403 from './component/item-base/403_PermissionDenied';
-import PageNotFound_404 from './component/item-base/404_PageNotFound';
 import BodyShipper from './component/shipper/BodyShipper';
 import BodyPricing from './component/pricing/BodyPricing';
 import BodyContact from './component/contact/BodyContact';
 import BodyShipperDetail from './component/shipper-detail/BodyShipperDetail';
 import BodyPost from './component/post/BodyPost';
 import BodyPostDetail from './component/post-detail/BodyPostDetail';
+import AuthorizationRequired_401 from './component/item-base/401_AuthorizationRequired';
+import PermissionDenied_403 from './component/item-base/403_PermissionDenied';
+import PageNotFound_404 from './component/item-base/404_PageNotFound';
 
 export let UserContext = React.createContext();
 

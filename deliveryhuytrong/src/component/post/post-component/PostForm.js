@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import '../post.css';
 import cookies from 'react-cookies';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineSharpIcon from '@material-ui/icons/RemoveCircleOutlineSharp';
 import { AuthAPI, endpoints } from '../../API';
 import StockForm from './StockForm';
-import PostFormStockErrorDialog from './PostFormStockErrorDialog';
+import PostFormStockErrorDialog from './post-dialog-component/PostFormStockErrorDialog';
+import '../post.css';
 
 export let StockErrorContext = React.createContext();
 export let PhoneStockErrorContext = React.createContext();

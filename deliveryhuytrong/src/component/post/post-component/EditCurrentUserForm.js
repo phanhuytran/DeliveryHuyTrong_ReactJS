@@ -1,8 +1,8 @@
 import React from 'react';
-import '../post.css';
 import cookies from 'react-cookies';
 import Modal from 'react-modal';
 import { AuthAPI, endpoints } from '../../API';
+import '../post.css';
 
 export default class EditCurrentUserForm extends React.Component {
     constructor(props) {

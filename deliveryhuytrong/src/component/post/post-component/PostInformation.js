@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
-import '../post.css';
 import Slider from "react-slick";
 import { PostInformationContext } from './Post';
+import '../post.css';
 
 export default function PostInformation() {
     const context = useContext(PostInformationContext);

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import "../order-auction.css";
 import moment from 'moment';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -9,8 +8,9 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import GavelIcon from '@mui/icons-material/Gavel';
-import AuctionForm from './AuctionForm'
 import { AuthAPI, endpoints } from '../../API';
+import AuctionForm from './AuctionForm';
+import "../order-auction.css";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -130,7 +130,7 @@ export default function OrderAuctionComment(props) {
                                         </form> : <></>
                                 }
                                 <div className="auction-area-comment-date">
-                                    <p>{moment(auction.created_date, "YYYYMMDD").fromNow()}</p>
+                                    <p>{moment(new Date(auction.created_date), "YYYYMMDD").fromNow()}</p>
                                 </div>
                             </div>
                             <div className="auction-area-comment-flex-right">

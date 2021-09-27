@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import '../post.css';
 import Modal from 'react-modal';
 import * as _ from "lodash";
 import moment from 'moment';
 import { AuthAPI, endpoints } from '../../API';
 import ChangeShippingStatus from './ChangeShippingStatus';
 import OrderInformation from './OrderInformation';
+import '../post.css';
 
 export let OrderInformationContext = React.createContext();
 
