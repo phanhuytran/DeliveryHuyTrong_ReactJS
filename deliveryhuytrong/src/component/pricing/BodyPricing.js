@@ -7,7 +7,7 @@ export default function BodyPricing() {
     return (
         <>
             <NotificationBell />
-            <section className="order_us_area" id="pricing">
+            <section className="order_us_area" id="pricing" style={{ marginBottom: '5%' }}>
                 <div className="container">
                     <PricingTitle />
                     <Pricing />

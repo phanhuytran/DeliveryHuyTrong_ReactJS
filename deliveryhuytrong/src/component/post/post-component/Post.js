@@ -5,6 +5,7 @@ import * as _ from "lodash";
 import moment from 'moment';
 import Modal from 'react-modal';
 import { AuthAPI, endpoints } from '../../API';
+import LoadingProgress from '../../item-base/LoadingProgress';
 import PostForm from './PostForm';
 import PersonalInformation from './PersonalInformation';
 import EditPostForm from './EditPostForm';
@@ -39,7 +40,11 @@ export default function Post() {
 
     let result;
     if (postList.length === 0) {
-        result = <div className="post-list-null"><p>Post not found</p></div>
+        result = <div className="post-list-null">
+            <p>Post not found</p>
+            <LoadingProgress />
+            <div style={{ marginBottom: '26.498%' }} />
+        </div>
     }
 
     async function createPost(data) {
@@ -102,6 +107,7 @@ export default function Post() {
                     {
                         cookies.load("user").groups[0] === 1 ? <>
                             <PostForm onSubmit={createPost} />
+                            {result}
                             {
                                 _.sortBy(postList).reverse().map((post, index) => {
                                     return <React.Fragment key={index}>
@@ -174,7 +180,6 @@ export default function Post() {
                                     </React.Fragment>
                                 })
                             }
-                            {result}
                         </> : <OrderAuctionedList />
                     }
                 </div>

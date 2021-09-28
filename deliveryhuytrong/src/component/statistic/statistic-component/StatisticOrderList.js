@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import * as _ from "lodash";
 import { AuthAPI, endpoints } from '../../API';
+import LoadingProgress from '../../item-base/LoadingProgress';
 import '../statistic.css';
 
 export default function StatisticOrderList() {
+    const [loadingProgress, setLoadingProgress] = useState(true);
     const [orderList, setOrderList] = useState([]);
     const [descriptionFilter, setDescriptionFilter] = useState('');
     const [createdDateFilter, setCreatedDateFilter] = useState('');
@@ -33,6 +35,7 @@ export default function StatisticOrderList() {
     useEffect(() => {
         async function getOrderList() {
             let res = await AuthAPI.get(endpoints['posts']);
+            setLoadingProgress(false);
             setOrderList(res.data.results);
         }
         getOrderList();
@@ -60,7 +63,7 @@ export default function StatisticOrderList() {
 
     if (order.length === 0) {
         result = <td colSpan={9} className="no-data-found">
-            <h1>No order found</h1>
+            <h1>Order not found</h1>
         </td>
     }
 
@@ -115,23 +118,31 @@ export default function StatisticOrderList() {
                             </td>
                             <td></td>
                         </tr>
-                        {
-                            _.sortBy(order).reverse().map((ord, index) => {
-                                i++;
-                                return <tr key={index}>
-                                    <td>{i}</td>
-                                    <td>{ord.description}</td>
-                                    <td>{(ord.created_date).slice(0, 10)}</td>
-                                    <td>{ord.customer.first_name} {ord.customer.last_name}</td>
-                                    <td><img src={ord.image_items[0].image} alt="img" /></td>
-                                    <td>{ord.weight}</td>
-                                    <td>{ord.send_stock.address}</td>
-                                    <td>{ord.receive_stock.address}</td>
-                                    <td></td>
-                                </tr>
-                            })
-                        }
                         <tr>{result}</tr>
+                        {
+                            loadingProgress ? <tr>
+                                <td colSpan={9} style={{ padding: '1% 0 2% 0' }}>
+                                    <LoadingProgress />
+                                </td>
+                            </tr> : <>
+                                {
+                                    _.sortBy(order).reverse().map((order, index) => {
+                                        i++;
+                                        return <tr key={index}>
+                                            <td>{i}</td>
+                                            <td>{order.description}</td>
+                                            <td>{(order.created_date).slice(0, 10)}</td>
+                                            <td>{order.customer.first_name} {order.customer.last_name}</td>
+                                            <td><img src={order.image_items[0].image} alt="img" /></td>
+                                            <td>{order.weight}</td>
+                                            <td>{order.send_stock.address}</td>
+                                            <td>{order.receive_stock.address}</td>
+                                            <td></td>
+                                        </tr>
+                                    })
+                                }
+                            </>
+                        }
                     </tbody>
                 </table>
             </div>

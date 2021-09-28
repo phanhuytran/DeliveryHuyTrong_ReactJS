@@ -1,21 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { AuthAPI, endpoints } from '../../API';
+import LoadingProgress from '../../item-base/LoadingProgress';
 
 export default function HomeStatistic() {
+    const [loadingProgress, setLoadingProgress] = useState(true);
     const [shipperList, setShipperList] = useState([]);
     const [postList, setPostList] = useState([]);
 
     useEffect(() => {
         async function getShipperList() {
             let res = await AuthAPI.get(endpoints['shippers']);
-            setShipperList(res.data);
+            setTimeout(() => {
+                setLoadingProgress(false);
+                setShipperList(res.data);
+            }, 1000);
         }
+
         async function getPostList() {
             let res = await AuthAPI.get(endpoints['posts']);
-            setPostList(res.data.results);
+            setTimeout(() => {
+                setLoadingProgress(false);
+                setPostList(res.data.results);
+            }, 1000);
         }
-        getPostList();
+
         getShipperList();
+        getPostList();
     }, [postList]);
 
     return (
@@ -33,7 +43,9 @@ export default function HomeStatistic() {
                             <div className="col-md-2 col-sm-3 col-md-offset-1 text-center">
                                 <div className="single-count">
                                     <h1 className="counter">
-                                        {shipperList.length}
+                                        {
+                                            loadingProgress ? <LoadingProgress /> : <>{shipperList.length}</>
+                                        }
                                     </h1>
                                     <h5>Shippers</h5>
                                 </div>
@@ -41,7 +53,9 @@ export default function HomeStatistic() {
                             <div className="col-md-2 col-sm-3 col-md-offset-1 text-center">
                                 <div className="single-count">
                                     <h1 className="counter">
-                                        {postList.length}
+                                        {
+                                            loadingProgress ? <LoadingProgress /> : <>{postList.length}</>
+                                        }
                                     </h1>
                                     <h5>Orders</h5>
                                 </div>

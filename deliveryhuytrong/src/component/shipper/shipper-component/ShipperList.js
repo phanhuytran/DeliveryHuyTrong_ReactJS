@@ -3,11 +3,13 @@ import cookies from 'react-cookies';
 import { Link } from 'react-router-dom';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import { AuthAPI, endpoints } from '../../API';
+import LoadingProgress from '../../item-base/LoadingProgress';
 import ShipperTitle from './ShipperTitle';
 // import ShipperInfoForm from './ShipperInfoForm';
 import '../shipper.css';
 
 export default function ShipperList() {
+    const [loadingProgress, setLoadingProgress] = useState(true);
     const [shipperList, setShipperList] = useState([]);
     const [fullNameFilter, setFullNameFilter] = useState('');
     const [phoneFilter, setPhoneFilter] = useState('');
@@ -22,6 +24,7 @@ export default function ShipperList() {
     useEffect(() => {
         async function getShipperList() {
             let res = await AuthAPI.get(endpoints['shippers']);
+            setLoadingProgress(false);
             setShipperList(res.data);
         }
         getShipperList();
@@ -34,16 +37,11 @@ export default function ShipperList() {
     //     ? <ShipperInfoForm onSubmit={createShipper} />
     //     : '';
 
-    // function createShipper(data) {
-    // }
-
-    // function removeShipper(id) {
-    // }
-
-    // function editShipper(item) {
-    // }
-
+    // function createShipper(data) {}
+    // function removeShipper(id) {}
+    // function editShipper(item) {}
     // function onToggleShipperInfoForm() { setIsDisplayShipperInfoForm(toggle => !toggle); }
+
     function onClear() { setFullNameFilter(''); setPhoneFilter(''); }
 
     if (fullName.length > 0 || phone.length > 0) {
@@ -104,32 +102,40 @@ export default function ShipperList() {
                             </tr>
                         </thead>
                         <tbody>
-                            {
-                                shipper.map((shipper, index) => {
-                                    i++;
-                                    return <tr key={index}>
-                                        <td>{i}</td>
-                                        <td>{shipper.first_name} {shipper.last_name}</td>
-                                        <td><img src={shipper.avatar} alt="avatar" /></td>
-                                        <td>{shipper.date_of_birth}</td>
-                                        <td>{shipper.gender}</td>
-                                        <td>{shipper.address}</td>
-                                        <td>{shipper.email}</td>
-                                        <td>{shipper.phone}</td>
-                                        {
-                                            cookies.load("user").groups[0] === 1
-                                                ? <td><Link to={"shipper-detail/" + shipper.id} className="see-another-page-2">Click to rate <StarRateIcon /></Link></td>
-                                                : <></>
-                                        }
-                                        {/* <td>
-                                            <span className="see-another-page-1" onClick={() => editShipper(shipper)}>Edit</span>
-                                            // <RemoveShipper props={shipper.id} />
-                                            <span className="see-another-page-2" onClick={() => removeShipper(shipper.id)}>Remove</span>
-                                        </td> */}
-                                    </tr>
-                                })
-                            }
                             <tr>{result}</tr>
+                            {
+                                loadingProgress ? <tr>
+                                    <td colSpan={12} style={{ padding: '1% 0 2% 0' }}>
+                                        <LoadingProgress />
+                                    </td>
+                                </tr> : <>
+                                    {
+                                        shipper.map((shipper, index) => {
+                                            i++;
+                                            return <tr key={index}>
+                                                <td>{i}</td>
+                                                <td>{shipper.first_name} {shipper.last_name}</td>
+                                                <td><img src={shipper.avatar} alt="avatar" /></td>
+                                                <td>{shipper.date_of_birth}</td>
+                                                <td>{shipper.gender}</td>
+                                                <td>{shipper.address}</td>
+                                                <td>{shipper.email}</td>
+                                                <td>{shipper.phone}</td>
+                                                {
+                                                    cookies.load("user").groups[0] === 1
+                                                        ? <td><Link to={"shipper-detail/" + shipper.id} className="see-another-page-2">Click to rate <StarRateIcon /></Link></td>
+                                                        : <></>
+                                                }
+                                                {/* <td>
+                                                    <span className="see-another-page-1" onClick={() => editShipper(shipper)}>Edit</span>
+                                                    <RemoveShipper props={shipper.id} />
+                                                    <span className="see-another-page-2" onClick={() => removeShipper(shipper.id)}>Remove</span>
+                                                </td> */}
+                                            </tr>
+                                        })
+                                    }
+                                </>
+                            }
                         </tbody>
                     </table>
                 </div>

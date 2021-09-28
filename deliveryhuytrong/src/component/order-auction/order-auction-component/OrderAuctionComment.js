@@ -9,6 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import GavelIcon from '@mui/icons-material/Gavel';
 import { AuthAPI, endpoints } from '../../API';
+import LoadingProgress from '../../item-base/LoadingProgress';
 import AuctionForm from './AuctionForm';
 import "../order-auction.css";
 
@@ -17,6 +18,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function OrderAuctionComment(props) {
+    const [loadingProgress, setLoadingProgress] = useState(true);
     const [auction, setAuction] = useState([]);
     const [isDisplayPostOption, setIsDisplayPostOption] = useState(false);
     const [message, setMessage] = useState('');
@@ -28,7 +30,10 @@ export default function OrderAuctionComment(props) {
     useEffect(() => {
         const getAuction = async () => {
             let res = await AuthAPI.get(endpoints['auctions']);
-            setAuction(res.data);
+            setTimeout(() => {
+                setLoadingProgress(false);
+                setAuction(res.data);
+            }, 2000);
         }
         getAuction();
     }, [auction]);
@@ -103,69 +108,73 @@ export default function OrderAuctionComment(props) {
             <hr />
             <p className="cmt-message">{message}</p>
             {
-                auction.map((auction, index) => {
-                    if (auction.post === props.post.id) {
-                        return <div className="auction-area-comment-flex auction-space" key={index}>
-                            <div className="auction-area-comment-flex-left">
-                                <img src={auction.shipper.avatar} alt="img" />
-                            </div>
-                            <div className="auction-area-comment-flex-center">
-                                {
-                                    isDisplayAuctionInfo
-                                        ? <div className="auction-area-comment-info">
-                                            <strong style={{ fontSize: 16 }}>{auction.shipper.username}</strong><br />
-                                            <span>{currencyFormat((auction.cost).slice(0, -3))} VND</span>
-                                        </div> : <></>
-                                }
-                                {
-                                    isDisplayEditAuction
-                                        ? <form onSubmit={(e) => editAuction(auction.id, e)}>
-                                            <div className="auction-area-comment-info">
-                                                <strong style={{ fontSize: 16 }}>{auction.shipper.username}</strong>
-                                                <span style={{ marginLeft: '10px' }}></span>
-                                                <span className="cancel-edit-auction" onClick={cancelEditAuction}>Cancel</span><br />
-                                                <input type="number" step="0.01" min="0" placeholder="Write a auction information..." value={editCost} onChange={e => setEditCost(e.target.value)} />
-                                                <button><GavelIcon style={{ fontSize: 25 }} /></button>
-                                            </div>
-                                        </form> : <></>
-                                }
-                                <div className="auction-area-comment-date">
-                                    <p>{moment(new Date(auction.created_date), "YYYYMMDD").fromNow()}</p>
+                loadingProgress ? <LoadingProgress /> : <>
+                    {
+                        auction.map((auction, index) => {
+                            if (auction.post === props.post.id) {
+                                return <div className="auction-area-comment-flex auction-space" key={index}>
+                                    <div className="auction-area-comment-flex-left">
+                                        <img src={auction.shipper.avatar} alt="img" />
+                                    </div>
+                                    <div className="auction-area-comment-flex-center">
+                                        {
+                                            isDisplayAuctionInfo
+                                                ? <div className="auction-area-comment-info">
+                                                    <strong style={{ fontSize: 16 }}>{auction.shipper.username}</strong><br />
+                                                    <span>{currencyFormat((auction.cost).slice(0, -3))} VND</span>
+                                                </div> : <></>
+                                        }
+                                        {
+                                            isDisplayEditAuction
+                                                ? <form onSubmit={(e) => editAuction(auction.id, e)}>
+                                                    <div className="auction-area-comment-info">
+                                                        <strong style={{ fontSize: 16 }}>{auction.shipper.username}</strong>
+                                                        <span style={{ marginLeft: '10px' }}></span>
+                                                        <span className="cancel-edit-auction" onClick={cancelEditAuction}>Cancel</span><br />
+                                                        <input type="number" step="0.01" min="0" placeholder="Write a auction information..." value={editCost} onChange={e => setEditCost(e.target.value)} />
+                                                        <button><GavelIcon style={{ fontSize: 25 }} /></button>
+                                                    </div>
+                                                </form> : <></>
+                                        }
+                                        <div className="auction-area-comment-date">
+                                            <p>{moment(new Date(auction.created_date), "YYYYMMDD").fromNow()}</p>
+                                        </div>
+                                    </div>
+                                    <div className="auction-area-comment-flex-right">
+                                        <p onClick={onTogglePostOption} className="cmt-auction-option">
+                                            <span><i className="fas fa-ellipsis-h"></i></span>
+                                        </p>
+                                        {
+                                            isDisplayPostOption ? <div className="cmt-auction-action">
+                                                <p onClick={showEditForm}><i className="fas fa-edit" style={{ marginRight: '5px' }}></i>Edit</p>
+                                                <p onClick={openAuctionDialog}><i className="fas fa-trash-alt" style={{ margin: ' 0 8px 0 1px' }}></i>Remove</p>
+                                                <Dialog
+                                                    open={openRemoveAuctionDialog}
+                                                    TransitionComponent={Transition}
+                                                    keepMounted
+                                                    onClose={closeRemoveAuctionDialog}
+                                                    aria-describedby="alert-dialog-slide-description"
+                                                >
+                                                    <DialogTitle style={{ color: '#5D5D5D' }}>{"Do you want to remove this auction?"}</DialogTitle>
+                                                    <DialogContent>
+                                                        <DialogContentText id="alert-dialog-slide-description" style={{ fontSize: 14 }}>
+                                                            You will no longer see this auction if you press REMOVE.
+                                                        </DialogContentText>
+                                                    </DialogContent>
+                                                    <DialogActions>
+                                                        <Button style={{ fontSize: 14 }} onClick={closeRemoveAuctionDialog}>Cancel</Button>
+                                                        <Button style={{ fontSize: 14 }} onClick={() => removeAuction(auction.id)}>Remove</Button>
+                                                    </DialogActions>
+                                                </Dialog>
+                                            </div> : <></>
+                                        }
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="auction-area-comment-flex-right">
-                                <p onClick={onTogglePostOption} className="cmt-auction-option">
-                                    <span><i className="fas fa-ellipsis-h"></i></span>
-                                </p>
-                                {
-                                    isDisplayPostOption ? <div className="cmt-auction-action">
-                                        <p onClick={showEditForm}><i className="fas fa-edit" style={{ marginRight: '5px' }}></i>Edit</p>
-                                        <p onClick={openAuctionDialog}><i className="fas fa-trash-alt" style={{ margin: ' 0 8px 0 1px' }}></i>Remove</p>
-                                        <Dialog
-                                            open={openRemoveAuctionDialog}
-                                            TransitionComponent={Transition}
-                                            keepMounted
-                                            onClose={closeRemoveAuctionDialog}
-                                            aria-describedby="alert-dialog-slide-description"
-                                        >
-                                            <DialogTitle style={{ color: '#5D5D5D' }}>{"Do you want to remove this auction?"}</DialogTitle>
-                                            <DialogContent>
-                                                <DialogContentText id="alert-dialog-slide-description" style={{ fontSize: 14 }}>
-                                                    You will no longer see this auction if you press REMOVE.
-                                                </DialogContentText>
-                                            </DialogContent>
-                                            <DialogActions>
-                                                <Button style={{ fontSize: 14 }} onClick={closeRemoveAuctionDialog}>Cancel</Button>
-                                                <Button style={{ fontSize: 14 }} onClick={() => removeAuction(auction.id)}>Remove</Button>
-                                            </DialogActions>
-                                        </Dialog>
-                                    </div> : <></>
-                                }
-                            </div>
-                        </div>
+                            }
+                            return <React.Fragment key={index}></React.Fragment>
+                        })
                     }
-                    return <React.Fragment key={index}></React.Fragment>
-                })
+                </>
             }
             <hr />
             <AuctionForm props={props} />

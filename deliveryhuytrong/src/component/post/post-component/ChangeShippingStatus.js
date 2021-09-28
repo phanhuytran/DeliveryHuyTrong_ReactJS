@@ -9,15 +9,15 @@ export default function ChangeShippingStatus(props) {
                 <tbody>
                     <tr>
                         <td><input type="radio" name="radio-change-status" required /></td>
-                        <td><span className="order-auction-status-not-yet-shipped"><i class="fas fa-times-circle"></i>Not yet shipped</span></td>
+                        <td><span className="order-auction-status-not-yet-shipped"><i className="fas fa-times-circle"></i>Not yet shipped</span></td>
                     </tr>
                     <tr>
                         <td><input type="radio" name="radio-change-status" required /></td>
-                        <td><span className="order-auction-status-shipping"><i class="fas fa-exclamation-triangle"></i>Shipping</span></td>
+                        <td><span className="order-auction-status-shipping"><i className="fas fa-exclamation-triangle"></i>Shipping</span></td>
                     </tr>
                     <tr>
                         <td><input type="radio" name="radio-change-status" required /></td>
-                        <td><span className="order-auction-status-shipped"><i class="fas fa-check-circle"></i>Shipped</span></td>
+                        <td><span className="order-auction-status-shipped"><i className="fas fa-check-circle"></i>Shipped</span></td>
                     </tr>
                     <tr>
                         <td colSpan={2}><button type="submit">Change</button></td>

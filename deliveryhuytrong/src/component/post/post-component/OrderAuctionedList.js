@@ -21,14 +21,16 @@ export default function OrderAuctionedList() {
     useEffect(() => {
         async function getOrderList() {
             let res = await AuthAPI.get(endpoints['orders']);
-            setOrderList(res.data);
+            // setOrderList(res.data);
         }
         getOrderList();
     }, [orderList]);
 
     let result;
     if (orderList.length === 0) {
-        result = <div className="post-list-null" style={{ marginTop: "3%", padding: '8% 0' }}><p>Order not found</p></div>
+        result = <div className="post-list-null" style={{ marginTop: "3%", padding: '8% 0 37.203% 0' }}>
+            <p>Order not found</p>
+        </div>
     }
 
     const closeChangeStatusModal = () => {

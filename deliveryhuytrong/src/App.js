@@ -25,23 +25,15 @@ export let UserContext = React.createContext();
 
 export default function App() {
   const [user, setUser] = useState(null);
-  // const [oath2Info, setOath2Info] = useState([]);
   const [message, setMessage] = useState(null);
 
-  // useEffect(() => {
-  //   async function getOath2Info() {
-  //     let res = await AuthAPI.get(endpoints['oauth2-info']);
-  //     setOath2Info(res.data);
-  //   }
-  //   getOath2Info();
-  // }, []);
-
   const login = async (username, password) => {
+    // let oath2Info = await API.get(endpoints['oauth2-info']);
     await axios({
       method: 'POST',
       url: 'http://127.0.0.1:8000/o/token/',
       headers: {
-        'content-type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded',
       }, data: qs.stringify({
         // 'client_id': oath2Info.client_id,
         // 'client_secret': oath2Info.client_secret,
@@ -59,6 +51,7 @@ export default function App() {
       console.log(err.response.data);
       setMessage(false);
     })
+
     let user = await API.get(endpoints['current-user'], {
       headers: {
         'Authorization': `Bearer ${cookies.load('access_token')}`

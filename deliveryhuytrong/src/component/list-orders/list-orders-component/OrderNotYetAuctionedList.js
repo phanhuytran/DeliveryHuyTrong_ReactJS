@@ -5,8 +5,10 @@ import * as _ from "lodash";
 import GavelIcon from '@mui/icons-material/Gavel';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { AuthAPI, endpoints } from '../../API';
+import LoadingProgress from '../../item-base/LoadingProgress';
 
 export default function OrderNotYetAuctionedList() {
+    const [loadingProgress, setLoadingProgress] = useState(true);
     const [orderPostList, setOrderPostList] = useState([]);
     const [customerFilter, setCustomerFilter] = useState('');
     const [sendingAddressFilter, setSendingAddressFilter] = useState('');
@@ -28,6 +30,7 @@ export default function OrderNotYetAuctionedList() {
     useEffect(() => {
         async function getOrderPostList() {
             let res = await AuthAPI.get(endpoints['posts']);
+            setLoadingProgress(false);
             setOrderPostList(res.data.results);
         }
         getOrderPostList();
@@ -96,28 +99,36 @@ export default function OrderNotYetAuctionedList() {
                                     </td>
                                     <td></td>
                                 </tr>
-                                {
-                                    _.sortBy(orderPost).reverse().map((order, index) => {
-                                        if (order.is_finish === false) {
-                                            i++;
-                                            return <tr key={index}>
-                                                <td>{i}</td>
-                                                <td>{order.customer.first_name} {order.customer.last_name}</td>
-                                                <td><img src={order.image_items[0].image} alt="img" /></td>
-                                                <td>{order.weight}</td>
-                                                <td>{order.send_stock.address}</td>
-                                                <td>{order.receive_stock.address}</td>
-                                                {
-                                                    cookies.load("user").username === 'admin'
-                                                        ? <td><Link to={"order/" + order.id + "/auction"} className="see-another-page-2">Order details <VisibilityIcon /></Link></td>
-                                                        : <td><Link to={"order/" + order.id + "/auction"} className="see-another-page-2">Click to auction <GavelIcon /></Link></td>
-                                                }
-                                            </tr>
-                                        }
-                                        return <React.Fragment key={index}></React.Fragment>
-                                    })
-                                }
                                 <tr>{result}</tr>
+                                {
+                                    loadingProgress ? <tr>
+                                        <td colSpan={7} style={{ padding: '1% 0 2% 0' }}>
+                                            <LoadingProgress />
+                                        </td>
+                                    </tr> : <>
+                                        {
+                                            _.sortBy(orderPost).reverse().map((order, index) => {
+                                                if (order.is_finish === false) {
+                                                    i++;
+                                                    return <tr key={index}>
+                                                        <td>{i}</td>
+                                                        <td>{order.customer.first_name} {order.customer.last_name}</td>
+                                                        <td><img src={order.image_items[0].image} alt="img" /></td>
+                                                        <td>{order.weight}</td>
+                                                        <td>{order.send_stock.address}</td>
+                                                        <td>{order.receive_stock.address}</td>
+                                                        {
+                                                            cookies.load("user").username === 'admin'
+                                                                ? <td><Link to={"order/" + order.id + "/auction"} className="see-another-page-2">Order details <VisibilityIcon /></Link></td>
+                                                                : <td><Link to={"order/" + order.id + "/auction"} className="see-another-page-2">Click to auction <GavelIcon /></Link></td>
+                                                        }
+                                                    </tr>
+                                                }
+                                                return <React.Fragment key={index}></React.Fragment>
+                                            })
+                                        }
+                                    </>
+                                }
                             </tbody>
                         </table>
                     </div>
