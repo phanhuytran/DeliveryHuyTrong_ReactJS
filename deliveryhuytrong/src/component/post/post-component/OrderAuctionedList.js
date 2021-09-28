@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import * as _ from "lodash";
 import moment from 'moment';
 import { AuthAPI, endpoints } from '../../API';
+import LoadingProgress from '../../item-base/LoadingProgress';
 import ChangeShippingStatus from './ChangeShippingStatus';
 import OrderInformation from './OrderInformation';
 import '../post.css';
@@ -10,6 +11,7 @@ import '../post.css';
 export let OrderInformationContext = React.createContext();
 
 export default function OrderAuctionedList() {
+    const [loadingProgress, setLoadingProgress] = useState(true);
     const [orderList, setOrderList] = useState([]);
     const [hiddenOrderOption, setHiddenOrderOption] = useState({});
     const [changeStatusModal, setChangeStatusModal] = useState(false);
@@ -21,15 +23,18 @@ export default function OrderAuctionedList() {
     useEffect(() => {
         async function getOrderList() {
             let res = await AuthAPI.get(endpoints['orders']);
-            // setOrderList(res.data);
+            setLoadingProgress(false);
+            setOrderList(res.data);
         }
         getOrderList();
     }, [orderList]);
 
     let result;
     if (orderList.length === 0) {
-        result = <div className="post-list-null" style={{ marginTop: "3%", padding: '8% 0 37.203% 0' }}>
-            <p>Order not found</p>
+        result = <div className="post-list-null" style={{ marginTop: '3%' }}>
+            <p>Post not found</p>
+            {loadingProgress ? <LoadingProgress /> : <></>}
+            <div style={{ marginBottom: '49.275%' }} />
         </div>
     }
 
@@ -40,7 +45,7 @@ export default function OrderAuctionedList() {
 
     return (
         <>
-            <div style={{ marginTop: "-3%" }} />
+            <div style={{ marginTop: '-3%' }} />
             {
                 _.sortBy(orderList).reverse().map((order, index) => {
                     return <React.Fragment key={index}>

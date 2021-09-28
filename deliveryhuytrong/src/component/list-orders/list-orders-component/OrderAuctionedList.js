@@ -31,7 +31,11 @@ export default function OrdertAuctionedList() {
         getOrderList();
     }, [orderList]);
 
-    function onClear() { setCustomerFilter(''); setSendingAddressFilter(''); setReceivingAddressFilter(''); }
+    const onClear = () => {
+        setCustomerFilter('');
+        setSendingAddressFilter('');
+        setReceivingAddressFilter('');
+    }
 
     if (customer.length > 0 || sendingAddress.length > 0 || receivingAddress.length > 0) {
         isDisplayClear = true;

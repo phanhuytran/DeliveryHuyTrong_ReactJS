@@ -20,6 +20,7 @@ export let RemovePostContext = React.createContext();
 export let EditPostErrorDialogContext = React.createContext();
 
 export default function Post() {
+    const [loadingProgress, setLoadingProgress] = useState(true);
     const [postList, setPostList] = useState([]);
     const [hiddenPostOption, setHiddenPostOption] = useState({});
     const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
@@ -33,6 +34,7 @@ export default function Post() {
     useEffect(() => {
         async function getPostList() {
             let res = await AuthAPI.get(endpoints['posts']);
+            setLoadingProgress(false);
             setPostList(res.data.results);
         }
         getPostList();
@@ -42,8 +44,8 @@ export default function Post() {
     if (postList.length === 0) {
         result = <div className="post-list-null">
             <p>Post not found</p>
-            <LoadingProgress />
-            <div style={{ marginBottom: '26.498%' }} />
+            {loadingProgress ? <LoadingProgress /> : <></>}
+            <div style={{ marginBottom: '36.302%' }} />
         </div>
     }
 
