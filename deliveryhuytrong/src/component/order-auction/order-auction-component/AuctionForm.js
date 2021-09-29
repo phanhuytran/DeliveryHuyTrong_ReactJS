@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import cookies from 'react-cookies';
 import GavelIcon from '@mui/icons-material/Gavel';
 import { AuthAPI, endpoints } from '../../API';
+import LoadingProgress from '../../item-base/LoadingProgress';
 import "../order-auction.css";
 
 export default function AuctionForm(props) {
+    const [loadingProgress, setLoadingProgress] = useState(false);
     const [cost, setCost] = useState(0);
     const [message, setMessage] = useState('');
 
     async function onSubmit(e) {
         e.preventDefault();
+        setLoadingProgress(true);
         let formData = new FormData();
         formData.append('post', props.props.post.id);
         formData.append('shipper', cookies.load('user').id);
@@ -22,6 +25,7 @@ export default function AuctionForm(props) {
         }).then((res) => {
             console.log(res);
             setMessage('');
+            setLoadingProgress(false);
         }).catch((err) => {
             console.log(err.response.data);
             if (err.response.data.non_field_errors) {
@@ -30,6 +34,7 @@ export default function AuctionForm(props) {
             if (err.response.data.cost) {
                 setMessage('Ensure this cost has no more than 10 digits in total')
             }
+            setLoadingProgress(false);
         })
     }
 
@@ -45,7 +50,9 @@ export default function AuctionForm(props) {
                         <input type="number" step="0.01" min="0" placeholder="Write a auction information..." value={cost} onChange={e => setCost(e.target.value)} />
                     </div>
                     <div className="auction-area-comment-flex-right">
-                        <button><GavelIcon style={{ fontSize: 25 }} /></button>
+                        {
+                            loadingProgress ? <LoadingProgress /> : <button><GavelIcon style={{ fontSize: 25 }} /></button>
+                        }
                     </div>
                 </div>
             </form>

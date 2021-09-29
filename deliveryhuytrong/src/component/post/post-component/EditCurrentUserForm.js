@@ -2,6 +2,7 @@ import React from 'react';
 import cookies from 'react-cookies';
 import Modal from 'react-modal';
 import { AuthAPI, endpoints } from '../../API';
+import LoadingProgress from '../../item-base/LoadingProgress';
 import '../post.css';
 
 export default class EditCurrentUserForm extends React.Component {
@@ -9,6 +10,7 @@ export default class EditCurrentUserForm extends React.Component {
         super(props);
         this.state = {
             user: cookies.load("user"),
+            loadingProgress: false,
             modalEditIsOpen: false,
             messagePhone: '',
             messageEmail: ''
@@ -29,6 +31,9 @@ export default class EditCurrentUserForm extends React.Component {
 
     editInfo = (e) => {
         e.preventDefault();
+        this.setState({
+            loadingProgress: true
+        })
         let formData = new FormData();
         for (let k in this.state.user) {
             if (k !== 'avatar') {
@@ -39,6 +44,7 @@ export default class EditCurrentUserForm extends React.Component {
             console.log(res);
             cookies.save('user', res.data);
             this.setState({
+                loadingProgress: false,
                 modalEditIsOpen: false
             })
         }).catch((err) => {
@@ -81,7 +87,14 @@ export default class EditCurrentUserForm extends React.Component {
                         <input type="email" placeholder="Email..." value={this.state.user.email} onChange={this.change.bind(this, 'email')} required />
                         <p>Phone: <span className="edit-error">{this.state.messagePhone}</span></p>
                         <input type="text" placeholder="Phone..." value={this.state.user.phone} onChange={this.change.bind(this, 'phone')} required />
-                        <button className="btn-edit-current-user" type="submit">Edit</button><div style={{ marginBottom: '100px' }}></div>
+                        {
+                            this.state.loadingProgress ? <>
+                                <div style={{ float: 'right' }}><LoadingProgress /></div>
+                                <div style={{ marginBottom: '90px' }} />
+                            </> : <>
+                                <button className="btn-edit-current-user" type="submit">Edit</button><div style={{ marginBottom: '100px' }} />
+                            </>
+                        }
                     </form>
                     <div className="close-modal-edit-post-form" onClick={() => this.setState({ modalEditIsOpen: false })}>
                         <i className="fas fa-times-circle"></i>

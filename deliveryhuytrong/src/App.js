@@ -75,7 +75,7 @@ export default function App() {
   }
 
   return (
-    <UserContext.Provider value={{ user, login, message }}>
+    <UserContext.Provider value={{ user, setUser, login, message }}>
       <Router>
         <Header />
         <Switch>
