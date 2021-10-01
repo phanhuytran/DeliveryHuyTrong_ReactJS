@@ -10,10 +10,10 @@ import SignInSignUp from './SignInSignUp';
 import "../item-base.css";
 
 export default function ModalSignInSignUp() {
+    const option = useContext(UserContext);
     const [isDisplaySignInSignUpModal, setIsDisplaySignInSignUpModal] = useState(false);
-    const auth = useContext(UserContext);
 
-    let user = auth.user;
+    let user = option.user;
     if (cookies.load("user") != null) {
         user = cookies.load("user");
     }
@@ -70,6 +70,11 @@ export default function ModalSignInSignUp() {
         </>
     }
 
+    const closeModalSignInSignUp = () => {
+        setIsDisplaySignInSignUpModal(false);
+        option.setMessage('');
+    }
+
     return (
         <>
             <div className="col-md-3 col-sm-3 col-xs-4 col-lg-3 signup">
@@ -79,7 +84,7 @@ export default function ModalSignInSignUp() {
                 !user ? <>
                     <Modal className="modal-signin-signup" isOpen={isDisplaySignInSignUpModal} ariaHideApp={false}>
                         <SignInSignUp />
-                        <div className="close-modal-signin-signup" onClick={() => setIsDisplaySignInSignUpModal(false)}>
+                        <div className="close-modal-signin-signup" onClick={closeModalSignInSignUp}>
                             <i className="fas fa-times-circle"></i>
                         </div>
                     </Modal>

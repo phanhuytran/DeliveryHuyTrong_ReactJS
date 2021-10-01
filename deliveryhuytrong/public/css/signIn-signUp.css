@@ -364,5 +364,10 @@ span.success {
 }
 
 .cursor-move-part {
+    transition: 0.4s !important;
     cursor: pointer;
+}
+
+.cursor-move-part:hover {
+    color: #f9bf3b;
 }

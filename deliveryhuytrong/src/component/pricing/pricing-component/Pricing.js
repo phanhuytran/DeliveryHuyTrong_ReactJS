@@ -53,7 +53,7 @@ export default function Pricing() {
                                         user ? <div className="order-buton">
                                             <span>order now</span>
                                         </div> : <div onClick={() => setIsDisplaySignInSignUpModal(true)} className="order-buton">
-                                            <span>login for continue</span>
+                                            <span>login for order</span>
                                         </div>
                                     }
                                     <Modal className="modal-signin-signup" isOpen={isDisplaySignInSignUpModal} ariaHideApp={false}>

@@ -59,6 +59,9 @@ export default class EditCurrentUserForm extends React.Component {
                     messageEmail: 'Enter a valid email address'
                 })
             }
+            this.setState({
+                loadingProgress: false
+            })
         });
     }
 

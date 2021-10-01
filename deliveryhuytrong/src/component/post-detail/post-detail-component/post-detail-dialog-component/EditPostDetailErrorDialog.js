@@ -15,7 +15,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function MessageEditErrorDialog() {
     const message = useContext(EditPostDetailErrorDialogContext);
-
     return (
         <Dialog
             open={message.isDisplayMessageEditError}

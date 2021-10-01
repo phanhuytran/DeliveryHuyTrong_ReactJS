@@ -26,6 +26,7 @@ export let UserContext = React.createContext();
 export default function App() {
   const [user, setUser] = useState(null);
   const [message, setMessage] = useState(null);
+  const [openLoadingLogin, setOpenLoadingLogin] = useState(false);
 
   const login = async (username, password) => {
     // let oath2Info = await API.get(endpoints['oauth2-info']);
@@ -46,9 +47,11 @@ export default function App() {
     }).then((res) => {
       console.log(res);
       setMessage(true);
+      setOpenLoadingLogin(false);
       cookies.save("access_token", res.data.access_token);
     }).catch((err) => {
       console.log(err.response.data);
+      setOpenLoadingLogin(false);
       setMessage(false);
     })
 
@@ -75,7 +78,7 @@ export default function App() {
   }
 
   return (
-    <UserContext.Provider value={{ user, setUser, login, message }}>
+    <UserContext.Provider value={{ user, setUser, login, message, setMessage, openLoadingLogin, setOpenLoadingLogin }}>
       <Router>
         <Header />
         <Switch>

@@ -15,7 +15,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function MessageStockErrorDialog() {
     const message = useContext(StockErrorContext);
-
     return (
         <Dialog
             open={message.isDisPlayMessageStockError}

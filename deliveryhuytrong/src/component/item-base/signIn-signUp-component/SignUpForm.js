@@ -1,6 +1,8 @@
 import React from 'react';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import API, { endpoints } from '../../API';
 
 export default class SignUpForm extends React.Component {
@@ -24,6 +26,7 @@ export default class SignUpForm extends React.Component {
             'user': this.user,
             message: '',
             is_successful: false,
+            openLoadingSignUp: false
         }
     }
 
@@ -35,6 +38,10 @@ export default class SignUpForm extends React.Component {
     }
 
     register = (e) => {
+        e.preventDefault();
+        this.setState({
+            openLoadingSignUp: true
+        });
         if (this.state.user.password === this.state.user.confirm_password) {
             let formData = new FormData();
             for (let k in this.state.user) {
@@ -57,6 +64,9 @@ export default class SignUpForm extends React.Component {
                     window.location.reload();
                 }, 500);
             }).catch((err) => {
+                this.setState({
+                    openLoadingSignUp: false
+                });
                 console.log(err.response.data);
                 if (err.response.data.phone) {
                     this.setState({
@@ -76,10 +86,10 @@ export default class SignUpForm extends React.Component {
             })
         } else {
             this.setState({
+                openLoadingSignUp: false,
                 message: 'Please make sure your password match'
             })
         }
-        e.preventDefault();
     }
 
     render() {
@@ -152,6 +162,9 @@ export default class SignUpForm extends React.Component {
                                 <ArrowBackIcon className="cursor-move-part" style={{ fontSize: 40 }} onClick={previousSignUp2} />
                             </div>
                             <button type="submit" className="btn-s signUp">Sign Up</button>
+                            <Backdrop open={this.state.openLoadingSignUp}>
+                                <CircularProgress style={{ color: '#f9bf3b' }} />
+                            </Backdrop>
                         </div>
                     </div>
                 </form>
