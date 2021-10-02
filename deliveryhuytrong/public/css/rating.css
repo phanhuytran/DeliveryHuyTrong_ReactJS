@@ -5,7 +5,10 @@ div.shipper-info {
 }
 
 div.shipper-info img {
-	width: 80%;
+	width: 300px;
+	height: 300px;
+	object-fit: cover;
+    border-radius: 50%;
 }
 
 div.shipper-info-left {

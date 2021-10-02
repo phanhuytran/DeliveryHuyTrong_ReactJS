@@ -4,7 +4,7 @@
 
 .auction-confirmation {
     text-align: center;
-    margin: 8% 0;
+    margin: 5% 0;
 }
 
 .auction-confirmation button {
@@ -63,4 +63,13 @@
 
 .shipper-info-chosen-right p span {
     float: right;
+}
+
+.auction-area-comment-info strong {
+    color: #5d5d5d;
+    transition: 0.4s !important;
+}
+
+.auction-area-comment-info strong:hover {
+    text-decoration-line: underline;
 }

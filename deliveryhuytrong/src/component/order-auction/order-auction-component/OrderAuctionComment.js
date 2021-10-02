@@ -22,7 +22,7 @@ export default function OrderAuctionComment(props) {
     const [auction, setAuction] = useState([]);
     const [isDisplayPostOption, setIsDisplayPostOption] = useState(false);
     const [message, setMessage] = useState('');
-    const [editCost, setEditCost] = useState(0);
+    const [editCost, setEditCost] = useState(null);
     const [isDisplayAuctionInfo, setIsDisplayAuctionInfo] = useState(true);
     const [isDisplayEditAuction, setIsDisplayEditAuction] = useState(false);
     const [openRemoveAuctionDialog, setOpenRemoveAuctionDialog] = useState(false);
@@ -106,6 +106,8 @@ export default function OrderAuctionComment(props) {
     return (
         <div className="auction-area-comment">
             <hr />
+            <AuctionForm props={props} />
+            <hr />
             <p className="cmt-message">{message}</p>
             {
                 loadingProgress ? <LoadingProgress /> : <>
@@ -131,7 +133,7 @@ export default function OrderAuctionComment(props) {
                                                         <strong style={{ fontSize: 16 }}>{auction.shipper.username}</strong>
                                                         <span style={{ marginLeft: '10px' }}></span>
                                                         <span className="cancel-edit-auction" onClick={cancelEditAuction}>Cancel</span><br />
-                                                        <input type="number" step="0.01" min="0" placeholder="Write a auction information..." value={editCost} onChange={e => setEditCost(e.target.value)} />
+                                                        <input type="number" step="0.01" min="0" placeholder="Enter a auction cost..." value={editCost} onChange={e => setEditCost(e.target.value)} />
                                                         <button><GavelIcon style={{ fontSize: 25 }} /></button>
                                                     </div>
                                                 </form> : <></>
@@ -176,8 +178,6 @@ export default function OrderAuctionComment(props) {
                     }
                 </>
             }
-            <hr />
-            <AuctionForm props={props} />
         </div>
     );
 

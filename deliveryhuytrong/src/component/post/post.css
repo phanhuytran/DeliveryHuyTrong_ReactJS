@@ -43,7 +43,7 @@
 
 .edit-curent-user {
     position: absolute;
-    top: 308px;
+    top: 310px;
     left: 412px;
 }
 
@@ -76,11 +76,6 @@
     font-size: 15px;
     margin: 4% 0 -2.5% 5%;
 }
-
-/* .post-body-left img {
-    width: 30%;
-    margin: 0 35% 5% 35%;
-} */
 
 .post-body-left h4 {
     text-align: center;

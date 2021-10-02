@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { AuthAPI, endpoints } from '../../API';
 import LoadingProgress from '../../item-base/LoadingProgress';
@@ -55,11 +56,15 @@ export default function PostDetailComment(props) {
                                 if (auction.post === props.post.id) {
                                     return <div className="auction-area-comment-flex auction-space" key={index}>
                                         <div className="auction-area-comment-flex-left">
-                                            <img src={auction.shipper.avatar} alt="img" />
+                                            <Link to={"/shipper-detail/" + auction.shipper.id}>
+                                                <img src={auction.shipper.avatar} alt="img" />
+                                            </Link>
                                         </div>
                                         <div className="auction-area-comment-flex-center">
                                             <div className="auction-area-comment-info">
-                                                <strong style={{ fontSize: 16 }}>{auction.shipper.username}</strong><br />
+                                                <Link to={"/shipper-detail/" + auction.shipper.id}>
+                                                    <strong style={{ fontSize: 16 }}>{auction.shipper.username}</strong>
+                                                </Link><br />
                                                 <span>{currencyFormat((auction.cost).slice(0, -3))} VND</span>
                                             </div>
                                             <div className="auction-area-comment-date">
@@ -82,7 +87,6 @@ export default function PostDetailComment(props) {
                         }
                     </>
                 }
-                <hr />
                 <div className="auction-confirmation">
                     <button type="submit">Auction confirmation</button>
                 </div>

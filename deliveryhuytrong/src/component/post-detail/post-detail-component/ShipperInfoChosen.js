@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthAPI, endpoints } from '../../API';
 import LoadingProgress from '../../item-base/LoadingProgress';
 import '../post-detail.css';
@@ -31,7 +32,9 @@ export default function ShipperInfoChosen(props) {
                             if (order.auction_win.post.id === props.post.id) {
                                 return <div key={index} className="shipper-info-chosen-body">
                                     <div className="shipper-info-chosen-left">
-                                        <img src={order.auction_win.shipper.avatar} alt="avatar" />
+                                        <Link to={"/shipper-detail/" + order.auction_win.shipper.id}>
+                                            <img src={order.auction_win.shipper.avatar} alt="avatar" />
+                                        </Link>
                                         <p style={{ fontSize: 18, textTransform: 'uppercase' }}>{order.auction_win.shipper.first_name} {order.auction_win.shipper.last_name}</p>
                                         <p style={{ fontSize: 25 }}>{order.auction_win.shipper.phone}</p>
                                     </div>
@@ -44,9 +47,9 @@ export default function ShipperInfoChosen(props) {
                                                         order.status === 'not yet shipped' ? 'order-auction-status-not-yet-shipped' : ''
                                             }>
                                                 {
-                                                    order.status === 'shipped' ? <span><i className="fas fa-exclamation-triangle"></i>Not yet shipped</span> : <></> ||
-                                                        order.status === 'shipping' ? <span><i className="fas fa-times-circle"></i>Shipping</span> : <></> ||
-                                                            order.status === 'shipped' ? <span><i className="fas fa-check-circle"></i>Shipped</span> : <></>
+                                                    order.status === 'shipped' ? <span><i className="fas fa-check-circle"></i>Shipped</span> : '' ||
+                                                        order.status === 'shipping' ? <span><i className="fas fa-exclamation-triangle"></i>Shipping</span> : '' ||
+                                                            order.status === 'not yet shipped' ? <span><i className="fas fa-times-circle"></i>Not yet shipped</span> : ''
                                                 }
                                             </span>
                                         </p>

@@ -1,6 +1,16 @@
 import React from 'react';
 
 export default function ShipperDetailRating() {
+    const confirmRating = () => {
+        var checkbox = document.getElementsByName("rating");
+        for (var i = 0; i < checkbox.length; i++) {
+            if (checkbox[i].checked === true) {
+                document.getElementById("result-confirm-rating").innerHTML = "Your rating: " + checkbox[i].value;
+                document.getElementById("btn-confirm-rating").style.color = "#1cb33c";
+            }
+        }
+    }
+
     return (
         <>
             <tr>
@@ -23,7 +33,7 @@ export default function ShipperDetailRating() {
                     </div>
                 </td>
                 <td className="text-right col-confirm-rating">
-                    <span onClick={cofirm_rating} id="btn-confirm-rating" className="fas fa-check-circle" />
+                    <span onClick={confirmRating} id="btn-confirm-rating" className="fas fa-check-circle" />
                 </td>
             </tr>
             <tr>
@@ -35,14 +45,4 @@ export default function ShipperDetailRating() {
             </tr>
         </>
     );
-
-    function cofirm_rating() {
-        var checkbox = document.getElementsByName("rating");
-        for (var i = 0; i < checkbox.length; i++) {
-            if (checkbox[i].checked === true) {
-                document.getElementById("result-confirm-rating").innerHTML = "Your rating: " + checkbox[i].value;
-                document.getElementById("btn-confirm-rating").style.color = "#1cb33c";
-            }
-        }
-    }
 }

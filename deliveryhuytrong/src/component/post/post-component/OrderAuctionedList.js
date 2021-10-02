@@ -32,7 +32,7 @@ export default function OrderAuctionedList() {
     let result;
     if (orderList.length === 0) {
         result = <div className="post-list-null" style={{ marginTop: '3%' }}>
-            <p>Post not found</p>
+            <p>Order not found</p>
             {loadingProgress ? <LoadingProgress /> : <></>}
             <div style={{ marginBottom: '49.275%' }} />
         </div>

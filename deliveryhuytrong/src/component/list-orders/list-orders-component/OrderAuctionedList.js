@@ -99,9 +99,9 @@ export default function OrdertAuctionedList() {
                                                             order.status === 'not yet shipped' ? 'order-auction-status-not-yet-shipped' : ''
                                                 }>
                                                     {
-                                                        order.status === 'shipped' ? <span><i className="fas fa-exclamation-triangle"></i>Not yet shipped</span> : <></> ||
-                                                            order.status === 'shipping' ? <span><i className="fas fa-times-circle"></i>Shipping</span> : <></> ||
-                                                                order.status === 'shipped' ? <span><i className="fas fa-check-circle"></i>Shipped</span> : <></>
+                                                        order.status === 'shipped' ? <span><i className="fas fa-check-circle"></i>Shipped</span> : '' ||
+                                                            order.status === 'shipping' ? <span><i className="fas fa-exclamation-triangle"></i>Shipping</span> : '' ||
+                                                                order.status === 'not yet shipped' ? <span><i className="fas fa-times-circle"></i>Not yet shipped</span> : ''
                                                     }
                                                 </span>
                                             </p>

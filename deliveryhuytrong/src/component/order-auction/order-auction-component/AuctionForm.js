@@ -7,7 +7,7 @@ import "../order-auction.css";
 
 export default function AuctionForm(props) {
     const [loadingProgress, setLoadingProgress] = useState(false);
-    const [cost, setCost] = useState(0);
+    const [cost, setCost] = useState(null);
     const [message, setMessage] = useState('');
 
     async function onSubmit(e) {
@@ -47,7 +47,7 @@ export default function AuctionForm(props) {
                         <img src={cookies.load('user').avatar} alt="img" />
                     </div>
                     <div className="auction-area-comment-flex-center">
-                        <input type="number" step="0.01" min="0" placeholder="Write a auction information..." value={cost} onChange={e => setCost(e.target.value)} />
+                        <input type="number" step="0.01" min="0" placeholder="Enter a auction cost..." value={cost} onChange={e => setCost(e.target.value)} />
                     </div>
                     <div className="auction-area-comment-flex-right">
                         {
