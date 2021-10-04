@@ -1,3 +1,12 @@
+@keyframes growth {
+    from {
+        transform: scale(var(--growth-from));
+    }
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
+
 .radio-select-shipper {
     margin: 74% 30% !important;
 }
@@ -65,6 +74,10 @@
     float: right;
 }
 
+.auction-area-comment h2 {
+    font-size: 24px !important;
+}
+
 .auction-area-comment-info strong {
     color: #5d5d5d;
     transition: 0.4s !important;
@@ -72,4 +85,35 @@
 
 .auction-area-comment-info strong:hover {
     text-decoration-line: underline;
+}
+
+.pay-method {
+    margin: 5% 23% 10% 23%;
+    animation: growth linear 0.2s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
+.pay-method input {
+    margin-left: 10%;
+}
+
+.pay-method img {
+    text-align: center;
+    width: 60px !important;
+    height: 60px;
+    margin-left: 5%;
+}
+
+.pay-method p {
+    margin-top: 2%;
+}
+
+.pay-method p span:first-child {
+    margin-left: 12.5%;
+    margin-right: 25.5%;
+}
+
+.pay-method p span:nth-child(2) {
+    margin-right: 20%;
 }

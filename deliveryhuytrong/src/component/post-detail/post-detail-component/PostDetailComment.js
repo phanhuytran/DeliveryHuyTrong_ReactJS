@@ -1,17 +1,22 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import * as _ from 'lodash';
 import moment from 'moment';
 import { AuthAPI, endpoints } from '../../API';
 import LoadingProgress from '../../item-base/LoadingProgress';
 import { DisplayPostOptionContext } from './PostInformation';
-import "../post-detail.css";
+import '../post-detail.css';
+import cashIMG from '../image/cash.png';
+import momoIMG from '../image/momo.png';
+import zaloPayIMG from '../image/zalo-pay.png';
 
 export default function PostDetailComment(props) {
+    const option = useContext(DisplayPostOptionContext);
     const [loadingProgress, setLoadingProgress] = useState(true);
     const [auction, setAuction] = useState([]);
     const [orderList, setOrderList] = useState([]);
     const [chooseShipper, setChooseShipper] = useState(0);
-    const option = useContext(DisplayPostOptionContext);
+    const [isDisplayPayMethod, setIsDisplayPayMethod] = useState(false);
 
     useEffect(() => {
         const getAuction = async () => {
@@ -30,6 +35,11 @@ export default function PostDetailComment(props) {
         getAuction();
         getOrderList();
     }, [auction]);
+
+    const changeAuctionWin = (e) => {
+        setChooseShipper(e.target.value)
+        setIsDisplayPayMethod(true);
+    }
 
     async function confirmShipper(e) {
         e.preventDefault();
@@ -52,7 +62,7 @@ export default function PostDetailComment(props) {
                 {
                     loadingProgress ? <LoadingProgress /> : <>
                         {
-                            auction.map((auction, index) => {
+                            _.sortBy(auction).reverse().map((auction, index) => {
                                 if (auction.post === props.post.id) {
                                     return <div className="auction-area-comment-flex auction-space" key={index}>
                                         <div className="auction-area-comment-flex-left">
@@ -76,7 +86,7 @@ export default function PostDetailComment(props) {
                                                 type="radio"
                                                 name="radio-select-shipper"
                                                 value={auction.id}
-                                                onChange={e => setChooseShipper(e.target.value)}
+                                                onChange={changeAuctionWin}
                                                 required
                                             />
                                         </div>
@@ -84,6 +94,25 @@ export default function PostDetailComment(props) {
                                 }
                                 return <React.Fragment key={index}></React.Fragment>
                             })
+                        }
+                        {
+                            isDisplayPayMethod ? <>
+                                {
+                                    <>
+                                        <hr />
+                                        <h2>Pay method</h2>
+                                        <div className="pay-method">
+                                            <input style={{ marginLeft: 0 }} type="radio" name="pay-method" required />
+                                            <img src={cashIMG} alt="cash-img" />
+                                            <input type="radio" name="pay-method" required />
+                                            <img src={momoIMG} alt="momo-img" />
+                                            <input type="radio" name="pay-method" required />
+                                            <img src={zaloPayIMG} alt="zalo-pay-img" />
+                                            <p><span>Cash</span><span>Momo</span><span>Zalo Pay</span></p>
+                                        </div>
+                                    </>
+                                }
+                            </> : <></>
                         }
                     </>
                 }

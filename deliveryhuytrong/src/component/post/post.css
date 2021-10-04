@@ -167,9 +167,6 @@
 
 .post-content span {
     float: right;
-    /* font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
-    font-size: 20px; */
 }
 
 .post-content img {
@@ -181,6 +178,12 @@
     animation: growth linear 0.3s;
     --growth-from: 0;
     --growth-to: 1;
+}
+
+.show-post-content p img {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
 }
 
 .show-hide-content i {

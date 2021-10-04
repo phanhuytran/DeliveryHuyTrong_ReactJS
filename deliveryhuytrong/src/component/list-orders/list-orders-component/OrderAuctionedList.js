@@ -4,6 +4,9 @@ import Slider from "react-slick";
 import { AuthAPI, endpoints } from '../../API';
 import LoadingProgress from '../../item-base/LoadingProgress';
 import "../list-orders.css";
+// import cashIMG from '../../post-detail/image/cash.png';
+import momoIMG from '../../post-detail/image/momo.png';
+// import zaloPayIMG from '../../post-detail/image/zalo-pay.png';
 
 export default function OrdertAuctionedList() {
     const [loadingProgress, setLoadingProgress] = useState(true);
@@ -92,7 +95,8 @@ export default function OrdertAuctionedList() {
                                             <p>Receiving address information:<span>{order.auction_win.post.receive_stock.name_represent_man} - {order.auction_win.post.receive_stock.phone}</span></p>
                                             <hr style={{ width: '50%', margin: '15px auto 10px auto' }} />
                                             <p style={{ margin: '8px 0' }}>Cost:<span style={{ fontSize: 18 }}>{currencyFormat((order.auction_win.cost).slice(0, -3))} VND</span></p>
-                                            <p style={{ margin: '8px 0' }}>Status:
+                                            <p style={{ margin: '8px 0' }}>Pay method:<span style={{ fontSize: 18 }}>Momo<img src={momoIMG} alt="pay-method" /></span></p>
+                                            <p style={{ margin: '28px 0 8px 0' }}>Status:
                                                 <span className={
                                                     order.status === 'shipped' ? 'order-auction-status-shipped' : '' ||
                                                         order.status === 'shipping' ? 'order-auction-status-shipping' : '' ||

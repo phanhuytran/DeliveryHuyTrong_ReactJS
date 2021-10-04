@@ -153,7 +153,7 @@
 
 .order-auctioned-list-left {
     width: 38%;
-    padding: 18px;
+    padding: 25px 18px 18px 18px;
 }
 
 .order-auctioned-list-right {
@@ -167,6 +167,12 @@
 
 .order-auctioned-list-right p span {
     float: right;
+}
+
+.order-auctioned-list-right p img {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
 }
 
 .order-auctioned-image img {
