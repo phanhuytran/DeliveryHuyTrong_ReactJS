@@ -18,7 +18,7 @@ export default function Pricing() {
         async function getVoucherList() {
             let res = await API.get(endpoints['vouchers']);
             setLoadingProgress(false);
-            setVoucherList(res.data);
+            setVoucherList(res.data.results);
         }
         getVoucherList();
     }, [voucherList]);

@@ -38,8 +38,8 @@ export default function App() {
       }, data: qs.stringify({
         // 'client_id': oath2Info.client_id,
         // 'client_secret': oath2Info.client_secret,
-        'client_id': 'GAoIoyXnX6pX6SwLNxeFWmcSyFY7lRfnDzKEDJDI',
-        'client_secret': 'jszRNc5BqGwiJ4bt8a2JixeCEWUb2OiAm2cxYbWatnClTfNRWn8IgBy8nOP57wluThd3qiKdn4xUtko8nySFWxjS2TfiH9HlyUzee4s99srowoQ1UQ9t4ccdb2HnDSMe',
+        'client_id': 'fGB8Dw4LisdjAjNUdWhL0Howw25DZ39LiRdTUTro',
+        'client_secret': 'TVZDBuqShhQXxwkrQW6aextygWGIFHX4RjIJWgdo9MOKIJI1xCGWrNz3bWbaV5oaYFgcp3hiI8krwOBqWEmP3zEW5FkEoxsFBse39ozudGaxL7o08UIcRdSGU99puoSW',
         'username': username,
         'password': password,
         'grant_type': 'password',
@@ -50,7 +50,7 @@ export default function App() {
       setOpenLoadingLogin(false);
       cookies.save("access_token", res.data.access_token);
     }).catch((err) => {
-      console.log(err.response.data);
+      console.log(err.response);
       setOpenLoadingLogin(false);
       setMessage(false);
     })

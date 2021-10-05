@@ -58,6 +58,12 @@
     padding-top: 10px;
 }
 
+.shipper-info-chosen-right p img {
+    width: 60px;
+    height: 60px;
+    margin-left: 10px;
+}
+
 .shipper-info-chosen-left img {
     margin-bottom: 30px;
     width: 200px !important;
@@ -67,7 +73,7 @@
 }
 
 .shipper-info-chosen-right p {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .shipper-info-chosen-right p span {

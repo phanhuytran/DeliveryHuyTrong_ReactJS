@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { AuthAPI, endpoints } from '../../API';
 import LoadingProgress from '../../item-base/LoadingProgress';
 import '../post-detail.css';
+import cashIMG from '../image/cash.png';
+import momoIMG from '../image/momo.png';
+import zaloPayIMG from '../image/zalo-pay.png';
 
 export default function ShipperInfoChosen(props) {
     const [loadingProgress, setLoadingProgress] = useState(true);
@@ -13,7 +16,7 @@ export default function ShipperInfoChosen(props) {
             let res = await AuthAPI.get(endpoints['orders']);
             setTimeout(() => {
                 setLoadingProgress(false);
-                setOrderList(res.data);
+                setOrderList(res.data.results);
             }, 2000);
         }
         getOrderList();
@@ -40,6 +43,13 @@ export default function ShipperInfoChosen(props) {
                                     </div>
                                     <div className="shipper-info-chosen-right">
                                         <p>Cost:<span style={{ fontSize: 20 }}>{currencyFormat((order.auction_win.cost).slice(0, -3))} VND</span></p>
+                                        <p>Pay method:
+                                            {
+                                                order.pay_method === 'Zalo pay' ? <span style={{ fontSize: 18, marginTop: '-20px' }}>Zalo pay<img src={zaloPayIMG} alt="pay-method" /></span> : '' ||
+                                                    order.pay_method === 'Momo' ? <span style={{ fontSize: 18, marginTop: '-20px' }}>Momo<img src={momoIMG} alt="pay-method" /></span> : '' ||
+                                                        order.pay_method === 'Cash' ? <span style={{ fontSize: 18, marginTop: '-20px' }}>Cash<img src={cashIMG} alt="pay-method" /></span> : ''
+                                            }
+                                        </p>
                                         <p>Status:
                                             <span className={
                                                 order.status === 'shipped' ? 'order-auction-status-shipped' : '' ||

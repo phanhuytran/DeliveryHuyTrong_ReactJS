@@ -16,6 +16,7 @@ export default function PostDetailComment(props) {
     const [auction, setAuction] = useState([]);
     const [orderList, setOrderList] = useState([]);
     const [chooseShipper, setChooseShipper] = useState(0);
+    const [choosePayMethod, setChoosePayMethod] = useState(0);
     const [isDisplayPayMethod, setIsDisplayPayMethod] = useState(false);
 
     useEffect(() => {
@@ -37,7 +38,7 @@ export default function PostDetailComment(props) {
     }, [auction]);
 
     const changeAuctionWin = (e) => {
-        setChooseShipper(e.target.value)
+        setChooseShipper(e.target.value);
         setIsDisplayPayMethod(true);
     }
 
@@ -46,11 +47,12 @@ export default function PostDetailComment(props) {
         let order = orderList;
         let formData = new FormData();
         formData.append('auction_win', chooseShipper);
+        formData.append('pay_method', choosePayMethod);
         AuthAPI.post(endpoints['orders'], formData).then((res) => {
             console.log(res);
             option.setIsDisplayPostOption(false);
         }).catch((err) => {
-            console.log(err.response)
+            console.log(err.response);
         })
         setOrderList(order);
     }
@@ -102,13 +104,13 @@ export default function PostDetailComment(props) {
                                         <hr />
                                         <h2>Pay method</h2>
                                         <div className="pay-method">
-                                            <input style={{ marginLeft: 0 }} type="radio" name="pay-method" required />
+                                            <input style={{ marginLeft: 0 }} type="radio" name="pay-method" value={2} onChange={e => setChoosePayMethod(e.target.value)} />
                                             <img src={cashIMG} alt="cash-img" />
-                                            <input type="radio" name="pay-method" required />
+                                            <input type="radio" name="pay-method" value={1} onChange={e => setChoosePayMethod(e.target.value)} />
                                             <img src={momoIMG} alt="momo-img" />
-                                            <input type="radio" name="pay-method" required />
+                                            <input type="radio" name="pay-method" value={0} onChange={e => setChoosePayMethod(e.target.value)} />
                                             <img src={zaloPayIMG} alt="zalo-pay-img" />
-                                            <p><span>Cash</span><span>Momo</span><span>Zalo Pay</span></p>
+                                            <p><span>Cash</span><span>Momo</span><span>Zalo pay</span></p>
                                         </div>
                                     </>
                                 }

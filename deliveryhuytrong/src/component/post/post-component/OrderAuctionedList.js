@@ -24,7 +24,7 @@ export default function OrderAuctionedList() {
         async function getOrderList() {
             let res = await AuthAPI.get(endpoints['orders']);
             setLoadingProgress(false);
-            setOrderList(res.data);
+            setOrderList(res.data.results);
         }
         getOrderList();
     }, [orderList]);
@@ -72,7 +72,7 @@ export default function OrderAuctionedList() {
                                         hiddenOrderOption[index] && <div className="post-option" style={{ width: '15.429%', margin: '3% 0 0 -9%' }}>
                                             <p onClick={() => setChangeStatusModal(true)}><i className="fas fa-edit" style={{ marginRight: '5px' }}></i>Change shipping status</p>
                                             <Modal className="modal-change-status" isOpen={changeStatusModal} ariaHideApp={false}>
-                                                <ChangeShippingStatus />
+                                                <ChangeShippingStatus props={order} />
                                                 <div className="close-modal-change-status" onClick={closeChangeStatusModal}>
                                                     <i className="fas fa-times-circle"></i>
                                                 </div>
