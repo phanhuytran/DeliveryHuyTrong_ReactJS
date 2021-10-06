@@ -13,6 +13,7 @@ export let endpoints = {
     'post-auctions': (id) => `/posts/${id}/auctions/`,
     'auctions': '/auctions/',
     'orders': '/orders/',
+    'change-shipping-status': (id) => `/orders/${id}/update-status/`,
     'vouchers': '/vouchers/'
 }
 

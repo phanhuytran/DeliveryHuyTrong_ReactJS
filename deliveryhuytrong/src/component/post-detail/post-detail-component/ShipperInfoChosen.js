@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import StarRateIcon from '@mui/icons-material/StarRate';
 import { AuthAPI, endpoints } from '../../API';
 import LoadingProgress from '../../item-base/LoadingProgress';
 import '../post-detail.css';
@@ -35,9 +36,11 @@ export default function ShipperInfoChosen(props) {
                             if (order.auction_win.post.id === props.post.id) {
                                 return <div key={index} className="shipper-info-chosen-body">
                                     <div className="shipper-info-chosen-left">
-                                        <Link to={"/shipper-detail/" + order.auction_win.shipper.id}>
-                                            <img src={order.auction_win.shipper.avatar} alt="avatar" />
-                                        </Link>
+                                        {
+                                            order.status === 'shipped' ? <Link to={"/shipper-detail/" + order.auction_win.shipper.id}>
+                                                <img src={order.auction_win.shipper.avatar} alt="avatar" />
+                                            </Link> : <img src={order.auction_win.shipper.avatar} alt="avatar" />
+                                        }
                                         <p style={{ fontSize: 18, textTransform: 'uppercase' }}>{order.auction_win.shipper.first_name} {order.auction_win.shipper.last_name}</p>
                                         <p style={{ fontSize: 25 }}>{order.auction_win.shipper.phone}</p>
                                     </div>
@@ -63,6 +66,9 @@ export default function ShipperInfoChosen(props) {
                                                 }
                                             </span>
                                         </p>
+                                        {
+                                            order.status === 'shipped' ? <p style={{ marginTop: '40%' }}><span><Link to={"/shipper-detail/" + order.auction_win.shipper.id} className="see-another-page-2">Click to rate <StarRateIcon /></Link></span></p> : <></>
+                                        }
                                     </div>
                                 </div>
                             }

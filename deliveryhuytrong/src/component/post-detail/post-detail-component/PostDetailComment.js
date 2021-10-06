@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import * as _ from 'lodash';
 import moment from 'moment';
 import { AuthAPI, endpoints } from '../../API';
@@ -68,15 +67,11 @@ export default function PostDetailComment(props) {
                                 if (auction.post === props.post.id) {
                                     return <div className="auction-area-comment-flex auction-space" key={index}>
                                         <div className="auction-area-comment-flex-left">
-                                            <Link to={"/shipper-detail/" + auction.shipper.id}>
-                                                <img src={auction.shipper.avatar} alt="img" />
-                                            </Link>
+                                            <img src={auction.shipper.avatar} alt="img" />
                                         </div>
                                         <div className="auction-area-comment-flex-center">
                                             <div className="auction-area-comment-info">
-                                                <Link to={"/shipper-detail/" + auction.shipper.id}>
-                                                    <strong style={{ fontSize: 16 }}>{auction.shipper.username}</strong>
-                                                </Link><br />
+                                                <strong style={{ fontSize: 16 }}>{auction.shipper.username}</strong><br />
                                                 <span>{currencyFormat((auction.cost).slice(0, -3))} VND</span>
                                             </div>
                                             <div className="auction-area-comment-date">

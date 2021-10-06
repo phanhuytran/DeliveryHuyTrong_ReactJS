@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function ShipperDetailRating() {
+    const [rate, setRate] = useState(0);
+
     const confirmRating = () => {
         var checkbox = document.getElementsByName("rating");
         for (var i = 0; i < checkbox.length; i++) {
@@ -20,15 +22,15 @@ export default function ShipperDetailRating() {
                 </th>
                 <td className="text-right txt-right-rating">
                     <div id="rating">
-                        <input type="radio" id="star5" name="rating" defaultValue={5} />
+                        <input type="radio" id="star5" name="rating" value={5} onChange={e => setRate(e.target.value)} />
                         <label className="full" htmlFor="star5" title="5 stars" />
-                        <input type="radio" id="star4" name="rating" defaultValue={4} />
+                        <input type="radio" id="star4" name="rating" value={4} onChange={e => setRate(e.target.value)} />
                         <label className="full" htmlFor="star4" title="4 stars" />
-                        <input type="radio" id="star3" name="rating" defaultValue={3} />
+                        <input type="radio" id="star3" name="rating" value={3} onChange={e => setRate(e.target.value)} />
                         <label className="full" htmlFor="star3" title="3 stars" />
-                        <input type="radio" id="star2" name="rating" defaultValue={2} />
+                        <input type="radio" id="star2" name="rating" value={2} onChange={e => setRate(e.target.value)} />
                         <label className="full" htmlFor="star2" title="2 stars" />
-                        <input type="radio" id="star1" name="rating" defaultValue={1} />
+                        <input type="radio" id="star1" name="rating" value={1} onChange={e => setRate(e.target.value)} />
                         <label className="full" htmlFor="star1" title="1 star" />
                     </div>
                 </td>

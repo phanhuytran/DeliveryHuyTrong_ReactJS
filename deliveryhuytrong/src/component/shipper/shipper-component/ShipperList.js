@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import cookies from 'react-cookies';
-import StarRateIcon from '@mui/icons-material/StarRate';
+// import cookies from 'react-cookies';
+// import StarRateIcon from '@mui/icons-material/StarRate';
 import { AuthAPI, endpoints } from '../../API';
 import LoadingProgress from '../../item-base/LoadingProgress';
 import ShipperTitle from './ShipperTitle';
@@ -93,11 +93,11 @@ export default function ShipperList() {
                                 <th>Address</th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                {
+                                {/* {
                                     cookies.load("user").groups[0] === 1
                                         ? <th>Detailed information</th>
                                         : <></>
-                                }
+                                } */}
                                 {/* <th>Action</th> */}
                             </tr>
                         </thead>
@@ -121,11 +121,11 @@ export default function ShipperList() {
                                                 <td>{shipper.address}</td>
                                                 <td>{shipper.email}</td>
                                                 <td>{shipper.phone}</td>
-                                                {
+                                                {/* {
                                                     cookies.load("user").groups[0] === 1
                                                         ? <td><Link to={"shipper-detail/" + shipper.id} className="see-another-page-2">Click to rate <StarRateIcon /></Link></td>
                                                         : <></>
-                                                }
+                                                } */}
                                                 {/* <td>
                                                     <span className="see-another-page-1" onClick={() => editShipper(shipper)}>Edit</span>
                                                     <RemoveShipper props={shipper.id} />

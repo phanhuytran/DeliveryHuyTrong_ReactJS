@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthAPI, endpoints } from '../../API';
+import { ChangeShippingStatusContext } from './OrderAuctionedList';
 import '../post.css';
 
-export default function ChangeShippingStatus(props) {
+export default function ChangeShippingStatus() {
+    const option = useContext(ChangeShippingStatusContext);
     const [changeShippingStatus, setChangeShippingStatus] = useState(0);
-    const confirmChangeShippingStatus = (e) => {
+
+    async function confirmChangeShippingStatus(e) {
         e.preventDefault();
-        // let order = orderList;
+        let order = option.orderList;
         let formData = new FormData();
         formData.append('status', changeShippingStatus);
-        // .auction_win.id
+        AuthAPI.patch(endpoints['change-shipping-status'](option.order.auction_win.id), formData).then((res) => {
+            console.log(res);
+            option.setOrderList(order);
+            option.setChangeStatusModal(false);
+            option.setHiddenOrderOption({});
+        }).catch((err) => {
+            console.log(err.response.data);
+        })
     }
+
     return (
         <form className="edit-form" onSubmit={confirmChangeShippingStatus}><br />
             <h1 style={{ margin: '5% 0 8% 0' }}>CHANGE SHIPPING STATUS</h1>

@@ -9,6 +9,7 @@ import OrderInformation from './OrderInformation';
 import '../post.css';
 
 export let OrderInformationContext = React.createContext();
+export let ChangeShippingStatusContext = React.createContext();
 
 export default function OrderAuctionedList() {
     const [loadingProgress, setLoadingProgress] = useState(true);
@@ -72,7 +73,9 @@ export default function OrderAuctionedList() {
                                         hiddenOrderOption[index] && <div className="post-option" style={{ width: '15.429%', margin: '3% 0 0 -9%' }}>
                                             <p onClick={() => setChangeStatusModal(true)}><i className="fas fa-edit" style={{ marginRight: '5px' }}></i>Change shipping status</p>
                                             <Modal className="modal-change-status" isOpen={changeStatusModal} ariaHideApp={false}>
-                                                <ChangeShippingStatus props={order} />
+                                                <ChangeShippingStatusContext.Provider value={{ order, orderList, setOrderList, setChangeStatusModal, setHiddenOrderOption }}>
+                                                    <ChangeShippingStatus />
+                                                </ChangeShippingStatusContext.Provider>
                                                 <div className="close-modal-change-status" onClick={closeChangeStatusModal}>
                                                     <i className="fas fa-times-circle"></i>
                                                 </div>
