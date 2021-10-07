@@ -62,7 +62,7 @@ export default function OrderAuctionedList() {
                                             <span className="tool-tip-text">This order has been have the shipper</span>
                                         </i>
                                         <br />
-                                        <span>{moment(order.auction_win.post.created_date, "YYYYMMDD").fromNow()}</span>
+                                        <span>{moment(new Date(order.auction_win.created_date), "YYYYMMDD").fromNow()}</span>
                                     </p>
                                 </div>
                                 <div className="post-content-header-right">

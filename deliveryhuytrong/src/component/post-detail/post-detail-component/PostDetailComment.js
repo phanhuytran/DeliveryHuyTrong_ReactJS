@@ -104,11 +104,11 @@ export default function PostDetailComment(props) {
                                         <hr />
                                         <h2>Pay method</h2>
                                         <div className="pay-method">
-                                            <input style={{ marginLeft: 0 }} type="radio" name="pay-method" value={2} onChange={e => setChoosePayMethod(e.target.value)} />
+                                            <input style={{ marginLeft: 0 }} type="radio" name="pay-method" value={2} onChange={e => setChoosePayMethod(e.target.value)} required />
                                             <img src={cashIMG} alt="cash-img" />
-                                            <input type="radio" name="pay-method" value={1} onChange={e => setChoosePayMethod(e.target.value)} />
+                                            <input type="radio" name="pay-method" value={1} onChange={e => setChoosePayMethod(e.target.value)} required />
                                             <img src={momoIMG} alt="momo-img" />
-                                            <input type="radio" name="pay-method" value={0} onChange={e => setChoosePayMethod(e.target.value)} />
+                                            <input type="radio" name="pay-method" value={0} onChange={e => setChoosePayMethod(e.target.value)} required />
                                             <img src={zaloPayIMG} alt="zalo-pay-img" />
                                             <p><span>Cash</span><span>Momo</span><span>Zalo pay</span></p>
                                         </div>

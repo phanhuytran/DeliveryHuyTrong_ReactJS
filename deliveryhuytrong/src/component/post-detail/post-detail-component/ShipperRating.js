@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import cookies from 'react-cookies';
 import { AuthAPI, endpoints } from '../../API';
 import ShipperProfile from './ShipperProfile';
+import MessageShipperRatingErrorDialog from './post-detail-dialog-component/MessageShipperRatingErrorDialog';
+
+export let MessageShipperRatingErrorContext = React.createContext();
 
 export default function ShipperRating(props) {
     const [shipperAverageRating, setShipperAverageRating] = useState([]);
     const [rateList, setRateList] = useState([]);
+    const [checkRate, setCheckRate] = useState([]);
     const [rate, setRate] = useState(0);
     const [content, setContent] = useState('');
+    const [isDisplayMessageShipperRatingError, setIsDisplayMessageShipperRatingError] = useState(false);
     const rateID = props.props.auction_win.shipper.id;
 
     useEffect(() => {
@@ -18,9 +24,16 @@ export default function ShipperRating(props) {
             let res = await AuthAPI.get(endpoints['shipper-average-rate'](rateID));
             setShipperAverageRating(res.data);
         }
+        async function getCheckRate() {
+            let formData = new FormData();
+            formData.append("shipper", props.props.auction_win.shipper.id);
+            let res = await AuthAPI.post(endpoints['check-rate'], formData);
+            setCheckRate(res.data);
+        }
 
         getRateList();
         getShipperAverageRating();
+        getCheckRate();
     }, [rateList], [shipperAverageRating]);
 
     const confirmRating = () => {
@@ -33,19 +46,38 @@ export default function ShipperRating(props) {
         }
     }
 
-    async function ratingShipper(e) {
+    const shipperRating = async (e) => {
         e.preventDefault();
         let ra = rateList;
         let formData = new FormData();
         formData.append("content", content);
         formData.append("rate", rate);
-        formData.append("order_id", props.props.auction_win.post.id);
+        formData.append("order_id", props.props.auction_win.id);
         AuthAPI.post(await endpoints['rates'], formData).then((res) => {
             console.log(res);
+            setRateList(ra);
+        }).catch((err) => {
+            console.log(err.response.data);
+            setIsDisplayMessageShipperRatingError(true);
+        });
+    }
+
+    const closeMessageShipperRatingErrorDialog = () => {
+        setIsDisplayMessageShipperRatingError(false);
+    }
+
+    const editShipperRating = async (id, e) => {
+        e.preventDefault();
+        let ra = rateList;
+        let formData = new FormData();
+        formData.append("content", content);
+        formData.append("rate", rate);
+        AuthAPI.patch(await endpoints['edit-rates'](id), formData).then((res) => {
+            console.log(res);
+            setRateList(ra);
         }).catch((err) => {
             console.log(err.response.data);
         });
-        setRateList(ra);
     }
 
     return (
@@ -56,7 +88,7 @@ export default function ShipperRating(props) {
                     <img src={props.props.auction_win.shipper.avatar} alt="avatar" /><br />
                 </div><br />
                 <div className="shipper-info-right shipper-info-rating">
-                    <form onSubmit={ratingShipper}>
+                    <form>
                         <table>
                             <tbody>
                                 <ShipperProfile props={props} />
@@ -71,15 +103,15 @@ export default function ShipperRating(props) {
                                     </th>
                                     <td className="text-right txt-right-rating">
                                         <div id="rating">
-                                            <input type="radio" id="star5" name="rating" value={5} onChange={e => setRate(e.target.value)} />
+                                            <input type="radio" id="star5" name="rating" value={5} onChange={e => setRate(e.target.value)} required />
                                             <label className="full" htmlFor="star5" title="5 stars" />
-                                            <input type="radio" id="star4" name="rating" value={4} onChange={e => setRate(e.target.value)} />
+                                            <input type="radio" id="star4" name="rating" value={4} onChange={e => setRate(e.target.value)} required />
                                             <label className="full" htmlFor="star4" title="4 stars" />
-                                            <input type="radio" id="star3" name="rating" value={3} onChange={e => setRate(e.target.value)} />
+                                            <input type="radio" id="star3" name="rating" value={3} onChange={e => setRate(e.target.value)} required />
                                             <label className="full" htmlFor="star3" title="3 stars" />
-                                            <input type="radio" id="star2" name="rating" value={2} onChange={e => setRate(e.target.value)} />
+                                            <input type="radio" id="star2" name="rating" value={2} onChange={e => setRate(e.target.value)} required />
                                             <label className="full" htmlFor="star2" title="2 stars" />
-                                            <input type="radio" id="star1" name="rating" value={1} onChange={e => setRate(e.target.value)} />
+                                            <input type="radio" id="star1" name="rating" value={1} onChange={e => setRate(e.target.value)} required />
                                             <label className="full" htmlFor="star1" title="1 star" />
                                         </div>
                                     </td>
@@ -90,8 +122,19 @@ export default function ShipperRating(props) {
                                 <tr>
                                     <td colSpan={2}>
                                         <p id="result-confirm-rating">Please rate the shipper!</p>
-                                        <textarea rows={3} cols={28} placeholder="Your message..." value={content} onChange={e => setContent(e.target.value)} /><br />
-                                        <button type="submit">SEND</button>
+                                        <textarea rows={3} cols={28} placeholder="Your message..." value={content} onChange={e => setContent(e.target.value)} required /><br />
+                                        {
+                                            checkRate.check === true ? <>
+                                                {
+                                                    rateList.map((rate, index) => {
+                                                        if (rate.customer.id === cookies.load("user").id && rate.shipper.id === props.props.auction_win.shipper.id) {
+                                                            return <button type="submit" key={index} onClick={(e) => editShipperRating(rate.id, e)}>Rate</button>
+                                                        }
+                                                        return <React.Fragment key={index}></React.Fragment>
+                                                    })
+                                                }
+                                            </> : <button type="submit" onClick={(e) => shipperRating(e)}>Rate</button>
+                                        }
                                     </td>
                                 </tr>
                             </tbody>
@@ -99,6 +142,9 @@ export default function ShipperRating(props) {
                     </form>
                 </div>
             </div>
+            <MessageShipperRatingErrorContext.Provider value={{ isDisplayMessageShipperRatingError, closeMessageShipperRatingErrorDialog }}>
+                <MessageShipperRatingErrorDialog />
+            </MessageShipperRatingErrorContext.Provider>
         </>
     );
 }

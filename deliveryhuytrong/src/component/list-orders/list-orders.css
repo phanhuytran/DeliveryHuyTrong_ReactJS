@@ -82,6 +82,7 @@
     background-color: #f9bf3b;
     color: #fff;
     padding: 5px;
+    border: 1px solid #f9bf3b;
     border-radius: 5px;
     transition: 0.4s;
     cursor: pointer;
@@ -90,6 +91,7 @@
 .see-another-page-1:hover, .see-another-page-2:hover {
     background-color: #fff;
     color: #f9bf3b;
+    border: 1px solid #f9bf3b;
 }
 
 .cmt-auction-option {

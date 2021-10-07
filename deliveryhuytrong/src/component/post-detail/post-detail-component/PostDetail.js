@@ -106,7 +106,7 @@ export default function PostDetail(props) {
                                                             </> : <></>
                                                         }
                                                         <br />
-                                                        <span>{moment(post.created_date, "YYYYMMDD").fromNow()}</span>
+                                                        <span>{moment(new Date(post.created_date), "YYYYMMDD").fromNow()}</span>
                                                     </p>
                                                 </div>
                                                 {

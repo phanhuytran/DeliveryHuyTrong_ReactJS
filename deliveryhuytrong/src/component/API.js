@@ -16,6 +16,8 @@ export let endpoints = {
     'orders': '/orders/',
     'change-shipping-status': (id) => `/orders/${id}/update-status/`,
     'rates': '/rates/',
+    'edit-rates': (id) => `/rates/${id}/`,
+    'check-rate': '/rates/check-rate/',
     'vouchers': '/vouchers/'
 }
 

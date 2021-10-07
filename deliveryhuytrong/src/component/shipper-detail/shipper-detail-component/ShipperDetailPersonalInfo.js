@@ -49,10 +49,9 @@ export default function ShipperDetailPersonalInfo(props) {
                             <tr>
                                 <td>Phone:</td>
                                 <td colSpan={2} className="text-right shipper-highlight-info">{value.phone}</td>
-                            </tr><br />
+                            </tr>
                             <tr>
-                                <span style={{ marginTop: '5%' }} />
-                                <td style={{ float: 'left', fontSize: 19, width: '208px' }}>Community's Rating:</td>
+                                <td style={{ float: 'left', fontSize: 19, width: '208px', marginTop: '18px' }}>Community's Rating:</td>
                                 <td colSpan={2} className="text-right shipper-highlight-info">
                                     <i style={{ fontSize: 30, color: '#f9bf3b' }} className="fas fa-star"></i>
                                     <span style={{ marginLeft: '5px' }} className="communty-rating">{shipperAverageRating.ave}</span>
