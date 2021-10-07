@@ -18,9 +18,9 @@ export default function RemovePostDetailDialog() {
     const history = useHistory();
     const option = useContext(RemovePostDetailContext);
 
-    function removePost(id) {
+    async function removePost(id) {
         let post = option.postList;
-        AuthAPI.delete(endpoints['posts'] + id).then((res) => {
+        AuthAPI.delete(await endpoints['posts'] + id).then((res) => {
             console.log(res);
             option.setPostList(post);
             option.setIsDisplayPostOption(false);

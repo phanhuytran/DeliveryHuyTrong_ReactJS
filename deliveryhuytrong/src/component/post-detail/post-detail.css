@@ -123,3 +123,29 @@
 .pay-method p span:nth-child(2) {
     margin-right: 20%;
 }
+
+.modal-shipper-rating {
+    margin: 2% auto;
+    width: 70%;
+    height: 91%;
+    box-shadow: 0 0 5px rgb(33 33 33 / 20%);
+    background-color: #fff;
+    outline: none;
+    animation: growth linear 0.3s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
+.close-modal-shipper-rating {
+    font-size: 20px !important;
+    position: fixed;
+    top: 3.8%;
+    left: 86%;
+    font-size: 30px;
+    color: #22313f;
+    cursor: pointer;
+}
+
+.shipper-info-rating td {
+    padding: 1% !important;
+}

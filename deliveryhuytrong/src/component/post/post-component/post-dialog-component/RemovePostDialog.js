@@ -15,9 +15,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function RemovePostDialog() {
     const option = useContext(RemovePostContext);
-    function removePost(id) {
+    async function removePost(id) {
         let post = option.postList;
-        AuthAPI.delete(endpoints['posts'] + id).then((res) => {
+        AuthAPI.delete(await endpoints['posts'] + id).then((res) => {
             console.log(res);
             option.setPostList(post);
             option.setHiddenPostOption({});

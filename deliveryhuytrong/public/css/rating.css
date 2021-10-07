@@ -5,6 +5,7 @@ div.shipper-info {
 }
 
 div.shipper-info img {
+	visibility: visible;
 	width: 300px;
 	height: 300px;
 	object-fit: cover;
@@ -40,9 +41,10 @@ div.shipper-info-right tr:last-child {
 }
 
 div.shipper-info-right tr:last-child p {
+	float: right;
 	text-align: left;
 	font-size: 18px;
-	padding-left: 30%;
+	/* padding-left: 33%; */
 }
 
 div.shipper-info-right td.shipper-highlight-info {
@@ -51,6 +53,7 @@ div.shipper-info-right td.shipper-highlight-info {
 }
 
 div.shipper-info-right textarea {
+	margin-left: 16%;
 	padding: 2%;
 	border-radius: 10px;
 	border-color: #dddddd;
@@ -63,6 +66,7 @@ div.shipper-info-right textarea:focus-visible {
 div.shipper-info-right button {
 	font-weight: bold;
 	font-size: 14px;
+	margin-left: 76%;
 	padding: 2% 4%;
 	border: 2px solid #eee;
 	background-color: #f9bf3b;
@@ -144,9 +148,15 @@ h1 {
 #rating > input:checked ~ label:hover,
 #rating > label:hover ~ input:checked ~ label,
 #rating > input:checked ~ label:hover ~ label {
-	color: #FFED85;
+	color: #f0eddc;
 }
 
 button#confirm-rating {
 	width: 80px;
+}
+
+.communty-rating {
+	font-size: 30px;
+	margin-left: 5px;
+	color: #f9bf3b;
 }

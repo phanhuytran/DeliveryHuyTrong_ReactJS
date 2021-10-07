@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import StarRateIcon from '@mui/icons-material/StarRate';
+import Modal from 'react-modal';
 import { AuthAPI, endpoints } from '../../API';
 import LoadingProgress from '../../item-base/LoadingProgress';
+import ShipperRating from './ShipperRating';
 import '../post-detail.css';
 import cashIMG from '../image/cash.png';
 import momoIMG from '../image/momo.png';
@@ -11,6 +12,7 @@ import zaloPayIMG from '../image/zalo-pay.png';
 export default function ShipperInfoChosen(props) {
     const [loadingProgress, setLoadingProgress] = useState(true);
     const [orderList, setOrderList] = useState([]);
+    const [modalShipperRating, setModalShipperRating] = useState(false);
 
     useEffect(() => {
         const getOrderList = async () => {
@@ -36,11 +38,9 @@ export default function ShipperInfoChosen(props) {
                             if (order.auction_win.post.id === props.post.id) {
                                 return <div key={index} className="shipper-info-chosen-body">
                                     <div className="shipper-info-chosen-left">
-                                        {
-                                            order.status === 'shipped' ? <Link to={"/shipper-detail/" + order.auction_win.shipper.id}>
-                                                <img src={order.auction_win.shipper.avatar} alt="avatar" />
-                                            </Link> : <img src={order.auction_win.shipper.avatar} alt="avatar" />
-                                        }
+                                        <Link to={"/shipper-detail/" + order.auction_win.shipper.id}>
+                                            <img src={order.auction_win.shipper.avatar} alt="avatar" />
+                                        </Link>
                                         <p style={{ fontSize: 18, textTransform: 'uppercase' }}>{order.auction_win.shipper.first_name} {order.auction_win.shipper.last_name}</p>
                                         <p style={{ fontSize: 25 }}>{order.auction_win.shipper.phone}</p>
                                     </div>
@@ -67,7 +67,18 @@ export default function ShipperInfoChosen(props) {
                                             </span>
                                         </p>
                                         {
-                                            order.status === 'shipped' ? <p style={{ marginTop: '40%' }}><span><Link to={"/shipper-detail/" + order.auction_win.shipper.id} className="see-another-page-2">Click to rate <StarRateIcon /></Link></span></p> : <></>
+                                            order.status === 'shipped'
+                                                ? <p style={{ marginTop: '40%' }}>
+                                                    <span>
+                                                        <span onClick={() => setModalShipperRating(true)} className="see-another-page-2">Click to rate <i className="fas fa-star"></i></span>
+                                                        <Modal className="modal-shipper-rating" isOpen={modalShipperRating} ariaHideApp={false}>
+                                                            <ShipperRating props={order} />
+                                                            <div className="close-modal-shipper-rating" onClick={() => setModalShipperRating(false)}>
+                                                                <i className="fas fa-times-circle"></i>
+                                                            </div>
+                                                        </Modal>
+                                                    </span>
+                                                </p> : <></>
                                         }
                                     </div>
                                 </div>

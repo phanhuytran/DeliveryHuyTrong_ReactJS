@@ -7,6 +7,7 @@ export let endpoints = {
     'users': '/users/',
     'current-user': '/users/current-user/',
     'shippers': '/shippers/',
+    'shipper-average-rate': (id) => `/shippers/${id}/average-rate/`,
     'posts': '/posts/',
     'stocks': '/stocks/',
     'image-item': '/image-item/',
@@ -14,6 +15,7 @@ export let endpoints = {
     'auctions': '/auctions/',
     'orders': '/orders/',
     'change-shipping-status': (id) => `/orders/${id}/update-status/`,
+    'rates': '/rates/',
     'vouchers': '/vouchers/'
 }
 

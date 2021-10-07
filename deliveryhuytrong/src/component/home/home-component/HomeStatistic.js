@@ -12,7 +12,7 @@ export default function HomeStatistic() {
             let res = await AuthAPI.get(endpoints['shippers']);
             setTimeout(() => {
                 setLoadingProgress(false);
-                setShipperList(res.data);
+                setShipperList(res.data.results);
             }, 1000);
         }
 

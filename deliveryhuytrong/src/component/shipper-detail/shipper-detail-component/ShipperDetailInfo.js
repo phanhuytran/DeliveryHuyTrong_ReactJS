@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthAPI, endpoints } from '../../API';
 import ShipperDetailPersonalInfo from './ShipperDetailPersonalInfo';
-import ShipperDetailRating from './ShipperDetailRating';
 import ShipperDetailTitle from './ShipperDetailTitle';
 import '../shipper-detail.css';
 
@@ -13,7 +12,7 @@ export default function ShipperDetailInfo(props) {
     useEffect(() => {
         async function getShipperList() {
             let res = await AuthAPI.get(endpoints['shippers']);
-            setShipperList(res.data);
+            setShipperList(res.data.results);
         }
         getShipperList();
     }, [shipperList]);
@@ -35,7 +34,6 @@ export default function ShipperDetailInfo(props) {
                                             <table>
                                                 <tbody>
                                                     <ShipperDetailPersonalInfo props={props.props} />
-                                                    <ShipperDetailRating />
                                                 </tbody>
                                             </table>
                                         </form>
@@ -46,6 +44,7 @@ export default function ShipperDetailInfo(props) {
                         })
                     }
                 </div>
+                <br /><br />
                 <Link to="/shipper" className="see-another-page">SEE LIST OF SHIPPERS</Link>
             </div>
         </section>

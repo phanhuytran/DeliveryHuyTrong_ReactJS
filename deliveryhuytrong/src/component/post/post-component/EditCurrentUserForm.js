@@ -29,7 +29,7 @@ export default class EditCurrentUserForm extends React.Component {
         console.log(this.state.user)
     }
 
-    editInfo = (e) => {
+    editInfo = async (e) => {
         e.preventDefault();
         this.setState({
             loadingProgress: true
@@ -40,7 +40,7 @@ export default class EditCurrentUserForm extends React.Component {
                 formData.append(k, this.state.user[k])
             }
         }
-        AuthAPI.patch(endpoints['users'] + cookies.load("user").id + '/', formData).then((res) => {
+        AuthAPI.patch(await endpoints['users'] + cookies.load("user").id + '/', formData).then((res) => {
             console.log(res);
             cookies.save('user', res.data);
             this.setState({

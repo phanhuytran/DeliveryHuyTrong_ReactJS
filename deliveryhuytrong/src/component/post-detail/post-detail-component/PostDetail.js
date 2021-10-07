@@ -52,7 +52,7 @@ export default function PostDetail(props) {
 
     async function editPost(id, data) {
         let post = postList;
-        AuthAPI.patch(endpoints['posts'] + id + '/', data, {
+        AuthAPI.patch(await endpoints['posts'] + id + '/', data, {
             headers: {
                 'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
             }

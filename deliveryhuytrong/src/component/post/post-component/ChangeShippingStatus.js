@@ -12,7 +12,7 @@ export default function ChangeShippingStatus() {
         let order = option.orderList;
         let formData = new FormData();
         formData.append('status', changeShippingStatus);
-        AuthAPI.patch(endpoints['change-shipping-status'](option.order.auction_win.id), formData).then((res) => {
+        AuthAPI.patch(await endpoints['change-shipping-status'](option.order.auction_win.id), formData).then((res) => {
             console.log(res);
             option.setOrderList(order);
             option.setChangeStatusModal(false);

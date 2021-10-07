@@ -53,7 +53,7 @@ export default function OrderAuctionComment(props) {
 
     async function removeAuction(id) {
         let auc = auction;
-        AuthAPI.delete(endpoints['auctions'] + id).then((res) => {
+        AuthAPI.delete(await endpoints['auctions'] + id).then((res) => {
             console.log(res);
             setMessage('');
             setIsDisplayPostOption(false);
@@ -84,13 +84,11 @@ export default function OrderAuctionComment(props) {
         let auc = auction;
         let formData = new FormData();
         formData.append('cost', editCost);
-        AuthAPI.patch(endpoints['auctions'] + id + '/', formData).then((res) => {
+        AuthAPI.patch(await endpoints['auctions'] + id + '/', formData).then((res) => {
             console.log(res);
             setMessage('');
             setIsDisplayAuctionInfo(true);
             setIsDisplayEditAuction(false);
-        }).then((res) => {
-            console.log(res);
         }).catch((err) => {
             console.log(err.response.data);
             if (err.response.data.cost) {

@@ -18,7 +18,7 @@ export default function AuctionForm(props) {
         formData.append('shipper', cookies.load('user').id);
         formData.append('cost', cost);
 
-        AuthAPI.post(endpoints['post-auctions'](props.props.post.id), formData, {
+        AuthAPI.post(await endpoints['post-auctions'](props.props.post.id), formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -47,7 +47,7 @@ export default function AuctionForm(props) {
                         <img src={cookies.load('user').avatar} alt="img" />
                     </div>
                     <div className="auction-area-comment-flex-center">
-                        <input type="number" step="0.01" min="0" placeholder="Enter a auction cost..." onChange={e => setCost(e.target.value)} />
+                        <input type="number" step="0.01" min="0" placeholder="Enter a auction cost..." value={cost} onChange={e => setCost(e.target.value)} />
                     </div>
                     <div className="auction-area-comment-flex-right">
                         {
