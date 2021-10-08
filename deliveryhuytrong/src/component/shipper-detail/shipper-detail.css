@@ -18,3 +18,78 @@
     background-color: #fff;
     color: #f9bf3b;
 }
+
+.shipper-rating-slider {
+    margin: 5% 0;
+}
+
+.shipper-rating-slider-height {
+    height: 250px;
+    overflow-y: scroll;
+}
+
+.shipper-rating-slider-height::-webkit-scrollbar {
+    width: 1px;
+}
+
+.shipper-rating-info-1 {
+    display: flex;
+    width: 100%;
+}
+
+.shipper-rating-info-1 div:first-child {
+    width: 60%;
+}
+
+.shipper-rating-info-1 div:first-child img {
+    width: 100px;
+    height: 100px;
+    margin-left: 12%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.shipper-rating-info-1 div:last-child {
+    width: 40%;
+}
+
+.shipper-rating-info-1 div:last-child p:first-child {
+    font-size: 16px;
+    margin: 15% 0 0 0;
+}
+
+.shipper-rating-info-1 div:last-child p:last-child {
+    font-size: 24px;
+}
+
+.shipper-rating-info-2 {
+    margin-top: 10%;
+}
+
+.shipper-rating-info-2 p {
+    margin: 0;
+}
+
+.shipper-rating-info-2 img {
+    display: inline !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.customer-rating-info-1 {
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 2%;
+}
+
+.customer-rating-info-2 {
+    margin-left: 2%;
+}
+
+.customer-rating-info-2 span {
+    font-size: 20px;
+    margin-left: 1%;
+    color: #f9bf3b;
+}
