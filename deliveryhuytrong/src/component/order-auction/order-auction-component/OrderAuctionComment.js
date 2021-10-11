@@ -58,6 +58,8 @@ export default function OrderAuctionComment(props) {
             setMessage('');
             setIsDisplayPostOption(false);
             setOpenRemoveAuctionDialog(false);
+            setIsDisplayEditAuction(false);
+            setIsDisplayAuctionInfo(true);
         }).catch((err) => {
             console.log(err.response.data);
             setIsDisplayPostOption(false);
@@ -119,7 +121,7 @@ export default function OrderAuctionComment(props) {
                                     <div className="auction-area-comment-flex-center">
                                         {
                                             isDisplayAuctionInfo
-                                                ? <div className="auction-area-comment-info">
+                                                ? <div className="auction-area-comment-info oau">
                                                     <strong style={{ fontSize: 16 }}>{auction.shipper.username}</strong><br />
                                                     <span>{currencyFormat((auction.cost).slice(0, -3))} VND</span>
                                                 </div> : <></>

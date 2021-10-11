@@ -432,6 +432,18 @@ p.created-date-comment {
     --growth-to: 1;
 }
 
+.modal-order-export {
+    margin: 3.65% auto;
+    width: 50%;
+    height: 85%;
+    box-shadow: 0 0 5px rgb(33 33 33 / 20%);
+    background-color: #fff;
+    outline: none;
+    animation: growth linear 0.25s;
+    --growth-from: 0;
+    --growth-to: 1;
+}
+
 .choose-avatar {
     width: 44%;
     margin: 0 auto;
@@ -552,6 +564,16 @@ p.created-date-comment {
     position: fixed;
     top: 22.2%;
     left: 66%;
+    font-size: 30px;
+    color: #22313f;
+    cursor: pointer;
+}
+
+.close-modal-order-export {
+    font-size: 20px !important;
+    position: fixed;
+    top: 7.2%;
+    left: 76%;
     font-size: 30px;
     color: #22313f;
     cursor: pointer;
@@ -703,4 +725,45 @@ p.created-date-comment {
 .phone-stock-error {
     position: absolute;
     color: red
+}
+
+.order-export {
+    margin: 0 auto;
+    padding: 2% 10%;
+}
+
+.order-export h1 {
+    font-size: 30px;
+    text-align: center;
+    margin: 35px 0;
+}
+
+.order-export p {
+    margin: 0 0 20px 0;
+}
+
+.order-export span {
+    float: right;
+}
+
+.order-export span img {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.btn-order-export {
+    float: right;
+    font-size: 16px;
+    background-color: #fff;
+    color: #5d5d5d;
+    margin: 10px 10px 0 0;
+    padding: 8px 11px;
+    border: none;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+.btn-order-export:hover {
+    background-color: #eee;
 }

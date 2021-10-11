@@ -6,6 +6,7 @@ import { AuthAPI, endpoints } from '../../API';
 import LoadingProgress from '../../item-base/LoadingProgress';
 import ChangeShippingStatus from './ChangeShippingStatus';
 import OrderInformation from './OrderInformation';
+import OrderExport from './OrderExport';
 import '../post.css';
 
 export let OrderInformationContext = React.createContext();
@@ -16,6 +17,7 @@ export default function OrderAuctionedList() {
     const [orderList, setOrderList] = useState([]);
     const [hiddenOrderOption, setHiddenOrderOption] = useState({});
     const [changeStatusModal, setChangeStatusModal] = useState(false);
+    const [exportOrderDetail, setExportOrderDetail] = useState(false);
 
     const onTogglePostOption = index => {
         setHiddenOrderOption({ ...hiddenOrderOption, [index]: !hiddenOrderOption[index] });
@@ -41,6 +43,11 @@ export default function OrderAuctionedList() {
 
     const closeChangeStatusModal = () => {
         setChangeStatusModal(false);
+        setHiddenOrderOption({});
+    }
+
+    const closeExportOrderDetail = () => {
+        setExportOrderDetail(false);
         setHiddenOrderOption({});
     }
 
@@ -72,11 +79,18 @@ export default function OrderAuctionedList() {
                                     {!hiddenOrderOption[index] && <></>} {
                                         hiddenOrderOption[index] && <div className="post-option" style={{ width: '15.429%', margin: '3% 0 0 -9%' }}>
                                             <p onClick={() => setChangeStatusModal(true)}><i className="fas fa-edit" style={{ marginRight: '5px' }}></i>Change shipping status</p>
+                                            <p onClick={() => setExportOrderDetail(true)}><i className="fas fa-print" style={{ marginRight: '5px' }}></i>Print this order</p>
                                             <Modal className="modal-change-status" isOpen={changeStatusModal} ariaHideApp={false}>
                                                 <ChangeShippingStatusContext.Provider value={{ order, orderList, setOrderList, setChangeStatusModal, setHiddenOrderOption }}>
                                                     <ChangeShippingStatus />
                                                 </ChangeShippingStatusContext.Provider>
                                                 <div className="close-modal-change-status" onClick={closeChangeStatusModal}>
+                                                    <i className="fas fa-times-circle"></i>
+                                                </div>
+                                            </Modal>
+                                            <Modal className="modal-order-export" isOpen={exportOrderDetail} ariaHideApp={false}>
+                                                <OrderExport props={order} />
+                                                <div className="close-modal-order-export" onClick={closeExportOrderDetail}>
                                                     <i className="fas fa-times-circle"></i>
                                                 </div>
                                             </Modal>

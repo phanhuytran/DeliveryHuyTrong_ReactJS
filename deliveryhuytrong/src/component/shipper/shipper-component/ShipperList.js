@@ -4,6 +4,7 @@ import cookies from 'react-cookies';
 import { AuthAPI, endpoints } from '../../API';
 import LoadingProgress from '../../item-base/LoadingProgress';
 import ShipperTitle from './ShipperTitle';
+import ShipperRatingSlider from '../../shipper-detail/shipper-detail-component/ShipperRatingSlider'
 // import ShipperInfoForm from './ShipperInfoForm';
 import '../shipper.css';
 
@@ -138,6 +139,7 @@ export default function ShipperList() {
                         </tbody>
                     </table>
                 </div>
+                <ShipperRatingSlider />
                 <Link to="/list-orders" className="see-another-page">SEE LIST OF ORDERS</Link>
             </div>
         </section>
