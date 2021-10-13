@@ -1212,12 +1212,12 @@ table.table-list tbody tr:hover {
 }
 
 .order-list-filter button {
-    font-weight: bold;
-    border: 1px solid #eee;
+    border: 1px solid #f9bf3b;
+    border-radius: 5px;
     background-color: #f9bf3b;
     color: #fff;
     margin: 2px;
-    padding: 2px 4px;
+    padding: 2px 5px;
     transition: 0.4s;
 }
 
