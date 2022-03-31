@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import qs from 'qs';
 import * as _ from 'lodash';
 import moment from 'moment';
 import { AuthAPI, endpoints } from '../../API';
@@ -18,6 +20,7 @@ export default function PostDetailComment(props) {
     const [chooseShipper, setChooseShipper] = useState(0);
     const [choosePayMethod, setChoosePayMethod] = useState(0);
     const [isDisplayPayMethod, setIsDisplayPayMethod] = useState(false);
+    const [isDisplayMomoQRCode, setIsDisplayMomoQRCode] = useState(false);
 
     useEffect(() => {
         const getAuction = async () => {
@@ -55,6 +58,29 @@ export default function PostDetailComment(props) {
             console.log(err.response);
         })
         setOrderList(order);
+    }
+
+    const showMomoQRCode = async () => {
+        console.log("Show Momo QR Code");
+        setIsDisplayMomoQRCode(true);
+        await axios({
+            method: 'POST',
+            url: 'https://api.qr-code-generator.com/v1/create?access-token=TWGSoPzdoKG5kUkmzhnEUIeqPLhwA3peqtWh-jwuq1BM7nTMfUWMV4RaDGXOxQK8',
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded',
+            }, data: qs.stringify({
+                'frame_name': 'no-frame',
+                'qr_code_text0': 'https://test-payment.momo.vn/pay/store/MOMOIDXP20220219-QWdaiai149274y44?a=11112.00&b=Kanj-auctionId_8-commentId_29&s=c4a15b54abb616e72b0266302da529de0d8f698f64fa55e8ec3733814d9d3058',
+                'image_format': 'SVG',
+                'qr_code_logo': 'scan-me-square'
+            })
+        }).then((res) => {
+            console.log("Successfully!")
+            console.log(res);
+        }).catch((err) => {
+            console.log("Failed!")
+            console.log(err.response);
+        })
     }
 
     return (
@@ -106,11 +132,16 @@ export default function PostDetailComment(props) {
                                         <div className="pay-method">
                                             <input style={{ marginLeft: 0 }} type="radio" name="pay-method" value={2} onChange={e => setChoosePayMethod(e.target.value)} required />
                                             <img src={cashIMG} alt="cash-img" />
-                                            <input type="radio" name="pay-method" value={1} onChange={e => setChoosePayMethod(e.target.value)} required />
+                                            <input type="radio" name="pay-method" value={1} onChange={e => setChoosePayMethod(e.target.value) & showMomoQRCode(e.target.value)} required />
                                             <img src={momoIMG} alt="momo-img" />
-                                            <input type="radio" name="pay-method" value={0} onChange={e => setChoosePayMethod(e.target.value)} required />
-                                            <img src={zaloPayIMG} alt="zalo-pay-img" />
-                                            <p><span>Cash</span><span>Momo</span><span>Zalo pay</span></p>
+                                            {/* <input type="radio" name="pay-method" value={0} onChange={e => setChoosePayMethod(e.target.value)} required />
+                                            <img src={zaloPayIMG} alt="zalo-pay-img" /> */}
+                                            <p><span>Cash</span><span>Momo</span></p>
+                                            {
+                                                isDisplayMomoQRCode ? <div className="momo-qr-code">
+                                                    <h1>Momo QR Code</h1>
+                                                </div> : <></>
+                                            }
                                         </div>
                                     </>
                                 }

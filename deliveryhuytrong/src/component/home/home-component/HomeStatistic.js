@@ -36,7 +36,7 @@ export default function HomeStatistic() {
                         <div className="row">
                             <div className="col-md-2 col-sm-3 text-center">
                                 <div className="single-count">
-                                    <h1 className="counter">0</h1>
+                                    <h1 className="counter">10</h1>
                                     <h5>Customers</h5>
                                 </div>
                             </div>

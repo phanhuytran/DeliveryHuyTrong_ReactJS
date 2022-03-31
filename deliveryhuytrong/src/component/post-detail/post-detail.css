@@ -102,7 +102,7 @@
 }
 
 .pay-method input {
-    margin-left: 10%;
+    margin-left: 45%;
 }
 
 .pay-method img {
@@ -118,11 +118,19 @@
 
 .pay-method p span:first-child {
     margin-left: 12.5%;
-    margin-right: 25.5%;
+    margin-right: 60.5%;
 }
 
 .pay-method p span:nth-child(2) {
     margin-right: 20%;
+}
+
+.momo-qr-code {
+    margin-top: 10%;
+    text-align: center;
+    animation: growth linear 0.3s;
+    --growth-from: 0;
+    --growth-to: 1;
 }
 
 .modal-shipper-rating {
