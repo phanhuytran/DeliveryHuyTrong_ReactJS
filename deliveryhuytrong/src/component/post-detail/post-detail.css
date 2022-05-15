@@ -133,6 +133,12 @@
     --growth-to: 1;
 }
 
+.momo-qr-code img {
+    margin-left: 0;
+    width: 150px !important;
+    height: 150px;
+}
+
 .modal-shipper-rating {
     margin: 2% auto;
     width: 70%;

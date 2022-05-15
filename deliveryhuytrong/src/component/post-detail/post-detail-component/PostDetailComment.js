@@ -130,7 +130,7 @@ export default function PostDetailComment(props) {
                                         <hr />
                                         <h2>Pay method</h2>
                                         <div className="pay-method">
-                                            <input style={{ marginLeft: 0 }} type="radio" name="pay-method" value={2} onChange={e => setChoosePayMethod(e.target.value)} required />
+                                            <input style={{ marginLeft: 0 }} type="radio" name="pay-method" value={2} onChange={e => setChoosePayMethod(e.target.value) & setIsDisplayMomoQRCode(false)} required />
                                             <img src={cashIMG} alt="cash-img" />
                                             <input type="radio" name="pay-method" value={1} onChange={e => setChoosePayMethod(e.target.value) & showMomoQRCode(e.target.value)} required />
                                             <img src={momoIMG} alt="momo-img" />
@@ -140,6 +140,7 @@ export default function PostDetailComment(props) {
                                             {
                                                 isDisplayMomoQRCode ? <div className="momo-qr-code">
                                                     <h1>Momo QR Code</h1>
+                                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{https://api.qr-code-generator.com/v1/create?access-token=TWGSoPzdoKG5kUkmzhnEUIeqPLhwA3peqtWh-jwuq1BM7nTMfUWMV4RaDGXOxQK8}}" />
                                                 </div> : <></>
                                             }
                                         </div>
