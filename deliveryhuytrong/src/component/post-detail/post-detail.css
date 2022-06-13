@@ -14,6 +14,9 @@
 .auction-confirmation {
     text-align: center;
     margin: 5% 0;
+    animation: growth linear 0.2s;
+    --growth-from: 0;
+    --growth-to: 1;
 }
 
 .auction-confirmation button {

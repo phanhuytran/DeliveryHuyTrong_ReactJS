@@ -10,7 +10,6 @@ import { DisplayPostOptionContext } from './PostInformation';
 import '../post-detail.css';
 import cashIMG from '../image/cash.png';
 import momoIMG from '../image/momo.png';
-import zaloPayIMG from '../image/zalo-pay.png';
 
 export default function PostDetailComment(props) {
     const option = useContext(DisplayPostOptionContext);
@@ -21,6 +20,8 @@ export default function PostDetailComment(props) {
     const [choosePayMethod, setChoosePayMethod] = useState(0);
     const [isDisplayPayMethod, setIsDisplayPayMethod] = useState(false);
     const [isDisplayMomoQRCode, setIsDisplayMomoQRCode] = useState(false);
+    const [isDisplayConfirmation, setIsDisplayConfirmation] = useState(false);
+    const momoQRCode = 'https://test-payment.momo.vn/pay/store/MOMOIDXP20220219-QWdaiai149274y44?a=11112.00;b=Kanj-auctionId_8-commentId_30;s=bc02122c9731c7948b12979408c2b57c928ac8d56f45fc5193c1c3bb9b53bbc6';
 
     useEffect(() => {
         const getAuction = async () => {
@@ -43,6 +44,7 @@ export default function PostDetailComment(props) {
     const changeAuctionWin = (e) => {
         setChooseShipper(e.target.value);
         setIsDisplayPayMethod(true);
+        setIsDisplayConfirmation(true);
     }
 
     async function confirmShipper(e) {
@@ -134,13 +136,11 @@ export default function PostDetailComment(props) {
                                             <img src={cashIMG} alt="cash-img" />
                                             <input type="radio" name="pay-method" value={1} onChange={e => setChoosePayMethod(e.target.value) & showMomoQRCode(e.target.value)} required />
                                             <img src={momoIMG} alt="momo-img" />
-                                            {/* <input type="radio" name="pay-method" value={0} onChange={e => setChoosePayMethod(e.target.value)} required />
-                                            <img src={zaloPayIMG} alt="zalo-pay-img" /> */}
                                             <p><span>Cash</span><span>Momo</span></p>
                                             {
                                                 isDisplayMomoQRCode ? <div className="momo-qr-code">
                                                     <h1>Momo QR Code</h1>
-                                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{https://api.qr-code-generator.com/v1/create?access-token=TWGSoPzdoKG5kUkmzhnEUIeqPLhwA3peqtWh-jwuq1BM7nTMfUWMV4RaDGXOxQK8}}" />
+                                                    <img src={'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + momoQRCode} />
                                                 </div> : <></>
                                             }
                                         </div>
@@ -150,9 +150,12 @@ export default function PostDetailComment(props) {
                         }
                     </>
                 }
-                <div className="auction-confirmation">
-                    <button type="submit">Auction confirmation</button>
-                </div>
+                {
+                    isDisplayConfirmation ? <div className="auction-confirmation">
+                        <button type="submit">Auction confirmation</button>
+                    </div> : <></>
+                }
+
             </div>
         </form>
     );
